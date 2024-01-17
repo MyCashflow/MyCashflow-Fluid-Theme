@@ -1,0 +1,103 @@
+/*------------------------------------------------------------------------------*/
+/* News Grid List
+/*------------------------------------------------------------------------------*/
+
+.NewsGridList {
+	--gap: var(--grid-list-gutter);
+	display: grid;
+	gap: calc(var(--gap) * 2) var(--gap);
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+/*------------------------------------------------------------------------------*/
+/* News Scrollable List
+/*------------------------------------------------------------------------------*/
+
+.NewsScrollList {
+	--gap: var(--grid-list-gutter);
+	-ms-overflow-style: none;
+	display: grid;
+	gap: var(--gap);
+	grid-auto-columns: minmax(400px, 25%);
+	grid-auto-flow: column;
+	overflow-x: auto;
+	scroll-padding-left: var(--container-page-margin);
+	scroll-padding-right: var(--container-page-margin);
+	scroll-snap-type: none;
+	scrollbar-width: none;
+}
+
+.NewsScrollList::-webkit-scrollbar {
+	display: none;
+}
+
+.NewsScrollList .NewsItem {
+	scroll-snap-align: center;
+}
+
+@media screen and (max-width: 480px) {
+	.NewsScrollList {
+		grid-auto-columns: 85%;
+		scroll-snap-type: inline mandatory;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* News Item
+/*------------------------------------------------------------------------------*/
+
+.NewsItem {
+	--color-link: var(--color-text);
+}
+
+.NewsItem a {
+	text-decoration: none;
+}
+
+.NewsItemImage {
+	border-radius: var(--border-radius-images);
+	display: block;
+	overflow: hidden;
+}
+
+.NewsItemImage .AspectRatio {
+	--aspect-ratio: 50%;
+}
+
+.NewsItemImage img {
+	object-fit: cover;
+}
+
+.NewsItemOverview {
+	--default-margin: 0 0 var(--margin-xsmall);
+	margin-top: var(--margin);
+}
+
+/*------------------------------------------------------------------------------*/
+/* News Page
+/*------------------------------------------------------------------------------*/
+
+.NewsImage {
+	background-color: var(--background-color-shade-1);
+	margin: var(--default-margin);
+}
+
+.NewsImage .AspectRatio {
+	--aspect-ratio: 50%;
+}
+
+.NewsImage img {
+	border-radius: var(--border-radius-images);
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.NewsOverview {
+	font-size: var(--font-size-xlarge);
+	max-width: 60ch;
+}
+
+.NewsBody {
+	max-width: 90ch;
+}

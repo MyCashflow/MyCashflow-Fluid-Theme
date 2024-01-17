@@ -1,0 +1,33 @@
+<div class="UtilityBar Theme-Header">
+	{LanguageNavigation(
+		type: 'name',
+		before: '
+			<div class="UtilityItem UtilityItem-VersionNavigation">
+				<div class="UtilityLanguageNavigation" data-truncate-nav="true" data-truncate-after="4" data-version-link-pathnames="false">
+					<div class="InlineNavigation">',
+		after: '
+					</div>
+				</div>
+			</div>'
+	)}
+	{CurrencyNavigation(
+		before: '
+			<div class="UtilityItem">
+				<details class="CustomDetails" data-details-global-toggle>
+					<summary>{%Currency}: <strong>{Currency}</strong></summary>
+					<nav class="DetailsNavigation">',
+		after: '
+					</nav>
+				</details>
+			</div>'
+	)}
+	{InfoNavigation(
+		levels: '1',
+		before: '
+			<div class="UtilityItem UtilityItem-InfoPages">
+				<div class="InlineNavigation">',
+		after: '
+				</div>
+			</div>'
+	)}
+</div>

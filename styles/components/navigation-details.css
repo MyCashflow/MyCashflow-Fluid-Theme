@@ -1,0 +1,49 @@
+/*------------------------------------------------------------------------------*/
+/* Details Navigation
+/*------------------------------------------------------------------------------*/
+
+.DetailsNavigation {
+	background-color: var(--background-color-shade-1);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+	min-width: 120px;
+	padding: .5rem 1rem;
+	position: absolute;
+	z-index: 101;
+	transform: translateY(10px);
+}
+
+.DetailsNavigation::before {
+	background: inherit;
+	border: 1px solid var(--border-color);
+	border-bottom: 0;
+	border-right: 0;
+	bottom: calc(100% - 3px);
+	content: '';
+	height: 8px;
+	left: 15px;
+	position: absolute;
+	transform: rotate(45deg);
+	width: 8px;
+}
+
+.DetailsNavigation-Right {
+	right: 0;
+}
+
+.DetailsNavigation-Right::before {
+	left: auto;
+	right: 15px;
+}
+
+.DetailsNavigation a {
+	display: block;
+	text-decoration: none;
+	padding: .2rem .5rem;
+} 
+
+.DetailsNavigation ul {
+	list-style: none;
+	min-width: max-content;
+}

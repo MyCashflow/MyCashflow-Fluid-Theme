@@ -1,0 +1,56 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container">
+			<div class="CategoryLayout">
+				<aside class="CategoryAside">{Helper(file: 'helpers/category/category-nav-sidebar-expandable')}</aside>
+				<main class="CategoryMain">
+					<header class="CategoryHeader">
+						{Helper(file: 'helpers/category/category-image-main-contained')}
+						{Path}
+						<h1 class="Title">{PageTitle}</h1>
+						{Helper(file: 'helpers/category/category-button-main-expandable')}
+						{CategoryDescription(
+							before: '<div class="CategoryDescription">',
+							after: '</div>'
+						)}
+					</header>
+					{Helper(file: 'helpers/klarna-osm/product-list-{Setting(name: 'klarna_osm_productlist')}')}
+					{Helper(file: 'helpers/filters/main-dropdown')}
+					{Helper(file: 'helpers/filters/tags')}
+					{Helper(file: 'helpers/pagination-form')}
+					{Products(
+						type: 'normal',
+						limit: '60|120',
+						subcategories: 'true',
+						pagination: 'true',
+						before: '<div class="ProductList">',
+						after: '
+							</div>
+							{Helper(file: 'helpers/pagination')}',
+						helper: 'helpers/list-product' 
+					)}
+					{Bundles(
+						category: '{CategoryId(or: '01')}',
+						type: 'normal',
+						before: '
+							<aside class="ProductBundles">
+								<h2 class="Subtitle">{%ProductBundles}</h2>
+								<div class="ProductList">',
+						after: '
+								</div>
+							</aside>',
+						helper: 'helpers/list-bundle'
+					)}
+				</main>
+			</div>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body>
+</html>

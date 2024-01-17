@@ -1,0 +1,33 @@
+/*------------------------------------------------------------------------------*/
+/* Breadcrumb
+/*------------------------------------------------------------------------------*/
+
+.Breadcrumb {
+	--color-link: var(--color-text);
+	font-size: var(--font-size-small);
+}
+
+.Breadcrumb a {
+	text-decoration: none;
+}
+
+.Breadcrumb ul,
+.Breadcrumb li {
+	--list-indent: 0;
+	display: inline;
+}
+
+.BreadcrumbStart {
+	display: none;
+}
+
+.BreadcrumbSeparator {
+	font-size: 0;
+}
+
+.BreadcrumbSeparator::before {
+	font-family: var(--fa-style-family);
+	font-size: var(--font-size-small);
+	content: "\f105"; 
+	margin: 0 1rem;
+}

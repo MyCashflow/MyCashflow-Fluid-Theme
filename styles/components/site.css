@@ -1,0 +1,69 @@
+/*------------------------------------------------------------------------------*/
+/* Site
+/*------------------------------------------------------------------------------*/
+
+.SiteHeader {
+	background-color: var(--background-color);
+	padding-inline: var(--container-page-margin);
+}
+
+.SiteFooter {
+	background-color: var(--background-color);
+	border-top: 1px solid var(--border-color);
+	color: var(--color-text);
+	padding-block: var(--margin-xlarge) var(--margin-large);
+}
+
+.SiteBody {
+	background-color: var(--background-color);
+	border-color: var(--border-color);
+	color: var(--color-text);
+	margin-bottom: var(--margin-xlarge);
+	padding-block: var(--margin-large);
+}
+
+@media screen and (max-width: 480px) {
+	.SiteBody {
+		padding-top: var(--margin);
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Site Template Layout
+/*------------------------------------------------------------------------------*/
+
+.SiteLayout {
+	--sidecolumn-width: 320px;
+	border: 1px solid var(--border-color);
+	border-width: 0 1px;
+	display: grid;
+	grid-template-columns: var(--sidecolumn-width) calc(100% - var(--sidecolumn-width));
+	margin: 0 auto;
+	max-width: var(--full-width-limit);
+	width: 100%;
+}
+
+.ColumnLayoutSection {
+	background-color: var(--background-color);
+	border-right: 1px solid var(--border-color-subtle);
+	color: var(--color-text);
+	padding: 2rem 2.5rem;
+	position: relative;
+	z-index: 1;
+}
+
+.ColumnLayoutSection .StickySide {
+	position: sticky;
+	top: 2rem;
+}
+
+@media screen and (max-width: 1240px) {
+	.SiteLayout {
+		border: 0;
+		display: block;
+	}
+
+	.ColumnLayoutSection {
+		display: none !important;
+	}
+}

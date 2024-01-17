@@ -1,0 +1,187 @@
+/*------------------------------------------------------------------------------*/
+/* Mini Cart
+/*------------------------------------------------------------------------------*/
+
+.MiniCartProducts {
+	margin-bottom: 2rem;
+}
+
+.MiniCartTotal {
+	--color-link: var(--color-text);
+	align-items: flex-start;
+	display: flex;
+	padding-block: .2rem;
+}
+
+.MiniCartTotal:last-child {
+	font-size: var(--font-size-large);
+	font-weight: bold;
+	margin-top: 1rem;
+}
+
+.MiniCartTotal :last-child {
+	margin-left: auto;
+}
+
+.MiniCartActions {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 2rem 0;
+}
+
+.MiniCart .OrderProducts {
+	width: 100%;
+}
+
+.MiniCart details {
+	margin-bottom: 2rem;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Mini Cart Product
+/*------------------------------------------------------------------------------*/
+
+.MiniCartProduct {
+	--color-link: var(--color-text);
+	align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	padding: .5rem 0;
+}
+
+.MiniCartProduct:not(:last-child) {
+	border-bottom: 1px solid var(--border-color);
+}
+
+.MiniCartProductImage {
+	align-self: flex-start;
+	aspect-ratio: 1 / var(--product-image-ratio);
+	background-color: var(--image-background-color);
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	padding: 0;
+	width: 60px;
+	width: min(14%, 60px);
+	z-index: 1;
+}
+
+.MiniCartProductImage img {
+	border-radius: var(--border-radius);
+	object-fit: contain;
+}
+
+.MiniCartProductInfo {
+	flex: 1;
+}
+
+.MiniCartProductInfo > :last-child {
+	margin-bottom: 0;
+}
+
+.MiniCartProductName {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 0;
+	text-decoration: none;
+}
+
+.MiniCartProductPrices {
+	margin: 0;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.MiniCartProductPrices[data-product-quantity]:not([data-product-quantity="1"])::before {
+	content: attr(data-product-quantity) ' \00d7  ';
+	font-weight: bold;
+}
+
+.MiniCartProduct.AvailabilityOutOfStock [data-product-quantity]::before {
+	border-bottom: 2px solid var(--color-notification-error);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Checkout Cart Product
+/*------------------------------------------------------------------------------*/
+
+.MiniCart-Checkout .MiniCartProduct {
+	padding: 1rem 0;
+}
+
+.MiniCart-Checkout .MiniCartProductImage {
+	background-color: var(--image-background-color);
+	border: 1px solid var(--border-color);
+	width: 80px;
+	width: min(16%, 80px);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Mini Cart Product Edit
+/*------------------------------------------------------------------------------*/
+
+.MiniCartProductEdit {
+	cursor: pointer;
+	font-size: var(--font-size-small);
+}
+
+.MiniCartProductActions {
+	align-items: center;
+	background-color: var(--background-color-shade-2);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	display: flex;
+	flex: 1 0 100%;
+	gap: 2rem;
+	padding: .5rem;
+}
+
+.MiniCartProduct .CartRemove {
+	font-size: var(--font-size-small);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Campaign Code
+/*------------------------------------------------------------------------------*/
+
+.DrawerCampaignCode .CampaignCodeForm {
+	margin-top: 1rem;
+	width: 100%;
+}
+
+.DrawerCampaignCode .FormItem {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.DrawerCampaignCode .FormItem label,
+.DrawerCampaignCode .FormItem .label {
+	flex: 0 0 100%;
+}
+
+.DrawerCampaignCode .FormItem label strong,
+.DrawerCampaignCode .FormItem .label strong {
+	margin-inline: .5rem;
+}
+
+.DrawerCampaignCode #CampaignCode {
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	flex: 1;
+}
+
+.DrawerCampaignCode #CampaignCode:focus {
+	position: relative;
+}
+
+.DrawerCampaignCode #CampaignCode + button {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin-left: -1px;
+}
+

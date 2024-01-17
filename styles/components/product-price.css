@@ -1,0 +1,65 @@
+/*------------------------------------------------------------------------------*/
+/* Product Price Base
+/*------------------------------------------------------------------------------*/
+
+.ProductDiscountPrice {
+	color: var(--color-text-accent);
+	font-weight: bold;
+}
+
+.ProductComparePrice {
+	text-decoration: line-through;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Prices Description List
+/*------------------------------------------------------------------------------*/
+
+.Prices {
+	align-items: baseline;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+}
+
+.Prices dt {
+	margin: 0;
+}
+
+.Prices dd.Price:nth-child(2) {
+	font-size: var(--font-size-large);
+	font-weight: bold;
+}
+
+.Prices dd.DiscountPrice {
+	color: var(--color-text-accent);
+}
+
+.Prices .ComparePrice {
+	font-size: var(--font-size-small);
+	font-weight: normal;
+}
+
+.Prices dt.ComparePrice:not(.ListPrice)::before {
+	content: '(';
+}
+
+.Prices dd.ComparePrice:not(.ListPrice)::after {
+	content: ')';
+}
+
+.Prices dt.ListPrice:not(.ComparePrice) {
+	display: none;
+}
+
+.Prices dd.ListPrice:not(.ComparePrice) {
+	text-decoration: line-through;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Card Prices
+/*------------------------------------------------------------------------------*/
+
+.ProductCardPrices dd.Price:nth-child(2) {
+	font-size: var(--font-size-xlarge);
+}

@@ -1,0 +1,87 @@
+/*------------------------------------------------------------------------------*/
+/* Banner Cover Link
+/*------------------------------------------------------------------------------*/
+
+.BannerCoverLink {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Banner Text
+/*------------------------------------------------------------------------------*/
+
+.BannerText {
+	color: var(--color-text);
+	font-size: var(--font-size-large);
+	max-width: 60ch;
+	position: relative;
+	transition-duration: var(--transition-slow);
+}
+
+.BannerText p {
+	font-size: clamp(var(--font-size-small), 3.5vw, var(--font-size-large));
+}
+
+.BannerText p:last-child {
+	margin-bottom: 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Banner Light/Dark
+/*------------------------------------------------------------------------------*/
+
+.BannerText > * {
+	transition-duration: 0ms;
+}
+
+.Banner-Dark .BannerText > * {
+	color: var(--color-text-light-lighter);
+	text-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+}
+
+.Banner-Light .BannerText > * {
+	color: var(--color-text-dark-darker);
+	text-shadow: none;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Banner Text FOUC
+/*------------------------------------------------------------------------------*/
+
+.JS .FeaturedBanner .BannerText:not(.LightnessLoaded) > *,
+.JS .MainBanner .BannerText:not(.LightnessLoaded) > * {
+	color: transparent;
+}
+
+.JS .MainBanner .BannerText:not(.LightnessLoaded),
+.JS .FeaturedBanner .BannerText:not(.LightnessLoaded) {
+	opacity: 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Banner Button
+/*------------------------------------------------------------------------------*/
+
+.BannerText .Button {
+	--background-color: var(--color-white);
+	--border-color: var(--color-white);
+	color: var(--color-text-dark);
+	font-size: clamp(var(--font-size-small), 3.5vw, var(--font-size-large));
+	min-height: 0;
+	padding: clamp(.5rem, 1vw, 1rem) clamp(.5rem, 2vw, 1.5rem);
+	text-shadow: none;
+}
+
+.BannerText .Button:hover {
+	--background-color: var(--color-white-darker);
+	color: var(--color-text-dark);
+}
+
+.BannerText .Button:active {
+	--background-color: var(--color-white-darker);
+	color: var(--color-text-dark);
+}

@@ -1,0 +1,22 @@
+{FeaturedCategories(
+	before: '
+		<div class="Section SectionPlaceholder">
+			<header class="SectionHeader">
+				<h2 class="SectionHeaderTitle Subtitle">{%BrowseCategories}</h2>
+			</header>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<div class="CategorySlider ScrollOverflow" data-slider-viewport>',
+	after: '
+				</div>
+			</div>
+		</div>',
+	helper: '{{
+		<article class="CategorySliderItem">
+			<a class="CategorySliderLink" href="#">
+				<div class="AspectRatio"></div>
+				<div class="CategorySliderText">&nbsp;</div>
+			</a>
+		</article>
+	}}'
+)}

@@ -1,0 +1,15 @@
+/*------------------------------------------------------------------------------*/
+/* Some Buttons
+/*------------------------------------------------------------------------------*/
+
+.SomeButtons {
+	--color-link: var(--color-text);
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 3.5rem;
+	gap: 1.5rem;
+}
+
+.SomeButtons a {
+	text-decoration: none;
+}

@@ -1,0 +1,93 @@
+/*------------------------------------------------------------------------------*/
+/* Product Variation Checks
+/*------------------------------------------------------------------------------*/
+
+/* Prevent CLS */
+.JS:not(.JS-Ready) .BuyFormVariationRadio {
+	opacity: 0;
+}
+
+.JS:not(.JS-Ready) .BuyFormVariationRadio .Checks label .FormHelp {
+	display: none;
+}
+/* */
+
+.CustomRadioChecks {
+	background-color: var(--background-color);
+	box-shadow: 0 0 0 1px var(--border-color);
+	border-radius: var(--border-radius);
+	gap: 0;
+}
+
+.RadioCheck {
+	align-items: center;
+	border-radius: 0;
+	display: flex;
+	isolation: isolate;
+	justify-content: space-between;
+	gap: .5rem;
+	padding: .75rem 1.5rem;
+	position: relative;
+	transition-duration: var(--transition-fast);
+}
+
+.RadioCheck:first-child {
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+}
+
+.RadioCheck:last-child {
+	border-bottom-left-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
+}
+
+.RadioCheck.SelectedCheck {
+	background-color: var(--background-color-shade-1);
+	box-shadow: 0 0 0 1px var(--border-color-strong);
+	z-index: 1;
+}
+
+.RadioCheck.DisabledCheck label {
+	cursor: not-allowed;
+}
+
+.RadioCheck.DisabledCheck input {
+	opacity: .5;
+}
+
+/* Increase hit area */
+.RadioCheck label::before {
+	bottom: 0;
+	content: '';
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: -1;
+}
+
+.RadioCheck:not(:first-child):not(.SelectedCheck) label::before {
+	border-top: 1px solid var(--border-color);
+}
+
+.RadioCheck label + .FormHelp {
+	margin: 0;
+	text-align: right;
+	pointer-events: none;
+}
+
+@media screen and (max-width: 800px) {
+	.RadioCheck {
+		padding-block: 1rem;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Variation Groups
+/*------------------------------------------------------------------------------*/
+
+.BuyForm .Variations {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin);
+}

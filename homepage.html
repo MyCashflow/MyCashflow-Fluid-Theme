@@ -1,0 +1,84 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		{Helper(
+			before: '
+				<aside class="SiteBanner">
+					<div class="Section">',
+			after: '
+					</div>
+				</aside>',
+			file: 'helpers/banners/banner-mainbanner'
+		)}
+		<div class="SiteBody Container">
+			<main class="SiteMain">
+				{Helper(
+					before: '
+						<div class="Section">
+							<div class="Container">',
+					after: '
+							</div>
+						</div>',
+					file: 'helpers/banners/banner-featured'
+				)}
+				{Helper(file: 'helpers/klarna-osm/homepage-{Setting(name: 'klarna_osm_homepage')}')}
+				<div class="Section" data-viewport-lazyload="helpers/product-lists/homepage-lists&setCategory={CategoryId}">
+					{Helper(
+						file: 'helpers/placeholders/category-slider-{Setting(name: 'show_homepage_featuredcategories')}'
+					)}
+					{HotPicks(
+						category: 'ALL',
+						type: 'ids',
+						limit: '1',
+						before: '<div class="Section" data-products="',
+						after: '">
+							{Helper(file: 'helpers/placeholders/product-list-{Setting(name: 'show_homepage_hotpicks')}')}
+						</div>'
+					)}
+					{TopSellers(
+						category: 'ALL',
+						type: 'ids',
+						limit: '1',
+						before: '<div class="Section" data-products="',
+						after: '">
+							{Helper(file: 'helpers/placeholders/product-list-{Setting(name: 'show_homepage_topsellers')}')}
+						</div>'
+					)}
+					{NewProducts(
+						category: 'ALL',
+						type: 'ids',
+						limit: '1',
+						timelimit: '-2months',
+						before: '<div class="Section" data-products="',
+						after: '">
+							{Helper(file: 'helpers/placeholders/product-list-{Setting(name: 'show_homepage_newproducts')}')}
+						</div>'
+					)}
+				</div>
+				{News(
+					limit: '4',
+					before: '
+						<div class="Section">
+							<section class="NewsSection">
+								<h2 class="Subtitle">{%News}</h2>
+								<div class="Slider" data-slider>
+									{Helper(file: 'helpers/slider-buttons')}
+									<div class="NewsScrollList ScrollOverflow" data-slider-viewport>',
+					after: '
+									</div>
+								</div>
+							</section>
+						</div>',
+					helper: 'helpers/news-item'
+				)}
+			</main>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body>
+</html>

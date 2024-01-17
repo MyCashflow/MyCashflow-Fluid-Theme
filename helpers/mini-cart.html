@@ -1,0 +1,129 @@
+<div data-cart-sub-total="{CartSubTotal}" data-cart-total-items="{CartTotalItems}"></div>
+<header class="DrawerHeader">
+	<h3 class="Title">{%ShoppingCart}</h3>
+	<button class="DrawerCloseButton" data-drawer-close><span class="fa fa-2x fa-times"></span></button>
+</header>
+{CartProducts(
+	before: '
+		{Notifications(group: 'cart')}
+		<form class="DrawerCart" action="/cart/update/" method="post">
+			<div class="MiniCartProducts">',
+	after: '
+			</div>
+		</form>
+		<div class="MiniCartTotals">
+			{CartSubTotal(
+				before: '<div class="MiniCartTotal"><span>{%Subtotal}: </span><span>',
+				after: '</span></div>'
+			)}
+			{CartShippingCosts(
+				before: '<div class="MiniCartTotal"><span>{%CheckoutShipping}: {CartShippingMethod} </span><span>',
+				after: '</span></div>'
+			)}
+			{CartPaymentCosts(
+				before: '<div class="MiniCartTotal"><span>{%PaymentMethod}: {CartPaymentMethod} </span><span>',
+				after: '</span></div>'
+			)}
+			{CartDiscount(
+				before: '<div class="MiniCartTotal"><span>{CartDiscountLabel}: </span><span> -',
+				after: '</span></div>'
+			)}
+			{CartGiftCards(
+				before: '
+					{CartTotal(
+						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span>',
+						after: '</span></div>'
+					)}
+					<div class="MiniCartTotal">',
+				helper: '{{
+					<span>{%CartPaidByGiftCard}: <a href="#" data-drawer-toggle="gift-cards" class="GiftCardDetails">{%CartGiftCardDetaild}</a></span>  <span>{GiftCardBalanceReserved}</span>
+				}}',
+				after: '
+					</div>
+					{CartOpenTotal(
+						before: '<div class="MiniCartTotal"><span>{%CartOpenTotal}: </span><span>',
+						after: '</span></div>'
+					)}',
+				or: '
+					{CartTotal(
+						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span>',
+						after: '</span></div>'
+					)}'
+			)}
+			{Helper(file: 'helpers/klarna-osm/minicart-{Setting(name: 'klarna_osm_minicart')}')}
+		</div>
+		<div class="MiniCartActions">
+			<a class="Button Button-Primary Button-Big OrderProducts" href="/checkout/">{%OrderProducts}</a>
+			<a class="Button Button-Block" href="/cart/">{%ShoppingCartEdit}</a>
+		</div>
+		<details>
+			<summary class="Text-Center">
+				<strong>{%CampaignCodeInquiry}</strong>
+			</summary>
+			<div class="DrawerCampaignCode">
+				{CampaignCode(
+					action: 'cart',
+					before: '<div class="CampaignCodeForm">',
+					after: '</div>'
+				)}
+			</div>
+		</details>',
+	or: '
+		<div class="DrawerSection">
+			<div class="Notification">
+				{%ShoppingCartIsEmpty}
+			</div>
+		</div>',
+	helper: '{{
+		<article class="Product MiniCartProduct {CartProductClass}">
+			{ProductImage(
+				imagesize: 'mini',
+				link: 'false',
+				before: '<a class="MiniCartProductImage" href="{ProductURL}" {ProductLinkData}>',
+				after: '</a>'
+			)}
+			<div class="MiniCartProductInfo">
+				<div class="Flex FlexGap FlexAlign-SpaceBetween">
+					<div>
+						<a class="MiniCartProductName" href="{ProductURL}" {ProductLinkData}>{CartProductName} {CartProductVariation(before: '&#32;–&#32;')}</a>
+						{CartProductChoices(
+							before: '
+								<details class="CartProductDetails CompactDl Text-Small">
+									<summary>{%CartGiftCardDetaild}</summary>',
+							after: '</details>'
+						)}
+						{CartProductBundleDetails(
+							before: '
+								<details class="CartProductBundleDetails CompactUl Text-Small">
+									<summary>{%CartGiftCardDetaild}</summary>',
+							after: '</details>'
+						)}
+					</div>
+					<p class="MiniCartProductPrices" data-product-quantity="{CartProductQuantity(mode: 'preview')}">
+						{CartProductComparePrice(
+							currencysymbol: 'true',
+							before: '
+								{CartProductPrice(
+									currencysymbol: 'true',
+									before: '<span class="ProductDiscountPrice">',
+									after: '</span>'
+								)}
+								<span class="ProductComparePrice">',
+							after: '</span>',
+							or: '
+								{CartProductPrice(
+									currencysymbol: 'true',
+									before: '<span class="ProductCurrentPrice">',
+									after: '</span>'
+								)}'
+						)}
+						<br><a href="#EditProduct-{CartProductId}" class="MiniCartProductEdit" data-toggle-visible-link>{%Edit}</a>
+					</p>
+				</div>
+			</div>
+			<div id="EditProduct-{CartProductId}" class="MiniCartProductActions" style="display: none;">
+				{CartProductQuantity} {CartProductDelete}
+			</div>
+		</article>
+	}}'
+)}

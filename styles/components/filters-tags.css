@@ -1,0 +1,39 @@
+/*------------------------------------------------------------------------------*/
+/* Filter Tag List
+/*------------------------------------------------------------------------------*/
+
+.FilterTags {
+	--color-link: var(--color-text);
+	align-items: center;
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	list-style: none;
+}
+
+.FilterTags a {
+	text-decoration: none;
+}
+
+.FilterTags .RemoveFilter {
+	background-color: var(--background-color-shade-2);
+	border-radius: 30px;
+	display: inline-block;
+	padding: .25rem 1rem;
+	text-decoration: none;
+}
+
+.FilterTags .RemoveFilter:hover {
+	background-color: var(--background-color-shade-1);
+	color: var(--color-text);
+}
+
+.FilterTags .RemoveFilter:before {
+	font-family: var(--fa-style-family);
+	content: "\f00d";
+	margin-right: .5rem;
+}
+
+.FilterTags .ClearFilters a {
+	text-decoration: underline;
+}

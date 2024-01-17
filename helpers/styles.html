@@ -1,0 +1,123 @@
+{MinifyCSS(
+	mode: 'production',
+	files: '
+		vendor/normalize/normalize.css|
+		styles/common/variables.css|
+		styles/common/colors.css|
+		styles/common/base.css|
+		styles/common/typography.css|
+		styles/common/form.css|
+		styles/common/extensions.css'
+)}
+{MinifyCSS(
+	mode: 'production',
+	files: '
+		vendor/fontawesome/css/fontawesome.css|
+		vendor/fontawesome/css/solid.css|
+		vendor/fancyapps/fancybox.css'
+)}
+{MinifyCSS(
+	mode: 'production',
+	files: '
+		styles/utilities/aspect-ratio.css|
+		styles/utilities/display.css|
+		styles/utilities/flexible.css|
+		styles/utilities/misc.css|
+		styles/utilities/overflow.css|
+		styles/utilities/spacing.css'
+)}
+{MinifyCSS(
+	mode: 'production',
+	files: '
+		styles/components/account.css|
+		styles/components/accordion.css|
+		styles/components/animations.css|
+		styles/components/banner-base.css|
+		styles/components/banner-featured.css|
+		styles/components/banner-mainbanner.css|
+		styles/components/breadcrumb.css|
+		styles/components/button.css|
+		styles/components/cart.css|
+		styles/components/cart-full.css|
+		styles/components/cart-mini.css|
+		styles/components/category-slider.css|
+		styles/components/category.css|
+		styles/components/container.css|
+		styles/components/drawers.css|
+		styles/components/external-links.css|
+		styles/components/fancybox.css|
+		styles/components/filters-accordion.css|
+		styles/components/filters-dropdown.css|
+		styles/components/filters-tags.css|
+		styles/components/footer.css|
+		styles/components/footerbuttons.css|
+		styles/components/header.css|
+		styles/components/icon-button.css|
+		styles/components/layouts.css|
+		styles/components/loaders.css|
+		styles/components/logo.css|
+		styles/components/misc.css|
+		styles/components/modal.css|
+		styles/components/navigation-base.css|
+		styles/components/navigation-details.css|
+		styles/components/navigation-drawer.css|
+		styles/components/navigation-horizontal-scroll.css|
+		styles/components/navigation-hover.css|
+		styles/components/navigation-inline.css|
+		styles/components/navigation-side.css|
+		styles/components/news.css|
+		styles/components/newsletter.css|
+		styles/components/notifications.css|
+		styles/components/notification-bar.css| 
+		styles/components/page.css|
+		styles/components/pagination-form.css|
+		styles/components/pagination.css|
+		styles/components/product-availability.css|
+		styles/components/product-badges.css|
+		styles/components/product-bundles-list.css|
+		styles/components/product-discount-label.css|
+		styles/components/product-image-gallery.css|
+		styles/components/product-list.css|
+		styles/components/product-price.css|
+		styles/components/product-reviews.css|
+		styles/components/product-quantity-discounts.css|
+		styles/components/product-shipping-methods.css|
+		styles/components/product-variations.css|
+		styles/components/product-variations-buttons.css|
+		styles/components/product.css|
+		styles/components/restricted.css|
+		styles/components/search.css|
+		styles/components/section.css|
+		styles/components/site.css|
+		styles/components/slider.css|
+		styles/components/somebuttons.css|
+		styles/components/spinners.css|
+		styles/components/utility-bar.css'
+)}
+
+<style type="text/css">
+	:root {
+		--accent-h: {Setting(name: 'primary_color.hue')};
+		--accent-s: {Setting(name: 'primary_color.saturation')};
+		--accent-l: {Setting(name: 'primary_color.lightness')};
+		--notification-bg-color: {Setting(name: 'background_color_notification_bar')};
+	}
+</style>
+<script>
+	(function () {
+		const root = document.documentElement;
+		const accent = '{Setting(name: 'primary_color')}';
+		const notificationBg = '{Setting(name: 'background_color_notification_bar')}';
+		root.style.setProperty('--color-text-on-accent', getContrastYIQ(accent));
+		root.style.setProperty('--notification-text-color', getContrastYIQ(notificationBg));
+
+		function getContrastYIQ(hexcolor) {
+			hexcolor = hexcolor.replace("#", "");
+			const r = parseInt(hexcolor.substr(0,2),16);
+			const g = parseInt(hexcolor.substr(2,2),16);
+			const b = parseInt(hexcolor.substr(4,2),16);
+			const yiq = ((r*299)+(g*587)+(b*114))/1000;
+			return (yiq >= 128) ? 'black' : 'white';
+		}
+	})();
+</script>

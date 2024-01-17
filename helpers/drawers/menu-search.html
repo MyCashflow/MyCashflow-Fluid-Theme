@@ -1,0 +1,65 @@
+<div class="DrawerContent">
+	<header class="DrawerHeader">
+		<h3 class="Title">{%Menu}</h3>
+		<button class="DrawerCloseButton" aria-label="{%Close}" data-drawer-close><span class="fa fa-2x fa-times"></span></button>
+	</header>
+	<div class="DrawerSection">
+		{Search(
+			id: 'DrawerSearch',
+			before: '<div class="SimpleSearchForm">',
+			after: '</div>'
+		)}
+	</div>
+	{Categories(
+		show: 'all',
+		before: '<div class="DrawerNavigation" data-navigation-expandable>',
+		after: '</div>'
+	)}
+	{Campaigns(
+		before: '<div class="DrawerNavigation">',
+		after: '</div>'
+	)}
+	<div class="Flex FlexDirection-Column FlexGap FlexValign-Center PaddingInline PaddingTop">
+		{Helper(
+			case: 'CustomerLogged',
+			file: '{{
+				<a href="/account/" class="Button"><span class="fa fa-user-circle"></span>&nbsp; {%MyAccount}</a>
+			}}'
+		)}
+		{Helper(
+			case: 'CustomerNotLogged',
+			file: '{{
+				<a href="/account/login" class="Button Button-Block"><span class="fa fa-user-circle"></span>&nbsp; {%Login}</a>
+				<a href="/account/register" class="Button Button-Block">{%SignUp}</a>
+			}}'
+		)}
+	</div>
+	{InfoNavigation(
+		show: 'active',
+		levels: '1',
+		before: '
+			<div class="DrawerSpacer"></div>
+			<label>{%AboutUs}</label>
+			<div class="DrawerSecondaryNavigation">',
+		after: '</div>'
+	)}
+	{LanguageNavigation(
+		before: '
+			<div class="DrawerCurrencyNavigation">
+				<div class="DrawerSpacer"></div>
+				<div class="DrawerSecondaryNavigation">',
+		after: '
+				</div>
+			</div>'
+	)}
+	{CurrencyNavigation(
+		before: '
+			<div class="DrawerCurrencyNavigation">
+				<div class="DrawerSpacer"></div>
+				<label>{%Currency}</label>
+				<div class="DrawerInlineNavigation">',
+		after: '
+				</div>
+			</div>'
+	)}
+</div>

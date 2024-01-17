@@ -1,0 +1,101 @@
+<div data-cart-sub-total="{CartSubTotal}" data-cart-total="{CartTotal}" data-cart-total-items="{CartTotalItems}"></div>
+{CartProducts(
+	before: '
+		<div class="MiniCartProducts">',
+	after: '
+		</div>
+		<div class="MiniCartTotals">
+			{CartSubTotal(
+				before: '<div class="MiniCartTotal"><span>{%Subtotal}: </span><span>',
+				after: '</span></div>'
+			)}
+			{CartShippingCosts(
+				before: '<div class="MiniCartTotal"><span>{%CheckoutShipping}: {CartShippingMethod} </span><span>',
+				after: '</span></div>'
+			)}
+			{CartPaymentCosts(
+				before: '<div class="MiniCartTotal"><span>{%PaymentMethod}: {CartPaymentMethod} </span><span>',
+				after: '</span></div>'
+			)}
+			{CartDiscount(
+				before: '<div class="MiniCartTotal"><span>{CartDiscountLabel}: </span><span> -',
+				after: '</span></div>'
+			)}
+			{CartGiftCards(
+				before: '
+					{CartTotal(
+						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span>',
+						after: '</span></div>'
+					)}
+					<div class="MiniCartTotal">',
+				helper: '{{
+					<span>{%CartPaidByGiftCard}: <a href="/interface/Helper?file=helpers/modals/gift-cards" data-fancybox data-type="ajax" class="GiftCardDetails">{%CartGiftCardDetaild}</a></span>  <span>{GiftCardBalanceReserved}</span>
+				}}',
+				after: '
+					</div>
+					{CartOpenTotal(
+						before: '<div class="MiniCartTotal"><span>{%CartOpenTotal}: </span><span>',
+						after: '</span></div>'
+					)}',
+				or: '
+					{CartTotal(
+						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span>',
+						after: '</span></div>'
+					)}'
+			)}
+		</div>',
+	or: '
+		<div class="DrawerSection">
+			<div class="Notification">
+				{%ShoppingCartIsEmpty}
+			</div>
+		</div>',
+	helper: '{{
+		<article class="Product MiniCartProduct {CartProductClass}">
+			{ProductImage(
+				imagesize: 'mini',
+				link: 'false',
+				before: '<a class="MiniCartProductImage" href="{ProductURL}" {ProductLinkData}>',
+				after: '</a>'
+			)}
+			<div class="MiniCartProductInfo">
+				<div class="Flex FlexGap FlexAlign-SpaceBetween">
+					<div>
+						<a class="MiniCartProductName" href="{ProductURL}" {ProductLinkData}>{CartProductName} {CartProductVariation(before: '&#32;–&#32;')}</a>
+						{CartProductChoices(
+							before: '
+								<details class="CartProductDetails CompactDl Text-Small">
+									<summary>{%CartGiftCardDetaild}</summary>',
+							after: '</details>'
+						)}
+						{CartProductBundleDetails(
+							before: '
+								<details class="CartProductBundleDetails CompactUl Text-Small">
+									<summary>{%CartGiftCardDetaild}</summary>',
+							after: '</details>'
+						)}
+					</div>
+					<p class="MiniCartProductPrices" data-product-quantity="{CartProductQuantity(mode: 'preview')}">
+						{CartProductComparePrice(
+							currencysymbol: 'true',
+							before: '
+								{CartProductPrice(
+									currencysymbol: 'true',
+									before: '<span class="ProductDiscountPrice">',
+									after: '</span>'
+								)}
+								<span class="ProductComparePrice">',
+							after: '</span>',
+							or: '
+								{CartProductPrice(
+									currencysymbol: 'true',
+									before: '<span class="ProductCurrentPrice">',
+									after: '</span>'
+								)}'
+						)}
+					</p>
+				</div>
+			</div>
+		</article>
+	}}'
+)}

@@ -1,0 +1,83 @@
+:root {
+	--document-font-size:          62.5%; /* = 10px */
+	--line-height:                 1.5;
+	--line-height-heading:         calc(var(--line-height) / 1.2);
+
+	--font-family:                 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--font-family-headings:        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+	--font-size-regular:           1.3rem;
+	--font-size-small:             1.2rem;
+	--font-size-large:             1.5rem;
+	--font-size-xlarge:            calc(var(--font-size-large) * 1.25);
+	--font-size-xxlarge:           calc(var(--font-size-large) * 1.5);
+
+	--font-heading-weight:         bold;
+	--font-heading-transform:      normal;
+
+	--input-height:                3.8rem;
+	--icon-button-size:            calc(var(--font-size-large) * 1.25);
+
+	/*------------------------------------------------------------------------------*/
+	/* Margin
+	/*------------------------------------------------------------------------------*/
+
+	--margin:                      2rem;
+	--margin-xsmall:               .5rem;
+	--margin-small:                1rem;
+	--margin-large:                4rem;
+	--margin-xlarge:               6rem;
+
+	--default-margin:              0 0 var(--margin);
+
+	/*------------------------------------------------------------------------------*/
+	/* Container & Grid System
+	/*------------------------------------------------------------------------------*/
+
+	--container-page-margin:       4vw;
+	--grid-gutter:                 3rem;
+
+	/*------------------------------------------------------------------------------*/
+	/* Shop Settings
+	/*------------------------------------------------------------------------------*/
+
+	--logo-image-ratio:            4 / 1;
+	--product-image-ratio:         1;
+
+	/*------------------------------------------------------------------------------*/
+	/* Product Grid List
+	/*------------------------------------------------------------------------------*/
+
+	--grid-list-gutter:            2rem;
+	--grid-list-image-width:       300px;
+
+	/*------------------------------------------------------------------------------*/
+	/* Animation Properties
+	/*------------------------------------------------------------------------------*/
+
+	--transition-fast:             0.15s;
+	--transition-slow:             0.3s;
+
+	/*------------------------------------------------------------------------------*/
+	/* Border Radius
+	/*------------------------------------------------------------------------------*/
+
+	--border-radius:               3px;
+	--border-radius-medium:        calc(var(--border-radius) * 2);
+	--border-radius-images:        var(--border-radius-medium);
+	--border-radius-buttons:       var(--border-radius);
+	--border-radius-drawers:       var(--border-radius-medium);
+
+	/*------------------------------------------------------------------------------*/
+	/* Font Awesome
+	/*------------------------------------------------------------------------------*/
+
+	--fa-style-family: "Font Awesome 6 Free";
+	--fa-style: 900;
+
+	/*------------------------------------------------------------------------------*/
+	/* Misc
+	/*------------------------------------------------------------------------------*/
+
+	--full-width-limit:            2560px;
+}

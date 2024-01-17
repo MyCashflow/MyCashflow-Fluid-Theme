@@ -1,0 +1,173 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass} BundleID-{BundleId}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container">
+			<main class="SiteMain">
+				<div class="ContainerMaxWidth">
+					<article class="{BundleClass} Product ProductLayout ProductBundleLayout">
+						<div class="ProductLayoutSection">
+							<section class="ProductImages">
+								{BundleThumbnails(
+									showall: 'true',
+									before: '
+										<div class="ProductMainImage" 
+											id="data-images" 
+											data-images="slider" 
+											data-images-text-prev="{%Prev}" 
+											data-images-text-next="{%Next}"
+											data-images-product-name="{ProductName}">
+											<div class="ProductMainImageContainer">',
+									after: '
+											</div>
+										</div>',
+									helper: '{{
+										<a href="{BundleImageUrl(imagesize: 'big')}" class="ProductImage" data-caption="{BundleImageCaption(html: 'false')}">
+											<div class="AspectRatio">
+												<img src="{BundleImageUrl(imagesize: 'normal')}" loading="lazy" alt="{BundleImageCaption(html: 'false')}">
+											</div>
+										</a>
+									}}'
+								)}
+								{BundleThumbnails(
+									before: '<ul class="ProductThumbnails" data-images-thumbnails>',
+									after: '</ul>',
+									helper: '{{
+										<li>
+											<a href="{BundleImageUrl(imagesize: 'big')}" class="ProductThumbnail">
+												<div class="AspectRatio">
+													<img src="{BundleImageUrl(imagesize: 'mini')}" loading="lazy" alt="">
+												</div>
+											</a>
+										</li>
+									}}'
+								)}
+							</section>
+						</div>
+						<div class="ProductLayoutSection">
+							<div class="Section">
+								<h1 class="Title">{PageTitle}</h1>
+								{BundlePrices(
+									before: '<div class="ProductCardPrices">',
+									after: '</div>'
+								)}
+								{BundleAvailability}
+								{BundleBuy(
+									before: '<div class="ProductBuy">',
+									after: '
+											{Helper(file: 'helpers/klarna-osm/product-bundle-{Setting(name: 'klarna_osm_product')}')}
+										</div>',
+									variations: '{Setting(name: 'product_variations_style')}'
+								)}
+								<div class="ProductDesc">
+									{BundleShortDesc(
+										before:'
+											<details class="Accordion" open>
+												<summary><h3>{%ProductShortDesc}</h3></summary>',
+										after: '
+											</details>'
+									)}
+								</div>
+							</div>
+						</div>
+					</article>
+				</div>
+				{SimilarProducts(
+					type: 'normal',
+					before: '
+						<div class="Section">
+							<section>
+								<h1 class="Subtitle">{%SimilarProducts}</h1>
+								<div class="Slider" data-slider>
+									{Helper(file: 'helpers/slider-buttons')}
+									<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+					after: '
+									</div>
+								</div>
+							</section>
+						</div>',
+					helper: 'helpers/list-product'
+				)}
+				{CompatibleProducts(
+					type: 'normal',
+					before: '
+						<div class="Section">
+							<section>
+								<h1 class="Subtitle">{%CompatibleProducts}</h1>
+								<div class="Slider" data-slider>
+									{Helper(file: 'helpers/slider-buttons')}
+									<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+					after: '
+									</div>
+								</div>
+							</section>
+						</div>',
+					helper: 'helpers/list-product'
+				)}
+				{AddOnProducts(
+					type: 'normal',
+					before: '
+						<div class="Section">
+							<section>
+								<h1 class="Subtitle">{%Accessories}</h1>
+								<div class="Slider" data-slider>
+									{Helper(file: 'helpers/slider-buttons')}
+									<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+					after: '
+									</div>
+								</div>
+							</section>
+						</div>',
+					helper: 'helpers/list-product'
+				)}
+				{SparePartProducts(
+					type: 'normal',
+					before: '
+						<div class="Section">
+							<section>
+								<h1 class="Subtitle">{%SpareParts}</h1>
+								<div class="Slider" data-slider>
+									{Helper(file: 'helpers/slider-buttons')}
+									<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+					after: '
+									</div>
+								</div>
+							</section>
+						</div>',
+					helper: 'helpers/list-product'
+				)}
+				{CrossSaleProducts(
+					limit: '15',
+					type: 'normal',
+					before: '
+						<div class="Section">
+							<section>
+								<h1 class="Subtitle">{%CrossSalesForProduct}</h1>
+								<div class="Slider" data-slider>
+									{Helper(file: 'helpers/slider-buttons')}
+									<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+					after: '
+									</div>
+								</div>
+							</section>
+						</div>',
+					helper: 'helpers/list-product'
+				)}
+			</main>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-product')}
+		{ProductVariations(
+			before: '<div data-variation-images style="display: none;">',
+			after: '</div>',
+			helper: '{{
+				<div data-variation-id="{VariationId}" data-variation-image="{ProductImageUrl(imagesize: 'mini')}"></div>
+			}}'
+		)}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body>
+</html>

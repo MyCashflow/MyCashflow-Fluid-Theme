@@ -1,0 +1,49 @@
+/*------------------------------------------------------------------------------*/
+/* Horizontal Scroll Navigation
+/*------------------------------------------------------------------------------*/
+
+.HorizontalScrollNavigation ul {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	list-style: none;
+}
+
+.HorizontalScrollNavigation a {
+	background-color: var(--background-color-shade-1);
+	border: 1px solid var(--border-color-subtle);
+	border-radius: var(--border-radius);
+	color: var(--color-text);
+	display: flex;
+	padding: 1rem 3rem;
+	text-decoration: none;
+	transition-duration: var(--transition-fast);
+}
+
+.HorizontalScrollNavigation a:hover {
+	background-color: var(--background-color-shade-2);
+}
+
+.HorizontalScrollNavigation .Current > a {
+	border-color: var(--color-text);
+}
+
+@media screen and (max-width: 800px) {
+	.HorizontalScrollNavigation {
+		margin-inline: calc(var(--container-page-margin) * -1);
+		overflow-x: auto;
+		scroll-padding-left: var(--container-page-margin);
+		scroll-padding-right: var(--container-page-margin);
+		scroll-snap-type: none;
+		scrollbar-width: none;
+		padding-inline: var(--container-page-margin);
+	}
+
+	.HorizontalScrollNavigation ul {
+		flex-wrap: nowrap;
+	}
+
+	.HorizontalScrollNavigation a {
+		white-space: nowrap;
+	}
+}

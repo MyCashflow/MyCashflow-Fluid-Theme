@@ -1,0 +1,12 @@
+<div class="ModalContainer">
+	<header class="ModalHeader">
+		<h1 class="Title">{%Login}</h1>
+		<button class="ModalClose" aria-label="{%Close}" data-fancybox-close>{%Close}&nbsp;<span class="fa fa-2x fa-times"></span></button>
+	</header>
+	<main class="ModalContent">
+		{Login(
+			on_success: '/checkout/',
+			on_error: '/checkout/'
+		)}
+	</main>
+</div>

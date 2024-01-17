@@ -1,0 +1,69 @@
+/*------------------------------------------------------------------------------*/
+/* Utility Bar
+/*------------------------------------------------------------------------------*/
+
+.UtilityBar {
+	--default-margin: 0;
+	--color-link: var(--color-text) !important;
+	align-items: center;
+	background-color: var(--background-color);
+	border-bottom: 1px solid var(--border-color-subtle);
+	color: var(--color-text);
+	display: flex;
+	padding: 1rem var(--container-page-margin);
+}
+
+.UtilityBar:empty {
+	display: none;
+}
+
+.UtilityBar .Current {
+	font-weight: bold;
+}
+
+.UtilityItem {
+	display: flex;
+	margin-right: 2rem;
+	position: relative;
+}
+
+.UtilityItem + .UtilityItem:not(.UtilityItem-InfoPages)::before {
+	background-color: var(--border-color);
+	content: '';
+	display: inline-flex;
+	flex: 0 0 1px;
+	margin-right: 2rem;
+	width: 1px;
+}
+
+.UtilityItem-InfoPages {
+	margin-left: auto;
+}
+
+.UtilityItem:last-child {
+	margin-right: 0;
+}
+
+@media screen and (max-width: 1024px) {
+	.UtilityBar {
+		display: none;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Language Navigation
+/*------------------------------------------------------------------------------*/
+
+.JS-Loading .UtilityLanguageNavigation[data-truncate-nav="true"] {
+	display: none;
+}
+
+.UtilityLanguageNavigation {
+	align-items: center;
+	display: flex;
+	gap: 1rem;
+}
+
+.UtilityLanguageNavigation .InlineNavigation .Current > a {
+	box-shadow: 0 1px 0 currentColor;
+}

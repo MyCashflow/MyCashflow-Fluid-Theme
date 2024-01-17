@@ -1,0 +1,9 @@
+{ProductRating(
+	mode: 'html', 
+	rounding: 'none', 
+	before: '<a href="{ProductUrl}#ProductReviews" class="ProductRating" data-rating-count="{ProductRatingReviewCount(mode: 'numeric')}" data-rating-text="{ProductRating(mode: 'text', 'rounding': 'none')}">',
+	after: '</a>',
+	helper: '{{ 
+		<span class="ProductRatingStar {RatingStarClass}"></span>
+	}}'
+)}

@@ -1,0 +1,40 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+		{Helper(file: 'checkout/helpers/styles')}
+	</head>
+	<body class="{BodyClass}">
+		{Extensions(for: 'body')}
+		{Helper(file: 'checkout/helpers/header')}
+		<main class="SiteBody Container">
+			<div class="ContainerMaxWidth">
+				<div class="ThanksPageLayout">
+					{Helper(
+						case: 'CustomerNotLogged',
+						file: '{{
+							{CheckoutRegistrationForm(
+								before: '
+									<form action="/account/register/" method="post" id="CheckoutThanksRegistrationForm">
+										<div class="FormItem">
+											<h3 class="Subtitle">{%CheckoutCreateAccount}</h3>
+											<p>{%CheckoutCreateAccountInfo}</p>
+								',
+								after: '
+										</div>
+										<div class="FormItem FormSubmit">
+											<button type="submit" class="SubmitButton">{%CheckoutCreateAccount}</button>
+										</div>
+									</form>'
+							)}
+						}}'
+					)}
+					{Content}
+				</div>
+			</div>
+		</main>
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'checkout/helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body> 
+</html>

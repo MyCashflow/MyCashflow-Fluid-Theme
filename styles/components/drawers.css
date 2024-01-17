@@ -1,0 +1,212 @@
+/*------------------------------------------------------------------------------*/
+/* Drawer
+/*------------------------------------------------------------------------------*/
+
+.Drawers {
+	position: relative;
+	z-index: 10000;
+}
+
+.Drawer {
+	-ms-overflow-style: none;
+	-webkit-overflow-scrolling: touch;
+	background-color: var(--background-color);
+	overscroll-behavior: contain;
+	padding: 1.5rem 3rem 6rem 3rem;
+	position: fixed;
+	transition-duration: var(--transition-slow);
+}
+
+.Drawer[data-drawer-side='top'],
+.Drawer[data-drawer-side='bottom'] {
+	left: 0;
+	overflow-x: auto;
+	width: 100%;
+}
+
+.Drawer[data-drawer-side='left'],
+.Drawer[data-drawer-side='right'] {
+	bottom: 0;
+	max-width: 500px;
+	overflow-y: auto;
+	top: 0;
+	width: calc(100vw - 30px);
+}
+
+.Drawer[data-drawer-side='top'] {
+	flex-flow: column-reverse;
+	top: 0;
+  transform: translateY(-100%);
+}
+
+.Drawer[data-drawer-side='bottom'] {
+	bottom: 0;
+	flex-flow: column;
+	transform: translateY(100%);
+}
+
+.Drawer[data-drawer-side='left'] {
+	border-bottom-right-radius: var(--border-radius-drawers);
+	border-top-right-radius: var(--border-radius-drawers);
+	flex-flow: row-reverse;
+	left: 0;
+	transform: translateX(-100%);
+}
+
+.Drawer[data-drawer-side='right'] {
+	border-bottom-left-radius: var(--border-radius-drawers);
+	border-top-left-radius: var(--border-radius-drawers);
+	flex-flow: row;
+	right: 0;
+	transform: translateX(100%);
+}
+
+.Drawer[data-drawer-side='top'].Open {
+	border-bottom-left-radius: var(--border-radius-drawers);
+	border-bottom-right-radius: var(--border-radius-drawers);
+	transform: translateY(0);
+}
+
+.Drawer[data-drawer-side='bottom'].Open {
+	border-top-left-radius: var(--border-radius-drawers);
+	border-top-right-radius: var(--border-radius-drawers);
+	transform: translateY(0);
+}
+
+.Drawer[data-drawer-side='left'].Open {
+	transform: translateX(0);
+}
+
+.Drawer[data-drawer-side='right'].Open {
+	transform: translateX(0);
+}
+
+@media screen and (max-width: 500px) {
+	.Drawer {
+		padding-inline: 1.5rem;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.Drawer[data-drawer-side='left'],
+	.Drawer[data-drawer-side='right'] {
+		width: 100vw;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Lazyload
+/*------------------------------------------------------------------------------*/
+
+.Drawer:not(.Loaded) .DrawerContent {
+	opacity: 0;
+}
+
+.Drawer.Loaded .DrawerContent {
+	animation-name: fadeIn;
+  animation-duration: var(--transition-slow);
+}
+
+@keyframes fadeIn {
+	from { 
+		opacity: 0; 
+	}
+
+	to { 
+		opacity: 1; 
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Container
+/*------------------------------------------------------------------------------*/
+
+.DrawerContainer {
+	position: relative;
+	transition-duration: var(--transition-slow);
+}
+
+.DrawerContainer[data-drawer-open] {
+	overflow: hidden;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Content
+/*------------------------------------------------------------------------------*/
+
+.DrawerContent {
+	min-height: 101%;
+}
+
+.DrawerSpacer {
+	border-top: 1px solid var(--border-color);
+	margin-top: 2rem;
+	padding-top: 2rem;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Header
+/*------------------------------------------------------------------------------*/
+
+.DrawerHeader {
+	align-items: center;
+	background-color: var(--background-color);
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: space-between;
+	margin: -1.5rem -3rem 1rem -3rem;
+	padding: 1rem 3rem;
+	position: sticky;
+	top: -1.5rem;
+	z-index: 2;
+}
+
+.DrawerHeader > * {
+	margin-block: 0;
+}
+
+.DrawerCloseButton {
+	background: transparent;
+	box-shadow: none;
+	border: 0;
+}
+
+@media screen and (max-width: 500px) {
+	.DrawerHeader {
+		margin-inline: -1.5rem;
+		padding-inline: 1.5rem;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Section
+/*------------------------------------------------------------------------------*/
+
+.DrawerSection {
+	padding: 1.5rem 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Overlay
+/*------------------------------------------------------------------------------*/
+
+.DrawerOverlay {
+	background-color: var(--color-black);
+  bottom: 0;
+	cursor: pointer;
+	left: 0;
+	opacity: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transition-duration: var(--transition-slow);
+	visibility: hidden;
+	z-index: 1000;
+}
+
+.DrawerOverlay.Visible {
+	opacity: .75;
+	visibility: visible;
+}

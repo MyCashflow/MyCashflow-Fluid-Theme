@@ -1,0 +1,174 @@
+/*------------------------------------------------------------------------------*/
+/* Category Filters
+/*------------------------------------------------------------------------------*/
+
+.DropdownFilters {
+	display: flex;
+	gap: var(--margin-small);
+	flex-wrap: wrap;
+	margin: var(--default-margin);
+}
+
+.DropdownFilters > label {
+	margin: 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Filter Group
+/*------------------------------------------------------------------------------*/
+
+.FilterGroup {
+	--color-link: var(--input-text-color);
+	--color-link-hover: var(--input-text-color);
+	--color-link-active: var(--input-text-color);
+	position: relative;
+}
+
+.FilterGroupName {
+	--background-color: var(--input-background-color);
+	align-items: center;
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	display: inline-flex;
+	color: var(--color-text);
+	min-height: var(--input-height);
+	padding: .5rem 1rem;
+	padding-right: 3rem;
+	margin: 0;
+	min-width: 120px;
+	position: relative;
+	text-decoration: none;
+	transition: none;
+}
+
+.FilterGroupName span {
+	display: block;
+	max-width: 230px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.FilterGroupName::after {
+	font-family: var(--fa-style-family);
+	content: "\f107";
+	padding: .5rem 1rem;
+	position: absolute;
+	right: 0;
+}
+
+.FilterGroup.ActiveGroup .FilterGroupName {
+	border-color: var(--color-text);
+}
+
+.FilterGroup.Navigable .FilterGroupName {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom: 0;
+	padding-bottom: calc(.5rem + 1px);
+	z-index: 4;
+}
+
+.FilterGroup.Navigable .FilterGroupName::after {
+	content: "\f106";
+}
+
+/*------------------------------------------------------------------------------*/
+/* Filter Group List
+/*------------------------------------------------------------------------------*/
+
+.FilterList {
+	--color-link: var(--color-text);
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	border-top-left-radius: 0;
+	top: calc(100% - 1px);
+	display: none;
+	left: 0;
+	margin: 0;
+	max-height: 300px;
+	max-width: 300px;
+	min-width: 210px;
+	overflow: auto;
+	position: absolute;
+	z-index: 3;
+}
+
+.Navigable .FilterList {
+	display: block;
+}
+
+.ActiveGroup .FilterList {
+	--border-color: var(--color-text);
+}
+
+.FilterList a {
+	text-decoration: none;
+	word-break: break-word;
+}
+
+.FilterList ul {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+.FilterList li {
+	display: flex;
+	justify-content: space-between;
+	padding: .5rem 1rem;
+	position: relative;
+}
+
+.FilterList li:hover {
+	background-color: var(--background-color-shade-1);
+}
+
+.FilterList a::before {
+	bottom: 0;
+	content: '';
+	display: block;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+} 
+
+.FilterList .RemoveFilter {
+	color: var(--color-accent);
+	margin-left: .5rem;
+}
+
+.FilterList .RemoveFilter::before {
+	background-color: var(--background-color-shade-1);
+	border-radius: var(--border-radius);
+	z-index: -1;
+}
+
+@media screen and (max-width: 600px) {
+	.DropdownFilters {
+		flex-direction: column;
+	}
+
+	.FilterGroupName {
+		width: 100%;
+	}
+
+	.FilterGroupName span {
+		max-width: 80vw;
+	}
+
+	.FilterList {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		max-width: none;
+		position: relative;
+		width: 100%;
+	}
+
+	.FilterList li {
+		padding-block: .75rem;
+	}
+}

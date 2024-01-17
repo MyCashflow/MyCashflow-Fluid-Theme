@@ -1,0 +1,41 @@
+<header class="SiteHeader StickyHeader Theme-Header">
+	<div class="HeaderDesktop HeaderLogoCentered">
+		<div class="Flex FlexGap FlexValign-Center FlexAlign-SpaceBetween">
+			<div class="HeaderLogo">
+				{Helper(file: 'helpers/logo')}
+			</div>
+			<div>
+				<nav id="Categories" class="HoverNavigation Flex FlexGap">
+					{Categories(show: 'all')}
+					{Campaigns}
+				</nav>
+			</div>
+			<div class="Flex FlexValign-Center">
+				<a href="/search" class="IconButton" data-drawer-toggle="search">
+					<span class="fa fa-search"></span>
+				</a>
+				<a href="/account" class="IconButton" data-drawer-toggle="account">
+					<span class="fa fa-user-circle"></span>
+				</a>
+				<a href="/cart" class="IconButton" data-drawer-toggle="cart">
+					<span class="fa fa-shopping-cart"></span>
+					<span class="CartTotals" data-cart-total-items="{CartTotalItems}" data-cart-sub-total="{CartSubTotal}"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="HeaderMobile">
+		<div class="Flex FlexGap FlexValign-Center FlexAlign-SpaceBetween">
+			<a href="#" class="IconButton" data-drawer-toggle="menu-search">
+				<span class="fa fa-bars"></span>
+			</a>
+			<div class="HeaderLogo">
+				{Helper(file: 'helpers/logo')}
+			</div>
+			<a href="/cart/" class="IconButton" data-drawer-toggle="cart">
+				<span class="fa fa-shopping-cart"></span>
+				<span class="CartTotals" data-cart-total-items="{CartTotalItems}" data-cart-sub-total="{CartSubTotal}"></span>
+			</a>
+		</div>
+	</div>
+</header>

@@ -1,0 +1,36 @@
+/*------------------------------------------------------------------------------*/
+/* Navigation Expandable
+/*------------------------------------------------------------------------------*/
+
+/* Prevent CLS */
+[data-navigation-expandable] [class*="HasSub"]:not(.Current) > ul {
+	display: none;
+}
+
+.JS-Loaded [data-navigation-expandable] [class*="HasSub"] > ul {
+	display: none;
+}
+
+.JS-Loaded [data-navigation-expandable] .Open > ul {
+	display: block;
+}
+/* */
+
+.NavigationExpander {
+	background-color: transparent;
+	border: 0;
+	box-shadow: none;
+	display: inline-flex;
+	margin-left: 1rem;
+	min-height: 0;
+	padding: .2rem 1rem;
+}
+
+.NavigationExpander::after {
+	font-family: var(--fa-style-family);
+	content: "\f107";
+}
+
+.NavigationExpander.Open::after {
+	content: "\f106";
+}

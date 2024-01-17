@@ -1,0 +1,179 @@
+/*------------------------------------------------------------------------------*/
+/* Full Cart
+/*------------------------------------------------------------------------------*/
+
+.FullCart {
+	gap: 0;
+}
+
+.FullCartHeader {
+	align-items: center;
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+}
+
+.FullCartSection {
+	border-bottom: 1px solid var(--border-color);
+	padding: 2rem 0;
+}
+
+.FullCartHeader {
+	padding: 0;
+}
+
+.FullCartActions {
+	border-bottom: 0;
+	padding-bottom: 0;
+	text-align: right;
+}
+
+.FullCartProducts {
+	border-bottom: 0;
+	display: table;
+	padding: 0;
+	width: 100%;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Full Cart Columns
+/*------------------------------------------------------------------------------*/
+
+.FullCartCol {
+	border-bottom: 1px solid var(--border-color);
+	display: table-cell;
+	padding: 2rem var(--grid-gutter);
+	vertical-align: middle;
+}
+
+.FullCartCol:first-child {
+	padding-left: 0;
+}
+
+.FullCartCol:last-child {
+	padding-right: 0;
+}
+
+.FullCartColDetails {
+	width: 100%;
+}
+
+.FullCartColImage {
+	text-align: center;
+}
+
+.FullCartColImage img {
+	object-fit: contain;
+}
+
+.FullCartColPrice {
+	text-align: right;
+}
+
+.FullCartTotal {
+	text-align: right;
+}
+
+.FullCartProduct {
+	display: table-row;
+	width: 100%;
+}
+
+.FullCartProduct .ProductName {
+	margin-bottom: 0;
+}
+
+.FullCartProduct .ProductName a {
+	text-decoration: none;
+}
+
+.FullCartProduct .ProductName + * {
+	margin-top: 1rem;
+}
+
+.FullCartProduct .ProductImage {
+	aspect-ratio: 1 / var(--product-image-ratio);
+	background-color: var(--color-bg-light);
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-bottom: 0;
+	padding: 0;
+	width: 160px;
+}
+
+.FullCartProduct .ProductRemove {
+	white-space: nowrap;
+}
+
+.FullCartProduct .ProductRemove .fa {
+	margin-right: .5em;
+}
+
+.FullCartProduct.AvailabilityOutOfStock .SpinnerInput input {
+	border-color: transparent;
+	border-radius: var(--border-radius);
+	box-shadow: 0 0 0 2px var(--color-notification-error);
+	position: relative;
+}
+
+@media screen and (max-width: 1024px) {
+	.FullCartSection {
+		text-align: center;
+	}
+
+	.FullCartCol {
+		border-bottom: 0;
+		display: block;
+		margin-bottom: 2rem;
+		padding: 0;
+		text-align: center;
+		white-space: normal;
+		width: 100%;
+	}
+
+	.FullCartProduct {
+		border-bottom: 1px solid var(--border-color);
+		display: block;
+		padding: 4rem 0;
+		position: relative;
+	}
+
+	.FullCartProduct .ProductImage {
+		margin: 0 auto;
+	}
+
+	.FullCartProduct .ProductRemove {
+		position: absolute;
+		right: 0;
+		top: 4rem;
+	}
+
+	.FullCartProduct .Spinner {
+		margin: 0 auto;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.FullCartHeader {
+		flex-flow: column;
+		gap: 0;
+	}
+
+	.FullCartHeader .InlineNavigation ul {
+		flex-direction: column;
+	}
+
+	.FullCartHeader .InlineNavigation li {
+		margin-top: .5rem;
+	}
+
+	.FullCartActions > .Flex {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.FullCartActions .Button {
+		width: 100%;
+	}
+}

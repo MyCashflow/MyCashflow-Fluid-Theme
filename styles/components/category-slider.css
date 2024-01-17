@@ -1,0 +1,77 @@
+/*------------------------------------------------------------------------------*/
+/* Category Slider
+/*------------------------------------------------------------------------------*/
+
+.CategorySlider {
+	--gap: var(--grid-list-gutter);
+	-ms-overflow-style: none;
+	display: grid;
+	gap: var(--gap);
+	grid-auto-columns: minmax(200px, 20%);
+	grid-auto-flow: column;
+	overflow-x: auto;
+	scroll-padding-left: var(--container-page-margin);
+	scroll-padding-right: var(--container-page-margin);
+	scroll-snap-type: none;
+	scrollbar-width: none;
+}
+
+.CategorySlider::-webkit-scrollbar {
+	display: none;
+}
+
+.CategorySliderItem {
+	background-color: var(--background-color-shade-1);
+	border-radius: var(--border-radius-images);
+	overflow: hidden;
+	scroll-snap-align: center;
+}
+
+.CategorySliderItem a {
+	text-decoration: none;
+}
+
+.CategorySliderLink .AspectRatio {
+	--aspect-ratio: calc(var(--product-image-ratio) * 100%);
+	background-color: var(--image-background-color);
+}
+
+.CategorySliderLink .AspectRatio img {
+	border-radius: var(--border-radius-images) var(--border-radius-images) 0 0;
+	object-fit: contain;
+	height: auto;
+	width: 100%;
+}
+
+.CategorySliderText {
+	align-items: center;
+	color: var(--color-text);
+	display: flex;
+	font-weight: bold;
+	height: 5rem;
+	justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+	.CategorySlider {
+		scroll-snap-type: inline mandatory;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Light Mode
+/*------------------------------------------------------------------------------*/
+
+:root:not([data-color-contrast="white"]) .CategorySliderLink .AspectRatio {
+	background-color: var(--background-color-shade-1);
+}
+
+:root:not([data-color-contrast="white"]) .CategorySliderLink img {
+	mix-blend-mode: darken;
+}
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-color-contrast="white"]) .CategorySliderLink img {
+		mix-blend-mode: darken;
+	}
+}

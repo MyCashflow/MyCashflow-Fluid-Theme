@@ -1,0 +1,230 @@
+/*------------------------------------------------------------------------------*/
+/* Site Header
+/*------------------------------------------------------------------------------*/
+
+:root {
+	--logo-max-width: 240px;
+}
+
+.SiteHeader {
+	box-shadow: var(--box-shadow);
+}
+
+.StickyHeader {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Header Row
+/*------------------------------------------------------------------------------*/
+
+.HeaderDesktop {
+	padding-block: 2rem;
+}
+
+.HeaderMobile {
+	display: none;
+	padding-block: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+	.HeaderDesktop {
+		display: none;
+	}
+
+	.HeaderMobile {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.HeaderMobile {
+		--logo-max-width: 140px;
+		padding-block: 1rem;
+	}
+}
+
+
+
+/*------------------------------------------------------------------------------*/
+/* Header With Logo Centered
+/*------------------------------------------------------------------------------*/
+
+.HeaderLogoCentered {
+	position: relative;
+}
+
+.HeaderLogoCentered .HeaderLogo {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	right: 0;
+}
+
+.HeaderLogoCentered .HeaderLogo ~ * {
+	max-width: calc(50% - calc(var(--logo-max-width) / 1.5));
+}
+
+@media screen and (max-width: 320px) {
+	.HeaderLogoCentered .HeaderLogo {
+		position: relative;
+		margin-left: 0;
+	}
+
+	.HeaderLogoCentered .HeaderLogo ~ .FlexItem {
+		max-width: none;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Header With Navigation Centered
+/*------------------------------------------------------------------------------*/
+
+.HeaderNavCentered {
+	align-items: center;
+	display: flex;
+	gap: var(--margin-small) var(--grid-list-gutter);
+	justify-content: space-between;
+}
+
+.HeaderNavCentered .HeaderLogo {
+	justify-content: flex-start;
+}
+
+.HeaderNavCentered > *:first-child {
+	flex: 0 0 var(--logo-max-width);
+}
+
+.HeaderNavCentered > *:last-child {
+	flex: 0 1 var(--logo-max-width);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Navigation Bar
+/*------------------------------------------------------------------------------*/
+
+.NavigationBar {
+	align-items: center;
+	background-color: var(--background-color);
+	box-shadow: var(--box-shadow);
+	display: flex;
+	justify-content: center;
+	padding-block: 1rem;
+}
+
+.StickyNavbar {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Header With Full Navigation Bar
+/*------------------------------------------------------------------------------*/
+
+.HeaderWithNavbar {
+	box-shadow: none;
+	position: relative;
+}
+
+.HeaderWithNavbar ~ .MobileHeaderSearch {
+	background-color: var(--background-color);
+	border-bottom: 1px solid var(--border-color);
+	display: none;
+	padding: 1.5rem var(--container-page-margin);
+}
+
+.HeaderWithNavbar ~ .MobileHeaderSearch input[type="search"] {
+	box-shadow: none;
+}
+
+.SearchPage .HeaderWithNavbar ~ .MobileHeaderSearch {
+	display: none !important;
+}
+
+@media screen and (max-width: 1140px) {
+	.HeaderWithNavbar {
+		position: sticky;
+		top: 0;
+		transition-duration: var(--transition-fast);
+		z-index: 100;
+	}
+
+	.OffsetTop .HeaderWithNavbar:not(.Section-Dark),
+	.SearchPage .HeaderWithNavbar:not(.Section-Dark) {
+		box-shadow: var(--box-shadow);
+	}
+
+	.HeaderWithNavbar .HeaderDesktop,
+	.HeaderWithNavbar ~ .NavigationBar {
+		display: none;
+	}
+
+	.HeaderWithNavbar .HeaderMobile {
+		display: block;
+	}
+
+	.HeaderWithNavbar ~ .MobileHeaderSearch {
+		display: block;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Header With Side Bar Column
+/*------------------------------------------------------------------------------*/
+
+.SiteColumnsHeader {
+	box-shadow: none;
+	border-bottom: 1px solid var(--border-color-subtle);
+	position: sticky;
+	top: 0;
+	z-index: 99;
+}
+
+.SiteColumnsHeader .HeaderDesktop {
+	margin-inline: auto;
+	max-width: 600px;
+}
+
+.SiteColumnsHeader ~ .MobileHeaderSearch {
+	background-color: var(--background-color);
+	border-bottom: 1px solid var(--border-color);
+	display: none;
+	padding: 1.5rem var(--container-page-margin);
+}
+
+.SiteColumnsHeader ~ .MobileHeaderSearch input[type="search"] {
+	box-shadow: none;
+}
+
+@media screen and (max-width: 1240px) {
+	.SiteColumnsHeader {
+		border: 0;
+		box-shadow: none;
+		position: sticky;
+		top: 0;
+		transition-duration: var(--transition-fast);
+		z-index: 100;
+	}
+
+	.OffsetTop .SiteColumnsHeader:not(.Section-Dark) {
+		box-shadow: var(--box-shadow);
+	}
+
+	.SiteColumnsHeader .HeaderDesktop {
+		display: none;
+	}
+
+	.SiteColumnsHeader .HeaderMobile {
+		display: block;
+	}
+
+	.SiteColumnsHeader ~ .MobileHeaderSearch {
+		display: block;
+	}
+}

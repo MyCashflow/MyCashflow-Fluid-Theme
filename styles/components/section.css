@@ -1,0 +1,31 @@
+/*------------------------------------------------------------------------------*/
+/* Sections
+/*------------------------------------------------------------------------------*/
+
+.Section {
+	--spacing: var(--margin-large);
+}
+
+.Section + .Section {
+	margin-top: var(--spacing);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Section Header
+/*------------------------------------------------------------------------------*/
+
+.SectionHeader {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: var(--margin);
+}
+
+.SectionHeaderTitle {
+	margin: 0;
+}
+
+.SectionHeaderLink {
+	margin: 0;
+	text-decoration: none;
+}

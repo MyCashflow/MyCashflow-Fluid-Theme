@@ -1,0 +1,29 @@
+/*------------------------------------------------------------------------------*/
+/* Product Variation Button
+/*------------------------------------------------------------------------------*/
+
+.RadioButtons .CustomRadioChecks {
+	background-color: transparent;
+	border: 0;
+	box-shadow: none;
+	display: flex;
+	gap: .5rem;
+	flex-wrap: wrap;
+}
+
+.RadioButtons .RadioCheck  {
+	border: 1px solid var(--border-color);
+}
+
+.RadioButtons .RadioCheck label::before {
+	border: 0 !important;
+}
+
+.RadioButtons .RadioCheck [type="radio"] {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	overflow: hidden;
+	position: absolute;
+}
+

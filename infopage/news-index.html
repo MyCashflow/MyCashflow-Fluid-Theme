@@ -1,0 +1,23 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container">
+			<main class="SiteMain">
+				<h1 class="Title">{PageTitle}</h1>
+				{Content}
+				{News(
+					before: '<div class="NewsGridList">',
+					after: '</div>',
+					helper: 'helpers/news-item'
+				)}
+			</main>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body> 
+</html>

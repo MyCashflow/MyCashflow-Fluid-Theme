@@ -1,0 +1,285 @@
+/*------------------------------------------------------------------------------*/
+/* Product List Grid
+/*------------------------------------------------------------------------------*/
+
+.ProductList {
+	--gap: var(--grid-list-gutter);
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(var(--grid-list-image-width), 1fr));
+	gap: calc(var(--gap) * 2) var(--gap);
+	margin-bottom: 4rem;
+}
+
+@media screen and (max-width: 800px) {
+	.ProductList {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.ProductList {
+		grid-template-columns: 1fr;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product List Scrollable
+/*------------------------------------------------------------------------------*/
+
+.ProductScrollList {
+	--gap: var(--grid-list-gutter);
+	-ms-overflow-style: none;
+	display: grid;
+	gap: var(--gap);
+	grid-auto-columns: var(--grid-list-image-width);
+	grid-auto-flow: column;
+	overflow-x: auto;
+	scroll-padding-left: var(--container-page-margin);
+	scroll-padding-right: var(--container-page-margin);
+	scroll-snap-type: none;
+	scrollbar-width: none;
+}
+
+.ProductScrollList::-webkit-scrollbar {
+	display: none;
+}
+
+.ProductScrollList .ListProduct {
+	scroll-snap-align: start;
+}
+
+@media screen and (max-width: 480px) {
+	.ProductScrollList {
+		grid-auto-columns: 55%;
+		scroll-snap-type: inline mandatory;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.ProductScrollList {
+		grid-auto-columns: 85%;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* List Product
+/*------------------------------------------------------------------------------*/
+
+.ListProduct {
+	--default-margin: 0 0 var(--margin-xsmall);
+	--color-link: var(--color-text-strong);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.ListProduct a {
+	text-decoration: none;
+}
+
+.ListProductImage {
+	background-color: var(--image-background-color);
+	border: 0 solid var(--border-color);
+	border-radius: var(--border-radius);
+	display: block;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.ListProductImage img {
+	height: auto;
+	object-fit: contain;
+	width: 100%;
+}
+
+.ListProductImage .AspectRatio {
+	--aspect-ratio: calc(var(--product-image-ratio) * 100%);
+}
+
+.ListProductInfo {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	padding-top: 1rem;
+}
+
+.ListProductName {
+	font-family: var(--font-family);
+	font-size: var(--font-size-regular);
+	font-weight: normal;
+	hyphens: auto;
+	text-transform: none;
+}
+
+.ListProductBrandName {
+	--color-link: var(--color-text-subtle);
+}
+
+.ListProductPrices {
+	margin-bottom: var(--margin);
+}
+
+.ListProductPrices > .Prices {
+	margin-bottom: 0;
+}
+
+.ListProductPrices .Prices dt:not(.LowestPrice) {
+	display: none;
+}
+
+.ListProductBuy {
+	margin-top: auto;
+}
+
+.ListProductBuy form {
+	margin: 0;
+}
+
+.ListProductBuy[data-setting-show-listbuy=""] .ListProductPrices {
+	margin-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+	.ListProduct .AddToCart {
+		font-size: var(--font-size-small);
+		width: 100%;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* List Product Variation: Card
+/*------------------------------------------------------------------------------*/
+
+.ListProduct-Card {
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-images);
+	overflow: hidden;
+	z-index: 1;
+}
+
+.ListProduct-Card .ListProductImage {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.ListProduct-Card .ListProductInfo {
+	padding: 1rem;
+	padding-bottom: 1.5rem;
+}
+
+.ListProduct-Card .AddToCart {
+	width: 100%;
+}
+
+/*------------------------------------------------------------------------------*/
+/* List Product Variation: Image Background
+/*------------------------------------------------------------------------------*/
+
+.ListProduct-ImageBackground {
+	--image-background-color: var(--color-white-darker);
+	border: 0;
+}
+
+.ListProduct-ImageBackground .ListProductImage img {
+	mix-blend-mode: darken;
+}
+
+/*------------------------------------------------------------------------------*/
+/* List Product Variation: Card + Image Background
+/*------------------------------------------------------------------------------*/
+
+.ListProduct-CardImageBackground {
+	--image-background-color: var(--background-color-shade-1);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-images);
+	overflow: hidden;
+	z-index: 1;
+}
+
+.ListProduct-CardImageBackground .ListProductImage {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.ListProduct-CardImageBackground .ListProductImage img {
+	mix-blend-mode: darken;
+}
+
+.ListProduct-CardImageBackground .ListProductInfo {
+	padding: 1rem;
+	padding-bottom: 1.5rem;
+}
+
+.ListProduct-CardImageBackground .AddToCart {
+	width: 100%;
+}
+
+/*------------------------------------------------------------------------------*/
+/* List Product Variation: Card + Image Background
+/*------------------------------------------------------------------------------*/
+
+.ListProduct-CardBackground {
+	--image-background-color: var(--background-color-shade-1);
+	background-color: var(--background-color-shade-1);
+	border-radius: var(--border-radius-images);
+	overflow: hidden;
+	z-index: 1;
+}
+
+.ListProduct-CardBackground .ListProductImage {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.ListProduct-CardBackground .ListProductImage img {
+	mix-blend-mode: darken;
+}
+
+.ListProduct-CardBackground .ListProductInfo {
+	padding: 1rem;
+	padding-bottom: 1.5rem;
+}
+
+.ListProduct-CardBackground .AddToCart {
+	width: 100%;
+}
+
+/*------------------------------------------------------------------------------*/
+/* List Product Variation: Border
+/*------------------------------------------------------------------------------*/
+
+:root:not([data-color-contrast="white"]) .ListProduct-Border .ListProductImage {
+	border-width: 1px;
+}
+
+/*------------------------------------------------------------------------------*/
+/* List Product Variation: Minimal
+/*------------------------------------------------------------------------------*/
+
+.ListProduct-Minimal .ListProductImage {
+	--image-background-color: var(--background-color);
+	border: 0;
+}
+
+.ListProduct-Minimal .ListProductBadges {
+	right: 0;
+}
+
+.ListProduct-Minimal .ListProductBadges .ProductBadge {
+	margin-inline: auto;
+}
+
+.ListProduct-Minimal .ListProductDiscount {
+	border-radius: var(--border-radius);
+}
+
+.ListProduct-Minimal .ListProductInfo {
+	align-items: center;
+	text-align: center;
+}
+
+.ListProduct-Minimal .ListProductPrices .Prices {
+	justify-content: center;
+	text-align: center;
+}

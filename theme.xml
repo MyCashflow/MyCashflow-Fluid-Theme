@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<Theme>
+	<Version>20231107</Version>
+	<ImageSizes>
+		<Mini width="120" height="120" />
+		<Normal width="800" height="800" />
+		<Big width="1200" height="1200" />
+		<ListMobile width="300" height="300" />
+		<ListDesktop width="600" height="600" />
+		<BannerWideMobile width="600" />
+		<BannerWideDesktop width="1600" />
+	</ImageSizes>
+	<Features>
+		<Checkout>
+			<SinglePage supported="true" default="default" />
+			<MultiPage supported="false" />
+		</Checkout>
+		<GiftCards supported="true" />
+		<ProductBundles supported="true" />
+		<ProductListFilters supported="true" />
+		<BrandProductListFilters supported="true" />
+		<CampaignProductListFilters supported="true" />
+	</Features>
+	<Settings>
+		<Doctype standard="HTML5" />
+		<ProductList>
+			<PageSizes>
+				<PageSize>60</PageSize>
+				<PageSize>120</PageSize>
+			</PageSizes>
+		</ProductList>
+	</Settings>
+	<ThemeSettings>
+		<SettingGroup label="heading_color_settings">
+			<Setting type="color" name="primary_color" label="primary_color" description="primary_color_description" default="#378940" />
+			<Setting type="color" name="background_color_notification_bar" label="background_color_notification_bar" description="background_color_notification_bar_description" default="#333333" />
+		</SettingGroup>
+		<SettingGroup label="heading_homepage_settings">
+			<Setting type="select" name="homepage_mainbanner_autoplay" label="homepage_mainbanner_autoplay" description="homepage_mainbanner_autoplay_description" default="false">
+				<Option value="false" label="homepage_mainbanner_autoplay_false" />
+				<Option value="3000" label="homepage_mainbanner_autoplay_3" />
+				<Option value="4000" label="homepage_mainbanner_autoplay_4" />
+				<Option value="5000" label="homepage_mainbanner_autoplay_5" />
+				<Option value="6000" label="homepage_mainbanner_autoplay_6" />
+				<Option value="7000" label="homepage_mainbanner_autoplay_7" />
+				<Option value="8000" label="homepage_mainbanner_autoplay_8" />
+			</Setting>
+			<Setting type="boolean" name="show_homepage_featuredcategories" label="show_homepage_featuredcategories" default="true"></Setting>
+			<Setting type="boolean" name="show_homepage_hotpicks" label="show_homepage_hotpicks" default="true"></Setting>
+			<Setting type="boolean" name="show_homepage_topsellers" label="show_homepage_topsellers" default="true"></Setting>
+			<Setting type="boolean" name="show_homepage_newproducts" label="show_homepage_newproducts" default="true"></Setting>
+		</SettingGroup>
+		<SettingGroup label="heading_product_page_settings">
+			<Setting type="select" name="product_variations_style" label="product_variations_style" description="product_variations_style_description" default="radio">
+				<Option value="radio" label="product_variations_style_radio" />
+				<Option value="select" label="product_variations_style_select" />
+			</Setting>
+		</SettingGroup>
+		<SettingGroup label="heading_newsletter_settings">
+			<Setting type="boolean" name="show_newsletter_banner" label="show_newsletter_banner" description="show_newsletter_banner_description" default="false"></Setting>
+		</SettingGroup> 
+		<SettingGroup label="klarna_osm_settings" description="klarna_osm_settings_description">
+			<Setting type="boolean" name="klarna_osm_footer" label="klarna_osm_footer" description="klarna_osm_footer_description" default="false"></Setting>
+			<Setting type="boolean" name="klarna_osm_homepage" label="klarna_osm_homepage" description="klarna_osm_homepage_description" default="false"></Setting>
+			<Setting type="boolean" name="klarna_osm_minicart" label="klarna_osm_minicart" description="klarna_osm_minicart_description" default="false"></Setting>
+			<Setting type="boolean" name="klarna_osm_product" label="klarna_osm_product" description="klarna_osm_product_description" default="false"></Setting>
+			<Setting type="boolean" name="klarna_osm_productlist" label="klarna_osm_productlist" description="klarna_osm_productlist_description" default="false"></Setting>
+		</SettingGroup> 
+	</ThemeSettings>
+	<Setup>
+		<BannerGroups>
+			<BannerGroup label="bannergroup_frontpage_main" code="frontpage-main" />
+			<BannerGroup label="bannergroup_frontpage_featured" code="frontpage-featured" />
+			<BannerGroup label="bannergroup_notification_bar" code="notification-bar" />
+			<BannerGroup label="bannergroup_selling_points" code="selling-points" />
+			<BannerGroup label="bannergroup_social_media_buttons" code="social-media-buttons" />
+			<BannerGroup label="bannergroup_payment_buttons" code="payment-buttons" />
+			<BannerGroup label="bannergroup_logistics_buttons" code="logistics-buttons" />
+		</BannerGroups>
+	</Setup>
+</Theme>

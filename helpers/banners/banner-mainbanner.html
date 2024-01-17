@@ -1,0 +1,34 @@
+{Banners(
+	name: 'frontpage-main',
+	limit: '4',
+	before: '
+		<div class="Slider SliderButtons-Inside" data-slider data-autoplay="{Setting(name: 'homepage_mainbanner_autoplay')}">
+			{Helper(file: 'helpers/slider-buttons')}
+			<div class="MainBanners" data-slider-viewport>',
+	after: '
+			</div>
+			<div class="SliderPosition" data-slider-position></div>
+		</div>',
+	helper: '{{
+		<article class="MainBanner AspectRatio">
+			<img	srcset="{BannerImageUrl(imagesize: 'BannerWideMobile')} 600w,
+										{BannerImageUrl(imagesize: 'BannerWideDesktop')} 1600w"
+						sizes="(max-width: 600px) 600px,
+										1600px"
+						src="{BannerImageUrl(imagesize: 'BannerWideDesktop')}"
+						alt="{BannerName}"
+						class="MainBannerImage">
+			{BannerUrl(
+				before: '<a class="BannerCoverLink" href="',
+				after: '" {BannerLinkData}></a>'
+			)}
+			<div class="BannerText Text-Center">
+				{BannerName(
+					before: '<h2 class="Title">',
+					after: '</h2>'
+				)}
+				{BannerText}
+			</div>
+		</article>
+	}}'
+)}

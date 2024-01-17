@@ -1,0 +1,30 @@
+/*------------------------------------------------------------------------------*/
+/* Icon Button
+/*------------------------------------------------------------------------------*/
+
+.IconButton {
+	--button-height: var(--input-height);
+	--color-link: var(--color-text);
+	--color-link-hover: var(--color-text);
+	--spacing: var(--margin);
+	align-items: center;
+	background-color: var(--background-color);
+	border-radius: var(--border-radius);
+	display: inline-flex;
+	justify-content: center;
+	margin: 0;
+	min-height: var(--button-height);
+	padding: .5rem 1rem;
+	position: relative;
+	text-decoration: none;
+	transition-duration: var(--transition-fast);
+}
+
+.IconButton:hover {
+	--background-color: var(--background-color-shade-2);
+	z-index: 1;
+}
+
+.IconButton .fa:before {
+	font-size: var(--icon-button-size);
+}

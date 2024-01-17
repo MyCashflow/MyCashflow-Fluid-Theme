@@ -1,0 +1,16 @@
+
+<div class="ModalContainer">
+	<header class="ModalHeader">
+		<h1 class="Title">{%CampaignCode}</h1>
+		<button class="ModalClose" aria-label="{%Close}" data-fancybox-close>{%Close}&nbsp;<span class="fa fa-2x fa-times"></span></button>
+	</header>
+	<main class="ModalContent">
+		{CampaignCode(
+			action: 'cart',
+			before: '<div class="CampaignCodeForm CampaignCodeForm-InModal">',
+			after: '</div>'
+		)}
+	</main>
+</div>
+
+

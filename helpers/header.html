@@ -1,0 +1,15 @@
+{Extensions(for: 'body')}
+{AdminTools}
+{Banners(
+	name: 'notification-bar',
+	limit: '1',
+	helper: '{{
+		<div class="NotificationBar {Setting(name: 'notification_color')}">
+			{BannerText}
+		</div>
+	}}'
+)}
+<div class="SiteTop"></div>
+{Helper(file: 'helpers/utility-bar')}
+{Helper(file: 'helpers/headers/header-logo-center-fullnav')}
+

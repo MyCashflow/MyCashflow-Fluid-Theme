@@ -1,0 +1,23 @@
+/*------------------------------------------------------------------------------*/
+/* Page
+/*------------------------------------------------------------------------------*/
+
+.InfoPageImage {
+	background-color: var(--background-color-shade-1);
+	margin: var(--default-margin);
+}
+
+.InfoPageImage .AspectRatio {
+	--aspect-ratio: 35%;
+}
+
+.InfoPageImage img {
+	border-radius: var(--border-radius-images);
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.PageContent p {
+	max-width: 90ch;
+}

@@ -1,0 +1,32 @@
+{Banners(
+	name: 'frontpage-featured',
+	before: '
+		<div class="Slider" data-slider>
+			{Helper(file: 'helpers/slider-buttons')}
+			<aside class="FeaturedBanners ScrollOverflow" data-slider-viewport>',
+	after: '
+			</aside>
+		</div>',
+	helper: '{{
+		<article class="FeaturedBanner AspectRatio">
+			<img	srcset="{BannerImageUrl(width: '400')} 400w,
+										{BannerImageUrl(width: '800')} 800w"
+						sizes="(max-width: 400px) 400px,
+										800px"
+						src="{BannerImageUrl(width: '400')}"
+						loading="lazy"
+						alt="{BannerName}">
+			{BannerUrl(
+				before: '<a class="BannerCoverLink" href="',
+				after: '" {BannerLinkData}></a>'
+			)}
+			<div class="BannerText">
+				{BannerName(
+					before: '<h2 class="Title">',
+					after: '</h2>'
+				)}
+				{BannerText}
+			</div>
+		</article>
+	}}'
+)}

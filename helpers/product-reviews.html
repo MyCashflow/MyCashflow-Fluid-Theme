@@ -1,0 +1,93 @@
+{ProductReviews(
+	before: '
+		<div class="ProductReviews">
+			<header class="ProductReviewsSummary">
+				<h2 class="Subtitle">{%ProductReviewsTitle}</h2>
+				<strong>{%Total} {ProductRatingReviewCount(mode: 'text')}</strong>
+				<div class="ProductRating">
+					<div class="ProductRatingNumber">{ProductRating(mode: 'numeric')}</div>
+					{ProductRating(
+						mode: 'html', 
+						rounding: 'none', 
+						helper: '{{ 
+							<span class="ProductRatingStar {RatingStarClass}"></span>
+						}}'
+					)}
+				</div>
+			</header>
+			<div class="ProductReviewsList">
+				{PaginationFormParameters(
+					before: '
+						<form class="PaginationForm" action="{CurrentURL}" data-auto-submit>',
+					after: '
+							<div class="PaginationFormItems">
+								{PaginationStatus(
+									before: '<div class="PaginationFormItem">',
+									after: '</div>'
+								)}
+								<div class="FlexSpacer"></div>
+								{PaginationSort(
+									before: '<div class="PaginationFormItem">',
+									after: '</div>'
+								)}
+							</div>
+						</form>'
+				)}',
+	after: '
+				{PaginationPages(
+					before: '
+						<div class="ReviewsPagination">
+							<div class="Pagination">
+								{PaginationStatus(
+									before: '<div class="PaginationFormItem">',
+									after: '</div>'
+								)}',
+					after: '
+							</div>
+						</div>'
+				)}
+			</div>
+		</div>',
+	helper: '{{
+		<article class="ProductReview">
+			<header class="ProductReviewTitle">
+				<div class="ProductRating">
+					{ReviewRating(
+						mode: 'html', 
+						rounding: 'none',
+						helper: '{{ 
+							<span class="ProductRatingStar {RatingStarClass}"></span>
+						}}'
+					)}
+				</div>
+				<h3>{ReviewTitle}</h3>
+			</header>
+			{ReviewComment(
+				before: '<blockquote class="ProductReviewComment">',
+				after: '</blockquote>'
+			)}
+			<footer class="ProductReviewAuthor">
+				<cite class="ProductReviewAuthorName">{AuthorName} - {ReviewDate(before: '<time class="ProductReviewDate">', after: '</time>')}</cite>
+				{ConfirmedReview(
+					mode: 'html', 
+					before: '
+						<span class="ProductReviewConfirmed">
+							<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
+								<path
+								d="m421-298 283-283-46-45-237 237-120-120-45 45 165 166Zm59 218q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z" />
+							</svg>',
+					after: '
+						</span>'
+				)}
+				{ReviewProductModel(
+					before: '
+						<cite class="ProductReviewVariation">
+							{%Product}: {ReviewProductName},
+							{%Variation}:&nbsp;',
+					after: ' 
+						</cite>'
+				)}
+			</footer>
+		</article>
+	}}'
+)}

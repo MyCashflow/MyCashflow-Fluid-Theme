@@ -1,0 +1,49 @@
+/*------------------------------------------------------------------------------*/
+/* Prevent Scroll
+/*------------------------------------------------------------------------------*/
+
+@media screen and (max-width: 1024px) {
+	.ScreenLock {
+		overflow: hidden !important;
+	}
+
+	.BodyNoScroll {
+		height: 100vh;
+		overflow: hidden !important;
+		position: relative;
+	}
+}
+
+/* Avoid Chrome to see Safari hack */
+@supports (-webkit-touch-callout: none) {
+	.ScreenLock {
+		/* The hack for Safari */
+		height: -webkit-fill-available;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Responsive Table
+/*------------------------------------------------------------------------------*/
+
+.TableWrap {
+	margin-bottom: 2rem;
+	position: relative;
+	max-width: calc(100vw - (var(--container-page-margin) * 2));
+	width: 100%;
+}
+
+.TableScroll {
+	display: flex;
+	width: 100%;
+}
+
+.TableWrap table {
+	width: 100%;
+}
+
+.TableOverflow .TableScroll {
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	-webkit-overflow-scrolling: touch;
+	overflow: auto;
+}

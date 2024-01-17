@@ -1,0 +1,15 @@
+<article class="NewsItem">
+	<a class="NewsItemImage" href="{NewsUrl}">
+		<div class="AspectRatio">
+			{NewsImage(link: 'false')}
+		</div>
+	</a>
+	<div class="NewsItemOverview">
+		<div class="NewsItemDate">{NewsDate}</div>
+		<h3>{NewsSubject}</h3>
+		{NewsOverview(
+			before: '<p>',
+			after: '</p>'
+		)}
+	</div>
+</article>

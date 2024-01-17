@@ -1,0 +1,22 @@
+{NewProducts(
+	category: 'ALL',
+	type: 'normal',
+	timelimit: '-2months',
+	limit: '10',
+	before: '
+		<div class="Section">
+			<section>
+				<header class="SectionHeader">
+					<h2 class="SectionHeaderTitle Subtitle">{%NewProducts}</h2>
+					<a href="/interface/Category?id={CategoryId}&helper=category/newproducts" class="SectionHeaderLink">{%BrowseMore}</a>
+				</header>
+				<div class="Slider" data-slider>
+					{Helper(file: 'helpers/slider-buttons')}
+					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+	after: '
+					</div>
+				</div>
+			</section>
+		</div>',
+	helper: 'helpers/list-product'
+)}

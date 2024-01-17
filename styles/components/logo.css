@@ -1,0 +1,114 @@
+/*------------------------------------------------------------------------------*/
+/* Logo Link
+/*------------------------------------------------------------------------------*/
+
+.LogoLink {
+	--color-link: var(--color-text);
+	--color-link-hover: var(--color-text);
+	--color-link-active: var(--color-text);
+	align-items: center;
+	display: flex;
+	font-size: var(--font-size-xlarge);
+	justify-content: center;
+	line-height: 1;
+	margin: 0;
+	text-align: center;
+	text-decoration: none;
+}
+
+.LogoLink img {
+	object-fit: contain;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Header Logo
+/*------------------------------------------------------------------------------*/
+
+.HeaderLogo {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	width: var(--logo-max-width);
+	aspect-ratio: var(--logo-image-ratio);
+}
+
+.HeaderLogo img {
+	max-height: 60px;
+}
+
+.ColumnLayoutSection .HeaderLogo {
+	margin-bottom: 4rem;
+	max-width: 400px;
+	width: auto;
+}
+
+.ColumnLayoutSection .HeaderLogo img {
+	max-height: none;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Footer Logo
+/*------------------------------------------------------------------------------*/
+
+.FooterLogo {
+	aspect-ratio: var(--logo-image-ratio);
+	display: flex;
+	max-width: var(--logo-max-width);
+}
+
+.FooterLogo:not(.FooterMobileLogo) .LogoLink {
+	justify-content: flex-start;
+}
+
+.FooterMobileLogo {
+	aspect-ratio: var(--logo-image-ratio);
+	display: flex;
+	justify-content: center;
+	margin-inline: auto;
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Dark Mode Logo
+/*------------------------------------------------------------------------------*/
+
+.LogoDarkBg {
+	display: none;
+}
+
+/* Theme Level */
+
+.Theme-Dark .Section-Dark .LogoDarkBg,
+.Theme-Dark .Section-Theme .LogoDarkBg {
+	display: flex;
+}
+
+.Theme-Dark .Section-Dark .LogoDarkBg + .LogoLink,
+.Theme-Dark .Section-Theme .LogoDarkBg + .LogoLink {
+	display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	.Theme-Auto .Section-Dark .LogoDarkBg,
+	.Theme-Auto .Section-Theme .LogoDarkBg {
+		display: flex;
+	}
+	
+	.Theme-Auto .Section-Dark .LogoDarkBg + .LogoLink,
+	.Theme-Auto .Section-Theme .LogoDarkBg + .LogoLink {
+		display: none;
+	}
+}
+
+/* Section Level */
+
+.Section-Dark .LogoDarkBg {
+	display: flex;
+}
+
+.Section-Dark .LogoDarkBg + .LogoLink {
+	display: none;
+}
+
+

@@ -1,0 +1,29 @@
+{Helper(
+	case: 'isNewProduct',
+	file: '{{
+		<span class="ProductBadge NewProductBadge">{%NewProduct}</span>
+	}}'
+)}
+{ProductFeatures(
+	filter: 'product-highlight',
+	before: '<span class="AttributeBadges">',
+	after: '</span>',
+	helper: '{{ 
+		{ProductAttributeValues(
+			separator: '',
+			helper: '{{
+				<span class="ProductBadge AttributeBadge-{ProductAttributeValueId}">{ProductAttributeValueLabel}</span>
+			}}'
+		)} 
+	}}'
+)}
+{Text(code: 'AvailabilityOutOfStock', before: '<span class="ProductBadge ProductOutOfStockBadge">', after: '</span>')}
+{Text(code: 'AvailabilityAlert', before: '<span class="ProductBadge ProductAvailabilityAlertBadge">', after: '</span>')}
+{ProductQuantityDiscounts(
+	before: '
+		<div class="ProductBadge ProductQuantityDiscountBadge">{%QuantityDiscount}
+			<div style="display: none !important;">',
+	after: '
+			</div>
+		</div>'
+)}

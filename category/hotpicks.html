@@ -1,0 +1,35 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container">
+			<div class="CategoryLayout">
+				{Helper(
+					before: '<aside class="CategoryAside">',
+					after: '</aside>',
+					file: 'helpers/sidebar'
+				)}
+				<main class="CategoryMain">
+					<header class="CategoryHeader">
+						<h1 class="Title">{%RecommendedProducts}</h1>
+					</header>
+					{HotPicks(
+						type: 'normal',
+						limit: '12',
+						pagination: 'true',
+						before: '<div class="ProductList">',
+						after: '</div>',
+						helper: 'helpers/list-product' 
+					)}
+					{Helper(file: 'helpers/pagination')}
+				</main>
+			</div>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body>
+</html>

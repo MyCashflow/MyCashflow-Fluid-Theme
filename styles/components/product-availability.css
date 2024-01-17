@@ -1,0 +1,97 @@
+/*------------------------------------------------------------------------------*/
+/* Availability
+/*------------------------------------------------------------------------------*/
+
+.Availability {
+	align-items: center;
+	display: flex;
+	gap: 0 .5rem;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.Product.Available .Availability dd.StorageInfo::before,
+.Product.Unavailable .Availability dd.StorageInfo::before {
+	border-radius: 50%;
+	content: '';
+	display: inline-flex;
+	height: 8px;
+	margin-right: .5rem;
+	width: 8px;
+}
+
+.Product.Available .Availability dd.StorageInfo::before {
+	background-color: var(--color-notification-success);
+}
+
+.Product.Unavailable .Availability dd.StorageInfo::before {
+	background-color: var(--color-notification-error);
+}
+
+.Availability .DeliveryTime {
+	overflow: hidden;
+	text-decoration: underline;
+	text-overflow: ellipsis;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Availability
+/*------------------------------------------------------------------------------*/
+
+.ProductAvailability,
+.ListProductAvailability {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	margin: var(--default-margin);
+}
+
+.ProductAvailability > dl,
+.ProductAvailability > span,
+.ListProductAvailability > dl,
+.ListProductAvailability > span {
+	margin: 0;
+}
+
+/* List Product Availability */
+
+.ListProductAvailability {
+	font-size: var(--font-size-small);
+	justify-content: flex-start;
+	margin: 1rem 0 0;
+}
+
+.ListProductAvailability dt.StorageInfo {
+	display: none;
+}
+
+/* List Product Variations Availability */
+
+.ListProduct-Minimal .ListProductAvailability,
+.ListProduct-Card [data-setting-show-listbuy="1"] + .ListProductAvailability,
+.ListProduct-CardImageBackground [data-setting-show-listbuy="1"] + .ListProductAvailability,
+.ListProduct-CardBackground [data-setting-show-listbuy="1"] + .ListProductAvailability {
+	justify-content: center;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Stock
+/*------------------------------------------------------------------------------*/
+
+.ProductStockBalance dt {
+	display: none;
+}
+
+.ProductStockBalance dd::before {
+	content: '('
+}
+
+.ProductStockBalance dd::after {
+	content: ')'
+}
+
+.ProductStockBalance[data-product-stock=""],
+.ProductStockBalance[data-product-stock="0"] {
+	display: none;
+}

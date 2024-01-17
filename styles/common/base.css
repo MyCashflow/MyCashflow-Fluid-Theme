@@ -1,0 +1,203 @@
+/*------------------------------------------------------------------------------*/
+/* Document
+/*------------------------------------------------------------------------------*/
+
+html {
+	font-size: var(--document-font-size);
+	height: -webkit-fill-available;
+	scroll-behavior: smooth;
+	scroll-padding-top: 40px;
+}
+
+body {
+	accent-color: var(--color-accent);
+	background-color: var(--background-color);
+	color: var(--color-text);
+	display: flex;
+	flex-direction: column;
+	font-family: var(--font-family);
+	font-size: var(--font-size-regular);
+	line-height: var(--line-height);
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
+}
+
+@media screen and (min-width: 601px) and (max-width: 1140px) {
+	html {
+		scroll-padding-top: 80px;
+	}
+}
+
+/*------------------------------------------------------------------------------ */
+/* Links
+/*------------------------------------------------------------------------------ */
+
+a {
+	color: var(--color-link);
+}
+
+a:hover {
+	color: var(--color-link-hover);
+}
+
+a:active {
+	color: var(--color-link-active);
+}
+
+/*------------------------------------------------------------------------------ */
+/* Margins
+/*------------------------------------------------------------------------------ */
+
+h1, h2, h3, h4, h5, h6, p, form, table,
+hr, dl, ol, ul, pre {
+	margin: var(--default-margin);
+}
+
+/*------------------------------------------------------------------------------ */
+/* Borders & Paddings
+/*------------------------------------------------------------------------------ */
+
+fieldset {
+	border: 0;
+	padding: 0;
+}
+
+fieldset > :last-child {
+	margin-bottom: 0;
+}
+
+/*------------------------------------------------------------------------------ */
+/* Miscellaneous
+/*------------------------------------------------------------------------------ */
+
+a, button {
+	cursor: pointer;
+}
+
+[disabled] {
+	opacity: 0.5;
+}
+
+/*------------------------------------------------------------------------------ */
+/* Details
+/*------------------------------------------------------------------------------ */
+
+summary {
+	cursor: pointer;
+}
+
+/*------------------------------------------------------------------------------ */
+/* Media Elements
+/*------------------------------------------------------------------------------ */
+
+audio, canvas, img, progress, video {
+	display: inline-block;
+	max-height: 100%;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+figure {
+	margin: var(--default-margin);
+}
+
+iframe {
+	max-width: 100%;
+}
+
+img[loading="lazy"] {
+	color: transparent;
+}
+
+/*------------------------------------------------------------------------------ */
+/* Lists
+/*------------------------------------------------------------------------------ */
+
+ul, ol {
+	--list-indent: 0;
+	list-style-position: inside;
+	padding: 0;
+}
+
+li li {
+	padding-left: var(--list-indent);
+}
+
+dl dt {
+	font-weight: bold;
+	margin-top: 1rem;
+}
+
+dl dt:first-child {
+	margin-top: 0;
+}
+
+dl dd {
+	margin-left: 0;
+}
+
+.CompactDl dt {
+	display: inline;
+	font-weight: bold;
+	margin: 0;
+}
+
+.CompactDl dt:first-child {
+	margin-top: 0;
+}
+
+.CompactDl dd {
+	display: inline;
+	margin: 0 0 0 .5rem;
+}
+
+.CompactDl dd + dt:before {
+	clear: both;
+	content: '';
+	display: block;
+	height: 0;
+}
+
+/*------------------------------------------------------------------------------ */
+/* Tables
+/*------------------------------------------------------------------------------ */
+
+table {
+	border: 1px solid var(--border-color);
+	border-collapse: collapse;
+	border-spacing: 0;
+	text-align: left;
+}
+
+table caption {
+	text-align: left;
+}
+
+table th {
+	background-color: var(--background-color-shade-1);
+}
+
+table th,
+table td {
+	border-bottom: 1px solid var(--border-color);
+	border-right: 1px solid var(--border-color);
+	padding: 1rem;
+	vertical-align: top;
+}
+
+table th > :last-child,
+table td > :last-child {
+	margin-bottom: 0;
+}
+
+/*------------------------------------------------------------------------------ */
+/* Horizontal Rules
+/*------------------------------------------------------------------------------ */
+
+hr {
+	background-color: var(--border-color);
+	border: 0;
+	display: block;
+	height: 1px;
+	margin: var(--margin-large) 0;
+}

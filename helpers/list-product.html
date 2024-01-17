@@ -1,0 +1,60 @@
+<article class="ListProduct ListProduct-CardImageBackground {ProductClass}">
+	<a class="ListProductImage" href="{ProductURL}" {ProductLinkData}>
+		<div class="AspectRatio">
+			<img	srcset="{ProductImageUrl(imagesize: 'ListMobile')} 300w,
+										{ProductImageUrl(imagesize: 'ListDesktop')} 600w"
+						sizes="(max-width: 600px) 300px,
+										600px"
+						src="{ProductImageUrl(imagesize: 'ListDesktop')}"
+						height="300"
+						width="300"
+						loading="lazy"
+						alt="{ProductName}">
+		</div>
+		{ProductDiscountPercent(
+			before: '
+				<div class="ListProductDiscount">
+					<span class="ListProductDiscountLabel">{%Discount}</span> <span class="ListProductDiscountPercent">-',
+			after: '
+					&#37;</span>
+				</div>'
+		)}
+		{Helper(
+			before: '<div class="ListProductBadges">',
+			after: '</div>',
+			file: 'helpers/product-badges'
+		)}
+	</a>
+	<div class="ListProductInfo">
+		{ProductBrandName(
+			before: '
+				<span class="ListProductBrandName">
+					<a href="{ProductBrandLink}">',
+			after: '
+					</a>
+				</span>'
+		)}
+		{ProductName(
+			before: '
+				<h3 class="ListProductName">
+					<a href="{ProductURL}" {ProductLinkData}>',
+			after: '
+					</a>
+				</h3>'
+		)}
+		{Helper(file: 'helpers/product-rating')}
+		<div class="ListProductBuy">
+			{ProductPrices(
+				before: '<div class="ListProductPrices">',
+				after: '</div>'
+			)}
+			{ProductAddToCart(
+				or: '<a href="{ProductUrl}" class="Button AddToCart ProductAvailabilityButton">{ProductAvailability(html: 'false')}</a>'
+			)}
+		</div>
+		{ProductAvailability(
+			before: '<div class="ListProductAvailability">',
+			after: '</div>'
+		)}		
+	</div>
+</article>

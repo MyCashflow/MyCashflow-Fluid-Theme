@@ -1,0 +1,14 @@
+{Categories(
+	show: 'all',
+	start: '1',
+	before: '
+		<div class="StickySide">
+			{Category(
+				id: '{MainCategoryId}',
+				helper: '{{ <h1>{CategoryName}</h1> }}'
+			)}
+			<nav class="SideNavigation" data-navigation-expandable>',
+	after: '
+			</nav>
+		</div>'
+)}

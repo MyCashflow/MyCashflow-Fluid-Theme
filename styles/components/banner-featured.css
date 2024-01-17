@@ -1,0 +1,72 @@
+/*------------------------------------------------------------------------------*/
+/* Featured Banner
+/*------------------------------------------------------------------------------*/
+
+.FeaturedBanners {
+	--gap: var(--grid-list-gutter);
+	-ms-overflow-style: none;
+	display: grid;
+	gap: var(--gap);
+	grid-auto-columns: minmax(400px, 50%);
+	grid-auto-flow: column;
+	overflow-x: auto;
+	scroll-snap-type: none;
+	scrollbar-width: none;
+}
+
+.FeaturedBanners::-webkit-scrollbar {
+	display: none;
+}
+
+.FeaturedBanner {
+	align-items: flex-end;
+	background-color: var(--background-color-shade-1);
+	border-radius: var(--border-radius-images);
+	display: flex;
+	overflow: hidden;
+	padding: 5%;
+	position: relative;
+	scroll-snap-align: center;
+}
+
+.FeaturedBanner.Banner-Dark {
+	background-color: var(--color-bg-dark);
+}
+
+.FeaturedBanner.AspectRatio {
+	--aspect-ratio: 64%;
+}
+
+.FeaturedBanner img {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.FeaturedBanner .BannerText .Title,
+.FeaturedBanner .BannerText > h1,
+.FeaturedBanner .BannerText > h2,
+.FeaturedBanner .BannerText > h3 {
+	line-height: var(--line-height-heading);
+	margin: var(--margin-small) 0;
+}
+
+.FeaturedBanner .BannerText .Title,
+.FeaturedBanner .BannerText > h1 {
+	font-size: clamp(var(--font-size-regular), 5vw, var(--font-size-xxlarge));
+}
+
+.FeaturedBanner .BannerText > h2 {
+	font-size: clamp(var(--font-size-regular), 5vw, var(--font-size-xlarge));
+}
+
+.FeaturedBanner .BannerText > h3 {
+	font-size: clamp(var(--font-size-regular), 5vw, var(--font-size-large));
+}
+
+@media screen and (max-width: 480px) {
+	.FeaturedBanners {
+		grid-auto-columns: 85%;
+		scroll-snap-type: inline mandatory;
+	}
+}

@@ -1,0 +1,16 @@
+<div class="ModalContainer">
+	<header class="ModalHeader">
+		<h1 class="Title">{%CartShareLink}</h1>
+		<button class="ModalClose" aria-label="{%Close}" data-fancybox-close>{%Close}&nbsp;<span class="fa fa-2x fa-times"></span></button>
+	</header>
+	<main class="ModalContent">
+		<div class="ShareCartForm Flex FlexDirection-Column FlexGap">
+			<textarea id="ShareCartLink" value="{CartShareLink}" rows="4" cols="37" data-selectall contenteditable>{CartShareLink}</textarea>
+			<button class="Button Button-Primary Button-Block" data-clipboard="#ShareCartLink">
+				<span class="fa fa-copy"></span> {%SelectTextForCopy}
+			</button>
+		</div>
+	</main>
+</div>
+
+

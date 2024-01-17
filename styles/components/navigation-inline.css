@@ -1,0 +1,17 @@
+/*------------------------------------------------------------------------------*/
+/* Inline Navigation
+/*------------------------------------------------------------------------------*/
+
+.InlineNavigation ul {
+	display: inline-flex;
+	flex-wrap: wrap;
+	list-style: none;
+}
+
+.InlineNavigation li + li {
+	margin-left: 1rem;
+}
+
+.InlineNavigation a {
+	text-decoration: none;
+}

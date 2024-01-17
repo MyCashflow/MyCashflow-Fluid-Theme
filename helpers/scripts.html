@@ -1,0 +1,30 @@
+<script type="text/javascript">
+	window.MCF = window.MCF || {};
+	window.MCF.locale = '{CurrentLanguageCode}';
+	window.MCF.dictionary = window.MCF.dictionary || {};
+	window.MCF.dictionary.Close = '{%Close}';
+	window.MCF.dictionary.Next = '{%Next}';
+	window.MCF.dictionary.Prev = '{%Prev}';
+	window.MCF.dictionary.ShowAll = '{%ShowAll}';
+	window.MCF.dictionary.Choose = '{%Choose}';
+</script>
+{MinifyJS(
+	mode: 'production',
+	support_scripts: 'true',
+	files: '
+		vendor/jquery/jquery.js|
+		vendor/fancyapps/fancybox.umd.js|
+		scripts/theme.js|
+		scripts/plugins/cart.js|
+		scripts/plugins/drawers.js|
+		scripts/plugins/filters.js|
+		scripts/plugins/loaders.js|
+		scripts/plugins/modals.js|
+		scripts/plugins/navigations.js|
+		scripts/plugins/notifications.js|
+		scripts/plugins/sliders.js|
+		scripts/plugins/spinners.js|
+		scripts/plugins/versions.js|
+		scripts/plugins/viewport.js|
+		scripts/custom.js'
+)}

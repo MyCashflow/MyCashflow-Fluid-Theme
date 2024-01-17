@@ -1,0 +1,49 @@
+/*------------------------------------------------------------------------------*/
+/* Accordion
+/*------------------------------------------------------------------------------*/
+
+.Accordion {
+	border-bottom: 1px solid var(--border-color);
+	margin-bottom: 2rem;
+}
+
+.Accordion + .Accordion {
+	margin-top: -2rem;
+}
+
+.Accordion summary {
+	align-items: center;
+	border-radius: var(--border-radius-medium);
+	display: flex;
+	cursor: pointer;
+	list-style: none;
+	padding: 1.5rem 1rem 1.5rem 0;
+}
+
+.Accordion summary::-webkit-details-marker {
+	display: none;
+}
+
+.Accordion summary::after {
+	font-family: var(--fa-style-family);
+	content: "\f107";
+	margin-left: auto;
+}
+
+.Accordion[open] > summary::after {
+	content: "\f106";
+}
+
+.Accordion summary ~ h1,
+.Accordion summary ~ h2,
+.Accordion summary ~ h3,
+.Accordion summary ~ h4,
+.Accordion summary ~ h5,
+.Accordion summary ~ h6 {
+	font-size: var(--font-size-regular);
+}
+
+.Accordion summary > * {
+	font-size: var(--font-size-large);
+	margin: 0;
+}

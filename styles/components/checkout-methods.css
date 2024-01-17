@@ -1,0 +1,109 @@
+/*------------------------------------------------------------------------------*/
+/* Method wrappers
+/*------------------------------------------------------------------------------*/
+
+[class*="MethodWrapper"] {
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color-subtle);
+	display: flex;
+	flex-direction: column;
+	margin-top: -1px;
+	padding: 5px 15px;
+	transition-duration: var(--transition-fast);
+}
+
+[class*="MethodWrapper"] input[type="radio"] {
+	height: 15px;
+	width: 15px;
+}
+
+[class*="MethodWrapper"] select {
+	width: 100%;
+}
+
+[class*="MethodWrapper"] .FormHelp {
+	margin-bottom: 0;
+}
+
+[class*="MethodWrapper"]:first-child {
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+}
+
+[class*="MethodWrapper"]:last-child {
+	border-bottom-left-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
+}
+
+[class*="MethodWrapper"] > label {
+	margin-bottom: 0;
+}
+
+.DefineShippingMethod,
+.DefinePaymentMethod {
+	margin-top: 10px;
+}
+
+.DefineShippingMethod > label,
+.DefinePaymentMethod > label {
+	font-weight: bold;
+}
+
+#CheckoutShippingMethods > .FormItem > .label,
+#CheckoutPaymentMethods > .FormItem > .label {
+	display: none;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Methods
+/*------------------------------------------------------------------------------*/
+
+.ShippingMethod,
+.PaymentMethod {
+	align-items: center;
+	display: flex !important;
+	padding: 5px 0;
+	position: relative;
+}
+
+.ShippingMethodLogo,
+.PaymentMethodLogo {
+	background-color: var(--image-background-color);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	margin: 0 5px 0 10px;
+	text-align: center;
+	width: 80px;
+}
+
+.ShippingMethodLogo img,
+.PaymentMethodLogo img {
+	margin: auto;
+	max-height: 40px;
+	padding: 5px;
+}
+
+.ShippingMethodName,
+.PaymentMethodName {
+	color: var(--color-text-strong);
+	flex: 1;
+	font-weight: 600;
+	margin: 0 5px;
+}
+
+.DisabledShippingMethod .ShippingMethod > *:not(.Notification),
+.DisabledPaymentMethod .PaymentMethod > *:not(.Notification) {
+	cursor: not-allowed;
+	opacity: .5;
+}
+
+.SelectedMethod {
+	background-color: var(--background-color-shade-2);
+	border-color: var(--border-color-strong);
+	position: relative;
+}
+
+.JS [data-hide-details] .ShippingMethodWrapper:not(.SelectedMethod) .ShippingMethod ~ *,
+.JS [data-hide-details] .PaymentMethodWrapper:not(.SelectedMethod) .PaymentMethod ~ * {
+	display: none;
+}

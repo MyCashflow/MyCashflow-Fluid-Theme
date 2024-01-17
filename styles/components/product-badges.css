@@ -1,0 +1,96 @@
+/*------------------------------------------------------------------------------*/
+/* Product Badges
+/*------------------------------------------------------------------------------*/
+
+.ListProductBadges {
+	bottom: 2rem;
+	display: flex;
+	flex-flow: column;
+	gap: .2rem;
+	left: 0;
+	pointer-events: none;
+	position: absolute;
+	z-index: 1;
+}
+
+.ProductPageBadges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .2rem;
+	margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1140px) {
+	.ProductPageBadges {
+		align-items: flex-end;
+		flex-flow: column;
+		float: right;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Badge
+/*------------------------------------------------------------------------------*/
+
+.ProductBadge {
+	background-color: var(--color-accent);
+	border-radius: var(--border-radius);
+	color: var(--color-text-on-accent);
+	font-size: var(--font-size-small);
+	font-weight: bold;
+	padding: .2rem .5rem;
+	width: max-content;
+}
+
+.ListProductBadges .ProductBadge {
+	border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+/* New Product */
+
+.NewProductBadge {
+	background-color: var(--color-accent);
+	color: var(--color-text-on-accent);
+}
+
+/* Custom Attribute Badge */
+
+[class*="AttributeBadge-"] {
+	background-color: var(--background-accent-color-shade-1);
+	color: var(--color-text-dark);
+}
+
+.ListProductBadges .AttributeBadges {
+	display: flex;
+	flex-flow: column;
+	gap: .2rem;
+}
+
+.ProductPageBadges .AttributeBadges {
+	display: flex;
+	gap: .2rem;
+}
+
+/* Availability Alert Badge */
+
+.ProductAvailabilityAlertBadge {
+	background-color: var(--background-accent-color-shade-2);
+	color: var(--color-text);
+	display: none;
+}
+
+.AvailabilityAlert:not(.AvailabilityOutOfStock) .ProductAvailabilityAlertBadge {
+	display: initial;
+}
+
+/* Out of Stock Badge */
+
+.ProductOutOfStockBadge {
+	background-color: var(--background-color-shade-2);
+	color: var(--color-text);
+	display: none;
+}
+
+.AvailabilityOutOfStock .ProductOutOfStockBadge {
+	display: initial;
+}

@@ -1,0 +1,39 @@
+/*------------------------------------------------------------------------------*/
+/* Custom Summary Marker Style
+/*------------------------------------------------------------------------------*/
+
+.CustomDetails summary,
+.DetailsReset summary {
+	list-style: none;
+}
+
+.CustomDetails summary::-webkit-details-marker,
+.DetailsReset summary::-webkit-details-marker {
+	display: none;
+}
+
+.CustomDetails summary:hover {
+	color: var(--color-link-hover);
+}
+
+.CustomDetails summary:after {
+	content: "\f0d7";
+	font-family: var(--fa-style-family);
+	margin-left: 1rem;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Privacy Policy
+/*------------------------------------------------------------------------------*/
+
+.PrivacyPolicy {
+	font-size: var(--font-size-small);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Javascript Supported
+/*------------------------------------------------------------------------------*/
+
+.JS .JS-Hide {
+	display: none !important;
+}

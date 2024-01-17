@@ -1,0 +1,19 @@
+{ProductListFilters(
+	before: '
+		<label>{%ProductFiltersSelected}: </label>
+		<ul class="FilterTags">',
+	after: '
+			<li class="ClearFilters"><a href="{ProductListFiltersClearURl}">{%ProductFiltersRemove}</a></li>
+		</ul>',
+	helper: '{{
+		{FilterOptions(
+			helper: '{{
+				{FilterOptionRemoveUrl(
+					before: '
+						<li><a href="',
+					after: '" class="RemoveFilter">{FilterOptionName}</a></li>'
+				)}
+			}}'
+		)}
+	}}'
+)}

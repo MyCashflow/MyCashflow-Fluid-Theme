@@ -1,0 +1,223 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container">
+			<main class="SiteMain">
+				<div class="ContainerMaxWidth">
+					<article class="{ProductClass} Product ProductPage ProductLayout">
+						<div class="ProductLayoutSection">
+							<section class="ProductImages">
+								{ProductThumbnails(
+									showall: 'true',
+									before: '
+										<div class="ProductMainImage"
+											id="data-images"
+											data-images="slider"
+											data-images-text-prev="{%Prev}"
+											data-images-text-next="{%Next}"
+											data-images-product-name="{ProductName}">
+											<div class="ProductMainImageContainer">',
+									after: '
+											</div>
+											<p class="ProductImageCaption" data-image-caption>{ProductImageCaption(html: 'false')}</p>
+											{ProductDiscountPercent(
+												before: '
+													<div class="ProductPageDiscount">
+														<span class="ProductDiscountLabel">{%Discount}</span> <span class="ProductDiscountPercent">-',
+												after: '
+														&#37;</span>
+													</div>'
+											)}
+										</div>',
+									helper: '{{
+										<a href="{ProductImageUrl(imagesize: 'big')}" class="ProductImage" data-caption="{ProductImageCaption(html: 'false')}">
+											<div class="AspectRatio">
+												<img src="{ProductImageUrl(imagesize: 'normal')}" loading="lazy" alt="{ProductImageCaption(html: 'false')}">
+											</div>
+										</a>
+									}}'
+								)}
+								{ProductThumbnails(
+									before: '<ul class="ProductThumbnails" data-images-thumbnails>',
+									after: '</ul>',
+									helper: '{{
+										<li>
+											<a href="{ProductImageUrl(imagesize: 'big')}" class="ProductThumbnail">
+												<div class="AspectRatio">
+													<img src="{ProductImageUrl(imagesize: 'mini')}" loading="lazy" alt="">
+												</div>
+											</a>
+										</li>
+									}}'
+								)}
+							</section>
+						</div>
+						<div class="ProductLayoutSection">
+							<div class="Section">
+								{Path}
+								{Helper(
+									before: '<div class="ProductPageBadges">',
+									after: '</div>',
+									file: 'helpers/product-badges'
+								)}
+								{ProductBrand(
+									helper: '{{ 
+										<p class="ProductBrand">
+											<a href="{BrandUrl}" class="BrandLink"><span class="BrandName NoBrandImage">{BrandName}</span></a>
+										</p>
+								 }}'
+								)}
+								<h1 class="Title">{PageTitle}</h1>
+								{Helper(file: 'helpers/product-rating')}
+								{ProductPrices(
+									listprice_comparison: 'true',
+									before: '<div class="ProductCardPrices">',
+									after: '</div>'
+								)}
+								{ProductQuantityDiscounts(
+									before: '
+										<div class="ProductQuantityDiscounts" data-prefix="{%BuyPcs}" data-suffix="/ {%Pcs}"
+										data-product-list-price="{ProductListPrice(html: 'false', decimalsep: '.', currencysymbol: 'false', legend: 'false', thousandssep: '')}">',
+									after: '</div>'
+								)}
+								{ProductAvailability(
+									before: '<div class="ProductAvailability">',
+									after: '</div>'
+								)}
+								{ProductBuy(
+									before: '<div class="ProductBuy">',
+									after: '
+											{Helper(file: 'helpers/klarna-osm/product-{Setting(name: 'klarna_osm_product')}')}
+										</div>',
+									variations: '{Setting(name: 'product_variations_style')}'
+								)}
+								<div class="ProductDesc">
+									{ProductShortDesc(
+										before:'
+											<details class="Accordion" open>
+												<summary><h3>{%ProductShortDesc}</h3></summary>',
+										after: '
+												{ProductFeatures}
+											</details>'
+									)}
+									{ProductFullDesc(
+										before:'
+											<details class="Accordion">
+												<summary><h3>{%ProductFullDesc}</h3></summary>',
+										after: '
+											</details>'
+									)}
+									{ProductShippingMethods(
+										before:'
+											<details class="Accordion ProductShippingMethods">
+												<summary>
+													<h3>{Text(code: 'ProductShippingCosts', or: '{%ShippingCosts}')}</h3>
+												</summary>
+												{Text(
+													code: 'ProductShippingCostsInfo',
+													before: '<p class="ProductShippingInformation">',
+													after: '</p>'
+												)}',
+										after: '
+											</details>'
+									)}
+									{ProductBundles(
+										before:'
+											<details class="Accordion">
+												<summary><h3>{%ProductBundles}</h3></summary>',
+										after: '
+											</details>'
+									)}
+									{AvailabilityNotificationForm(
+										before:'
+											<details class="Accordion">
+												<summary><h3>{%SubscribeAvailabilityNotification}</h3></summary>
+												<p>{%AvailabilityNotificationIntroText}</p>',
+										after: '
+											</details>'
+									)}
+								</div>
+							</div>
+						</div>
+					</article> 
+					{Helper(
+						before: '<section id="ProductReviews">',
+						after: '</section>',
+						file: 'helpers/product-reviews'
+					)} 
+				</div>
+				<div class="Section" data-viewport-lazyload="helpers/product-lists/productpage-lists&setProduct={ProductId}">
+					{SimilarProducts(
+						category: 'ALL',
+						type: 'ids',
+						limit: '1',
+						before: '<div class="Section" data-products="',
+						after: '">
+							{Helper(file: 'helpers/placeholders/product-list-1')}
+						</div>'
+					)}
+					{CompatibleProducts(
+						category: 'ALL',
+						type: 'ids',
+						limit: '1',
+						before: '<div class="Section" data-products="',
+						after: '">
+							{Helper(file: 'helpers/placeholders/product-list-1')}
+						</div>'
+					)}
+					{AddOnProducts(
+						category: 'ALL',
+						type: 'ids',
+						limit: '1',
+						before: '<div class="Section" data-products="',
+						after: '">
+							{Helper(file: 'helpers/placeholders/product-list-1')}
+						</div>'
+					)}
+					{SparePartProducts(
+						category: 'ALL',
+						type: 'ids',
+						limit: '1',
+						before: '<div class="Section" data-products="',
+						after: '">
+							{Helper(file: 'helpers/placeholders/product-list-1')}
+						</div>'
+					)}
+					{CrossSaleProducts(
+						category: 'ALL',
+						type: 'ids',
+						limit: '1',
+						before: '<div class="Section" data-products="',
+						after: '">
+							{Helper(file: 'helpers/placeholders/product-list-1')}
+						</div>'
+					)}
+					{LastViewedProducts(
+						category: 'ALL',
+						type: 'ids',
+						limit: '1',
+						before: '<div class="Section" data-products="',
+						after: '">
+							{Helper(file: 'helpers/placeholders/product-list-1')}
+						</div>'
+					)}
+				</div>
+			</main>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-product')}
+		{ProductVariations(
+			before: '<div data-variation-images style="display: none;">',
+			after: '</div>',
+			helper: '{{
+				<div data-variation-id="{VariationId}" data-variation-image="{ProductImageUrl(imagesize: 'mini')}"></div>
+			}}'
+		)}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body>
+</html>

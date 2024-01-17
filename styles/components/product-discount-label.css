@@ -1,0 +1,32 @@
+/*------------------------------------------------------------------------------*/
+/* Product Discount Label
+/*------------------------------------------------------------------------------*/
+
+.ListProductDiscount,
+.ProductPageDiscount {
+	background-color: var(--discount-background-color);
+	border-radius: var(--border-radius) 0 0 var(--border-radius);
+	color: var(--discount-text-color);
+	font-weight: bold;
+	padding: .3rem .5rem;
+	position: absolute;
+	right: 0;
+	top: 1.5rem;
+	z-index: 1;
+}
+
+.ListProductDiscount {
+	font-size: var(--font-size-small);
+}
+
+.ListProductDiscountLabel,
+.ProductDiscountLabel {
+	display: none;
+}
+
+
+@media screen and (max-width: 500px) {
+	.ProductPageDiscount {
+		border-radius: var(--border-radius);
+	}
+}

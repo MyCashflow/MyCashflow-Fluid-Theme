@@ -1,0 +1,49 @@
+/*------------------------------------------------------------------------------*/
+/* Category Header
+/*------------------------------------------------------------------------------*/
+
+.CategoryImage {
+	background-color: var(--background-color-shade-1);
+	margin: var(--default-margin);
+}
+
+.CategoryImage .AspectRatio {
+	--aspect-ratio: 30%;
+}
+
+.CategoryImage.ImageHeightLow .AspectRatio {
+	--aspect-ratio: 20%;
+}
+
+.CategoryImage.ImageHeightHigh .AspectRatio {
+	--aspect-ratio: 50%;
+}
+
+.CategoryImage img {
+	border-radius: var(--border-radius-images);
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.CategoryImageFullWidth {
+	margin-bottom: 0;
+	margin-inline: auto;
+	max-width: var(--full-width-limit);
+	width: 100%;
+}
+
+.CategoryImageFullWidth img {
+	border-radius: 0;
+}
+
+.CategoryDescription {
+	max-width: 90ch;
+}
+
+@media screen and (max-width: 550px) {
+	.CategoryImage .AspectRatio::before {
+		padding-top: calc(var(--aspect-ratio) * 1.5);
+	}
+}
+

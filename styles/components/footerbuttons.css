@@ -1,0 +1,26 @@
+/*------------------------------------------------------------------------------*/
+/* Footer Buttons
+/*------------------------------------------------------------------------------*/
+
+.FooterButtons {
+	display: flex;
+	gap: .5rem;
+	justify-content: center;
+	margin-bottom: var(--grid-list-gutter);
+}
+
+.FooterButton {
+	align-items: center;
+	background: var(--color-bg-light);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	display: flex;
+	height: 40px;
+	justify-content: center;
+	padding: .5rem;
+	width: 70px;
+}
+
+.FooterButton img {
+	object-fit: contain;
+}

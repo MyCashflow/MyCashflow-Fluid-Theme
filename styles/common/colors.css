@@ -1,0 +1,90 @@
+:root {
+	/* Fixed Colors */
+
+	--color-white:                  hsl(0, 0%, 100%);
+	--color-white-darker:           hsl(0, 0%, 97%);
+	--color-black:                  hsl(0, 0%, 0%);
+	--color-black-lighter:          hsl(0, 0%, 10%);
+
+	/* Accent Colors */
+
+	--accent-h:                       145;
+	--accent-s:                       55%;
+	--accent-l:                       32%;
+
+	--color-accent:                   hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--color-accent-lighter:           hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
+	--color-accent-darker:            hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 5%));
+
+	--background-accent-color:               hsl(var(--accent-h), var(--accent-s), 95%);
+	--background-accent-color-shade-1:       hsl(var(--accent-h), var(--accent-s), 90%);
+	--background-accent-color-shade-2:       hsl(var(--accent-h), var(--accent-s), 85%);
+
+	--color-text-accent:               hsl(var(--accent-h), var(--accent-s), 30%);
+	--color-text-accent-lighter:       hsl(var(--accent-h), var(--accent-s), 40%);
+	--color-text-accent-darker:        hsl(var(--accent-h), var(--accent-s), 20%);
+
+	--color-text-on-accent:            hsl(var(--accent-h), 10%, 95%); /* suitable text color on accent surface */
+
+	/* Notification Colors */
+
+	--color-notification-bg:         #ffeecc;
+	--color-notification-success:    hsl(83, 57%, 47%);
+	--color-notification-success-bg: hsl(83, 57%, 90%);
+	--color-notification-error:      hsl(0, 71%, 53%);
+	--color-notification-error-bg:   hsl(0, 71%, 95%);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Color Variables
+/*------------------------------------------------------------------------------*/
+
+:root {
+	--hue:                            0;
+	--saturation:                     0%;
+	--lightness:                      100%;
+
+	--color-text-light:               hsl(var(--hue), 10%, 95%);
+	--color-text-light-lighter:       hsl(var(--hue), 10%, 100%);
+	--color-text-light-darker:        hsl(var(--hue), 10%, 87%);
+
+	--color-text-dark:                hsl(var(--hue), 10%, 10%);
+	--color-text-dark-lighter:        hsl(var(--hue), 10%, 15%);
+	--color-text-dark-darker:         hsl(var(--hue), 10%, 0%);
+
+	--border-s:                       calc(var(--saturation) - 5%);
+	--border-s-subtle:                calc(var(--saturation) - 5%);
+	--border-s-strong:                calc(var(--saturation) - 5%);
+	--border-l:                       calc(var(--lightness) - 10%);
+	--border-l-subtle:                calc(var(--lightness) - 7%);
+	--border-l-strong:                calc(var(--lightness) - 15%);
+
+	/* Abstraction */
+
+	--background-color:               hsl(var(--hue), var(--saturation), var(--lightness));
+	--background-color-shade-1:       hsl(var(--hue), var(--saturation), calc(var(--lightness) - 3%));
+	--background-color-shade-2:       hsl(var(--hue), var(--saturation), calc(var(--lightness) - 5%));
+
+	--border-color:                   hsl(var(--hue), var(--border-s), var(--border-l));
+	--border-color-subtle:            hsl(var(--hue), var(--border-s-subtle), var(--border-l-subtle));
+	--border-color-strong:            hsl(var(--hue), var(--border-s-strong), var(--border-l-strong));
+
+	--box-shadow:                     0 1px 1px 0 hsla(var(--hue), var(--saturation), 0%, .1), 0 1px 2px 0 hsla(var(--hue), var(--saturation), 0%, .06);
+
+	--color-link:                     var(--color-text-accent);
+	--color-link-hover:               var(--color-text-accent-lighter);
+	--color-link-active:              var(--color-text-accent-lighter);
+
+	--color-text:                     var(--color-text-dark);
+	--color-text-strong:              var(--color-text-dark-darker);
+	--color-text-subtle:              var(--color-text-dark-lighter);
+
+	--discount-background-color:      var(--color-accent);
+	--discount-text-color:            var(--color-text-on-accent);
+
+	--image-background-color:         var(--color-white);
+
+	--input-background-color:         var(--background-color);
+	--input-border-color:             var(--border-color-strong);
+	--input-text-color:               var(--color-text);
+}

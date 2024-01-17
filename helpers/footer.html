@@ -1,0 +1,79 @@
+{Banners(
+	name: 'newsletter',
+	limit: '1',
+	helper: 'helpers/banners/banner-newsletter-{Setting(name: 'show_newsletter_banner')}',
+	or: '{Helper(file: 'helpers/banners/banner-newsletter-{Setting(name: 'show_newsletter_banner')}')}'
+)}
+<footer class="SiteFooter Container Theme-Footer">
+	<div class="ContainerMaxWidth">
+		<div class="FooterDesktop">
+			<div class="FooterItems">
+				<div class="FooterItem FooterItem-Logo">
+					{Helper(
+						before: '<div class="FooterLogo">',
+						after: '</div>',
+						file: 'helpers/logo'
+					)}
+					{Banners(
+						name: 'social-media-buttons',
+						before: '<div class="ExternalLinks ExternalLinks-Desktop">',
+						after: '</div>',
+						helper: 'helpers/external-link-icon'
+					)}
+				</div>
+				<div class="FooterItem FooterItem-Contact">
+					<div class="FooterItem">
+						<h2 class="FooterTitle">{%ContactUs}</h2>
+						{BannerText(
+							name: 'contact-information',
+							or: '{ContactInformation}'
+						)}
+					</div>
+				</div>
+				{InfoNavigation(
+					levels: '1',
+					before: '
+						<div class="FooterItem FooterItem-Navigation">
+							<h2 class="FooterTitle">{%AboutUs}</h2>
+							<nav class="SimpleNavigation">',
+					after: '
+							</nav>
+						</div>'
+				)}
+			</div>
+		</div>
+		<div class="FooterMobile">
+			<div class="FooterLogo FooterMobileLogo">
+				{Helper(file: 'helpers/logo')}
+			</div>
+			{Banners(
+				name: 'social-media-buttons',
+				before: '<div class="ExternalLinks ExternalLinks-Mobile">',
+				after: '</div>',
+				helper: 'helpers/external-link-icon'
+			)}
+			<details class="Accordion">
+				<summary><h2>{%ContactUs}</h2></summary>
+				{BannerText(
+					name: 'contact-information',
+					or: '{ContactInformation}'
+				)}
+			</details>
+			{InfoNavigation(
+				levels: '1',
+				before:'
+					<details class="Accordion">
+						<summary><h2>{%AboutUs}</h2></summary>
+						<nav class="FooterMobileNavigation">',
+				after: '
+						</nav>
+					</details>'
+			)}
+		</div>
+		<div class="FooterCopyright">
+			<p><span class="Copyright">Copyright &copy; {ShopName}</span> {MyCashflowTextAd(before: '<br><span class="MyCashflowTextAd">', after: '</span>')}</p>
+			{Helper(file: 'helpers/klarna-osm/footer-{Setting(name: 'klarna_osm_footer')}')}
+		</div>
+	</div>
+</footer>
+{Helper(file: 'helpers/drawers')}

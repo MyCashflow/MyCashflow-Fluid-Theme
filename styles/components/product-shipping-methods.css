@@ -1,0 +1,43 @@
+/*------------------------------------------------------------------------------*/
+/* Product Shipping Methods
+/*------------------------------------------------------------------------------*/
+
+.ProductShippingMethods .ShippingCosts {
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	display: grid;
+	gap: 0;
+	grid-template-columns: 1fr auto;
+}
+
+.ProductShippingMethods dt,
+.ProductShippingMethods dd {
+	margin: 0;
+	padding: 0;
+}
+
+.ProductShippingMethods .ShippingMethodName,
+.ProductShippingMethods .ShippingMethodPrice {
+	border-top: 1px solid var(--border-color);
+	padding: .75rem 1.5rem;
+}
+
+.ProductShippingMethods .ShippingMethodPrice {
+	text-align: right;
+}
+
+.ProductShippingMethods .ShippingMethodName:first-child,
+.ProductShippingMethods .ShippingMethodPrice:nth-child(2) {
+	border: 0;
+}
+
+.ProductShippingMethods .ShippingMethodInfo {
+	font-size: var(--font-size-small);
+	display: none;
+	grid-column: auto /span 2;
+	padding: 0 1.5rem 1rem;
+}
+
+.ProductShippingMethods .ShippingMethodInfo:empty {
+	display: none;
+}

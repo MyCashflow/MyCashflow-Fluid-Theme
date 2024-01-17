@@ -1,0 +1,61 @@
+/*------------------------------------------------------------------------------*/
+/* Fancybox
+/*------------------------------------------------------------------------------*/
+
+.fancybox__container {
+	--fancybox-accent-color: var(--color-accent);
+	--fancybox-thumbs-width: 50px;
+	--fancybox-thumbs-ratio: var(--product-image-ratio);
+	--fancybox-thumbs-border-radius: var(--border-radius);
+
+	--carousel-button-svg-stroke-width: 1;
+	--carousel-button-svg-filter: drop-shadow(1px 1px 1px rgba(0,0,0,.4));
+
+	--fancybox-content-color: var(--color-text);
+	--fancybox-content-bg: var(--background-color-shade-1);
+}
+
+.fancybox__content {
+	border-radius: var(--border-radius-medium);
+	padding: 2rem;
+}
+
+.fancybox__thumb {
+	background-color: var(--color-bg-light);
+	background-size: contain;
+	padding-top: calc(100% * var(--product-image-ratio));
+}
+
+.fancybox__thumbs .carousel__slide .fancybox__thumb::after {
+	border-width: 3px;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Custom Modal
+/*------------------------------------------------------------------------------*/
+
+.CustomModal .fancybox__content {
+	border-radius: var(--border-radius-medium);
+	max-width: 760px;
+	min-width: 300px;
+	margin: 1rem;
+	padding: 0;
+}
+
+.CustomModal .fancybox__content > :last-child {
+	margin-bottom: 0;
+}
+
+.CustomModal .fancybox__slide {
+	padding: 0;
+}
+
+.CustomModal .carousel__button.is-close {
+	display: none;
+}
+
+@media screen and (max-width: 600px) {
+	.CustomModal .fancybox__content {
+		min-width: 0;
+	}
+}

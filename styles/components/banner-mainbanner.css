@@ -1,0 +1,99 @@
+/*------------------------------------------------------------------------------*/
+/* Main Banner
+/*------------------------------------------------------------------------------*/
+
+.MainBanners {
+	-ms-overflow-style: none;
+	display: grid;
+	grid-auto-columns: 100%;
+	grid-auto-flow: column;
+	margin-inline: auto;
+	max-width: var(--full-width-limit);
+	overflow-x: auto;
+	scroll-snap-type: inline mandatory;
+	scrollbar-width: none;
+	width: 100%;
+}
+
+.MainBanners::-webkit-scrollbar {
+	display: none;
+}
+
+.MainBanner {
+	align-items: center;
+	background-color: var(--background-color-shade-1);
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	padding: 2rem;
+	position: relative;
+	scroll-snap-align: center;
+	z-index: 1;
+}
+
+.MainBanner.Banner-Dark {
+	background-color: var(--color-black-lighter);
+}
+
+.MainBanner.AspectRatio {
+	--aspect-ratio: 35%;
+}
+
+.MainBanner img {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.MainBanner .BannerText .Title,
+.MainBanner .BannerText > h1,
+.MainBanner .BannerText > h2,
+.MainBanner .BannerText > h3 {
+	line-height: var(--line-height-heading);
+}
+
+.MainBanner .BannerText .Title,
+.MainBanner .BannerText > h1 {
+	font-size: clamp(var(--font-size-regular), 5vw, calc(var(--font-size-xxlarge) * 1.5));
+}
+
+.MainBanner .BannerText > h2 {
+	font-size: clamp(var(--font-size-regular), 5vw, var(--font-size-xxlarge));
+}
+
+.MainBanner .BannerText > h3 {
+	font-size: clamp(var(--font-size-regular), 5vw, var(--font-size-xlarge));
+}
+
+.SiteMain .MainBanner {
+	border-radius: var(--border-radius-medium);
+}
+
+@media screen and (max-width: 800px) {
+	.MainBanner.AspectRatio {
+		--aspect-ratio: 50%;
+		--default-margin: 1rem;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Main Banner Animations
+/*------------------------------------------------------------------------------*/
+
+.MainBanner:not(:first-child) .MainBannerImage {
+	opacity: 0.5;
+	transition-duration: 1s;
+}
+
+.MainBanner.IsVisible .MainBannerImage {
+	opacity: 1;
+}
+
+.MainBanner .BannerText {
+	opacity: 0;
+	transition-duration: 1s;
+}
+
+.MainBanner.IsVisible .BannerText {
+	opacity: 1;
+}

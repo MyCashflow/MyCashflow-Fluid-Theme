@@ -1,0 +1,102 @@
+{SimilarProducts(
+	type: 'normal',
+	limit: '20',
+	before: '
+		<div class="Section">
+			<section>
+				<h2 class="Subtitle">{%SimilarProducts}</h2>
+				<div class="Slider" data-slider>
+					{Helper(file: 'helpers/slider-buttons')}
+					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+	after: '
+					</div>
+				</div>
+			</section>
+		</div>',
+	helper: 'helpers/list-product'
+)}
+{CompatibleProducts(
+	type: 'normal',
+	limit: '20',
+	before: '
+		<div class="Section">
+			<section>
+				<h2 class="Subtitle">{%CompatibleProducts}</h2>
+				<div class="Slider" data-slider>
+					{Helper(file: 'helpers/slider-buttons')}
+					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+	after: '
+					</div>
+				</div>
+			</section>
+		</div>',
+	helper: 'helpers/list-product'
+)}
+{AddOnProducts(
+	type: 'normal',
+	limit: '20',
+	before: '
+		<div class="Section">
+			<section>
+				<h2 class="Subtitle">{%Accessories}</h2>
+				<div class="Slider" data-slider>
+					{Helper(file: 'helpers/slider-buttons')}
+					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+	after: '
+					</div>
+				</div>
+			</section>
+		</div>',
+	helper: 'helpers/list-product'
+)}
+{SparePartProducts(
+	type: 'normal',
+	limit: '20',
+	before: '
+		<div class="Section">
+			<section>
+				<h2 class="Subtitle">{%SpareParts}</h2>
+				<div class="Slider" data-slider>
+					{Helper(file: 'helpers/slider-buttons')}
+					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+	after: '
+					</div>
+				</div>
+			</section>
+		</div>',
+	helper: 'helpers/list-product'
+)}
+{CrossSaleProducts(
+	limit: '15',
+	type: 'normal',
+	before: '
+		<div class="Section">
+			<section>
+				<h2 class="Subtitle">{%CrossSalesForProduct}</h2>
+				<div class="Slider" data-slider>
+					{Helper(file: 'helpers/slider-buttons')}
+					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+	after: '
+					</div>
+				</div>
+			</section>
+		</div>',
+	helper: 'helpers/list-product'
+)}
+{LastViewedProducts(
+	limit: '10',
+	type: 'normal',
+	before: '
+		<div class="Section">
+			<section>
+				<h2 class="Subtitle">{%PreviouslyBrowsedProducts}</h2>
+				<div class="Slider" data-slider>
+					{Helper(file: 'helpers/slider-buttons')}
+					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+	after: '
+					</div>
+				</div>
+			</section>
+		</div>',
+	helper: 'helpers/list-product'
+)}

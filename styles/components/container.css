@@ -1,0 +1,59 @@
+/*------------------------------------------------------------------------------*/
+/* Container
+/*------------------------------------------------------------------------------*/
+
+.Container {
+	padding-inline: var(--container-page-margin);
+}
+
+.Container .Container {
+	padding-inline: initial;
+}
+
+@media screen and (min-width: 2112px) {
+	:root {
+		--container-page-margin: calc(50vw - 960px);
+	}
+}
+
+@media screen and (max-width: 1400px) {
+	:root {
+		--container-page-margin: 3vw;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Site Layout Container
+/*------------------------------------------------------------------------------*/
+
+.SiteLayout {
+	--container-page-margin: 3rem;
+}
+
+@media screen and (max-width: 1240px) {
+	.SiteLayout {
+		--container-page-margin: 3vw;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Container Max Width
+/*------------------------------------------------------------------------------*/
+
+.ContainerMaxWidth {
+	margin-inline: auto;
+	max-width: 1400px;
+	padding-inline: 0;
+}
+
+.SiteLayout .SiteMain .ContainerMaxWidth {
+	max-width: none;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Container Breakout
+/*------------------------------------------------------------------------------*/
+
+.Container .ContainerBreakout {
+	margin-inline: calc(var(--container-page-margin) * -1);
+}

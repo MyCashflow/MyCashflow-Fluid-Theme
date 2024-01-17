@@ -1,0 +1,89 @@
+/*------------------------------------------------------------------------------*/
+/* Flexible
+/*------------------------------------------------------------------------------*/
+
+.Flex {
+	--gap: 0;
+	display: flex;
+	gap: var(--gap);
+}
+
+/* Flex Gap */
+
+[class*="FlexGap"] {
+	--gap: var(--margin-small) var(--grid-list-gutter);
+}
+
+.FlexGap-Small {
+	--gap: var(--margin-xsmall) var(--margin-small);
+}
+
+.FlexGap-Large {
+	--gap: var(--margin) var(--margin-large);
+}
+
+.FlexNoGap {
+	--gap: 0;
+}
+
+/* Flex Utility Classes */
+
+.FlexWrap {
+	flex-wrap: wrap;
+}
+
+.FlexDirection-Row {
+	flex-direction: row;
+}
+
+.FlexDirection-Column {
+	flex-direction: column;
+}
+
+.FlexAlign-Start {
+	justify-content: flex-start;
+}
+
+.FlexAlign-Center {
+	justify-content: center;
+}
+
+.FlexAlign-End {
+	justify-content: flex-end;
+}
+
+.FlexAlign-SpaceAround {
+	justify-content: space-around;
+}
+
+.FlexAlign-SpaceBetween {
+	justify-content: space-between;
+}
+
+.FlexValign-Start {
+	align-items: flex-start;
+}
+
+.FlexValign-Center {
+	align-items: center;
+}
+
+.FlexValign-End {
+	align-items: flex-end;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Flex Item
+/*------------------------------------------------------------------------------*/
+
+.FlexItem-Flex {
+	flex: 1;
+}
+
+.FlexSpacer {
+	flex: 1;
+}
+
+.FlexItem-NoFlex {
+	flex: none;
+}

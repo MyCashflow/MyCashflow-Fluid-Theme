@@ -1,0 +1,96 @@
+/*------------------------------------------------------------------------------*/
+/* Simple Search Form
+/*------------------------------------------------------------------------------*/
+
+.HeaderDesktop .SimpleSearchForm {
+	max-width: 400px;
+	min-width: 300px;
+}
+
+.HeaderDesktop .SimpleSearchForm form {
+	margin: 0;
+}
+
+.SimpleSearchForm .FormItem {
+	align-items: center;
+	display: flex;
+	position: relative;
+}
+
+/* A visually hidden element that assistive technology can still access. */
+.SimpleSearchForm .FormItem > label {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.SimpleSearchForm input[type="search"] {
+	--border-radius: var(--border-radius-buttons);
+	background-color: var(--color-white);
+	color: var(--color-text-dark);
+	flex: 1;
+	padding-left: 1.5rem;
+	padding-right: 6rem;
+}
+
+.SimpleSearchForm button {
+	background-color: transparent;
+	border: 0;
+	box-shadow: none;
+	color: var(--color-text-dark);
+	font-size: 0;
+	position: absolute;
+	right: 0;
+	width: 6rem;
+}
+
+.SimpleSearchForm button:hover {
+	color: var(--color-text-dark);
+}
+
+.SimpleSearchForm button:before {
+	content: "\f002";
+	font-family: var(--fa-style-family);
+	font-size: var(--font-size-regular);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Site Columns Search Bar
+/*------------------------------------------------------------------------------*/
+
+.SiteColumnsHeader .SimpleSearchForm {
+	max-width: 600px;
+}
+
+.SiteColumnsHeader .SimpleSearchForm input[type="search"],
+.SiteColumnsHeader .SimpleSearchForm button {
+	height: 5rem;
+	border-radius: var(--border-radius-medium);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Search Page Bar
+/*------------------------------------------------------------------------------*/
+
+.SearchPageBar {
+	margin-bottom: 6rem;
+}
+
+.SearchPageBar .SimpleSearchForm {
+	margin: auto;
+	max-width: 600px;
+}
+
+.SiteLayoutColumns .SearchPageBar .SimpleSearchForm {
+	display: none;
+}
+
+.SiteLayoutColumns .SearchPageBar {
+	margin-bottom: 4rem;
+}

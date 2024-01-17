@@ -1,0 +1,101 @@
+/*------------------------------------------------------------------------------*/
+/* Pagination
+/*------------------------------------------------------------------------------*/
+
+.Pagination {
+	align-items: center;
+	display: flex;
+	margin-top: var(--margin-large);
+	position: relative;
+	text-align: center;
+}
+
+.Pagination ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	justify-content: center;
+	list-style: none;
+	margin-bottom: 0;
+}
+
+.Pagination li {
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	min-height: 40px;
+	min-width: 40px;
+	padding: .75rem 1rem;
+	position: relative;
+}
+
+.Pagination li a {
+	color: var(--color-text);
+}
+
+.Pagination li > a {
+	align-items: center;
+	bottom: 0;
+	border-radius: inherit;
+	display: inline-flex;
+	justify-content: center;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-decoration: none;
+	top: 0;
+}
+
+.Pagination .CurrentPage {
+	border-color: transparent;
+	box-shadow: 0 0 0 2px var(--color-text);
+}
+
+.Pagination .DisabledPageLink {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.Pagination .PaginationStatus {
+	margin: 0 var(--grid-gutter) 0 0;
+}
+
+.Pagination .PreviousPageLink,
+.Pagination .NextPageLink {
+	background: var(--background-color-shade-1);
+}
+
+.Pagination .PreviousPageLink > a,
+.Pagination .PreviousPageLink.DisabledPageLink,
+.Pagination .NextPageLink > a,
+.Pagination .NextPageLink.DisabledPageLink {
+	font-size: 0;
+}
+
+.Pagination .PreviousPageLink > a::after,
+.Pagination .PreviousPageLink.DisabledPageLink::after,
+.Pagination .NextPageLink > a::after,
+.Pagination .NextPageLink.DisabledPageLink::after {
+	font-family: var(--fa-style-family);
+	font-size: var(--font-size-regular);
+}
+
+.Pagination .PreviousPageLink > a::after,
+.Pagination .PreviousPageLink.DisabledPageLink::after {
+	content: "\f104";
+}
+
+.Pagination .NextPageLink > a::after,
+.Pagination .NextPageLink.DisabledPageLink::after {
+	content: "\f105";
+}
+
+@media screen and (max-width: 700px) {
+	.Pagination {
+		flex-flow: column;
+	}
+
+	.Pagination .PaginationStatus {
+		margin: 0 0 var(--grid-list-gutter);
+	}
+}

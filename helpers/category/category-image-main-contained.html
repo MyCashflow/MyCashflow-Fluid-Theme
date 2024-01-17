@@ -1,0 +1,45 @@
+{CategoryImageUrl(
+	imagesize: 'BannerWideMobile',
+	before: '
+		<div class="CategoryImage">
+			<div class="AspectRatio">
+				<img	srcset="{CategoryImageUrl(imagesize: 'BannerWideMobile')} 600w,
+											{CategoryImageUrl(imagesize: 'BannerWideDesktop')} 2000w"
+							sizes="(max-width: 600px) 600px,
+											2000px"
+							src="',
+	after: '"
+		loading="lazy">
+			</div>
+		</div>'
+)}
+{CampaignImageUrl(
+	imagesize: 'BannerWideMobile',
+	before: '
+		<div class="CategoryImage">
+			<div class="AspectRatio">
+				<img	srcset="{CampaignImageUrl(imagesize: 'BannerWideMobile')} 600w,
+											{CampaignImageUrl(imagesize: 'BannerWideDesktop')} 2000w"
+							sizes="(max-width: 600px) 600px,
+											2000px"
+							src="',
+	after: '"
+		loading="lazy">
+			</div>
+		</div>'
+)}
+{BrandImageUrl(
+	imagesize: 'BannerWideMobile',
+	before: '
+		<div class="CategoryImage">
+			<div class="AspectRatio">
+				<img	srcset="{BrandImageUrl(imagesize: 'BannerWideMobile')} 600w,
+											{BrandImageUrl(imagesize: 'BannerWideDesktop')} 2000w"
+							sizes="(max-width: 600px) 600px,
+											2000px"
+							src="',
+	after: '"
+		loading="lazy">
+			</div>
+		</div>'
+)}

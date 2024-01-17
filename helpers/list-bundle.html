@@ -1,0 +1,29 @@
+<article class="ListProduct ListProduct-CardImageBackground {BundleClass}">
+	<a class="ListProductImage" href="{BundleURL}">
+		<div class="AspectRatio">
+			<img	srcset="{BundleImageUrl(imagesize: 'ListMobile')} 300w,
+										{BundleImageUrl(imagesize: 'ListDesktop')} 600w"
+						sizes="(max-width: 600px) 300px,
+										600px"
+						src="{BundleImageUrl(imagesize: 'ListDesktop')}"
+						height="300"
+						width="300"
+						loading="lazy"
+						alt="{BundleName}">
+		</div>
+	</a>
+	<div class="ListProductInfo">
+		{BundleName(
+			before: '
+				<h1 class="ListProductName">
+					<a href="{BundleUrl}">',
+			after: '
+					</a>
+				</h1>'
+		)}
+		{BundlePrices(
+			before: '<div class="ListProductPrices">',
+			after: '</div>'
+		)}
+	</div>	
+</article>

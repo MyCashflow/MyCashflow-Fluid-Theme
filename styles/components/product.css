@@ -1,0 +1,81 @@
+/*------------------------------------------------------------------------------*/
+/* Product Buy Form
+/*------------------------------------------------------------------------------*/
+
+.ProductBuy {
+	max-width: 500px;
+}
+
+.BuyForm input:not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+.BuyForm textarea,
+.BuyForm select {
+	width: 100%;
+}
+
+.BuyFormQuantity {
+	align-items: center;
+	display: flex;
+	gap: 1rem;
+}
+
+.BuyFormQuantity label {
+	margin: 0;
+}
+
+.BuyForm .AddToCart {
+	width: 100%;	
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Buy Form Radio Variations
+/*------------------------------------------------------------------------------*/
+
+.BuyFormVariationRadio .Checks:not(.CustomRadioChecks) {
+	align-items: center;
+	display: grid;
+	grid-template-columns: auto max-content;
+}
+
+.BuyFormVariationRadio .Checks:not(.CustomRadioChecks) label {
+	padding: .75rem .5rem;
+}
+
+.BuyFormVariationRadio .Checks:not(.CustomRadioChecks) .FormHelp {
+	text-align: right;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Brand Link
+/*------------------------------------------------------------------------------*/
+
+.ProductBrand {
+	margin: 0;
+}
+
+.ProductBrand .BrandLink {
+	color: var(--color-text);
+	text-decoration: none;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Description
+/*------------------------------------------------------------------------------*/
+
+.ProductDesc {
+	max-width: 500px;
+}
+
+.ProductDesc p {
+	max-width: 60ch;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Features
+/*------------------------------------------------------------------------------*/
+
+.ProductFeatures dd {
+	display: inline-block;
+}
+.ProductFeatures dd + dd::before {
+	content: ",\0020";
+}

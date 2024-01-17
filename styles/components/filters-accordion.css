@@ -1,0 +1,65 @@
+/*------------------------------------------------------------------------------*/
+/* Accordion Filters
+/*------------------------------------------------------------------------------*/
+
+.AccordionFilters {
+	--color-link: var(--color-text);
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
+
+.AccordionFilters summary {
+	background-color: var(--background-color-shade-1);
+	border-radius: var(--border-radius);
+	display: flex;
+	list-style: none;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+.AccordionFilters summary:hover {
+	background-color: var(--background-color-shade-2);
+}
+
+.AccordionFilters summary:after {
+	content: "\f107";
+	font-family: var(--fa-style-family);
+	margin-left: 1rem;
+}
+
+.AccordionFilters [open] > summary:after {
+	content: "\f106";
+}
+
+.AccordionFilters a {
+	hyphens: auto;
+	text-decoration: none;
+	word-break: break-word;
+}
+
+.AccordionFilters .RemoveFilter {
+	text-decoration: underline;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Accordion Filters List
+/*------------------------------------------------------------------------------*/
+
+.AccordionFilters ul {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	list-style: none;
+	margin: 1rem 0;
+}
+
+.AccordionFilters li {
+	--link-hover: var(--color-accent-2);
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 1rem;
+	padding: 0;
+	position: relative;
+}

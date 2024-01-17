@@ -1,0 +1,51 @@
+/*------------------------------------------------------------------------------*/
+/* Product Quantity Discounts
+/*------------------------------------------------------------------------------*/
+
+/* FOUC  */
+.JS:not(.JS-Ready) .ProductQuantityDiscounts[data-prefix] {
+	opacity: 0;
+}
+/* */
+
+.ProductCardPrices + .ProductQuantityDiscounts {
+	margin-top: -1rem;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Quantity Discounts List
+/*------------------------------------------------------------------------------*/
+
+.ProductQuantityDiscounts dt,
+.ProductQuantityDiscounts dd {
+	display: inline;
+}
+
+.ProductQuantityDiscounts dt {
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.ProductQuantityDiscounts dd {
+	display: inline-block;
+	font-weight: bold;
+	margin: 0 0 0 .5rem;
+	padding: 2px 0;
+	text-align: right;
+}
+
+.ProductQuantityDiscounts dd + dt:before {
+	clear: both;
+	content: '';
+	display: block;
+}
+
+.QuantityDiscountPercentage {
+	background-color: var(--color-accent);
+	border-radius: var(--border-radius);
+	color: var(--color-text-on-accent);
+	font-size: var(--font-size-small);
+	font-weight: bold;
+	margin-left: 1rem;
+	padding: 2px 4px;
+}

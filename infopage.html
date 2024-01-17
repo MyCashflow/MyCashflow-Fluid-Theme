@@ -1,0 +1,48 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container">
+			<div class="ContainerMaxWidth">
+				<div class="BaseLayout">
+					<main class="SiteMain">
+						{InfoPageImageUrl(
+							imagesize: 'BannerWideMobile',
+							before: '
+								<div class="InfoPageImage">
+									<div class="AspectRatio">
+										<img	srcset="{InfoPageImageUrl(imagesize: 'BannerWideMobile')} 600w,
+																	{InfoPageImageUrl(imagesize: 'BannerWideDesktop')} 2000w"
+													sizes="(max-width: 600px) 600px,
+																	2000px"
+													src="',
+							after: '"
+								loading="lazy">
+									</div>
+								</div>'
+						)}
+						<h1 class="Title">{PageTitle}</h1>
+						{Content(
+							before: '<div class="PageContent">',
+							after: '</div>'
+						)}
+					</main>
+					<aside class="SiteAside">
+						<nav class="SideNavigation" data-navigation-expandable>
+							{InfoNavigation(
+								before: '<h2 class="Subtitle">{%AboutUs}</h2>',
+								show: 'all'
+							)}
+						</nav>
+					</aside>
+				</div>
+			</div>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body> 
+</html>

@@ -1,0 +1,141 @@
+/*------------------------------------------------------------------------------*/
+/* Slider
+/*------------------------------------------------------------------------------*/
+
+.Slider {
+	position: relative;
+}
+
+.SliderButton {
+	background-color: var(--color-white);
+	color: var(--color-text-dark);
+	bottom: 0;
+	border: 0;
+	font-size: 0;
+	height: 4rem;
+	isolation: isolate;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	width: 4rem;
+	z-index: 2;
+}
+
+.SliderButton:hover,
+.SliderButton:focus {
+	background-color: var(--color-white-darker);
+	color: var(--color-black-lighter);
+}
+
+.SliderButton[disabled] {
+	opacity: 0;
+}
+
+.SliderButtonPrev {
+	left: 0;
+}
+
+.SliderButtonNext {
+	right: 0;
+}
+
+.SliderButtonPrev::after,
+.SliderButtonNext::before {
+	border-radius: var(--border-radius-medium);
+	content: '';
+	inset: -4rem -2rem;
+	opacity: .1;
+	position: absolute;
+	transition-duration: var(--transition-fast);
+	z-index: -1;
+}
+
+.SliderButtonPrev::before,
+.SliderButtonNext::after  {
+	font-family: var(--fa-style-family);
+	font-size: var(--font-size-regular);
+}
+
+.SliderButtonPrev::before {
+	content: "\f053";
+}
+
+.SliderButtonNext::after {
+	content: "\f054";
+}
+
+/* Slider Buttons Inside */
+
+.SliderButtons-Inside .SliderButtonPrev {
+	left: var(--container-page-margin);
+}
+
+.SliderButtons-Inside .SliderButtonNext {
+	right: var(--container-page-margin);
+}
+
+@media screen and (max-width: 800px) {
+	.SliderButton {
+		display: none;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Slider Position
+/*------------------------------------------------------------------------------*/
+
+.SliderPosition {
+	background-color: transparent;
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	margin-top: 1rem;
+	position: absolute;
+	pointer-events: none;
+	width: 100%;
+}
+
+.SliderPosition:empty {
+	display: none;
+}
+
+.SliderPosition > span {
+	background-color: var(--background-color-shade-2);
+	border-radius: var(--border-radius-medium);
+	cursor: pointer;
+	flex-basis: 10px;
+	height: 10px;
+	position: relative;
+	pointer-events: auto;
+	transition-duration: var(--transition-fast);
+	transform-origin: center;
+	transition-timing-function: ease-out;
+}
+
+.SliderPosition > span::before {
+	content: '';
+	inset: -.5rem;
+	position: absolute;
+}
+
+.SliderPosition > .IsVisible {
+	background-color: var(--color-text);
+}
+
+.SliderPosition .PositionBar {
+	background-color: var(--color-text);
+	height: 100%;
+	position: absolute;
+	transition-duration: var(--transition-fast);
+	transition-property: width;
+}
+
+.PositionBar {
+	display: none;
+}
+
+@media screen and (max-width: 500px) {
+	.SliderPosition {
+		position: relative;
+	}
+}

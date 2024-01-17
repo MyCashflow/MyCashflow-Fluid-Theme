@@ -1,0 +1,46 @@
+/*------------------------------------------------------------------------------*/
+/* Cart Total Items Badge
+/*------------------------------------------------------------------------------*/
+
+.IconButton .CartTotals {
+	align-items: center;
+	background-color: var(--color-accent);
+	border-radius: 20px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .6);
+	color: var(--color-text-on-accent);
+	display: flex;
+	font-size: 10px;
+	justify-content: center;
+	min-width: 19px;
+	padding: 2px 7px;
+	position: absolute;
+	right: -5px;
+	top: 0px;
+	text-align: center;
+	transition-duration: var(--transition-fast);
+}
+
+.IconButton .CartTotals[data-cart-total-items]::after {
+	content: attr(data-cart-total-items);
+}
+
+.IconButton .CartTotals[data-cart-total-items="0"] {
+	opacity: 0;
+	transform: scale(0);
+	transform-origin: center;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Cart Total Sum
+/*------------------------------------------------------------------------------*/
+
+.Button .CartTotals {
+	border-left: 1px solid var(--border-color-strong);
+	margin-left: 1.5rem;
+	padding-left: 1.5rem;
+}
+
+.Button .CartTotals[data-cart-sub-total]::after {
+	content: attr(data-cart-sub-total);
+}
+

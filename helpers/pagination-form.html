@@ -1,0 +1,19 @@
+{PaginationFormParameters(
+	before: '
+		<form class="PaginationForm" action="{CurrentURL}" data-auto-submit>',
+	after: '
+			<div class="PaginationFormItems">
+				{PaginationStatus(
+					before: '<div class="PaginationFormItem">',
+					after: '
+						</div>
+						{PaginationSort(
+							before: '
+								<div class="FlexSpacer"></div>
+								<div class="PaginationFormItem">',
+							after: '</div>'
+						)}'
+				)}
+			</div>
+		</form>'
+)}

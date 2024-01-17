@@ -1,0 +1,216 @@
+/*------------------------------------------------------------------------------*/
+/* Checkout Page
+/*------------------------------------------------------------------------------*/
+
+.Checkout {
+	background-color: var(--background-color-shade-1);
+}
+
+.Checkout .SiteBody {
+	background-color: transparent;
+}
+
+@media screen and (max-width: 680px) {
+	.Checkout:not(.CheckoutThanks) .SiteBody {
+		padding-top: 0;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Checkout Layout
+/*------------------------------------------------------------------------------*/
+
+.SinglePageCheckout .ContainerMaxWidth {
+	max-width: 1200px;
+}
+
+.CheckoutLayout {
+	--sidebar-width: 40rem;
+	display: grid;
+	gap: 3rem;
+	gap: 3rem clamp(3rem, 5vw, 10rem);
+	grid-template-columns: 1fr var(--sidebar-width);
+}
+
+.CheckoutMain {
+	order: 1;
+}
+
+.CheckoutAside {
+	order: 2;
+}
+
+@media screen and (max-width: 1140px) {
+	.CheckoutLayout {
+		grid-template-columns: 100%;
+		margin-inline: auto;
+		max-width: 680px;
+	}
+
+	.CheckoutMain {
+		order: 2;
+	}
+
+	.CheckoutAside {
+		order: 1;
+		position: sticky;
+		top: 0;
+		z-index: 2;
+	}
+}
+
+@media screen and (max-width: 680px) {
+	.CheckoutAside {
+		margin-inline: calc(var(--container-page-margin) * -1);
+		width: 100vw;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Checkout Header
+/*------------------------------------------------------------------------------*/
+
+.CheckoutHeader {
+	background-color: var(--background-color);
+	border-bottom: 1px solid var(--border-color);
+	color: var(--color-text);
+	padding-block: 2rem;
+}
+
+.CheckoutHeader .Title {
+	margin: 0;
+}
+
+.CheckoutThanks .BackToCart,
+.SinglePageCheckout:not(.CheckoutThanks) .BackToShopLink {
+	display: none;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Sticky Cart Aside
+/*------------------------------------------------------------------------------*/
+
+.StickyAside {
+	position: sticky;
+	top: 2rem;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Show Cart Button
+/*------------------------------------------------------------------------------*/
+
+.ShowCartButton {
+	align-items: center;
+	background-color: var(--background-color);
+	font-size: var(--font-size-large);
+	display: none;
+	min-height: 60px;
+	text-align: left;
+	width: 100%;
+}
+
+.ShowCartButton::before {
+	font-family: var(--fa-style-family);
+	content: "\f107";
+	margin-right: 1rem;
+}
+
+.ShowCartButton.Active {
+	background-color: var(--background-color-shade-2);
+}
+
+.ShowCartButton.Active::before {
+	content: "\f106";
+}
+
+.ShowCartButton > span:first-child::first-letter {
+	text-transform: uppercase;
+}
+
+.ShowCartTotal {
+	font-weight: bold;
+	margin-left: auto;
+}
+
+.ShowCartTotal::before {
+	content: attr(data-cart-total);
+}
+
+@media screen and (max-width: 1140px) {
+	.ShowCartButton {
+		display: inline-flex;
+	}
+
+	.ShowCartButton:not(.Active) + .CheckoutCart {
+		display: none;
+	}
+
+	.ShowCartButton.Active {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		border-bottom-color: transparent;
+	}
+}
+
+@media screen and (max-width: 680px) {
+	.ShowCartButton {
+		border-radius: 0;
+		border: 0;
+		box-shadow: var(--box-shadow);
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Sticky Cart
+/*------------------------------------------------------------------------------*/
+
+.CheckoutCart {
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-medium);
+	padding: 2rem;
+}
+
+.CampaignCode-Checkout {
+	border: 1px solid var(--border-color);
+	border-width: 1px 0;
+	margin-inline: -2rem;
+	padding: 2rem;
+}
+
+@media screen and (max-width: 1140px) {
+	.CheckoutCart {
+		-ms-overflow-style: none;
+		-webkit-overflow-scrolling: touch;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		max-height: 70vh;
+		overscroll-behavior: contain;
+		overflow-y: auto;
+	}
+}
+
+@media screen and (max-width: 680px) {
+	.CheckoutCart {
+		border-radius: 0;
+		border-width: 0 0 1px 0;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Link Header
+/*------------------------------------------------------------------------------*/
+
+.LinkHeader {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin: var(--default-margin);
+	justify-content: space-between;
+}
+
+.LinkHeader .Title,
+.LinkHeader .Subtitle {
+	margin: 0;
+}

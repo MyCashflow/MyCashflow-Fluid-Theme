@@ -1,0 +1,105 @@
+/*------------------------------------------------------------------------------*/
+/* Thank You Page
+/*------------------------------------------------------------------------------*/
+
+.ThanksPageLayout {
+	margin-inline: auto;
+	max-width: 800px;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Order Info Table
+/*------------------------------------------------------------------------------*/
+
+.OrderInfo {
+	background-color: var(--background-color);
+	width: 100%;
+}
+
+.OrderInfo th, 
+.OrderInfo td {
+	background-color: var(--background-color);
+}
+
+@media screen and (min-width: 801px) {
+	.ThanksPageLayout {
+		background-color: var(--background-color);
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius-medium);
+		padding: 2rem;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Order Products Table
+/*------------------------------------------------------------------------------*/
+
+#OrderProductsTable {
+	width: 100%;
+}
+
+#OrderProductsTable caption {
+	color: var(--color-text-strong);
+	font-family: var(--font-family-headings);
+	font-size: var(--font-size-large);
+	font-weight: var(--font-heading-weight);
+	margin: var(--default-margin);
+}
+
+#OrderProductsTable th, 
+#OrderProductsTable td {
+	background-color: var(--background-color);
+	vertical-align: middle;
+}
+
+#OrderProductsTable th {
+	font-weight: 600;
+}
+
+#OrderProductsTable .CartPic {
+	padding: 0;
+	min-width: 60px;
+	width: 80px;
+}
+
+#OrderProductsTable .ProductName {
+	--color-link: var(--color-text);
+	font-size: var(--font-size-regular);
+	font-weight: 600;
+}
+
+#OrderProductsTable .ProductName a {
+	text-decoration: none;
+}
+
+#OrderProductsTable .CartPrice {
+	text-align: left;
+}
+
+#OrderProductsTable .CartQuantity {
+	text-align: center;
+	width: 40px;
+}
+
+#OrderProductsTable .CartTotal,
+#OrderProductsTable tfoot tr > :last-child {
+	text-align: right;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Registration Form
+/*------------------------------------------------------------------------------*/
+
+#CheckoutThanksRegistrationForm {
+	border: 1px solid var(--border-color);
+	border-width: 1px 0;
+	padding-block: 2rem;
+}
+
+#CheckoutThanksRegistrationForm [for="password"] {
+	display: none;
+}
+
+#CheckoutThanksRegistrationForm .Subtitle {
+	margin-bottom: 0;
+}

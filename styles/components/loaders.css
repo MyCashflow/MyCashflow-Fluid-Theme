@@ -1,0 +1,44 @@
+/*------------------------------------------------------------------------------*/
+/* Loader
+/*------------------------------------------------------------------------------*/
+
+.Loader {
+	align-items: center;
+	display: none;
+	inset: 0;
+	justify-content: center;
+	position: absolute;
+	pointer-events: none;
+	text-align: center;
+	z-index: 10;
+}
+
+.Loader::before {
+	background-color: var(--background-color-shade-1);
+	border-radius: 6px;
+	content: '';
+	inset: -2rem;
+	opacity: .5;
+	position: absolute;
+}
+
+.Loader > .Notification {
+	left: 1rem;
+	position: absolute;
+	top: 1rem;
+}
+
+.LoaderSpinner::before {
+	animation: fa-spin 1s linear infinite;
+	font-family: var(--fa-style-family);
+	content: "\f110";
+	color: var(--color-text);
+	display: block;
+	font-size: 3.4rem;
+	transform-origin: calc(50% - 0.5px) calc(50% - 1px);
+}
+
+@keyframes fa-spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); } 
+}

@@ -1,0 +1,46 @@
+/*------------------------------------------------------------------------------*/
+/* Pagination Form
+/*------------------------------------------------------------------------------*/
+
+.PaginationFormItems {
+	align-items: center;
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.PaginationFormItem {
+	align-items: center;
+	display: flex;
+	gap: .5rem 1rem;
+}
+
+.PaginationFormItem select {
+	border-color: var(--border-color);
+	box-shadow: none;
+	height: var(--input-height);
+}
+
+.PaginationFormItem label {
+	margin: 0;
+}
+
+.PaginationStatus {
+	margin-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+	.PaginationFormItems {
+		flex-flow: column-reverse;
+	}
+
+	.PaginationFormItem {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.PaginationFormItem label,
+	.PaginationFormItem select {
+		width: 100%;
+	}
+}

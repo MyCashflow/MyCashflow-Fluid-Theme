@@ -1,0 +1,126 @@
+/*------------------------------------------------------------------------------*/
+/* Drawer Navigation
+/*------------------------------------------------------------------------------*/
+
+.DrawerNavigation {
+	--color-link: var(--color-text);
+}
+
+.DrawerNavigation a {
+	align-items: center;
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	font-size: var(--font-size-large);
+	justify-content: space-between;
+	text-decoration: none;
+	padding-block: 1rem;
+	position: relative;
+}
+
+.DrawerNavigation .Campaigns a {
+	border-bottom: 1px solid var(--border-color);
+}
+
+.DrawerNavigation > ul > li > a {
+	font-weight: bold;
+}
+
+.DrawerNavigation ul {
+	list-style: none;
+	margin-bottom: 0;
+}
+
+.DrawerNavigation ul ul,
+.DrawerNavigation li + li {
+	margin-top: -1px;
+}
+
+.DrawerNavigation ul ul a {
+	padding-left: 1.5rem;
+}
+
+.DrawerNavigation ul ul ul a {
+	padding-left: 3rem;
+}
+
+.DrawerNavigation .Current > a {
+	color: var(--color-text-accent);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Navigation Expander
+/*------------------------------------------------------------------------------*/
+
+.DrawerNavigation .NavigationExpander {
+	background-color: transparent;
+	padding: .2rem 1.5rem;
+	position: relative;
+	z-index: 1;
+}
+
+.DrawerNavigation .NavigationExpander::before {
+	content: '';
+	bottom: -1rem;
+	left: -1.5rem;
+	right: -1.5rem;
+	top: -1rem;
+	position: absolute;
+	z-index: -1;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Secondary Navigation
+/*------------------------------------------------------------------------------*/
+
+.DrawerSecondaryNavigation {
+	--color-link: var(--color-text);
+	--color-link-hover: var(--color-text-accent);
+}
+
+.DrawerSecondaryNavigation a {
+	display: inline-flex;
+	padding: 0;
+	text-decoration: none;
+}
+
+.DrawerSecondaryNavigation ul {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	list-style: none;
+	margin: 0;
+}
+
+.DrawerSecondaryNavigation .Current a {
+	box-shadow: 0 1px 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Drawer Inline Navigation
+/*------------------------------------------------------------------------------*/
+
+.DrawerInlineNavigation {
+	--color-link: var(--color-text);
+	--color-link-hover: var(--color-text-accent);
+	-ms-overflow-style: none;
+	width: 100%;
+	overflow: auto;
+	padding-bottom: 1rem;
+}
+
+.DrawerInlineNavigation a {
+	display: flex;
+	text-decoration: none;
+}
+
+.DrawerInlineNavigation ul {
+	display: flex;
+	gap: 1rem;
+	list-style: none;
+	margin: 0;
+	white-space: nowrap;
+}
+
+.DrawerInlineNavigation .Current a {
+	box-shadow: 0 1px 0;
+}

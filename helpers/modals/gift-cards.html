@@ -1,0 +1,19 @@
+<div class="ModalContainer">
+	<header class="ModalHeader">
+		<h1 class="Title">{%CartGiftCardsSubmitted}</h1>
+		<button class="ModalClose" aria-label="{%Close}" data-fancybox-close>{%Close}&nbsp;<span class="fa fa-2x fa-times"></span></button>
+	</header>
+	<main class="ModalContent">
+		{CartGiftCards(
+			helper: '{{
+				<div class="GiftCard">
+					<h4>{GiftCardCode}</h4>
+					<p>{%CartPaidByGiftCard}: <strong>{GiftCardBalanceReserved}</strong><br>
+					{%CartGiftCardBalance}: {GiftCardBalance}<br>
+					{%CartGiftCardBalanceLeft}: {GiftCardBalanceLeft}</p>
+					{GiftCardRemoveButton}
+				</div>
+			}}'
+		)}
+	</main>
+</div>

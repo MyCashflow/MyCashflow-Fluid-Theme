@@ -1,0 +1,63 @@
+/*------------------------------------------------------------------------------*/
+/* Margin
+/*------------------------------------------------------------------------------*/
+
+.MarginBottom {
+	margin-bottom: var(--margin);
+}
+
+.MarginLeft {
+	margin-left: var(--margin);
+}
+
+.MarginRight {
+	margin-right: var(--margin);
+}
+
+.MarginTop {
+	margin-top: var(--margin);
+}
+
+.MarginBlock {
+	margin-block: var(--margin);
+}
+
+.MarginInline {
+	margin-inline: var(--margin);
+}
+
+.NoMargin {
+	margin: 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Padding
+/*------------------------------------------------------------------------------*/
+
+.PaddingBottom {
+	padding-top: var(--margin);
+}
+
+.PaddingLeft {
+	padding-left: var(--margin);
+}
+
+.PaddingRight {
+	padding-right: var(--margin);
+}
+
+.PaddingTop {
+	padding-top: var(--margin);
+}
+
+.PaddingBlock {
+	padding-block: var(--margin);
+}
+
+.PaddingInline {
+	padding-inline: var(--margin);
+}
+
+.NoPadding {
+	padding: 0;
+}

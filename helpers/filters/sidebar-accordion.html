@@ -1,0 +1,17 @@
+
+{ProductListFilters(
+	before: '
+		<section class="AccordionFilters">
+		<label class="SubTitle">{%SearchFiltersLabel}</label>',
+	after: '</section>',
+	helper: '{{
+		{FilterOptions(
+			before: '
+				<details class="AccordionFilter AccordionFilter-{FilterClass}">
+					<summary>{FilterName}</summary>',
+			after: '
+				</details>'
+		)}
+	}}'
+)}
+

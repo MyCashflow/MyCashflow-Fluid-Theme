@@ -1,0 +1,93 @@
+/*------------------------------------------------------------------------------*/
+/* Numeric Spinners
+/*------------------------------------------------------------------------------*/
+
+/* Prevent CLS */
+.JS:not(.JS-Ready) .BuyFormQuantity input {
+	opacity: 0;
+}
+/* */
+
+.Spinner {
+	display: flex;
+	width: 140px;
+}
+
+.SpinnerInput {
+	flex: 1;
+}
+
+.SpinnerInput > input {
+	border-radius: 0;
+	border-width: 1px 0;
+	box-shadow: none;
+	display: block;
+	margin: 0;
+	min-width: 0;
+	text-align: center;
+	width: 100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.SpinnerInput > input::-webkit-outer-spin-button,
+.SpinnerInput > input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+.SpinnerInput > input[type=number] {
+	-moz-appearance: textfield;
+}
+
+.SpinnerButton:focus,
+.SpinnerInput input:focus {
+	position: relative;
+}
+
+.SpinnerControl {
+	flex: 0 0 40px;
+}
+
+.SpinnerButton {
+	box-shadow: none;
+	display: flex;
+	margin: 0;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+	touch-action: manipulation;
+	width: 100%;
+}
+
+.SpinnerButton[disabled] {
+	cursor: not-allowed;
+	opacity: 1;
+}
+
+.SpinnerButton[disabled]::before {
+	opacity: .25;
+}
+
+.SpinnerButtonDec {
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.SpinnerButtonDec::before,
+.SpinnerButtonInc::before {
+	font-family: var(--fa-style-family);
+}
+
+.SpinnerButtonDec::before {
+	content: "\f104";
+}
+
+.SpinnerButtonInc {
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+}
+
+.SpinnerButtonInc::before {
+	content: "\f105";
+}

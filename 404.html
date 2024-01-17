@@ -1,0 +1,20 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container ContainerMaxWidth">
+			<main>
+				<h1 class="Title">{%PageNotFound}</h1>
+				<div class="PageContent">
+					<p class="Notification">{%PageNotFoundInfo}</p>
+				</div>
+			</main>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body> 
+</html>

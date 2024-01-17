@@ -1,0 +1,8 @@
+/*------------------------------------------------------------------------------*/
+/* Scroll Overflow
+/*------------------------------------------------------------------------------*/
+
+.ScrollOverflow {
+	margin-inline: calc(var(--container-page-margin) * -1);
+	padding-inline:var(--container-page-margin);
+}

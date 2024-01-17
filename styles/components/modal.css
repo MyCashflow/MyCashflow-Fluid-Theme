@@ -1,0 +1,50 @@
+/*------------------------------------------------------------------------------*/
+/* Modal
+/*------------------------------------------------------------------------------*/
+
+.ModalContainer {
+	-ms-overflow-style: none;
+	-webkit-overflow-scrolling: touch;
+	border-radius: var(--border-radius-medium);
+	max-height: 90vh;
+	overscroll-behavior: contain;
+	overflow-y: auto;
+}
+
+.ModalHeader {
+	align-items: center;
+	background-color: var(--background-color);
+	border-bottom: 1px solid var(--border-color);
+	border-radius: var(--border-radius-medium);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 2rem;
+	position: sticky;
+	top: 0;
+}
+
+.ModalHeader h1 {
+	margin: 0;
+}
+
+.ModalContent {
+	background-color: var(--background-color);
+	border-radius: var(--border-radius-medium);
+	padding: 2rem;
+}
+
+.ModalClose {
+	background: 0;
+	box-shadow: none;
+	border: 0;
+}
+
+.ModalHeader .ModalClose {
+	margin-right: -2rem;
+}
+
+.ModalClose span {
+	pointer-events: none;
+}

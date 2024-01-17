@@ -1,0 +1,17 @@
+{ProductListFilters(
+	before: '
+		<section class="DropdownFilters">
+			<label>{%Filter}</label>',
+	after: '</section>',
+	helper: '{{
+		{FilterOptions(
+			before: '
+				<div class="FilterGroup FilterGroup-{FilterClass}">
+					<a class="FilterGroupName" href="#FilterList-{FilterClass}" tabindex="0"><span>{FilterName}</span></a>
+					<div id="FilterList-{FilterClass}" class="FilterList" tabindex="-1">',
+			after: '
+					</div>
+				</div>'
+		)}
+	}}'
+)}

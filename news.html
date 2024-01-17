@@ -1,0 +1,52 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container">
+			<div class="ContainerMaxWidth">
+				<div class="BaseLayout">
+					<main class="SiteMain">
+						{NewsImageUrl(
+							imagesize: 'BannerWideMobile',
+							before: '
+								<div class="NewsImage">
+									<div class="AspectRatio">
+										<img	srcset="{NewsImageUrl(imagesize: 'BannerWideMobile')} 600w,
+																	{NewsImageUrl(imagesize: 'BannerWideDesktop')} 2000w"
+													sizes="(max-width: 600px) 600px,
+																	2000px"
+													src="',
+							after: '"
+								loading="lazy">
+									</div>
+								</div>'
+						)}
+						<h1 class="Title">{PageTitle}</h1>
+						{NewsOverview(
+							before: '<p class="NewsOverview">',
+							after: '</p>'
+						)}
+						{NewsBody(
+							before: '<div class="NewsBody">',
+							after: '</div>'
+						)}
+					</main>
+					<aside class="SiteAside">
+						<nav class="SideNavigation" data-navigation-expandable>
+							{News(
+								before: '<h2 class="Subtitle">{%News}</h2>',
+								show: 'all'
+							)}
+						</nav>
+					</aside>
+				</div>
+			</div>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body> 
+</html>

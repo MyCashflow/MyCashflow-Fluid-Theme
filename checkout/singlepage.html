@@ -1,0 +1,118 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+		{Helper(file: 'checkout/helpers/styles')}
+	</head>
+	<body class="{BodyClass}">
+		{Extensions(for: 'body')}
+		{Helper(file: 'checkout/helpers/header')}
+		<main class="SiteBody Container">
+			<div class="ContainerMaxWidth">
+				<div class="CheckoutLayout">
+					<div class="CheckoutAside">
+						<div class="StickyAside">
+							<button class="ShowCartButton" data-toggle-cart>
+								<span>{%ShowShoppingCart}</span> <span class="ShowCartTotal" data-cart-total="{CartOpenTotal}"></span>
+							</button>
+							<div class="CheckoutCart">
+								<div class="LinkHeader">
+									<h2 class="Subtitle" data->{%ShoppingCart} ({CartTotalItems})</h3>
+									<a href="/cart">{%ShoppingCartEdit}</a>
+								</div>
+								{CampaignCode(
+									action: 'checkout',
+									before: '<div class="CampaignCodeForm CampaignCode-Checkout">',
+									after: '</div>'
+								)}
+								{Helper(
+									file: 'checkout/helpers/cart',
+									before: '<div class="MiniCart MiniCart-Checkout">',
+									after: '</div>'
+								)}
+							</div>
+						</div>
+					</div>
+					<div class="CheckoutMain">
+						{Notifications(
+							before: '<div class="Notifications">',
+							after: '</div>'
+						)}
+						<form id="CheckoutForm" action="/checkout/" method="post">
+							<div class="ContentSection">
+								<div class="LinkHeader">
+									<h2 id="CheckoutCustomer" class="Title">{%CheckoutCustomerInformation}</h2>
+									{Helper(
+										case: 'CustomerNotLogged',
+										file: '{{ <a href="/interface/Helper?file=helpers/modals/login" data-fancybox data-type="ajax">{%Login}</a> }}',
+										or: '<a href="/account/logout/">{%Logout}</a>'
+									)}
+								</div>
+								<p>{%CheckoutBillingAddressIntro}</p>
+								<fieldset id="CheckoutBillingAddress" data-checkout-part="BillingAddress">
+									{CheckoutBillingAddress(
+										mode: 'form',
+										ajax: 'true'
+									)}
+								</fieldset>
+								<div class="SubContentSection">
+									<h2 class="Subtitle">{%CheckoutShippingAddress}</h2>
+									{Notifications(name: 'CustomerShippingAddressError')}
+									<div class="FormItem CheckWrap">
+										<div class="Checks">
+											<label>
+												<input type="checkbox" data-checkout-toggle="#CheckoutShippingAddress" />
+												{%CheckoutShippingAddressToggle}
+											</label>
+										</div>
+									</div>
+									<div id="CheckoutShippingAddressWrap">
+										<fieldset id="CheckoutShippingAddress" data-checkout-part="ShippingAddress">
+											{CheckoutShippingAddress(
+												mode: 'form',
+												ajax: 'true'
+											)}
+										</fieldset>
+									</div>
+								</div>
+							</div>
+							<div class="ContentSection">
+								<h2 id="CheckoutShipping" class="Title">{%CheckoutChooseShippingMethod}</h2>
+								<p>{%CheckoutChooseShippingMethodIntro}</p>
+								<div id="CheckoutShippingMethods" data-checkout-part="ShippingMethods" data-hide-details>
+									{CheckoutShippingMethods(
+										mode: 'form',
+										ajax: 'true'
+									)}
+								</div>
+							</div>
+							<div class="ContentSection">
+								<h2 id="CheckoutPayment" class="Title">{%CheckoutChoosePaymentMethod}</h2>
+								<p>{%CheckoutChoosePaymentMethodIntro}</p>
+								<fieldset id="CheckoutPaymentMethods" data-checkout-part="PaymentMethods" data-hide-details>
+									{CheckoutPaymentMethods(
+										mode: 'form',
+										ajax: 'true'
+									)}
+								</fieldset>
+							</div>
+							<div class="ContentSection">
+								<h2 id="CheckoutPreview" class="Title">{%CheckoutSendOrder}</h2>
+								<p>{%CheckoutAcceptTermsIntro}</p>
+								{CurrencyNotification}
+								<fieldset id="CheckoutAcceptTerms">
+									{CheckoutAcceptTerms}
+								</fieldset>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'checkout/helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body> 
+</html>
+
+
