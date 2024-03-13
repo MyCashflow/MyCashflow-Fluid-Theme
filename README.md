@@ -1,11 +1,12 @@
+
 # Fluid – The MyCashflow Default Theme
-This is the developer version of ecommerce platform MyCashflow's Fluid default theme.
+This is the developer version of Fluid - the default theme for the MyCashflow ecommerce platform.
 
 Fluid is designed to be an easily customizable framework for web designers working with MyCashflow themes. It contains many developer features that make it simple to customize the default appearance and features of MyCashflow stores.
 
-<span style="color:rgb(31, 107, 63)">**Using Fluid is completely free.**</span>
+<span style="color:rgb(31, 107, 63)">**You can use Fluid completely free of charge.**</span>
 
-There is also a separate merchant version of Fluid, which the default, WYSIWYG-customizable MyCashflow system themes are based on. These themes are always available on the MyCashflow admin panel's ***Appearance > Themes*** page.
+There is also a separate merchant version of Fluid, on which the default, WYSIWYG-customizable MyCashflow system themes are based. These themes are always available on the MyCashflow admin panel's ***Appearance > Themes*** page.
 
 **Note:** the system themes available by default in MyCashflow stores cannot be downloaded for customization.
 
@@ -24,14 +25,14 @@ You can see examples of this by fiddling with the default, Fluid-based system th
 
 The developer version of Fluid doesn't contain as many customizable theme settings as the merchant version. However, you can freely create your own settings and make them available in the store's theme editor.
 
-You can find a few practical examples of theme settings in the theme's `theme.xml` file. Custom settings are defines in the `</ThemeSettings>` element.
+You can find a few practical examples of theme settings in the theme's `theme.xml` file. Custom settings are defined in the `</ThemeSettings>` element.
 
 ## Styles
 Fluid's styles are implemented using standard CSS. You can find the theme's stylesheets in the `styles/` folder.
 
 Fluid makes extensive use of [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to unify various stylistic elements across the entire theme – fonts and colors, for example.
 
-You can find many of Fluid's CSS variables in the theme's `common/variables.css` file, but others are spread across the rest of the stylesheets as well.
+You can find many of Fluid's CSS variables in the theme's `common/variables.css` file, but there are other variables spread across the rest of the stylesheets as well.
 
 If you need to add your own CSS files to the theme, you can do so in the `helpers/styles.html` file.
 
@@ -44,11 +45,11 @@ Plugins specific to the checkout and product page are initialized in the `script
 
 By default all of Fluid's plugins are enabled.
 
-Many of the plugins have different settings that help you to fine-tune the features enabled by them (changing the banner carousel timing, for example). For more information on the plugins and their settings, see the plugin files (further documentation coming soon).
+Many of the plugins have different settings that help you to fine-tune the features they enable (such as changing the banner carousel timing, for instance). For more information on the plugins and their settings, see the plugin files (further documentation coming soon).
 
-If you decide to develop your own plugins, we recommend you follow the coding conventions of the rest of Fluid's plugins and initialize them along with the others in `scripts/custom.js`.
+If you decide to develop your own plugins, we recommend that you follow the coding conventions of Fluid's plugins and initialize them along with the rest in `scripts/custom.js`.
 
 ## Support
-For community support on using Fluid you can join the [MyCashflow Partners Slack channel](https://mcf-partners.slack.com).
+For community support on using Fluid, you can join the [MyCashflow Partners Slack channel](https://mcf-partners.slack.com).
 
 You can also contact MyCashflow customer support if you have questions about using the theme.
