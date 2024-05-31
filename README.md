@@ -50,6 +50,6 @@ Many of the plugins have different settings that help you to fine-tune the featu
 If you decide to develop your own plugins, we recommend that you follow the coding conventions of Fluid's plugins and initialize them along with the rest in `scripts/custom.js`.
 
 ## Support
-For community support on using Fluid, you can join the [MyCashflow Partners Slack channel](https://mcf-partners.slack.com).
+For community support on using Fluid, you can request to join the [MyCashflow Partners Slack channel](https://mcf-partners.slack.com). **Contact MyCashflow customer support if you wish to access the channel.**
 
 You can also contact MyCashflow customer support if you have questions about using the theme.
