@@ -44,6 +44,7 @@
 .SideNavigation ul {
 	list-style: none;
 	margin: 0 0 var(--margin);
+	position: relative;
 }
 
 .SideNavigation > ul > li:not(:last-child) {
@@ -76,5 +77,5 @@
 
 .StickySide {
 	position: sticky;
-	top: 0;
+	top: var(--scroll-margin-top);
 }

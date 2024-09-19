@@ -14,10 +14,18 @@
 .Accordion summary {
 	align-items: center;
 	border-radius: var(--border-radius-medium);
-	display: flex;
 	cursor: pointer;
+	display: flex;
+	gap: 0 1rem;
 	list-style: none;
 	padding: 1.5rem 1rem 1.5rem 0;
+}
+
+.Accordion[open] summary {
+	border-bottom: 1px solid var(--border-color);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	margin-bottom: 2rem;
 }
 
 .Accordion summary::-webkit-details-marker {
@@ -32,15 +40,6 @@
 
 .Accordion[open] > summary::after {
 	content: "\f106";
-}
-
-.Accordion summary ~ h1,
-.Accordion summary ~ h2,
-.Accordion summary ~ h3,
-.Accordion summary ~ h4,
-.Accordion summary ~ h5,
-.Accordion summary ~ h6 {
-	font-size: var(--font-size-regular);
 }
 
 .Accordion summary > * {

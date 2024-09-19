@@ -3,12 +3,24 @@
 /*------------------------------------------------------------------------------*/
 
 .ModalContainer {
+	--container-max-width: 760px;
+	--container-min-width: 380px;
+	--container-width: auto;
 	-ms-overflow-style: none;
 	-webkit-overflow-scrolling: touch;
+	background-color: var(--background-color);
 	border-radius: var(--border-radius-medium);
+	padding: 0;
 	max-height: 90vh;
+	max-width: var(--container-max-width);
+	min-width: var(--container-min-width);
 	overscroll-behavior: contain;
 	overflow-y: auto;
+	width: var(--container-width);
+}
+
+.ModalContainer > :last-child {
+	margin-bottom: 0;
 }
 
 .ModalHeader {
@@ -25,14 +37,18 @@
 	top: 0;
 }
 
-.ModalHeader h1 {
-	margin: 0;
+.ModalTitle {
+	margin-bottom: 0;
 }
 
 .ModalContent {
 	background-color: var(--background-color);
 	border-radius: var(--border-radius-medium);
 	padding: 2rem;
+}
+
+.ModalContent > :last-child {
+	margin-bottom: 0;
 }
 
 .ModalClose {
@@ -47,4 +63,31 @@
 
 .ModalClose span {
 	pointer-events: none;
+}
+
+/* Modal Container Variations
+/*------------------------------------------------------------------------------*/
+
+.Modal-Small {
+	--container-width: 300px;
+}
+
+.Modal-Medium {
+	--container-width: 500px;
+}
+
+.Modal-Large {
+	--container-width: 760px;
+}
+
+.Modal-FullPage {
+	--container-max-width: none;
+	--container-width: calc(100% - 2rem);
+}
+
+@media screen and (max-width: 800px) {
+	.ModalContainer {
+		--container-min-width: 0;
+		--container-width: auto;
+	}
 }

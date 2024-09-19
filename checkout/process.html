@@ -1,0 +1,21 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+		{Helper(file: 'checkout/helpers/styles')}
+	</head>
+	<body class="{BodyClass} CheckoutProcessPage">
+		{Extensions(for: 'body')}
+		{Helper(file: 'checkout/helpers/header')}
+		<main class="SiteBody Container">
+			<div class="ContainerMaxWidth">
+				<div class="ProcessPageLayout">
+					{Content}
+				</div>
+			</div>
+		</main>
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'checkout/helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body> 
+</html>

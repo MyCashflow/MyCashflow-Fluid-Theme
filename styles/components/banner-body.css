@@ -1,0 +1,73 @@
+/*------------------------------------------------------------------------------*/
+/* Homepage Description Banner
+/*------------------------------------------------------------------------------*/
+
+.ShopInformationSection:not(:has(.BodyBannerImage), :has(.BodyBannerText)) {
+	display: none;
+}
+
+.ShopInformationSection {
+	margin-block: var(--margin-xlarge);
+}
+
+.BodyBanner {
+	--aspect-ratio: 100 / 35;
+	display: flex;
+	flex-direction: column;
+	gap: max(2vw, var(--margin));
+}
+
+.BodyBannerImage {
+	aspect-ratio: var(--aspect-ratio);
+	border-radius: var(--border-radius-images);
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+}
+
+.BodyBannerImage img {
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	width: 100%;
+}
+
+.BodyBannerText {
+	margin-inline: auto;
+	max-width: 90ch;
+}
+
+.BodyBannerText .Title,
+.BodyBannerText > h1,
+.BodyBannerText > h2,
+.BodyBannerText > h3 {
+	line-height: var(--line-height-heading);
+}
+
+.BodyBannerText .Title,
+.BodyBannerText > h1 {
+	font-size: clamp(var(--font-size-regular), 5vw, calc(var(--font-size-xxlarge) * 1.5));
+}
+
+.BodyBannerText > h2 {
+	font-size: clamp(var(--font-size-regular), 5vw, var(--font-size-xxlarge));
+}
+
+.BodyBannerText > h3 {
+	font-size: clamp(var(--font-size-regular), 5vw, var(--font-size-xlarge));
+}
+
+@media screen and (max-width: 1400px) {
+	.BodyBannerImage {
+		border-radius: 0;
+		margin-inline: calc(var(--container-page-margin) * -1);
+		width: calc(100% + (var(--container-page-margin) * 2));
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.BodyBanner {
+		--aspect-ratio: 100 / 50;
+	}
+}

@@ -1,19 +1,23 @@
 {Banners(
 	name: 'newsletter',
 	limit: '1',
-	helper: 'helpers/banners/banner-newsletter-{Setting(name: 'show_newsletter_banner')}',
-	or: '{Helper(file: 'helpers/banners/banner-newsletter-{Setting(name: 'show_newsletter_banner')}')}'
+	helper: 'helpers/banners/banner-newsletter',
+	or: '{Helper(file: 'helpers/banners/banner-newsletter')}'
 )}
 <footer class="SiteFooter Container Theme-Footer">
 	<div class="ContainerMaxWidth">
 		<div class="FooterDesktop">
-			<div class="FooterItems">
+			<section class="FooterItems">
 				<div class="FooterItem FooterItem-Logo">
-					{Helper(
-						before: '<div class="FooterLogo">',
-						after: '</div>',
-						file: 'helpers/logo'
-					)}
+					<div class="FooterLogo">
+						{Banners(
+							name: 'logo-footer',
+							limit: '1',
+							classes: 'LogoFooter',
+							helper: 'helpers/logo',
+							or: '{Helper(file: 'helpers/logo')}'
+						)}
+					</div>
 					{Banners(
 						name: 'social-media-buttons',
 						before: '<div class="ExternalLinks ExternalLinks-Desktop">',
@@ -35,16 +39,22 @@
 					before: '
 						<div class="FooterItem FooterItem-Navigation">
 							<h2 class="FooterTitle">{%AboutUs}</h2>
-							<nav class="SimpleNavigation">',
+							<nav class="FooterNavigation">',
 					after: '
 							</nav>
 						</div>'
 				)}
-			</div>
+			</section>
 		</div>
 		<div class="FooterMobile">
 			<div class="FooterLogo FooterMobileLogo">
-				{Helper(file: 'helpers/logo')}
+				{Banners(
+					name: 'logo-footer',
+					limit: '1',
+					classes: 'LogoFooter',
+					helper: 'helpers/logo',
+					or: '{Helper(file: 'helpers/logo')}'
+				)}
 			</div>
 			{Banners(
 				name: 'social-media-buttons',
@@ -70,10 +80,21 @@
 					</details>'
 			)}
 		</div>
-		<div class="FooterCopyright">
+		<section class="FooterBottom">
 			<p><span class="Copyright">Copyright &copy; {ShopName}</span> {MyCashflowTextAd(before: '<br><span class="MyCashflowTextAd">', after: '</span>')}</p>
-			{Helper(file: 'helpers/klarna-osm/footer-{Setting(name: 'klarna_osm_footer')}')}
-		</div>
+			<section class="FooterBadges">
+				<h2 class="FooterTitle">{%PaymentAndShipping}</h2>
+				<ul class="CheckoutBadges CheckoutBadges-{Setting(name: 'checkout_badge_mode')}">
+					{Helper(file: 'helpers/checkout-badges-payment')}
+					{Helper(file: 'helpers/checkout-badges-shipping')}
+				</ul>
+				{Helper(
+					before: '<div class="KlarnaPlacementBadges">',
+					after: '</div>',
+					file: 'helpers/klarna-osm/footer-{Setting(name: 'klarna_osm_footer')}'
+				)}
+			</section>
+		</section>
 	</div>
 </footer>
 {Helper(file: 'helpers/drawers')}

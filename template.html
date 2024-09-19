@@ -6,9 +6,11 @@
 	<body class="{BodyClass}">
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
-			<main>
-				{Content}
-			</main>
+			<div class="ContainerMaxWidth">
+				<main class="SiteMain">
+					{Content}
+				</main>
+			</div>
 		</div>
 		{Helper(file: 'helpers/footer')}
 		{Helper(file: 'helpers/scripts')}

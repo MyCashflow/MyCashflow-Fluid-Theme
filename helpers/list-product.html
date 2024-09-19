@@ -14,7 +14,7 @@
 		{ProductDiscountPercent(
 			before: '
 				<div class="ListProductDiscount">
-					<span class="ListProductDiscountLabel">{%Discount}</span> <span class="ListProductDiscountPercent">-',
+					<span class="ListProductDiscountLabel">{%Discount}</span> <span class="ListProductDiscountPercent">',
 			after: '
 					&#37;</span>
 				</div>'
@@ -24,6 +24,7 @@
 			after: '</div>',
 			file: 'helpers/product-badges'
 		)}
+		{Helper(file: 'helpers/wishlist/product-wishlist')}
 	</a>
 	<div class="ListProductInfo">
 		{ProductBrandName(
@@ -44,17 +45,14 @@
 		)}
 		{Helper(file: 'helpers/product-rating')}
 		<div class="ListProductBuy">
-			{ProductPrices(
+			{Helper(
 				before: '<div class="ListProductPrices">',
-				after: '</div>'
+				after: '</div>',
+				file: 'helpers/product-prices-full'
 			)}
 			{ProductAddToCart(
 				or: '<a href="{ProductUrl}" class="Button AddToCart ProductAvailabilityButton">{ProductAvailability(html: 'false')}</a>'
 			)}
 		</div>
-		{ProductAvailability(
-			before: '<div class="ListProductAvailability">',
-			after: '</div>'
-		)}		
 	</div>
 </article>

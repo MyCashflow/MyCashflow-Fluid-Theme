@@ -46,8 +46,6 @@
 	}
 }
 
-
-
 /*------------------------------------------------------------------------------*/
 /* Header With Logo Centered
 /*------------------------------------------------------------------------------*/
@@ -66,18 +64,19 @@
 	right: 0;
 }
 
-.HeaderLogoCentered .HeaderLogo ~ * {
+.HeaderLogoCentered:has(.HeaderLogo) > .Flex > *:not(.HeaderLogo) {
 	max-width: calc(50% - calc(var(--logo-max-width) / 1.5));
+}
+
+@media screen and (max-width: 380px) {
+	.HeaderLogoCentered:has(.HeaderLogo) > .Flex > *:not(.HeaderLogo) {
+		max-width: none;
+	}
 }
 
 @media screen and (max-width: 320px) {
 	.HeaderLogoCentered .HeaderLogo {
 		position: relative;
-		margin-left: 0;
-	}
-
-	.HeaderLogoCentered .HeaderLogo ~ .FlexItem {
-		max-width: none;
 	}
 }
 

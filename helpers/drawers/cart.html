@@ -1,9 +1,17 @@
-{Helper(
-	file: 'helpers/mini-cart',
-	before: '
-		<div class="DrawerContent">
-			<aside class="MiniCart">',
-	after: '
-			</aside>
-		</div>'
-)}
+<div class="DrawerContent">
+	<header class="DrawerHeader">
+		<h3 class="Title">{%ShoppingCart}</h3>
+		<button class="DrawerBackButton" data-drawer-previous hidden aria-label="{%Back}"><span class="fa fa-arrow-left"></span></button>
+		<button class="DrawerCloseButton" data-drawer-close aria-label="{%Close}"><span class="fa fa-2x fa-times"></span></button>
+	</header>
+	{Banners(
+		name: 'cart',
+		before: '<div class="PlacementBanners CartPlacementBanner">',
+		after: '</div>',
+		helper: 'helpers/banners/banner-placement'
+	)}
+	<aside class="MiniCart">
+		{Helper(file: 'helpers/mini-cart')}
+	</aside>
+</div>
+

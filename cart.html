@@ -7,6 +7,11 @@
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
 			<main class="SiteMain">
+				{Helper(
+					before: '<div class="FullCartDiscountCodesNotification ContainerMaxWidth">',
+					after: '</div>',
+					file: 'helpers/discount-codes-notification'
+				)}
 				{Helper(file: 'helpers/full-cart')}
 			</main>
 		</div>

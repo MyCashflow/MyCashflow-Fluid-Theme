@@ -76,6 +76,7 @@
 
 .ActionButton {
 	font-size: 0;
+	gap: 0;
 	height: 40px;
 	pointer-events: auto;
 	width: 40px;

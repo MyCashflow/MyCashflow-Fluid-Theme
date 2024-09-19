@@ -22,9 +22,22 @@
 	padding-block: var(--margin-large);
 }
 
+.SiteNewsletter {
+	--input-background-color: var(--color-white);
+	position: relative;
+}
+
+.SiteNewsletter-Background {
+	inset: 0;
+	pointer-events: none;
+	position: absolute;
+	z-index: -1;
+}
+
 @media screen and (max-width: 480px) {
 	.SiteBody {
 		padding-top: var(--margin);
+		margin-bottom: 0;
 	}
 }
 
@@ -34,9 +47,9 @@
 
 .SiteLayout {
 	--sidecolumn-width: 320px;
-	border: 1px solid var(--border-color);
-	border-width: 0 1px;
+	background-color: var(--background-color);
 	display: grid;
+	flex: 1;
 	grid-template-columns: var(--sidecolumn-width) calc(100% - var(--sidecolumn-width));
 	margin: 0 auto;
 	max-width: var(--full-width-limit);
@@ -45,16 +58,43 @@
 
 .ColumnLayoutSection {
 	background-color: var(--background-color);
-	border-right: 1px solid var(--border-color-subtle);
+	border-right: 1px solid var(--border-color);
 	color: var(--color-text);
-	padding: 2rem 2.5rem;
+	padding: 2rem 0;
 	position: relative;
 	z-index: 1;
 }
 
 .ColumnLayoutSection .StickySide {
+	max-height: calc(100vh - 4rem);
+	padding-inline: 2.5rem;
+	overflow-y: auto;
 	position: sticky;
+	scrollbar-width: thin;
 	top: 2rem;
+}
+
+.SiteLayoutBackground {
+	background-color: var(--background-color);
+	filter: brightness(.9);
+	inset: 0;
+	position: absolute;
+	pointer-events: none;
+	z-index: -1;
+}
+
+.SiteLayoutBackground::before {
+	box-shadow: 0 0 0 1px var(--border-color);
+	content: "";
+	inset: 0;
+	max-width: var(--full-width-limit);
+	margin: 0 auto;
+	position: absolute;
+}
+
+.SiteLayoutColumns + .SiteNewsletter .SiteNewsletter-Background {
+	background-color: var(--background-color);
+	border-top: 1px solid var(--border-color);
 }
 
 @media screen and (max-width: 1240px) {

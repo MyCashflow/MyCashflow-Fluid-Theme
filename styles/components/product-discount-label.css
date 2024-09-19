@@ -5,28 +5,23 @@
 .ListProductDiscount,
 .ProductPageDiscount {
 	background-color: var(--discount-background-color);
-	border-radius: var(--border-radius) 0 0 var(--border-radius);
-	color: var(--discount-text-color);
+	border-radius: var(--border-radius);
+	color: var(--discount-text-on-background);
 	font-weight: bold;
 	padding: .3rem .5rem;
 	position: absolute;
-	right: 0;
-	top: 1.5rem;
+	right: 1rem;
+	top: 1rem;
 	z-index: 1;
 }
 
 .ListProductDiscount {
 	font-size: var(--font-size-small);
+	right: .5rem;
+	top: .5rem;
 }
 
 .ListProductDiscountLabel,
 .ProductDiscountLabel {
 	display: none;
-}
-
-
-@media screen and (max-width: 500px) {
-	.ProductPageDiscount {
-		border-radius: var(--border-radius);
-	}
 }

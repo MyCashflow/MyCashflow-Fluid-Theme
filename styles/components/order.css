@@ -1,0 +1,151 @@
+/*------------------------------------------------------------------------------*/
+/* Order History
+/*------------------------------------------------------------------------------*/
+
+#OrderHistory {
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	border-collapse: separate;
+	border-radius: var(--border-radius);
+}
+
+#OrderHistory :where(th, td):last-child  {
+	border-right: 0;
+}
+
+#OrderHistory tr:last-child :where(th, td)  {
+	border-bottom: 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Order Info Table
+/*------------------------------------------------------------------------------*/
+
+.OrderInfo {
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	border-collapse: separate;
+	border-radius: var(--border-radius);
+	width: 100%;
+}
+
+.OrderInfo th, 
+.OrderInfo td {
+	background-color: var(--background-color);
+}
+
+.OrderInfo :where(th, td):last-child  {
+	border-right: 0;
+}
+
+.OrderInfo tr:last-child :where(th, td)  {
+	border-bottom: 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Order Products Table
+/*------------------------------------------------------------------------------*/
+
+#OrderProductsTable {
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	border-collapse: separate;
+	border-radius: var(--border-radius);
+	width: 100%;
+}
+
+#OrderProductsTable caption {
+	color: var(--color-text-strong);
+	font-family: var(--font-family-headings);
+	font-size: var(--font-size-large);
+	font-weight: var(--font-heading-weight);
+	margin: var(--default-margin);
+}
+
+#OrderProductsTable :where(th, td) {
+	background-color: transparent;
+	border: 0;
+}
+
+#OrderProductsTable tr :where(th, td) {
+	border-bottom: 1px solid var(--border-color);
+}
+
+#OrderProductsTable tfoot tr:last-child :where(th, td) {
+	border-bottom: none;
+}
+
+#OrderProductsTable :where(th, td):not(:last-child) {
+	background-color: transparent;
+	border-right: 1px solid var(--border-color);
+}
+
+#OrderProductsTable th {
+	font-weight: bold;
+}
+
+#OrderProductsTable .CartPic {
+	padding: 0;
+	min-width: 60px;
+	width: 80px;
+}
+
+#OrderProductsTable .ProductName {
+	--color-link: var(--color-text);
+	font-size: var(--font-size-regular);
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+#OrderProductsTable .ProductName a {
+	text-decoration: none;
+}
+
+#OrderProductsTable .CartPrice {
+	text-align: left;
+	width: 100px;
+}
+
+#OrderProductsTable .CartQuantity {
+	text-align: center;
+	width: 40px;
+}
+
+#OrderProductsTable .CartTotal {
+	width: 120px;
+}
+
+#OrderProductsTable .CartTotal,
+#OrderProductsTable tfoot tr > :last-child {
+	text-align: right;
+}
+
+/* Order Product Definition List
+/*------------------------------------------------------------------------------*/
+
+#OrderProductsTable .CartProduct dl {
+	font-size: var(--font-size-small);
+	font-weight: normal;
+}
+
+#OrderProductsTable dt {
+	display: inline;
+	font-weight: bold;
+	margin: 0;
+}
+
+#OrderProductsTable dt:first-child {
+	margin-top: 0;
+}
+
+#OrderProductsTable dd {
+	display: inline;
+	margin: 0 0 0 .5rem;
+}
+
+#OrderProductsTable dd + dt:before {
+	clear: both;
+	content: '';
+	display: block;
+	height: 0;
+}

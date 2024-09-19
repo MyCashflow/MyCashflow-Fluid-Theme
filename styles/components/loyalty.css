@@ -1,0 +1,303 @@
+/*------------------------------------------------------------------------------*/
+/* Loaylty Points Highlight
+/*------------------------------------------------------------------------------*/
+
+.HighlightPoints {
+	background-color: var(--background-accent-color);
+	border-radius: var(--border-radius);
+	display: block;
+	margin-inline: auto;
+	padding: 1rem 1.5rem;
+}
+
+.HighlightPoints > p {
+	margin-inline: auto;
+	max-width: 40ch;
+}
+
+.HighlightPoints > :last-child {
+	margin-bottom: 0;
+}
+
+[data-loyalty-cart-points="0"],
+[data-loyalty-cart-points^="-"] {
+	display: none;
+}
+
+.FullCartLoyaltyPoints {
+	display: inline-block;
+	max-width: 40ch;
+}
+
+.MiniCartCartLoyaltyPoints {
+	margin: 1rem 0 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Loyalty Sign Up Form
+/*------------------------------------------------------------------------------*/
+
+.LoyaltyProgramSignUp {
+	align-items: center;
+	background-color: var(--background-accent-color);
+	border-radius: var(--border-radius);
+	color: var(--color-text-accent);
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 2rem;
+	padding: 1.5rem 2rem;
+	text-align: center;
+}
+
+.LoyaltyProgramSignUp > * {
+	gap: 1rem;
+	margin-bottom: 1rem;
+	max-width: 40ch;
+}
+
+.LoyaltyProgramSignUp h2 {
+	margin-bottom: 0;
+}
+
+.LoyaltyProgramSignUp :last-child {
+	margin-bottom: 0;
+}
+
+.LoyaltyProgramSignUp button,
+#LoyaltyProgramSignUpForm button {
+	--button-background-color: var(--color-accent);
+	--button-border-color: var(--color-accent);
+	--button-color: var(--color-text-on-accent);
+	--button-height: 4.5rem;
+	border: 0;
+	display: inline-flex;
+	font-weight: var(--font-heading-weight);
+	padding: 1rem 3rem;
+	text-transform: var(--font-heading-transform);
+	width: min(100%, 300px);
+}
+
+.LoyaltyProgramSignUp button:hover,
+#LoyaltyProgramSignUpForm button:hover {
+	--button-background-color: var(--color-accent-darker);
+	--button-border-color: var(--color-accent-darker);
+}
+
+.Drawer #LoyaltyProgramSignUpForm button {
+	width: min(100%, 500px);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Loyalty Program on Account Page
+/*------------------------------------------------------------------------------*/
+
+.CustomerLoyaltyProgram {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.CustomerLoyaltyProgram p {
+	max-width: 40ch;
+}
+
+/* Customer Current Points
+/*------------------------------------------------------------------------------*/
+
+.CustomerLoyaltyPointTier {
+	border-radius: var(--border-radius);
+	max-width: 300px;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+}
+
+.CustomerLoyaltyPointTier > :where(dt, dd) {
+	background-color: var(--background-accent-color);
+	font-size: var(--font-size-xlarge);
+	font-weight: bold;
+	padding: 2rem 1rem;
+}
+
+.CustomerLoyaltyPointTier dt {
+	background-color: var(--background-accent-color-shade-2);
+	margin: 0;
+	position: relative;
+}
+
+.CustomerLoyaltyPointTier dt::after {
+	background: inherit;
+	content: '';
+	height: 20px;
+	left: calc(50% - 10px);
+	position: absolute;
+	top: calc(100% - 10px);
+	transform: rotate(45deg);
+	width: 20px;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Loyalty Tiers Table
+/*------------------------------------------------------------------------------*/
+
+.CustomerLoyaltyTiersList {
+	max-width: 400px;
+}
+
+.TiersList {
+	--bullet-width: 10px;
+	display: flex;
+	flex-direction: column-reverse;
+	list-style: none;
+	position: relative;
+}
+
+.LoyaltyTier {
+	align-items: first baseline;
+	display: flex;
+	order: 1;
+	position: relative;
+	padding-block: 2px;
+}
+
+/* Tier Visual Progress Line
+/*------------------------------------------------------------------------------*/
+
+.LoyaltyTierProgress {
+	display: flex;
+	justify-content: center;
+	padding-inline: 1rem;
+	width: 4rem;
+}
+
+.LoyaltyTierProgress .ProgressLine {
+	background-color: var(--border-color);
+	height: 100%;
+	position: absolute;
+	width: 2px;
+}
+
+.TiersList > :first-child .ProgressLine {
+	display: none;
+}
+
+/* Tier Visual Progress Dot */
+
+.LoyaltyTierProgress::before {
+	background-color: var(--border-color);
+	border-radius: 50px;
+	content: '';
+	height: var(--bullet-width);
+	width: var(--bullet-width);
+	z-index: 1;
+}
+
+/* Current Progress Color */
+
+.LoyaltyTier:has(~ li.Current) .ProgressLine,
+.LoyaltyTier:has(~ li.Current) .LoyaltyTierProgress::before,
+.CurrentTierStatus .LoyaltyTierProgress::before,
+.LoyaltyTier.Current ~ li.CurrentTierStatus .ProgressLine,
+.LoyaltyTier.Current .ProgressLine,
+.LoyaltyTier.Current .LoyaltyTierProgress::before {
+	background-color: var(--color-accent);
+}
+
+/* Tier Description
+/*------------------------------------------------------------------------------*/
+
+.TierDescription {
+	align-items: center;
+	display: flex;
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	flex: 1;
+	flex-wrap: wrap;
+	gap: .5rem;
+	padding: .3rem;
+}
+
+.TierDescription .TierPoints {
+	font-weight: bold;
+	margin-left: 1rem;
+}
+
+.TierDescription .TierDiscount {
+	background-color: var(--background-color-shade-2);
+	border-radius: var(--border-radius);
+	font-size: var(--font-size-small);
+	margin-left: auto;
+	min-width: 65px;
+	padding: .5rem;
+	text-align: center;
+}
+
+/* Tier Info */
+
+.LoyaltyTier:not(.ZeroTier) .TierInfo {
+	background-color: var(--background-color-shade-2);
+	border-radius: var(--border-radius);
+	display: none;
+	font-size: var(--font-size-small);
+	padding: .5rem 1em;
+}
+
+.LoyaltyTier.CurrentTierStatus + .LoyaltyTier .TierInfo {
+	display: block;
+}
+
+.ZeroTier .TierInfo {
+	font-size: var(--font-size-small);
+}
+
+/* Current Tier Highlight
+/*------------------------------------------------------------------------------*/
+
+.LoyaltyTier.Current .TierDescription {
+	background-color: var(--background-accent-color-shade-1);
+	border-color: var(--color-accent);
+}
+
+.LoyaltyTier.Current .TierDiscount {
+	background: var(--background-accent-color);
+	font-weight: bold;
+}
+
+/* Tier Status
+/*------------------------------------------------------------------------------*/
+
+.CurrentTierStatus .TierDescription {
+	border-width: 0;
+	margin-left: 1.3rem;
+	padding-inline: 0;
+}
+
+.CurrentTierStatus .TierPoints {
+	color: var(--color-text-accent);
+	margin: 0;
+}
+
+.LoyaltyTier.Current ~ li.CurrentTierStatus .ProgressLine {
+	height: calc(100% + 0.5rem);
+}
+
+.LoyaltyTier.Current ~ li.CurrentTierStatus .LoyaltyTierProgress::before {
+	--bullet-width: 8px;
+}
+
+/* Zero Tier
+/*------------------------------------------------------------------------------*/
+
+.CurrentTierStatus.ZeroTier {
+	order: 0;
+}
+
+.CurrentTierStatus.ZeroTier .LoyaltyTierProgress {
+	align-items: flex-end;
+}
+
+.Current ~ .ZeroTier {
+	display: none !important;
+}

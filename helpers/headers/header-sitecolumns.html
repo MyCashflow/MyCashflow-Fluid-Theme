@@ -1,3 +1,4 @@
+<div class="SiteLayoutBackground Theme-Header"></div>
 <div class="SiteLayout SiteLayoutColumns">
 	<div class="SiteLayoutSection ColumnLayoutSection Theme-Header">
 		<div class="HeaderLogo">
@@ -6,7 +7,7 @@
 		<nav class="SideNavigation StickySide" data-navigation-expandable data-subnavigation-loader>
 			{Categories(show: 'active')}
 			{Campaigns(
-				before: '<h3 class="Subtitle NoMargin">{%Campaigns}</h3>'
+				before: '<h3 class="NoMargin">{%Campaigns}</h3>'
 			)}
 		</nav>
 	</div>
@@ -21,10 +22,11 @@
 					</div>
 					<div class="Flex FlexGap FlexWrap FlexAlign-End FlexValign-Center">
 						<div class="Flex FlexValign-Center">
-							<a href="/account" class="IconButton" data-drawer-toggle="account">
+							<a href="/account" class="IconButton" data-drawer-toggle="account" aria-label="{%MyAccount}">
 								<span class="fa fa-user-circle"></span>
 							</a>
-							<a href="/cart/" class="IconButton" data-drawer-toggle="cart">
+							{Helper(file: 'helpers/wishlist/wishlist-icon')}
+							<a href="/cart/" class="IconButton" data-drawer-toggle="cart" aria-label="{%ShoppingCart}">
 								<span class="fa fa-shopping-cart"></span>
 								<span class="CartTotals" data-cart-total-items="{CartTotalItems}" data-cart-sub-total="{CartSubTotal}"></span>
 							</a>
@@ -32,25 +34,32 @@
 					</div>
 				</div>
 			</div>
-			<div class="HeaderMobile">
-				<div class="Flex FlexGap FlexValign-Center FlexAlign-SpaceBetween">
-					<a href="#" class="IconButton" data-drawer-toggle="menu">
+			<div class="HeaderMobile HeaderLogoCentered">
+				<div class="Flex FlexGap-Small FlexValign-Center FlexAlign-SpaceBetween">
+					<a href="#" class="IconButton" data-drawer-toggle="menu" aria-label="{%Navigation}">
 						<span class="fa fa-bars"></span>
 					</a>
 					<div class="HeaderLogo">
-						{Helper(file: 'helpers/logo')}
+						{Banners(
+							name: 'logo-header-mobile',
+							limit: '1',
+							classes: 'LogoHeader-Mobile',
+							helper: 'helpers/logo',
+							or: '{Helper(file: 'helpers/logo')}'
+						)}
 					</div>
-					<a href="/cart/" class="IconButton" data-drawer-toggle="cart">
-						<span class="fa fa-shopping-cart"></span>
-						<span class="CartTotals" data-cart-total-items="{CartTotalItems}" data-cart-sub-total="{CartSubTotal}"></span>
-					</a>
+					<div class="Flex FlexValign-Center">
+						{Helper(file: 'helpers/wishlist/wishlist-icon')}
+						<a href="/cart/" class="IconButton" data-drawer-toggle="cart" aria-label="{%ShoppingCart}">
+							<span class="fa fa-shopping-cart"></span>
+							<span class="CartTotals" data-cart-total-items="{CartTotalItems}" data-cart-sub-total="{CartSubTotal}"></span>
+						</a>
+					</div>
 				</div>
 			</div>
 		</header>
 		<div class="MobileHeaderSearch Theme-Header">
 			<div class="SimpleSearchForm">
-				{Search(
-					id: 'MobileSearch',
-				)}
+				{Search(id: 'MobileSearch')}
 			</div>
 		</div>

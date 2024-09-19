@@ -1,8 +1,4 @@
-<div data-cart-sub-total="{CartSubTotal}" data-cart-total-items="{CartTotalItems}"></div>
-<header class="DrawerHeader">
-	<h3 class="Title">{%ShoppingCart}</h3>
-	<button class="DrawerCloseButton" data-drawer-close><span class="fa fa-2x fa-times"></span></button>
-</header>
+<div data-cart-sub-total="{CartSubTotal}" data-cart-total-items="{CartTotalItems}" style="display: none;"></div>
 {CartProducts(
 	before: '
 		{Notifications(group: 'cart')}
@@ -25,7 +21,7 @@
 				after: '</span></div>'
 			)}
 			{CartDiscount(
-				before: '<div class="MiniCartTotal"><span>{CartDiscountLabel}: </span><span> -',
+				before: '<div class="MiniCartTotal MiniCartDiscounts"><span>{CartDiscountLabel} </span><span> -',
 				after: '</span></div>'
 			)}
 			{CartGiftCards(
@@ -33,32 +29,67 @@
 					{CartTotal(
 						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span>',
 						after: '</span></div>'
-					)}
-					<div class="MiniCartTotal">',
-				helper: '{{
-					<span>{%CartPaidByGiftCard}: <a href="#" data-drawer-toggle="gift-cards" class="GiftCardDetails">{%CartGiftCardDetaild}</a></span>  <span>{GiftCardBalanceReserved}</span>
-				}}',
-				after: '
-					</div>
-					{CartOpenTotal(
-						before: '<div class="MiniCartTotal"><span>{%CartOpenTotal}: </span><span>',
-						after: '</span></div>'
 					)}',
+				after: '
+					{CartOpenTotal(
+						before: '<div class="MiniCartTotal HighlightTotal"><span>{%CartOpenTotal}: </span><span>',
+						after: '</span></div>'
+					)}
+					{Helper(
+						case: 'VatFreePricing',
+						file: '{{
+							{CartOpenTotal(
+								includetax: 'true',
+								before: '<div class="MiniCartTotal"><span>{%CartOpenTotal} ({%VAT} {CartTaxRate}&nbsp;%): </span><span>',
+								after: '</span></div>'
+							)}
+						}}'
+					)}',
+				helper: '{{
+					<div class="MiniCartTotal">
+						<span>{%CartPaidByGiftCard}: <a href="#" data-drawer-toggle="gift-cards" class="GiftCardDetails">{%CartGiftCardDetaild}</a></span>  <span>{GiftCardBalanceReserved}</span>
+					</div>
+				}}',
 				or: '
 					{CartTotal(
-						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span>',
+						before: '<div class="MiniCartTotal HighlightTotal"><span>{%Total}: </span><span>',
 						after: '</span></div>'
+					)}
+					{Helper(
+						case: 'VatFreePricing',
+						file: '{{
+							{CartTotal(
+								includetax: 'true',
+								before: '<div class="MiniCartTotal"><span>{%Total} ({%VAT} {CartTaxRate}&nbsp;%): </span><span>',
+								after: '</span></div>'
+							)}
+						}}'
 					)}'
 			)}
-			{Helper(file: 'helpers/klarna-osm/minicart-{Setting(name: 'klarna_osm_minicart')}')}
 		</div>
+		{Helper(file: 'helpers/klarna-osm/minicart-{Setting(name: 'klarna_osm_minicart')}')}
+		{CartLoyaltyPoints(
+			before: '
+				<div class="HighlightPoints MiniCartCartLoyaltyPoints Text-Center" data-loyalty-cart-points="',
+			after: '">
+					<p>
+						{CustomerLoyaltyPoints(
+							before: '<span style="display: none;">',
+							after: '</span>
+								{%LoyaltyProgramCartPointsInfo} <br><a href="{LoyaltyProgramInfoURL}" data-drawer-toggle="loyalty">{%LoyaltyProgramReadMoreLinkText}</a>',
+							or: '
+								{%LoyaltyProgramJoinInfo} <br><a href="{LoyaltyProgramInfoURL}" data-drawer-toggle="loyalty">{%LoyaltyProgramJoin}</a>'
+						)}
+					</p>
+				</div>'
+		)}
 		<div class="MiniCartActions">
 			<a class="Button Button-Primary Button-Big OrderProducts" href="/checkout/">{%OrderProducts}</a>
 			<a class="Button Button-Block" href="/cart/">{%ShoppingCartEdit}</a>
 		</div>
-		<details>
+		<details class="CartCampaignDetails">
 			<summary class="Text-Center">
-				<strong>{%CampaignCodeInquiry}</strong>
+				<strong>{Text(code: 'CampaignCodeOrGiftCard', or: '{%CampaignCodeInquiry}')}</strong>
 			</summary>
 			<div class="DrawerCampaignCode">
 				{CampaignCode(
@@ -67,7 +98,8 @@
 					after: '</div>'
 				)}
 			</div>
-		</details>',
+		</details>
+		{Helper(file: 'helpers/discount-codes-notification')}',
 	or: '
 		<div class="DrawerSection">
 			<div class="Notification">

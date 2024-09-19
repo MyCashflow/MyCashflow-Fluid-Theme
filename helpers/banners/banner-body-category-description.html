@@ -1,0 +1,28 @@
+<div class="Section">
+	<section class="ShopInformationSection ContainerMaxWidth">
+		<article class="BodyBanner">
+			{CategoryImageUrl(
+				imagesize: 'BannerWideMobile',
+				before: '
+					<div class="BodyBannerImage">
+						<img	srcset="{CategoryImageUrl(imagesize: 'BannerWideMobile')} 600w, 
+												{CategoryImageUrl(imagesize: 'BannerWideDesktop')} 1600w"
+									sizes="(max-width: 600px) 600px,
+														1600px"
+									src="',
+				after: '"
+									alt="{ShopName}"
+									loading="lazy">
+						{CategoryLink(
+							before: '<a class="BannerCoverLink" href="',
+							after: '"></a>'
+						)}
+					</div>'
+			)}
+			{CategoryDescription(
+				before: '<div class="BodyBannerText">',
+				after: '</div>'
+			)}
+		</article>
+	</section>
+</div>

@@ -1,0 +1,30 @@
+{Doctype}
+<html lang="{CurrentLanguageCode}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Extensions(for: 'body')}
+		{AdminTools}
+		<div class="SiteTop"></div>
+		<header class="RestrictedHeader">
+			<div class="Flex FlexGap-Small FlexValign-Center FlexAlign-Center">
+				<div class="HeaderLogo">
+					{Helper(file: 'helpers/logo')}
+				</div>
+			</div>
+		</header>
+		<div class="SiteBody Container">
+			<div class="RestrictedLayout">
+				<main class="SiteMain">
+					{Content}
+				</main>
+				<div class="FooterCopyright">
+					<p><span class="Copyright">Copyright &copy; {ShopName}</span> {MyCashflowTextAd(before: '<br><span class="MyCashflowTextAd">', after: '</span>')}</p>
+				</div>
+			</div>
+		</div>
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body> 
+</html>

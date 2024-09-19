@@ -1,0 +1,34 @@
+{CustomerDiscountCodes(
+	before: '
+		<div class="CustomerDiscountCodes">
+			<p>{%LoyaltyProgramHtmlEmailTitle} {%EmailLoyaltyProgramDiscountCodeInformation}</p>
+			<p class="DiscountCodeTotals">{%CustomerDiscountCodesTotal}</p>
+			{Notifications(
+				before: '<div class="CouponNotifications Hide">',
+				after: '</div>',
+				group: 'coupon'
+			)}
+			<div class="DiscountCodes">',
+	after: '
+			</div>
+		</div>',
+	helper: '{{
+		<article class="DiscountCode">
+			<span class="fa fa-2x fa-tag"></span>
+			{Helper(
+				case: 'CartNotEmpty',
+				file: '{{
+					{DiscountCodeToggle}
+				}}'
+			)}
+			<div class="DiscountCodeInfo">
+				<strong>{%EmailLoyaltyProgramDiscountCodeTitle} <span class="DiscountCodeNumber" data-activated="{%DiscountCodeAddedToCart}">{DiscountCode}</span></strong><br>
+				<span class="DiscountCodeExpires">{%EmailLoyaltyProgramDiscountCodeExpires}</span>
+			</div>
+		</article>
+	}}',
+	or: '
+		<div class="CustomerDiscountCodes">
+			<p>{%CustomerDiscountCodesNoCodesAvailable}</p>
+		</div>'
+)}

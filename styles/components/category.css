@@ -2,9 +2,17 @@
 /* Category Header
 /*------------------------------------------------------------------------------*/
 
+.CategoryHeader {
+	overflow: hidden;
+}
+
 .CategoryImage {
 	background-color: var(--background-color-shade-1);
+	border-radius: var(--border-radius-images);
 	margin: var(--default-margin);
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
 }
 
 .CategoryImage .AspectRatio {
@@ -20,7 +28,6 @@
 }
 
 .CategoryImage img {
-	border-radius: var(--border-radius-images);
 	height: 100%;
 	object-fit: cover;
 	width: 100%;
@@ -33,8 +40,35 @@
 	width: 100%;
 }
 
-.CategoryImageFullWidth img {
+.CategoryImageFullWidth {
 	border-radius: 0;
+}
+
+.CategoryImageLink {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.CategoryLogo {
+	align-items: center;
+	aspect-ratio: 4/3;
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	display: flex;
+	float: right;
+	justify-content: center;
+	margin-left: .5rem;
+	max-width: 200px;
+	min-width: 100px;
+	width: 20%; 
+}
+
+.CategoryLogo img {
+	object-fit: contain;
+	padding: 5%;
 }
 
 .CategoryDescription {
@@ -46,4 +80,3 @@
 		padding-top: calc(var(--aspect-ratio) * 1.5);
 	}
 }
-

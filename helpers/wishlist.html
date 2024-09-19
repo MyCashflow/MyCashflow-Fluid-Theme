@@ -1,0 +1,57 @@
+<div data-wishlist-total-items="{WishlistProductCount}" style="display: none;"></div>
+{Helper(
+	case: 'CustomerLogged',
+	file: '{{
+		{WishlistProducts(
+			before: '<div class="WishlistProducts">',
+			after: '</div>',
+			helper: '{{
+				<article class="Product WishlistProduct {ProductClass}">
+					{ProductImage(
+						imagesize: 'mini',
+						link: 'false',
+						before: '<a class="WishlistProductImage" href="{ProductURL}">',
+						after: '</a>'
+					)}
+					<div class="WishlistProductContent">
+						<div class="WishlistProductInfo" data-has-variations="{%ProductHasVariations}">
+							<a class="WishlistProductName" href="{ProductURL}">{ProductName}</a>
+							<p class="WishlistProductPrices">
+								{ProductComparePrice(
+									currencysymbol: 'true',
+									before: '
+										{ProductPrice(
+											currencysymbol: 'true',
+											before: '<span class="ProductDiscountPrice">',
+											after: '</span>'
+										)}
+										<span class="ProductComparePrice">',
+									after: '</span>',
+									or: '
+										{ProductPrice(
+											currencysymbol: 'true',
+											before: '<span class="ProductCurrentPrice">',
+											after: '</span>'
+										)}'
+								)}
+							</p>
+						</div>
+						<div class="WishlistProductActions">
+							{ProductAddToCart}
+							{ProductWishlistToggle}
+						</div>
+					</div>
+				</article>
+			}}',
+			or: '<div class="Notification">{%WishlistIsEmpty}</div>'
+		)}
+	}}'
+)}
+{Helper(
+	case: 'CustomerNotLogged',
+	file: '{{
+		<p class="WishlistNotLogged">
+			{%WishlistNotLogged}
+		</p>
+	}}'
+)}

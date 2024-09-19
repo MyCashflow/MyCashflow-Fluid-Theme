@@ -2,6 +2,11 @@
 /* Display Helpers
 /*------------------------------------------------------------------------------*/
 
+[hidden] {
+	display: none !important;
+	visibility: hidden !important;
+}
+
 .Hide {
 	display: none;
 }

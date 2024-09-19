@@ -6,25 +6,9 @@
  ;(function ($) {
 	'use strict';
 
-	var Modals = {
+	const Modals = {
 		fancyboxDefaults: {
-			dragToClose: false,
-			autoFocus: false,
-			l10n: {
-				CLOSE: MCF.dictionary.Close,
-				NEXT: MCF.dictionary.Next,
-				PREV: MCF.dictionary.Prev
-			},
-			Toolbar: {
-				display: [
-					"close",
-				],
-			},
-			on: {
-				initLayout: (fancybox, slide) => {
-					$(fancybox.$container).addClass('CustomModal');
-				},
-			}
+			dragToClose: false
 		},
 
 		init: function (config) {

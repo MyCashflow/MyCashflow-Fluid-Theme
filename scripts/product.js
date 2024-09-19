@@ -23,10 +23,19 @@ $(document).ready(function () {
 		wrapAround: true,
 		fancybox: true,
 		fancyboxSettings: {
+			l10n: MCF.Modals.fancyboxDefaults.l10n,
+			Thumbs: {
+				type: "classic",
+			},
 			Toolbar: {
-				display: [
-					"close",
-				],
+				display: {
+					left: [],
+					middle: [
+						"zoomIn",
+						"zoomOut",
+					],
+					right: ["close"],
+				},
 			}
 		}
 	});

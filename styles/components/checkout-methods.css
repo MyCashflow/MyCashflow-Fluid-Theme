@@ -8,13 +8,17 @@
 	display: flex;
 	flex-direction: column;
 	margin-top: -1px;
-	padding: 5px 15px;
+	padding: .5rem 1.5rem;
 	transition-duration: var(--transition-fast);
 }
 
+[class*="MethodWrapper"]:hover {
+	border-color: var(--border-color-strong);
+}
+
 [class*="MethodWrapper"] input[type="radio"] {
-	height: 15px;
-	width: 15px;
+	height: 1.5rem;
+	width: 1.5rem;
 }
 
 [class*="MethodWrapper"] select {
@@ -41,7 +45,7 @@
 
 .DefineShippingMethod,
 .DefinePaymentMethod {
-	margin-top: 10px;
+	margin-top: 1rem;
 }
 
 .DefineShippingMethod > label,
@@ -62,7 +66,8 @@
 .PaymentMethod {
 	align-items: center;
 	display: flex !important;
-	padding: 5px 0;
+	flex-wrap: wrap;
+	padding: .5rem 0;
 	position: relative;
 }
 
@@ -71,7 +76,7 @@
 	background-color: var(--image-background-color);
 	border: 1px solid var(--border-color);
 	border-radius: var(--border-radius);
-	margin: 0 5px 0 10px;
+	margin: 0 .5rem 0 1rem;
 	text-align: center;
 	width: 80px;
 }
@@ -80,15 +85,15 @@
 .PaymentMethodLogo img {
 	margin: auto;
 	max-height: 40px;
-	padding: 5px;
+	padding: .5rem;
 }
 
 .ShippingMethodName,
 .PaymentMethodName {
 	color: var(--color-text-strong);
 	flex: 1;
-	font-weight: 600;
-	margin: 0 5px;
+	font-weight: bold;
+	margin: 0 .5rem;
 }
 
 .DisabledShippingMethod .ShippingMethod > *:not(.Notification),
@@ -97,13 +102,90 @@
 	opacity: .5;
 }
 
-.SelectedMethod {
+[class*="MethodWrapper"]:has(input:checked) {
 	background-color: var(--background-color-shade-2);
 	border-color: var(--border-color-strong);
 	position: relative;
 }
 
-.JS [data-hide-details] .ShippingMethodWrapper:not(.SelectedMethod) .ShippingMethod ~ *,
-.JS [data-hide-details] .PaymentMethodWrapper:not(.SelectedMethod) .PaymentMethod ~ * {
+@supports selector(:has(*)) {
+	[class*="MethodWrapper"]:has(input:not(:checked)) label[class*="Method"] ~ * {
+		display: none;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Method Groups
+/*------------------------------------------------------------------------------*/
+
+.PaymentMethodGroup + .MethodGroupTitle {
+	margin-top: var(--margin);
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) .PaymentMethodWrapper {
+	align-items: center;
+	border-radius: var(--border-radius);
+	justify-content: center;
+	padding: 1rem;
+	position: relative;
+	text-align: center;
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) .PaymentMethod {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	padding: 0;
+	width: 100%;
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) .PaymentMethod > * {
+	margin-inline: 0;
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) input {
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) input:not(:has(+ .PaymentMethodLogo)) {
+	margin-block: .5rem;
+	position: relative;
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) .PaymentMethodLogo {
+	background-color: transparent;
+	border: none;
+	width: 90px;
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) .PaymentMethodLogo img {
+	max-height: none;
+	height: 40px;
+	object-fit: contain;
+	padding: 0;
+	width: 90px;
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) .PaymentMethodName {
+	flex: unset;
+	font-size: var(--font-size-small);
+	font-weight: normal;
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) .PaymentMethodPrice:empty {
 	display: none;
+}
+
+.PaymentMethodGroup:not(.PaymentMethodGroup-other) .FormHelp {
+	font-size: .8em;
+	margin-top: .5rem;
 }

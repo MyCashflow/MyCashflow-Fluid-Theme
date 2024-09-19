@@ -1,0 +1,30 @@
+{Banners(
+	name: 'frontpage-featured-categories',
+	before: '
+		<div class="Section">
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<div class="CategorySlider ScrollOverflow" data-slider-viewport>',
+	after: '
+				</div>
+			</div>
+		</div>',
+	helper: '{{
+		<article class="CategorySliderItem">
+			<a class="CategorySliderLink" href="{BannerUrl}" {BannerLinkData}>
+				<div class="AspectRatio">
+					<img	srcset="{BannerImageUrl(imagesize: 'ListMobile')} 300w,
+												{BannerImageUrl(imagesize: 'ListDesktop')} 600w"
+								sizes="(max-width: 600px) 300px,
+												600px"
+								src="{BannerImageUrl(imagesize: 'ListDesktop')}"
+								height="300"
+								width="300"
+								loading="lazy"
+								alt="">
+				</div>
+				<div class="CategorySliderText">{BannerName}</div>
+			</a>
+		</article>
+	}}'
+)}

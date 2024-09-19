@@ -1,9 +1,11 @@
-{Banners(
-	name: 'logo-dark',
-	limit: '1',
-	helper: '{{ <a href="/" class="LogoLink LogoDarkBg" title="{ShopName}"><img src="{BannerImageUrl(height: '160', width: '480')}" alt="{ShopName}"></a> }}'
-)}
-{Logo(
+{BannerImageUrl(
 	height: '160',
-	width: '480'
+	width: '480',
+	before: '<a href="{ShopUrl}" class="LogoLink {BannerClass}" title="{ShopName}"><img src="',
+	after: '" alt="{ShopName}"></a>',
+	or: '
+		{Logo(
+			height: '160',
+			width: '480'
+		)}'
 )}

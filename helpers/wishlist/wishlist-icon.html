@@ -1,0 +1,10 @@
+
+<a href="#" class="IconButton" data-drawer-toggle="wishlist" aria-label="{%Wishlist}">
+	<span class="fa fa-heart"></span>
+	{Helper(
+		case: 'CustomerLogged',
+		file: '{{
+			<span class="WishlistTotals" data-wishlist-total-items="{WishlistProductCount}"></span>
+		}}'
+	)}
+</a>

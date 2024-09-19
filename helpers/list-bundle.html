@@ -12,18 +12,21 @@
 						alt="{BundleName}">
 		</div>
 	</a>
-	<div class="ListProductInfo">
-		{BundleName(
-			before: '
-				<h1 class="ListProductName">
-					<a href="{BundleUrl}">',
-			after: '
-					</a>
-				</h1>'
-		)}
-		{BundlePrices(
-			before: '<div class="ListProductPrices">',
-			after: '</div>'
-		)}
-	</div>	
+	<div class="ListProductBuy">
+		<div class="ListProductInfo">
+			{BundleName(
+				before: '
+					<h1 class="ListProductName">
+						<a href="{BundleUrl}">',
+				after: '
+						</a>
+					</h1>'
+			)}
+			{Helper(
+				before: '<div class="ListProductPrices">',
+				after: '</div>',
+				file: 'helpers/product-bundle-prices'
+			)}
+		</div>
+	</div>
 </article>

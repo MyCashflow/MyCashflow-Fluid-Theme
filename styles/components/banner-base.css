@@ -18,8 +18,14 @@
 	color: var(--color-text);
 	font-size: var(--font-size-large);
 	max-width: 60ch;
+	pointer-events: none;
 	position: relative;
 	transition-duration: var(--transition-slow);
+}
+
+.BannerText a,
+.BannerText button {
+	pointer-events: auto;
 }
 
 .BannerText p {

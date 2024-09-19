@@ -12,7 +12,8 @@
 
 @media screen and (max-width: 800px) {
 	.ProductList {
-		grid-template-columns: repeat(2, 1fr);
+		--gap: 1rem;
+		grid-template-columns: repeat(2, calc(50% - (var(--gap) / 2)));
 	}
 }
 
@@ -116,28 +117,45 @@
 	--color-link: var(--color-text-subtle);
 }
 
+/* List Product Price
+/*------------------------------------------------------------------------------*/
+
 .ListProductPrices {
 	margin-bottom: var(--margin);
-}
-
-.ListProductPrices > .Prices {
-	margin-bottom: 0;
-}
-
-.ListProductPrices .Prices dt:not(.LowestPrice) {
-	display: none;
-}
-
-.ListProductBuy {
 	margin-top: auto;
 }
 
-.ListProductBuy form {
-	margin: 0;
+.ListProductPrices > dl {
+	margin-bottom: 0;
+}
+
+.ListProductPrices dt.CurrentPrice {
+	display: none;
 }
 
 .ListProductBuy[data-setting-show-listbuy=""] .ListProductPrices {
 	margin-bottom: 0;
+}
+
+/* List Product Buy Form
+/*------------------------------------------------------------------------------*/
+
+.ListProductBuy {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+}
+
+.ListProductBuy form,
+.ListProductBuy fieldset {
+	margin: 0;
+	padding: 0;
+	gap: 0;
+}
+
+.ListProductBuy > :only-child:last-child {
+	margin: auto 0 0;
 }
 
 @media screen and (max-width: 600px) {
@@ -267,16 +285,17 @@
 }
 
 .ListProduct-Minimal .ListProductBadges .ProductBadge {
-	margin-inline: auto;
-}
-
-.ListProduct-Minimal .ListProductDiscount {
 	border-radius: var(--border-radius);
+	margin-inline: auto;
 }
 
 .ListProduct-Minimal .ListProductInfo {
 	align-items: center;
 	text-align: center;
+}
+
+.ListProduct-Minimal .ListProductPrices {
+	justify-content: center;
 }
 
 .ListProduct-Minimal .ListProductPrices .Prices {

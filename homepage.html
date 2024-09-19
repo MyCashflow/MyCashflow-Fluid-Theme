@@ -26,17 +26,16 @@
 					file: 'helpers/banners/banner-featured'
 				)}
 				{Helper(file: 'helpers/klarna-osm/homepage-{Setting(name: 'klarna_osm_homepage')}')}
+				{Helper(file: 'helpers/banners/banner-category-slider')}
 				<div class="Section" data-viewport-lazyload="helpers/product-lists/homepage-lists&setCategory={CategoryId}">
-					{Helper(
-						file: 'helpers/placeholders/category-slider-{Setting(name: 'show_homepage_featuredcategories')}'
-					)}
+					{Helper(file: 'helpers/placeholders/category-slider')}
 					{HotPicks(
 						category: 'ALL',
 						type: 'ids',
 						limit: '1',
 						before: '<div class="Section" data-products="',
 						after: '">
-							{Helper(file: 'helpers/placeholders/product-list-{Setting(name: 'show_homepage_hotpicks')}')}
+							{Helper(file: 'helpers/placeholders/product-list')}
 						</div>'
 					)}
 					{TopSellers(
@@ -45,7 +44,7 @@
 						limit: '1',
 						before: '<div class="Section" data-products="',
 						after: '">
-							{Helper(file: 'helpers/placeholders/product-list-{Setting(name: 'show_homepage_topsellers')}')}
+							{Helper(file: 'helpers/placeholders/product-list')}
 						</div>'
 					)}
 					{NewProducts(
@@ -55,10 +54,11 @@
 						timelimit: '-2months',
 						before: '<div class="Section" data-products="',
 						after: '">
-							{Helper(file: 'helpers/placeholders/product-list-{Setting(name: 'show_homepage_newproducts')}')}
+							{Helper(file: 'helpers/placeholders/product-list')}
 						</div>'
 					)}
 				</div>
+				{Helper(file: 'helpers/banners/banner-body-category-description')}
 				{News(
 					limit: '4',
 					before: '

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Theme>
-	<Version>20231107</Version>
+	<Version>20240919</Version>
 	<ImageSizes>
 		<Mini width="120" height="120" />
 		<Normal width="800" height="800" />
@@ -15,6 +15,7 @@
 			<SinglePage supported="true" default="default" />
 			<MultiPage supported="false" />
 		</Checkout>
+		<VatFree supported="true" />
 		<GiftCards supported="true" />
 		<ProductBundles supported="true" />
 		<ProductListFilters supported="true" />
@@ -45,10 +46,6 @@
 				<Option value="7000" label="homepage_mainbanner_autoplay_7" />
 				<Option value="8000" label="homepage_mainbanner_autoplay_8" />
 			</Setting>
-			<Setting type="boolean" name="show_homepage_featuredcategories" label="show_homepage_featuredcategories" default="true"></Setting>
-			<Setting type="boolean" name="show_homepage_hotpicks" label="show_homepage_hotpicks" default="true"></Setting>
-			<Setting type="boolean" name="show_homepage_topsellers" label="show_homepage_topsellers" default="true"></Setting>
-			<Setting type="boolean" name="show_homepage_newproducts" label="show_homepage_newproducts" default="true"></Setting>
 		</SettingGroup>
 		<SettingGroup label="heading_product_page_settings">
 			<Setting type="select" name="product_variations_style" label="product_variations_style" description="product_variations_style_description" default="radio">
@@ -56,10 +53,28 @@
 				<Option value="select" label="product_variations_style_select" />
 			</Setting>
 		</SettingGroup>
-		<SettingGroup label="heading_newsletter_settings">
-			<Setting type="boolean" name="show_newsletter_banner" label="show_newsletter_banner" description="show_newsletter_banner_description" default="false"></Setting>
-		</SettingGroup> 
-		<SettingGroup label="klarna_osm_settings" description="klarna_osm_settings_description">
+		<SettingGroup label="heading_payment_and_shipping_badges_settings" description="heading_payment_and_shipping_badges_settings_description">
+			<Setting type="select" name="checkout_badge_mode" label="checkout_badge_mode" default="Normal">
+				<Option value="Normal" label="checkout_badge_mode_normal" />
+				<Option value="SingleColor" label="checkout_badge_mode_single_color" />
+			</Setting>
+			<Setting type="boolean" name="show_badge_paytrail_banks" label="show_badge_paytrail_banks" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_mobilepay" label="show_badge_mobilepay" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_apple_pay" label="show_badge_apple_pay" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_visa" label="show_badge_visa" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_mastercard" label="show_badge_mastercard" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_amex" label="show_badge_amex" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_paypal" label="show_badge_paypal" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_klarna" label="show_badge_klarna" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_posti" label="show_badge_posti" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_matkahuolto" label="show_badge_matkahuolto" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_postnord" label="show_badge_postnord" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_db_schenker" label="show_badge_db_schenker" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_budbee" label="show_badge_budbee" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_dhl" label="show_badge_dhl" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_gls" label="show_badge_gls" default="false"></Setting>
+		</SettingGroup>
+		<SettingGroup label="heading_klarna_osm_settings" description="heading_klarna_osm_settings_description">
 			<Setting type="boolean" name="klarna_osm_footer" label="klarna_osm_footer" description="klarna_osm_footer_description" default="false"></Setting>
 			<Setting type="boolean" name="klarna_osm_homepage" label="klarna_osm_homepage" description="klarna_osm_homepage_description" default="false"></Setting>
 			<Setting type="boolean" name="klarna_osm_minicart" label="klarna_osm_minicart" description="klarna_osm_minicart_description" default="false"></Setting>
@@ -72,7 +87,6 @@
 			<BannerGroup label="bannergroup_frontpage_main" code="frontpage-main" />
 			<BannerGroup label="bannergroup_frontpage_featured" code="frontpage-featured" />
 			<BannerGroup label="bannergroup_notification_bar" code="notification-bar" />
-			<BannerGroup label="bannergroup_selling_points" code="selling-points" />
 			<BannerGroup label="bannergroup_social_media_buttons" code="social-media-buttons" />
 			<BannerGroup label="bannergroup_payment_buttons" code="payment-buttons" />
 			<BannerGroup label="bannergroup_logistics_buttons" code="logistics-buttons" />

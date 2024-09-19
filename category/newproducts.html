@@ -7,25 +7,26 @@
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
 			<div class="CategoryLayout">
-				{Helper(
-					before: '<aside class="CategoryAside">',
-					after: '</aside>',
-					file: 'helpers/sidebar'
-				)}
 				<main class="CategoryMain">
 					<header class="CategoryHeader">
+						{Helper(file: 'helpers/category/category-image-main-contained')}
 						<h1 class="Title">{%NewProducts}</h1>
+						{CategoryDescription(
+							before: '<div class="CategoryDescription">',
+							after: '</div>'
+						)}
 					</header>
+					{Helper(file: 'helpers/klarna-osm/product-list-{Setting(name: 'klarna_osm_productlist')}')}
 					{NewProducts(
+						category: 'ALL',
 						type: 'normal',
-						limit: '12',
-						pagination: 'true',
+						limit: '60',
+						pagination: 'false',
 						timelimit: '-2months',
 						before: '<div class="ProductList">',
 						after: '</div>',
 						helper: 'helpers/list-product' 
 					)}
-					{Helper(file: 'helpers/pagination')}
 				</main>
 			</div>
 		</div>

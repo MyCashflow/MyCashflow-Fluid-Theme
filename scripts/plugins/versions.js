@@ -8,7 +8,7 @@
 
 	var $template = 
 		`<details class="DetailsReset" data-details-global-toggle>
-			<summary><div class="Button Button-Small"><span class="fa fa-ellipsis-h"></span></div></summary>
+			<summary aria-label="${MCF.dictionary.ShowAll}"><div class="Button Button-Small"><span class="fa fa-ellipsis-h-alt"></span></div></summary>
 			<nav class="DetailsNavigation"></nav>
 		</details>`;
 	

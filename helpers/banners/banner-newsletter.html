@@ -1,0 +1,35 @@
+<aside class="SiteNewsletter">
+	<div class="SiteNewsletter-Background Theme-Header"></div>
+	<div class="ContainerMaxWidth">
+		<article class="Newsletter">
+			{BannerImageUrl(
+				imagesize: 'BannerWideDesktop',
+				before: '
+					<img srcset="{BannerImageUrl(imagesize: 'BannerWideMobile')} 600w,
+						{BannerImageUrl(imagesize: 'BannerWideDesktop')} 1600w"
+						sizes="(max-width: 600px) 600px,
+									1600px"
+						src="',
+				after: '"
+					alt="{BannerName}"
+					class="NewsletterImage">'
+			)}
+			<div class="NewsletterContent">
+				<div class="NewsletterInfo">
+					{BannerText(
+						or: '
+							<h2>{%NewsletterSubscribe}</h2>
+							<p>{%NewsletterSubscribeInfo}</p>'
+					)}
+				</div>
+				<div class="NewsletterForm">
+					{NewsLetterSubscribeForm}
+					<p class="NewsletterPrivacy">
+						<small class="GeneralPrivacy">{%NewsletterSubscribePrivacy} {%GeneralPrivacyPolicy}</small>
+						<small class="ReCaptchaPrivacy">{%ReCaptchaPrivacy}</small>
+					</p>
+				</div>
+			</div>
+		</article>
+	</div>
+</aside>

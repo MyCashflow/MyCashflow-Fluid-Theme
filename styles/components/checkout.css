@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 680px) {
-	.Checkout:not(.CheckoutThanks) .SiteBody {
+	.CheckoutFirstPage .SiteBody {
 		padding-top: 0;
 	}
 }
@@ -81,9 +81,22 @@
 	margin: 0;
 }
 
-.CheckoutThanks .BackToCart,
-.SinglePageCheckout:not(.CheckoutThanks) .BackToShopLink {
+.Checkout:not(.CheckoutFirstPage) .BackToCart {
 	display: none;
+}
+
+.Checkout:not(.CheckoutProcessPage) .BackToCheckout {
+	display: none;
+}
+
+.Checkout:not(.CheckoutThanks) .BackToShopLink {
+	display: none;
+}
+
+@media screen and (max-width: 800px) {
+	.CheckoutThanks .BackToShopLink {
+		margin-left: auto;
+	}
 }
 
 /*------------------------------------------------------------------------------*/
@@ -100,8 +113,8 @@
 /*------------------------------------------------------------------------------*/
 
 .ShowCartButton {
+	--button-background-color: var(--background-color);
 	align-items: center;
-	background-color: var(--background-color);
 	font-size: var(--font-size-large);
 	display: none;
 	min-height: 60px;
@@ -115,8 +128,8 @@
 	margin-right: 1rem;
 }
 
-.ShowCartButton.Active {
-	background-color: var(--background-color-shade-2);
+.ShowCartButton:hover {
+	--button-background-color: var(--background-color);
 }
 
 .ShowCartButton.Active::before {
@@ -212,5 +225,24 @@
 
 .LinkHeader .Title,
 .LinkHeader .Subtitle {
+	margin: 0;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Checkout Process Page
+/*------------------------------------------------------------------------------*/
+
+.ProcessPageLayout {
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-medium);
+	padding: 2rem;
+}
+
+.ProcessPageLayout .HeaderItem {
+	margin: var(--default-margin);
+}
+
+.ProcessPageLayout form {
 	margin: 0;
 }

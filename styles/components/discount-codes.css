@@ -1,0 +1,141 @@
+/*------------------------------------------------------------------------------*/
+/* Discount Code Listing
+/*------------------------------------------------------------------------------*/
+
+.DiscountCodes {
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	max-width: 600px;
+}
+
+.DiscountCodes p {
+	text-align: center;
+}
+
+.CustomerDiscountCodes .DiscountCodeTotals {
+	text-align: left;
+}
+
+.DiscountCode {
+	align-items: center;
+	display: flex;
+	font-size: var(--font-size-small);
+	gap: 1.5rem;
+	padding: 1rem 1.5rem;
+}
+
+.DiscountCode:not(:first-child) {
+	border-top: 1px solid var(--border-color);
+}
+
+.DiscountCode > * {
+	margin: 0;
+}
+
+.DiscountCode .fa {
+	align-items: center;
+	background-color: var(--background-accent-color-shade-1);
+	border-radius: 50px;
+	color: var(--color-text-accent);
+	display: flex;
+	flex-shrink: 0;
+	height: 40px;
+	justify-content: center;
+	width: 40px;
+}
+
+.CustomerDiscountCodeToggle {
+	margin-left: auto;
+	order: 3;
+}
+
+.DiscountCodeNumber {
+	font-family: "Consolas", "Monaco", "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New";
+	font-weight: normal;
+}
+
+.DiscountCodeNumber::after {
+	background-color: var(--background-accent-color-shade-1);
+	border-radius: var(--border-radius);
+	color: var(--color-text);
+	font-size: var(--font-size-small);
+	font-weight: bold;
+	margin-left: .5rem;
+	padding: .1rem .5rem;
+}
+
+.CustomerDiscountCodeRemove + .DiscountCodeInfo .DiscountCodeNumber::after {
+	content: attr(data-activated);
+}
+
+.DiscountCode .SubmitButton {
+	min-width: 70px;
+}
+
+@media screen and (max-width: 400px) {
+	.DiscountCode {
+		padding-inline: 1rem;
+	}
+
+	.DiscountCode .fa {
+		display: none;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Cart & Checkout Discount Code Notification
+/*------------------------------------------------------------------------------*/
+
+.DiscountCodesNotification[data-available-codes="0"] {
+	display: none !important;
+}
+
+.DiscountCodesNotification > :last-child {
+	margin-bottom: 0;
+}
+
+.DiscountCodesNotification {
+	background-color: var(--background-accent-color);
+	border-radius: var(--border-radius);
+	color: var(--color-text-accent);
+	margin: 0 auto 2rem 0;
+	padding: 1rem 1.5rem;
+	text-align: center;
+}
+
+.DiscountCodesNotification .Button {
+	display: flex;
+	margin-top: .5rem;
+	margin-inline: auto;
+	width: fit-content;
+}
+
+.HighlightPoints .DiscountCodesNotification {
+	border-top: 1px solid var(--background-accent-color-shade-1);
+	padding: .5rem 0 0 0;
+	margin: .5rem 0 0 0;
+}
+
+/* Button Activation */
+
+.DiscountCodesNotification .Button-Edit {
+	display: none;
+}
+
+.DiscountCodesNotification:not(:has(.AddToCart)) {
+	display: none !important;
+}
+
+@media screen and (min-width: 600px) {
+	.FullCartDiscountCodesNotification .DiscountCodesNotification {
+		align-items: center;
+		display: flex;
+		text-align: left;
+	}
+
+	.FullCartDiscountCodesNotification .DiscountCodesNotification .Button {
+		margin: 0 0 0 auto;
+	}
+}

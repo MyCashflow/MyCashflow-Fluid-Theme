@@ -24,6 +24,10 @@
 	background-color: var(--color-notification-success);
 }
 
+.Product.AvailabilityBackorder .Availability dd.StorageInfo::before {
+	background-color: var(--color-notification);
+}
+
 .Product.Unavailable .Availability dd.StorageInfo::before {
 	background-color: var(--color-notification-error);
 }
@@ -57,13 +61,24 @@
 /* List Product Availability */
 
 .ListProductAvailability {
+	flex-wrap: nowrap;
 	font-size: var(--font-size-small);
 	justify-content: flex-start;
 	margin: 1rem 0 0;
+	min-height: 18px;
+}
+
+.ListProductAvailability > dl {
+	white-space: nowrap;
 }
 
 .ListProductAvailability dt.StorageInfo {
 	display: none;
+}
+
+.ListProductAvailability dd.StorageInfo {
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* List Product Variations Availability */
@@ -93,5 +108,13 @@
 
 .ProductStockBalance[data-product-stock=""],
 .ProductStockBalance[data-product-stock="0"] {
+	display: none;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Availability Modal Form Container
+/*------------------------------------------------------------------------------*/
+
+#ProductAvailabilityFormModal {
 	display: none;
 }

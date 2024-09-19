@@ -18,7 +18,7 @@
 				after: '</span></div>'
 			)}
 			{CartDiscount(
-				before: '<div class="MiniCartTotal"><span>{CartDiscountLabel}: </span><span> -',
+				before: '<div class="MiniCartTotal MiniCartDiscounts"><span>{CartDiscountLabel} </span><span> -',
 				after: '</span></div>'
 			)}
 			{CartGiftCards(
@@ -26,24 +26,52 @@
 					{CartTotal(
 						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span>',
 						after: '</span></div>'
-					)}
-					<div class="MiniCartTotal">',
-				helper: '{{
-					<span>{%CartPaidByGiftCard}: <a href="/interface/Helper?file=helpers/modals/gift-cards" data-fancybox data-type="ajax" class="GiftCardDetails">{%CartGiftCardDetaild}</a></span>  <span>{GiftCardBalanceReserved}</span>
-				}}',
-				after: '
-					</div>
-					{CartOpenTotal(
-						before: '<div class="MiniCartTotal"><span>{%CartOpenTotal}: </span><span>',
-						after: '</span></div>'
 					)}',
+				after: '
+					{CartOpenTotal(
+						before: '<div class="MiniCartTotal HighlightTotal"><span>{%CartOpenTotal}: </span><span>',
+						after: '</span></div>'
+					)}
+					{Helper(
+						case: 'VatFreePricing',
+						file: '{{
+							{CartOpenTotal(
+								includetax: 'true',
+								before: '<div class="MiniCartTotal"><span>{%CartOpenTotal} ({%VAT} {CartTaxRate}&nbsp;%): </span><span>',
+								after: '</span></div>'
+							)}
+						}}'
+					)}',
+				helper: '{{
+					<div class="MiniCartTotal">
+						<span>{%CartPaidByGiftCard}: <a href="#" data-drawer-toggle="gift-cards" class="GiftCardDetails">{%CartGiftCardDetaild}</a></span>  <span>{GiftCardBalanceReserved}</span>
+					</div>
+				}}',
 				or: '
 					{CartTotal(
-						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span>',
+						before: '<div class="MiniCartTotal HighlightTotal"><span>{%Total}: </span><span>',
 						after: '</span></div>'
+					)}
+					{Helper(
+						case: 'VatFreePricing',
+						file: '{{
+							{CartTax(
+								before: '<div class="MiniCartTotal"><span>{%TotalTax}: </span><span>',
+								after: '</span></div>'
+							)}
+							{CartTotal(
+								includetax: 'true',
+								before: '<div class="MiniCartTotal"><span>{%Total} ({%VAT} {CartTaxRate}&nbsp;%): </span><span>',
+								after: '</span></div>'
+							)}
+						}}'
 					)}'
 			)}
-		</div>',
+		</div>
+		{CustomerLoyaltyPoints(
+			before: '<div class="HighlightPoints MiniCartCartLoyaltyPoints" data-loyalty-cart-points="{CartLoyaltyPoints}" data-loyalty-customer-points="',
+			after: '"><p>{%LoyaltyProgramCartPointsInfo}</p></div>'
+		)}',
 	or: '
 		<div class="DrawerSection">
 			<div class="Notification">

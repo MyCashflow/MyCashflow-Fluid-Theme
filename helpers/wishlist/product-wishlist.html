@@ -1,0 +1,16 @@
+<div class="ProductWishlist" data-product-name="{ProductName}">
+	{Helper(
+		case: 'CustomerLogged',
+		file: '{{
+			{ProductWishlistToggle}
+		}}'
+	)}
+	{Helper(
+		case: 'CustomerNotLogged',
+		file: '{{
+			<button type="button" data-drawer-toggle="wishlist" class="SubmitButton AddToWishlist" title="{%ProductAddToWishlist}">
+				<span>{%ProductAddToWishlist}</span>
+			</button>
+		}}'
+	)}
+</div>

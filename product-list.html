@@ -7,13 +7,21 @@
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
 			<div class="CategoryLayout">
-				<aside class="CategoryAside">{Helper(file: 'helpers/category/category-nav-sidebar-expandable')}</aside>
+				<aside class="CategoryAside">{Helper(case: 'isCategory', file: 'helpers/category/category-nav-sidebar-expandable')}</aside>
 				<main class="CategoryMain">
 					<header class="CategoryHeader">
 						{Helper(file: 'helpers/category/category-image-main-contained')}
 						{Path}
+						{BrandLogoUrl(
+							width: '400',
+							before: '
+								<figure class="CategoryLogo">
+									<img src="',
+							after: '" alt="{BrandName}" class="BrandLogo" height="300" width="400" loading="lazy">
+								</figure>'
+						)}
 						<h1 class="Title">{PageTitle}</h1>
-						{Helper(file: 'helpers/category/category-button-main-expandable')}
+						{Helper(case: 'isCategory', file: 'helpers/category/category-button-main-expandable')}
 						{CategoryDescription(
 							before: '<div class="CategoryDescription">',
 							after: '</div>'

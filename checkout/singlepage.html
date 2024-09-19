@@ -4,7 +4,7 @@
 		{Helper(file: 'helpers/head')}
 		{Helper(file: 'checkout/helpers/styles')}
 	</head>
-	<body class="{BodyClass}">
+	<body class="{BodyClass} CheckoutFirstPage">
 		{Extensions(for: 'body')}
 		{Helper(file: 'checkout/helpers/header')}
 		<main class="SiteBody Container">
@@ -20,6 +20,7 @@
 									<h2 class="Subtitle" data->{%ShoppingCart} ({CartTotalItems})</h3>
 									<a href="/cart">{%ShoppingCartEdit}</a>
 								</div>
+								{Helper(file: 'helpers/discount-codes-notification')}
 								{CampaignCode(
 									action: 'checkout',
 									before: '<div class="CampaignCodeForm CampaignCode-Checkout">',
@@ -109,6 +110,7 @@
 				</div>
 			</div>
 		</main>
+		{Helper(file: 'helpers/drawers')}
 		{Helper(file: 'helpers/scripts')}
 		{Helper(file: 'checkout/helpers/scripts')}
 		{Helper(file: 'helpers/scripts-ready')}

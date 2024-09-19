@@ -79,7 +79,11 @@
 
 .NewsImage {
 	background-color: var(--background-color-shade-1);
+	border-radius: var(--border-radius-images);
 	margin: var(--default-margin);
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
 }
 
 .NewsImage .AspectRatio {
@@ -87,7 +91,6 @@
 }
 
 .NewsImage img {
-	border-radius: var(--border-radius-images);
 	height: 100%;
 	object-fit: cover;
 	width: 100%;

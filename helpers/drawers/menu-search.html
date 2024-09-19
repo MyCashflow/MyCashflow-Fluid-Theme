@@ -1,7 +1,8 @@
 <div class="DrawerContent">
 	<header class="DrawerHeader">
-		<h3 class="Title">{%Menu}</h3>
-		<button class="DrawerCloseButton" aria-label="{%Close}" data-drawer-close><span class="fa fa-2x fa-times"></span></button>
+		<h3 class="Title">{%Navigation}</h3>
+		<button class="DrawerBackButton" data-drawer-previous hidden aria-label="{%Back}"><span class="fa fa-arrow-left"></span></button>
+		<button class="DrawerCloseButton" data-drawer-close aria-label="{%Close}"><span class="fa fa-2x fa-times"></span></button>
 	</header>
 	<div class="DrawerSection">
 		{Search(
@@ -23,7 +24,8 @@
 		{Helper(
 			case: 'CustomerLogged',
 			file: '{{
-				<a href="/account/" class="Button"><span class="fa fa-user-circle"></span>&nbsp; {%MyAccount}</a>
+				<a href="/account/" class="Button Button-Block"><span class="fa fa-user-circle"></span>&nbsp; {%MyAccount}</a>
+				<a href="/account/logout/" class="Button Button-Block">{%Logout}</a>
 			}}'
 		)}
 		{Helper(

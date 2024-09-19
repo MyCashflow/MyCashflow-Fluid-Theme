@@ -83,6 +83,10 @@
 	display: initial;
 }
 
+.AvailabilityAlert:not(.AvailabilityOutOfStock) .ProductAvailabilityAlertBadge::before {
+	content: attr(data-badge-text);
+}
+
 /* Out of Stock Badge */
 
 .ProductOutOfStockBadge {
@@ -93,4 +97,8 @@
 
 .AvailabilityOutOfStock .ProductOutOfStockBadge {
 	display: initial;
+}
+
+.AvailabilityOutOfStock .ProductOutOfStockBadge::before {
+	content: attr(data-badge-text);
 }

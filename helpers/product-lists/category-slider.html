@@ -1,0 +1,39 @@
+{FeaturedCategories(
+	before: '
+		<div class="Section">
+			<header class="SectionHeader">
+				<h2 class="SectionHeaderTitle Subtitle">{Text(code: 'FeaturedCategories', or: '{%BrowseCategories}')}</h2>
+			</header>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<div class="CategorySlider ScrollOverflow" data-slider-viewport>',
+	after: '
+				</div>
+			</div>
+		</div>',
+	helper: '{{
+		{CategoryProducts(
+			filters: 'navigable|has_images',
+			limit: '1',
+			subcategories: 'true',
+			helper: '{{
+				<article class="CategorySliderItem">
+					<a class="CategorySliderLink" href="{CategoryUrl}">
+						<div class="AspectRatio">
+							<img	srcset="{ProductImageUrl(imagesize: 'ListMobile')} 300w,
+														{ProductImageUrl(imagesize: 'ListDesktop')} 600w"
+										sizes="(max-width: 600px) 300px,
+														600px"
+										src="{ProductImageUrl(imagesize: 'ListDesktop')}"
+										height="300"
+										width="300"
+										loading="lazy"
+										alt="">
+						</div>
+						<div class="CategorySliderText">{CategoryName}</div>
+					</a>
+				</article>
+			}}'
+		)}
+	}}'
+)}

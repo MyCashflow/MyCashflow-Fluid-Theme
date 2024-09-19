@@ -50,9 +50,10 @@
 						<div class="ProductLayoutSection">
 							<div class="Section">
 								<h1 class="Title">{PageTitle}</h1>
-								{BundlePrices(
+								{Helper(
 									before: '<div class="ProductCardPrices">',
-									after: '</div>'
+									after: '</div>',
+									file: 'helpers/product-bundle-prices'
 								)}
 								{BundleAvailability}
 								{BundleBuy(
@@ -66,7 +67,7 @@
 									{BundleShortDesc(
 										before:'
 											<details class="Accordion" open>
-												<summary><h3>{%ProductShortDesc}</h3></summary>',
+												<summary><h3>{%ProductDescription}</h3></summary>',
 										after: '
 											</details>'
 									)}
