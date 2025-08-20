@@ -55,20 +55,6 @@
 }
 
 /*------------------------------------------------------------------------------*/
-/* Banner Text FOUC
-/*------------------------------------------------------------------------------*/
-
-.JS .FeaturedBanner .BannerText:not(.LightnessLoaded) > *,
-.JS .MainBanner .BannerText:not(.LightnessLoaded) > * {
-	color: transparent;
-}
-
-.JS .MainBanner .BannerText:not(.LightnessLoaded),
-.JS .FeaturedBanner .BannerText:not(.LightnessLoaded) {
-	opacity: 0;
-}
-
-/*------------------------------------------------------------------------------*/
 /* Banner Button
 /*------------------------------------------------------------------------------*/
 

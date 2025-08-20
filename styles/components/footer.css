@@ -53,11 +53,18 @@
 }
 
 .FooterNavigation  ul a {
+	display: inline-block;
+	margin-bottom: .5rem;
 	text-decoration: none;
 }
 
 .FooterNavigation .Current > a {
 	font-weight: bold;
+}
+
+#ContactInformation a {
+	display: inline-block;
+	margin-bottom: .5rem;
 }
 
 /*------------------------------------------------------------------------------*/

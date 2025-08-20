@@ -12,17 +12,25 @@
 						{NewsImageUrl(
 							imagesize: 'BannerWideMobile',
 							before: '
-								<div class="NewsImage">
-									<div class="AspectRatio">
-										<img	srcset="{NewsImageUrl(imagesize: 'BannerWideMobile')} 600w,
-																	{NewsImageUrl(imagesize: 'BannerWideDesktop')} 2000w"
-													sizes="(max-width: 600px) 600px,
-																	2000px"
-													src="',
+								<figure class="NewsImage">
+									<img	srcset="{NewsImageUrl(imagesize: 'BannerWideMobile')} 600w,
+																{NewsImageUrl(imagesize: 'BannerWideDesktop')} 2000w"
+												sizes="(max-width: 600px) 600px,
+																2000px"
+												src="',
 							after: '"
-								loading="lazy">
-									</div>
-								</div>'
+												alt="{NewsImageCaption(fallback: 'true')}"
+												loading="lazy">
+									{NewsLink(
+										before: '<a class="NewsImageLink" href="',
+										after: '" aria-label="{%BrowseMore}"></a>'
+									)}
+									{NewsImageCaption(
+										fallback: 'false',
+										before: '<figcaption class="NewsImageCaption">',
+										after: '</figcaption>'
+									)}
+								</figure>'
 						)}
 						<h1 class="Title">{PageTitle}</h1>
 						{NewsOverview(

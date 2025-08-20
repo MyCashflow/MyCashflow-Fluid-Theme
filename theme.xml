@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Theme>
-	<Version>20240919</Version>
+	<Version>20250626</Version>
 	<ImageSizes>
 		<Mini width="120" height="120" />
 		<Normal width="800" height="800" />
@@ -58,9 +58,11 @@
 				<Option value="Normal" label="checkout_badge_mode_normal" />
 				<Option value="SingleColor" label="checkout_badge_mode_single_color" />
 			</Setting>
+			<Setting type="boolean" name="show_badge_paytrail" label="show_badge_paytrail" default="false"></Setting>
 			<Setting type="boolean" name="show_badge_paytrail_banks" label="show_badge_paytrail_banks" default="false"></Setting>
 			<Setting type="boolean" name="show_badge_mobilepay" label="show_badge_mobilepay" default="false"></Setting>
 			<Setting type="boolean" name="show_badge_apple_pay" label="show_badge_apple_pay" default="false"></Setting>
+			<Setting type="boolean" name="show_badge_google_pay" label="show_badge_google_pay" default="false"></Setting>
 			<Setting type="boolean" name="show_badge_visa" label="show_badge_visa" default="false"></Setting>
 			<Setting type="boolean" name="show_badge_mastercard" label="show_badge_mastercard" default="false"></Setting>
 			<Setting type="boolean" name="show_badge_amex" label="show_badge_amex" default="false"></Setting>

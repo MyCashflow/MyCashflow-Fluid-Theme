@@ -4,7 +4,6 @@
 
 .HeaderDesktop .SimpleSearchForm {
 	max-width: 400px;
-	min-width: 300px;
 }
 
 .HeaderDesktop .SimpleSearchForm form,
@@ -16,6 +15,7 @@
 .SimpleSearchForm .FormItem {
 	align-items: center;
 	display: flex;
+	justify-content: flex-end;
 	position: relative;
 }
 
@@ -37,8 +37,10 @@
 	background-color: var(--color-white);
 	color: var(--color-text-dark);
 	flex: 1;
+	min-width: 200px;
 	padding-left: 1.5rem;
 	padding-right: 6rem;
+	width: 100%;
 }
 
 .SimpleSearchForm button {
@@ -67,7 +69,8 @@
 /*------------------------------------------------------------------------------*/
 
 .SiteColumnsHeader .SimpleSearchForm {
-	max-width: 600px;
+	max-width: 500px;
+	width: 100%;
 }
 
 .SiteColumnsHeader .SimpleSearchForm input[type="search"],

@@ -14,6 +14,7 @@
 	scroll-padding-right: var(--container-page-margin);
 	scroll-snap-type: none;
 	scrollbar-width: none;
+	padding-block: 4px;
 }
 
 .CategorySlider::-webkit-scrollbar {
@@ -23,7 +24,6 @@
 .CategorySliderItem {
 	background-color: var(--background-color-shade-1);
 	border-radius: var(--border-radius-images);
-	overflow: hidden;
 	scroll-snap-align: center;
 }
 
@@ -31,13 +31,20 @@
 	text-decoration: none;
 }
 
-.CategorySliderLink .AspectRatio {
-	--aspect-ratio: calc(var(--product-image-ratio) * 100%);
-	background-color: var(--image-background-color);
+.CategorySliderLink {
+	border-radius: var(--border-radius-images);
+	display: block;
 }
 
-.CategorySliderLink .AspectRatio img {
+.CategorySliderImage {
+	aspect-ratio: 1 / var(--product-image-ratio, 1);
+	background-color: var(--image-background-color);
 	border-radius: var(--border-radius-images) var(--border-radius-images) 0 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+.CategorySliderImage img {
 	object-fit: contain;
 	height: auto;
 	width: 100%;
@@ -47,9 +54,11 @@
 	align-items: center;
 	color: var(--color-text);
 	display: flex;
+	font-size: var(--font-size-regular);
 	font-weight: bold;
 	height: 5rem;
 	justify-content: center;
+	margin: 0;
 }
 
 @media screen and (max-width: 480px) {
@@ -62,7 +71,7 @@
 /* Light Mode
 /*------------------------------------------------------------------------------*/
 
-:root:not([data-color-contrast="white"]) .CategorySliderLink .AspectRatio {
+:root:not([data-color-contrast="white"]) .CategorySliderLink .CategorySliderImage {
 	background-color: var(--background-color-shade-1);
 }
 

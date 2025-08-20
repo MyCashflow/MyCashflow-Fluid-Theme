@@ -35,7 +35,7 @@
 .LoaderSpinner::before {
 	animation: fa-spin 1s linear infinite;
 	font-family: var(--fa-style-family);
-	content: "\f110";
+	content: "\e1d4";
 	color: var(--color-text);
 	display: block;
 	font-size: 3.4rem;

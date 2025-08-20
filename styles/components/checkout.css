@@ -146,7 +146,7 @@
 }
 
 .ShowCartTotal::before {
-	content: attr(data-cart-total);
+	content: attr(data-cart-open-total);
 }
 
 @media screen and (max-width: 1140px) {
