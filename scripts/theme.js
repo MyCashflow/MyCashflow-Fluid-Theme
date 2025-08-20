@@ -18,7 +18,10 @@
 		checkQuery: function () {
 			const querystring = window.location.search;
 			if (querystring) {
-				$('body').addClass('QuerySearch');
+				const urlParams = new URLSearchParams(querystring);
+				if (urlParams.has('search') || urlParams.has('per_page')) {
+					$('body').addClass('QuerySearch');
+				}
 			}
 		},
 
