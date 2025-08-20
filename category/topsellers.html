@@ -1,5 +1,5 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
@@ -7,7 +7,7 @@
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
 			<div class="CategoryLayout">
-				<main class="CategoryMain">
+				<main class="CategoryMain" id="main-content">
 					<header class="CategoryHeader">
 						{Helper(file: 'helpers/category/category-image-main-contained')}
 						<h1 class="Title">{%MostPopularProducts}</h1>

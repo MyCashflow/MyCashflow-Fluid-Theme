@@ -1,5 +1,5 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
@@ -7,7 +7,7 @@
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
 			<div class="ContainerMaxWidth Flex FlexAlign-Center">
-				<main class="SiteMain">
+				<main class="SiteMain" id="main-content">
 					<h1 class="Title">{%PageNotFound}</h1>
 					<div class="PageContent">
 						<p class="Notification">{%PageNotFoundInfo}</p>

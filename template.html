@@ -1,5 +1,5 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
@@ -7,7 +7,7 @@
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
 			<div class="ContainerMaxWidth">
-				<main class="SiteMain">
+				<main class="SiteMain" id="main-content">
 					{Content}
 				</main>
 			</div>

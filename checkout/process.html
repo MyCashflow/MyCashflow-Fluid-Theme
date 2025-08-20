@@ -1,5 +1,5 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 		{Helper(file: 'checkout/helpers/styles')}
@@ -7,7 +7,7 @@
 	<body class="{BodyClass} CheckoutProcessPage">
 		{Extensions(for: 'body')}
 		{Helper(file: 'checkout/helpers/header')}
-		<main class="SiteBody Container">
+		<main class="SiteBody Container" id="main-content">
 			<div class="ContainerMaxWidth">
 				<div class="ProcessPageLayout">
 					{Content}

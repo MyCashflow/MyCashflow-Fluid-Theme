@@ -1,5 +1,5 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 		{Helper(file: 'checkout/helpers/styles')}
@@ -34,7 +34,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="CheckoutMain">
+					<div class="CheckoutMain" id="main-content">
 						{Notifications(
 							before: '<div class="Notifications">',
 							after: '</div>'

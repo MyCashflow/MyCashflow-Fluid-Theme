@@ -1,5 +1,5 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
@@ -16,7 +16,7 @@
 		</header>
 		<div class="SiteBody Container">
 			<div class="RestrictedLayout">
-				<main class="SiteMain">
+				<main class="SiteMain" id="main-content">
 					{Content}
 				</main>
 				<div class="FooterCopyright">
