@@ -1,31 +1,27 @@
-<article class="ListProduct ListProduct-CardImageBackground {ProductClass}">
-	<a class="ListProductImage" href="{ProductURL}" {ProductLinkData}>
-		<div class="AspectRatio">
-			<img	srcset="{ProductImageUrl(imagesize: 'ListMobile')} 300w,
-										{ProductImageUrl(imagesize: 'ListDesktop')} 600w"
-						sizes="(max-width: 600px) 300px,
-										600px"
-						src="{ProductImageUrl(imagesize: 'ListDesktop')}"
-						height="300"
-						width="300"
-						loading="lazy"
-						alt="{ProductName}">
-		</div>
-		{ProductDiscountPercent(
-			before: '
-				<div class="ListProductDiscount">
-					<span class="ListProductDiscountLabel">{%Discount}</span> <span class="ListProductDiscountPercent">',
-			after: '
-					&#37;</span>
-				</div>'
+<li class="ListProduct {ProductClass} ListProduct-{Setting(name: 'list_product_style')}" aria-label="{ProductName}, {ProductPrice(html: 'false', currencysymbol: 'true')}, {ProductAvailability(html: 'false')}">
+	<div class="ListProductImage">
+		<a href="{ProductURL}" class="ListProductImageLink" {ProductLinkData}>
+		<img	srcset="{ProductImageUrl(imagesize: 'ListMobile')} 300w,
+									{ProductImageUrl(imagesize: 'ListDesktop')} 600w"
+					sizes="(max-width: 600px) 300px,
+									600px"
+					src="{ProductImageUrl(imagesize: 'ListDesktop')}"
+					height="300"
+					width="300"
+					loading="lazy"
+					alt="{ProductName}">
+		</a>
+		{Helper(
+			before: '<div class="ListProductDiscount" aria-hidden="true">',
+			after: '</div>',
+			file: 'helpers/product-discount'
 		)}
 		{Helper(
 			before: '<div class="ListProductBadges">',
 			after: '</div>',
 			file: 'helpers/product-badges'
 		)}
-		{Helper(file: 'helpers/wishlist/product-wishlist')}
-	</a>
+	</div>
 	<div class="ListProductInfo">
 		{ProductBrandName(
 			before: '
@@ -37,8 +33,8 @@
 		)}
 		{ProductName(
 			before: '
-				<h3 class="ListProductName">
-					<a href="{ProductURL}" {ProductLinkData}>',
+				<h3 class="ListProductName" aria-hidden="true">
+					<a href="{ProductURL}" {ProductLinkData} tabindex="-1">',
 			after: '
 					</a>
 				</h3>'
@@ -54,5 +50,7 @@
 				or: '<a href="{ProductUrl}" class="Button AddToCart ProductAvailabilityButton">{ProductAvailability(html: 'false')}</a>'
 			)}
 		</div>
+		{Helper(file: 'helpers/wishlist/product-wishlist')}
+		{Helper(file: 'settings/show-listproduct-availability')}
 	</div>
-</article>
+</li>

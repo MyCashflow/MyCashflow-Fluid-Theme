@@ -24,13 +24,10 @@
 									after: '
 											</div>
 											<p class="ProductImageCaption" data-image-caption>{ProductImageCaption(html: 'false')}</p>
-											{ProductDiscountPercent(
-												before: '
-													<div class="ProductPageDiscount">
-														<span class="ProductDiscountLabel">{%Discount}</span> <span class="ProductDiscountPercent">',
-												after: '
-														&#37;</span>
-													</div>'
+											{Helper(
+												before: '<div class="ProductPageDiscount" aria-hidden="true">',
+												after: '</div>',
+												file: 'helpers/product-discount'
 											)}
 										</div>',
 									helper: '{{
