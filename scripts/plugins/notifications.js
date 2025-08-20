@@ -7,10 +7,16 @@
 	'use strict';
 
 	function Notification(type, html) {
+		$('.NotificationCenter').removeAttr('aria-hidden');
 		this.$elem = $('<div class="Notification"/>')
 			.data('notification', this)
 			.html(html)
 			.addClass(type)
+			.attr({
+				role: 'status',
+				'aria-live': 'polite',
+				'aria-atomic': 'true'
+			})
 		if (!$('.NotificationCenter > .' + type + 'Group').length) {
 			$('<div />')
 				.addClass(type + 'Group')
@@ -26,6 +32,9 @@
 		$this.addClass('AnimOut');
 		setTimeout(function() {
 			$this.remove();
+			if (!$('.NotificationCenter .Notification').length) {
+				$('.NotificationCenter').attr('aria-hidden', true);
+			}
 		}, 300);
 	};
 
@@ -37,7 +46,7 @@
 			$.extend(true, this, config);
 			var $notificationCenters = $('.NotificationCenter');
 			if (!$notificationCenters.length) {
-				$('<div class="NotificationCenter"/>').appendTo(document.body);
+				$('<div class="NotificationCenter" aria-hidden="true"/>').appendTo(document.body);
 			}
 		},
 

@@ -47,10 +47,10 @@
 			const slideObserver = new IntersectionObserver((entries, observer) => {
 				entries.forEach(entry => {
 					if (entry.isIntersecting) {
-							$(entry.target).addClass(this.activeClass).removeAttr('aria-hidden');
+							$(entry.target).addClass(this.activeClass).attr('aria-current', true);
 							this.refresh($(entry.target).closest(this.slider));
 					} else {
-						$(entry.target).removeClass(this.activeClass).attr('aria-hidden', 'true');
+						$(entry.target).removeClass(this.activeClass).attr('aria-current', false);
 					}
 				});
 			}, { threshold: .1 });

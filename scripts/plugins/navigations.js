@@ -12,6 +12,9 @@
 		showAll: false,
 		addActive: false,
 
+		navigationCollapse: window.MCF.dictionary.NavigationCollapse || 'Supista alavalikko',
+		navigationExpand: window.MCF.dictionary.NavigationExpand || 'Laajenna alavalikko',
+
 		init: function () {
 			if (this.addActive) {
 				this.addActiveClasses($(this.navigations));
@@ -25,9 +28,9 @@
 		},
 
 		bindEvents: function () {
-			$(document).on('click', '.NavigationExpander:not([tabindex="-1"])', this.expand);
-			$(document).on('click', '.ToggleOpen', this.onToggleCategory);
-			$(document).on('click', '[data-subnavigation-loader] .NavigationExpander', $.proxy(this.onExpanderClick, this));
+			$(document).on('click', '.NavigationExpander:not([tabindex="-1"])', $.proxy(this.handleClick, this));
+			$(document).on('keydown', '.NavigationExpander:not([tabindex="-1"])', $.proxy(this.handleKeydown, this));
+			$(document).on('click', '.ToggleOpen', $.proxy(this.onToggleCategory, this));
 		},
 
 		addExpanders: function (navSelectors) {
@@ -37,19 +40,47 @@
 		},
 
 		addExpander: function ($navItem) {
-			var toggleHtml = '<button class="NavigationExpander" tabindex="0"></button>';
+			var toggleHtml = '<span class="NavigationExpander" role="button" aria-expanded="false" tabindex="0" aria-label="' + this.navigationExpand + '"></span>';
 			$navItem.append(toggleHtml);
 		},
 
-		expand: function (evt) {
+		toggleExpanderState: function($expander) {
+			$expander.add($expander.closest('[class*="HasSub"]')).toggleClass('Open');
+			var isExpanded = $expander.hasClass('Open');
+			$expander.attr('aria-expanded', isExpanded);
+			$expander.attr('aria-label', isExpanded ? MCF.Navigations.navigationCollapse : MCF.Navigations.navigationExpand);
+			return isExpanded;
+		},
+
+		handleKeydown: function(evt) {
+			if (evt.which === 13 || evt.which === 32) {
+				evt.preventDefault();
+				var $expander = $(evt.target);
+				var $link = $expander.closest('a');
+				this.toggleExpanderState($expander);
+
+				if ($link.closest('[data-subnavigation-loader]').length &&
+					!$link.next('ul').length) {
+					this.loadSubCategories($link);
+				}
+			}
+		},
+
+		handleClick: function (evt) {
 			evt.preventDefault();
 			var $expander = $(evt.target);
-			$expander.add($expander.closest('[class*="HasSub"]')).toggleClass('Open');
+			var $link = $expander.closest('a');
+			this.toggleExpanderState($expander);
+
+			if ($link.closest('[data-subnavigation-loader]').length &&
+				!$link.next('ul').length) {
+				this.loadSubCategories($link);
+			}
 		},
 
 		expandCurrent: function (navSelectors) {
 			var $navItems = $('.Current[class*="HasSub"]', navSelectors);
-			$navItems.add($navItems.find('> a > .NavigationExpander')).addClass('Open');
+			this.toggleExpanderState($navItems.find('> a > .NavigationExpander'));
 		},
 
 		addShowAll: function (navSelectors) {
@@ -73,7 +104,7 @@
 		onToggleCategory: function (evt) {
 			evt.preventDefault();
 			var $expander = $(evt.target).closest('[class*="HasSub"]');
-			$expander.toggleClass('Open').find('> a > .NavigationExpander').toggleClass('Open');
+			this.toggleExpanderState($expander.find('> a > .NavigationExpander'));
 		},
 
 		addActiveClasses: function ($navigation) {
@@ -107,14 +138,6 @@
 				}
 			});
 			return [currentId, type];
-		},
-
-		onExpanderClick: function (evt) {
-			var $categoryLink = $(evt.currentTarget).closest('a');
-			if ($categoryLink.next('ul').length) {
-				return false;
-			}
-			this.loadSubCategories($categoryLink);
 		},
 
 		loadSubCategories: function ($categoryLink) {

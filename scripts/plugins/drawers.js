@@ -81,7 +81,7 @@
 			this.$overlay.addClass('Visible');
 			this.preventScroll(true);
 			this.$container.attr('data-drawer-open', $drawer.attr('data-drawer-side'));
-			this.$current.addClass('Open').siblings().removeClass('Open');
+			this.$current.addClass('Open').attr('aria-hidden', false).siblings().removeClass('Open').attr('aria-hidden', true);
 			var loaded = this.getContent($drawer.data('drawer'));
 			this.afterOpen($drawer);
 			if (loaded === false) {
@@ -117,7 +117,7 @@
 			}
 			this.$overlay.removeClass('Visible');
 			this.$container.removeAttr('data-drawer-open');
-			this.$current.removeClass('Open');
+			this.$current.removeClass('Open').attr('aria-hidden', true);
 			this.$current = null;
 			this.preventScroll(false);
 			this.clearReferer();
@@ -164,7 +164,7 @@
 		},
 
 		clearReferer: function () {
-			if (!this.$referer === null) {
+			if (this.$referer && $.contains(document, this.$referer[0])) {
 				if (!this.$referer.parents('.Drawer').length) {
 					this.$referer.focus();
 				}
