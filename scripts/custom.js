@@ -244,6 +244,12 @@ $(document).ready(function () {
 				initLayout: (fancybox) => {
 					// Do something with $(fancybox.container)
 				},
+				done: (fancybox, slide) => {
+					const $form = $(fancybox.container).find('.RecaptchaForm');
+					if ($form.length) {
+						onRecaptchaLoadCallback();
+					} 
+				}
 			}
 		}
 	});
