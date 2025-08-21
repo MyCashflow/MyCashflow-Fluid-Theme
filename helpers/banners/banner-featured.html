@@ -11,7 +11,7 @@
 		</section>',
 	helper: '{{
 		<li>
-			<div class="FeaturedBanner ImageGradient-{Setting(name: 'show_banner_gradient')}" role="banner" aria-labelledby="banner-title-{BannerId}">
+			<div class="FeaturedBanner ImageGradient-1 TextButtons-1" role="banner" aria-labelledby="banner-title-{BannerId}">
 				<img	srcset="{BannerImageUrl(width: '400')} 400w,
 											{BannerImageUrl(width: '800')} 800w"
 							sizes="(max-width: 400px) 400px,
@@ -24,7 +24,7 @@
 					before: '<a class="BannerCoverLink" href="',
 					after: '" {BannerLinkData} aria-label="{BannerName}"></a>'
 				)}
-				<div class="BannerText TextButtons-{Setting(name: 'banner_link_to_button')}">
+				<div class="BannerText TextButtons-1">
 					{BannerName(
 						before: '<h2 class="Title" id="banner-title-{BannerId}">',
 						after: '</h2>'
