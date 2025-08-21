@@ -1,6 +1,6 @@
 
-<a href="#" class="IconButton" data-drawer-toggle="wishlist" aria-label="{%Wishlist}">
-	<span class="fa fa-heart"></span>
+<a href="#" class="IconButton" data-drawer-toggle="wishlist" aria-label="{%Wishlist}, {WishlistProductCount(or: '0')} {%Products}">
+	<span class="fa fa-heart" aria-hidden="true"></span>
 	{Helper(
 		case: 'CustomerLogged',
 		file: '{{

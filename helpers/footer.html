@@ -4,10 +4,11 @@
 	helper: 'helpers/banners/banner-newsletter',
 	or: '{Helper(file: 'helpers/banners/banner-newsletter')}'
 )}
-<footer class="SiteFooter Container Theme-Footer">
+<footer class="SiteFooter Container Theme-Footer" role="contentinfo" aria-labelledby="footer-heading">
 	<div class="ContainerMaxWidth">
+		<h2 id="footer-heading" class="Hide-Visually">{%FooterHeading}</h2>
 		<div class="FooterDesktop">
-			<section class="FooterItems">
+			<div class="FooterItems">
 				<div class="FooterItem FooterItem-Logo">
 					<div class="FooterLogo">
 						{Banners(
@@ -20,31 +21,35 @@
 					</div>
 					{Banners(
 						name: 'social-media-buttons',
-						before: '<div class="ExternalLinks ExternalLinks-Desktop">',
-						after: '</div>',
+						before: '
+							<nav aria-label="{%SocialMediaLinks}">
+								<ul class="ExternalLinks ExternalLinks-Desktop">',
+						after: '
+								</ul>
+							</nav>',
 						helper: 'helpers/external-link-icon'
 					)}
 				</div>
 				<div class="FooterItem FooterItem-Contact">
-					<div class="FooterItem">
-						<h2 class="FooterTitle">{%ContactUs}</h2>
+					<section class="FooterItem">
+						<h3 class="FooterTitle">{%ContactUs}</h3>
 						{BannerText(
 							name: 'contact-information',
 							or: '{ContactInformation}'
 						)}
-					</div>
+					</section>
 				</div>
 				{InfoNavigation(
 					levels: '1',
 					before: '
-						<div class="FooterItem FooterItem-Navigation">
-							<h2 class="FooterTitle">{%AboutUs}</h2>
+						<section class="FooterItem FooterItem-Navigation">
+							<h3 class="FooterTitle">{%AboutUs}</h3>
 							<nav class="FooterNavigation">',
 					after: '
 							</nav>
-						</div>'
+						</section>'
 				)}
-			</section>
+			</div>
 		</div>
 		<div class="FooterMobile">
 			<div class="FooterLogo FooterMobileLogo">
@@ -58,12 +63,16 @@
 			</div>
 			{Banners(
 				name: 'social-media-buttons',
-				before: '<div class="ExternalLinks ExternalLinks-Mobile">',
-				after: '</div>',
+				before: '
+					<nav aria-label="{%SocialMediaLinks}">
+						<ul class="ExternalLinks ExternalLinks-Mobile">',
+				after: '
+						</ul>
+					</nav>',
 				helper: 'helpers/external-link-icon'
 			)}
 			<details class="Accordion">
-				<summary><h2>{%ContactUs}</h2></summary>
+				<summary><h3>{%ContactUs}</h3></summary>
 				{BannerText(
 					name: 'contact-information',
 					or: '{ContactInformation}'
@@ -73,7 +82,7 @@
 				levels: '1',
 				before:'
 					<details class="Accordion">
-						<summary><h2>{%AboutUs}</h2></summary>
+						<summary><h3>{%AboutUs}</h3></summary>
 						<nav class="FooterMobileNavigation">',
 				after: '
 						</nav>
@@ -83,7 +92,7 @@
 		<section class="FooterBottom">
 			<p><span class="Copyright">Copyright &copy; {ShopName}</span> {MyCashflowTextAd(before: '<br><span class="MyCashflowTextAd">', after: '</span>')}</p>
 			<section class="FooterBadges">
-				<h2 class="FooterTitle">{%PaymentAndShipping}</h2>
+				<h3 class="FooterTitle">{%PaymentAndShipping}</h3>
 				<ul class="CheckoutBadges CheckoutBadges-{Setting(name: 'checkout_badge_mode')}">
 					{Helper(file: 'helpers/checkout-badges-payment')}
 					{Helper(file: 'helpers/checkout-badges-shipping')}

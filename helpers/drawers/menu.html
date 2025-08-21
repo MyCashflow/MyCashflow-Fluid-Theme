@@ -1,18 +1,20 @@
 <div class="DrawerContent">
 	<header class="DrawerHeader">
-		<h3 class="Title">{%Navigation}</h3>
+		<h2 class="Title">{%Navigation}</h2>
 		<button class="DrawerBackButton" data-drawer-previous hidden aria-label="{%Back}"><span class="fa fa-arrow-left"></span></button>
 		<button class="DrawerCloseButton" data-drawer-close aria-label="{%Close}"><span class="fa fa-2x fa-times"></span></button>
 	</header>
-	{Categories(
-		show: 'all',
-		before: '<div class="DrawerNavigation" data-navigation-expandable>',
-		after: '</div>'
-	)}
-	{Campaigns(
-		before: '<div class="DrawerNavigation">',
-		after: '</div>'
-	)}
+	<nav aria-label="{%MainNavigation}">
+		{Categories(
+			show: 'all',
+			before: '<div class="DrawerNavigation" data-navigation-expandable>',
+			after: '</div>'
+		)}
+		{Campaigns(
+			before: '<div class="DrawerNavigation">',
+			after: '</div>'
+		)}
+	</nav>
 	<div class="Flex FlexDirection-Column FlexGap FlexValign-Center PaddingInline PaddingTop">
 		{Helper(
 			case: 'CustomerLogged',

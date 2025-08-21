@@ -4,7 +4,7 @@
 	before: '
 		<dl class="Prices">
 			<dt class="Price CurrentPrice">{%Price}</dt>
-			<dd class="Price CurrentPrice">
+			<dd class="Price CurrentPrice" translate="no">
 				<strong>',
 	after: '
 				</strong>
@@ -13,7 +13,7 @@
 				currencysymbol: 'true',
 				before: '
 					<dt class="Price ListPrice">{%OldPrice}</dt>
-					<dd class="Price ListPrice">',
+					<dd class="Price ListPrice" translate="no">',
 				after: '</dd>'
 			)}
 			{Helper(

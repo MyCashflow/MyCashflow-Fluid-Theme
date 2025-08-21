@@ -1,0 +1,19 @@
+<ul class="Categories NavigationList" data-navigation-hover-kb-support>
+	{Categories(
+		show: 'active',
+		helper: '{{
+			<li class="{CategoryClass}">
+				<a href="{CategoryUrl}">{CategoryName}</a>
+				{Categories(
+					show: 'all',
+					parent: '{CategoryId}'
+				)}
+			</li>
+		}}'
+	)}
+	{Campaigns(
+		helper: '{{
+			<li class="CampaignID-{CampaignId}"><a href="{CampaignUrl}">{CampaignName}</a></li>
+		}}'
+	)}
+</ul>

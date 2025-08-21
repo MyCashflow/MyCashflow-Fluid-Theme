@@ -2,33 +2,38 @@
 	name: 'frontpage-main',
 	limit: '4',
 	before: '
-		<div class="Slider SliderButtons-Inside" data-slider data-autoplay="{Setting(name: 'homepage_mainbanner_autoplay')}">
+		<section class="Slider SliderButtons-Inside" data-slider data-autoplay="{Setting(name: 'homepage_mainbanner_autoplay')}" role="region" aria-label="{%BannerCarousel}">
 			{Helper(file: 'helpers/slider-buttons')}
-			<div class="MainBanners" data-slider-viewport>',
+			<a href="#after-mainbanners" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+			<ul class="MainBanners" data-slider-viewport>',
 	after: '
-			</div>
-			<div class="SliderPosition" data-slider-position></div>
-		</div>',
+			</ul>
+			<div class="SliderPosition" aria-hidden="true" data-slider-position></div>
+			<div id="after-mainbanners" tabindex="-1"></div>
+		</section>',
 	helper: '{{
-		<article class="MainBanner AspectRatio">
-			<img	srcset="{BannerImageUrl(imagesize: 'BannerWideMobile')} 600w,
-										{BannerImageUrl(imagesize: 'BannerWideDesktop')} 1600w"
-						sizes="(max-width: 600px) 600px,
-										1600px"
-						src="{BannerImageUrl(imagesize: 'BannerWideDesktop')}"
-						alt="{BannerName}"
-						class="MainBannerImage">
-			{BannerUrl(
-				before: '<a class="BannerCoverLink" href="',
-				after: '" {BannerLinkData}></a>'
-			)}
-			<div class="BannerText Text-Center">
-				{BannerName(
-					before: '<h2 class="Title">',
-					after: '</h2>'
+		<li>
+			<div class="MainBanner ImageGradient-{Setting(name: 'show_banner_gradient')}" role="banner" aria-labelledby="banner-title-{BannerId}">
+				<img	srcset="{BannerImageUrl(imagesize: 'BannerWideMobile')} 600w,
+											{BannerImageUrl(imagesize: 'BannerWideDesktop')} 1600w"
+							sizes="(max-width: 600px) 600px,
+											1600px"
+							src="{BannerImageUrl(imagesize: 'BannerWideDesktop')}"
+							alt="{BannerName}"
+							class="MainBannerImage"
+							aria-hidden="true">
+				{BannerUrl(
+					before: '<a class="BannerCoverLink" href="',
+					after: '" {BannerLinkData} aria-label="{BannerName}"></a>'
 				)}
-				{BannerText}
+				<div class="BannerText Text-Center TextButtons-{Setting(name: 'banner_link_to_button')}">
+					{BannerName(
+						before: '<h2 class="Title" id="banner-title-{BannerId}">',
+						after: '</h2>'
+					)}
+					{BannerText}
+				</div>
 			</div>
-		</article>
+		</li>
 	}}'
 )}
