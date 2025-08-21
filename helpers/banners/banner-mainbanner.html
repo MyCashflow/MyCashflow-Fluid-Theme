@@ -2,7 +2,7 @@
 	name: 'frontpage-main',
 	limit: '4',
 	before: '
-		<section class="Slider SliderButtons-Inside" data-slider data-autoplay="false" role="region" aria-label="{%BannerCarousel}">
+		<section class="Slider SliderButtons-Inside" data-slider data-autoplay="{Setting(name: 'homepage_mainbanner_autoplay')}" role="region" aria-label="{%BannerCarousel}">
 			{Helper(file: 'helpers/slider-buttons')}
 			<a href="#after-mainbanners" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
 			<ul class="MainBanners" data-slider-viewport>',
