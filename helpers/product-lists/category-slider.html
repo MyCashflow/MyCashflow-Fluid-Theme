@@ -1,8 +1,9 @@
 {FeaturedCategories(
 	before: '
-		<div class="Section">
+		<section class="Section" aria-labelledby="featured-categories">
 			<header class="SectionHeader">
-				<h2 class="SectionHeaderTitle Subtitle">{Text(code: 'FeaturedCategories', or: '{%BrowseCategories}')}</h2>
+				<h2 class="SectionHeaderTitle Subtitle" id="featured-categories">{Text(code: 'FeaturedCategories', or: '{%BrowseCategories}')}</h2>
+				<a href="#after-featured-categories" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
 			</header>
 			<div class="Slider" data-slider>
 				{Helper(file: 'helpers/slider-buttons')}
@@ -10,7 +11,8 @@
 	after: '
 				</div>
 			</div>
-		</div>',
+			<div id="after-featured-categories" tabindex="-1"></div>
+		</section>',
 	helper: '{{
 		{CategoryProducts(
 			filters: 'navigable|has_images',
@@ -19,7 +21,7 @@
 			helper: '{{
 				<article class="CategorySliderItem">
 					<a class="CategorySliderLink" href="{CategoryUrl}">
-						<div class="AspectRatio">
+						<figure class="CategorySliderImage">
 							<img	srcset="{ProductImageUrl(imagesize: 'ListMobile')} 300w,
 														{ProductImageUrl(imagesize: 'ListDesktop')} 600w"
 										sizes="(max-width: 600px) 300px,
@@ -29,8 +31,8 @@
 										width="300"
 										loading="lazy"
 										alt="">
-						</div>
-						<div class="CategorySliderText">{CategoryName}</div>
+						</figure>
+						<h3 class="CategorySliderText">{CategoryName}</h3>
 					</a>
 				</article>
 			}}'
