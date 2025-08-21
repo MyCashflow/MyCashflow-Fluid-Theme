@@ -102,3 +102,14 @@
 		styles/components/utility-bar.css|
 		styles/components/wishlist.css'
 )}
+
+<style type="text/css">
+	:root {
+		--accent-h: {Setting(name: 'primary_color.hue')};
+		--accent-s: {Setting(name: 'primary_color.saturation')};
+		--accent-l: {Setting(name: 'primary_color.lightness')};
+		--color-text-on-accent: {ColorContrast(hex: '{Setting(name: 'primary_color')}', light: 'var(--color-text-light)', dark: 'var(--color-text-dark)')};
+		--notification-bg-color: {Setting(name: 'background_color_notification_bar')};
+		--notification-text-color: {ColorContrast(hex: '{Setting(name: 'background_color_notification_bar')}')};
+	}
+</style>
