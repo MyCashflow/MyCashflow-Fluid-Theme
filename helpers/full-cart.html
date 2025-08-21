@@ -21,25 +21,25 @@
 	after: '
 			</div>
 			{CartSubTotal(
-				before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%Subtotal}:&nbsp;',
-				after: '</span></div>'
+				before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%Subtotal}: <span translate="no">',
+				after: '</span></span></div>'
 			)}
 			{CartShippingCosts(
-				before: '<div class="FullCartSection FullCartTotal">{%CheckoutShipping}: {CartShippingMethod}&nbsp;',
-				after: '</div>'
+				before: '<div class="FullCartSection FullCartTotal">{%CheckoutShipping}: {CartShippingMethod} <span translate="no">',
+				after: '</span></div>'
 			)}
 			{CartPaymentCosts(
-				before: '<div class="FullCartSection FullCartTotal">{%PaymentMethod}: {CartPaymentMethod}&nbsp;',
-				after: '</div>'
+				before: '<div class="FullCartSection FullCartTotal">{%PaymentMethod}: {CartPaymentMethod} <span translate="no">',
+				after: '</span></div>'
 			)}
 			{CartDiscount(
-				before: '<div class="FullCartSection FullCartTotal">{CartDiscountLabel}:&nbsp; -',
-				after: '</div>'
+				before: '<div class="FullCartSection FullCartTotal">{CartDiscountLabel}: <span translate="no"> -',
+				after: '</span></div>'
 			)}
 			{CartGiftCards(
 				after: '{CartOpenTotal(
-					before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%CartOpenTotal}:&nbsp;',
-					after: '</span></div>'
+					before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%CartOpenTotal}: <span translate="no">',
+					after: '</span></span></div>'
 				)}',
 				helper: '{{
 					<div class="FullCartSection FullCartTotal">
@@ -48,8 +48,8 @@
 				}}',
 				or: '
 					{CartTotal(
-						before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%Total}:&nbsp;',
-						after: '</span></div>'
+						before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%Total}: <span translate="no">',
+						after: '</span></span></div>'
 					)}'
 			)}
 			{CartLoyaltyPoints(
@@ -103,7 +103,7 @@
 					after: '</div>'
 				)}
 			</div>
-			<div class="FullCartCol FullCartColPrice">
+			<div class="FullCartCol FullCartColPrice" translate="no">
 				{CartProductComparePrice(
 					before: '
 						<span class="ProductDiscountPrice">{CartProductPrice}</span><br>
@@ -117,7 +117,7 @@
 			<div class="FullCartCol FullCartColQuantity">
 				{CartProductQuantity}
 			</div>
-			<div class="FullCartCol FullCartColPrice">
+			<div class="FullCartCol FullCartColPrice" translate="no">
 				<span class="H4 ProductTotal">{CartProductTotal}</span>
 			</div>
 			<div class="FullCartCol FullCartColRemove">
