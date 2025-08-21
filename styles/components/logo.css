@@ -1,5 +1,22 @@
 /*------------------------------------------------------------------------------*/
-/* Logo Link
+/* Logo Setup
+/*------------------------------------------------------------------------------*/
+
+:root {
+	--logo-max-height: var(--logo-max-height-desktop);
+	--logo-max-width: 240px;
+	--logo-pos: left;
+}
+
+@media screen and (max-width: 600px) {
+	:root {
+		--logo-max-height: var(--logo-max-height-mobile);
+		--logo-max-width: 160px;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Logo Link (link that wraps logo)
 /*------------------------------------------------------------------------------*/
 
 .LogoLink {
@@ -12,105 +29,59 @@
 	justify-content: center;
 	line-height: 1;
 	margin: 0;
+	pointer-events: auto;
 	text-align: center;
 	text-decoration: none;
 	text-transform: var(--font-heading-transform);
 }
 
 .LogoLink img {
+	--logo-width: calc(var(--logo-max-height) / var(--logo-image-ratio-y));
+	aspect-ratio: 1 / var(--logo-image-ratio-y);
+	height: auto;
 	object-fit: contain;
+	object-position: var(--logo-pos);
+	max-width: var(--logo-max-width);
+	max-height: var(--logo-max-height);
+	width: var(--logo-width);
 }
 
 /*------------------------------------------------------------------------------*/
-/* Header Logo
+/* Header Logo (container for LogoLink)
 /*------------------------------------------------------------------------------*/
 
-.HeaderLogo {
+.HeaderLogo,
+.FooterLogo {
 	align-items: center;
 	display: flex;
+	justify-content: flex-start;
+	max-width: var(--logo-max-width);
+	pointer-events: none;
+}
+
+/* SiteLayout Column Logo */
+
+.SideLogo .HeaderLogo {
+	--logo-max-height: 240px;
+	--logo-pos: center;
 	justify-content: center;
-	width: var(--logo-max-width);
-	aspect-ratio: var(--logo-image-ratio);
-}
-
-.HeaderLogo img {
-	max-height: 60px;
-}
-
-.ColumnLayoutSection .HeaderLogo {
-	margin-bottom: 4rem;
 	margin-inline: auto;
-	max-width: min(300px, calc(100% - 5rem));
-	width: auto;
-}
-
-.ColumnLayoutSection .HeaderLogo img {
-	max-height: none;
 }
 
 /*------------------------------------------------------------------------------*/
 /* Footer Logo
 /*------------------------------------------------------------------------------*/
 
-.FooterLogo {
-	aspect-ratio: var(--logo-image-ratio);
-	display: flex;
-	max-width: var(--logo-max-width);
-}
-
-.FooterLogo:not(.FooterMobileLogo) .LogoLink {
+.FooterLogo:not(.FooterMobileLogo) {
 	justify-content: flex-start;
 }
 
 .FooterMobileLogo {
-	aspect-ratio: var(--logo-image-ratio);
-	display: flex;
+	--logo-max-height: var(--logo-max-height-desktop);
+	--logo-max-width: 240px;
+	--logo-pos: center;
 	justify-content: center;
 	margin-inline: auto;
 	margin-bottom: 2rem;
 	text-align: center;
 }
-
-/*------------------------------------------------------------------------------*/
-/* Dark Mode Logo
-/*------------------------------------------------------------------------------*/
-
-.LogoDarkBg {
-	display: none;
-}
-
-/* Theme Level */
-
-.Theme-Dark .Section-Dark .LogoDarkBg,
-.Theme-Dark .Section-Theme .LogoDarkBg {
-	display: flex;
-}
-
-.Theme-Dark .Section-Dark .LogoDarkBg + .LogoLink,
-.Theme-Dark .Section-Theme .LogoDarkBg + .LogoLink {
-	display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-	.Theme-Auto .Section-Dark .LogoDarkBg,
-	.Theme-Auto .Section-Theme .LogoDarkBg {
-		display: flex;
-	}
-	
-	.Theme-Auto .Section-Dark .LogoDarkBg + .LogoLink,
-	.Theme-Auto .Section-Theme .LogoDarkBg + .LogoLink {
-		display: none;
-	}
-}
-
-/* Section Level */
-
-.Section-Dark .LogoDarkBg {
-	display: flex;
-}
-
-.Section-Dark .LogoDarkBg + .LogoLink {
-	display: none;
-}
-
-

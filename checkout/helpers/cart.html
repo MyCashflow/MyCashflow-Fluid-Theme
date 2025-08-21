@@ -1,4 +1,4 @@
-<div data-cart-sub-total="{CartSubTotal}" data-cart-total="{CartTotal}" data-cart-total-items="{CartTotalItems}"></div>
+<div data-cart-sub-total="{CartSubTotal}" data-cart-total-items="{CartTotalItems}" data-cart-open-total="{CartOpenTotal}" style="display: none;"></div>
 {CartProducts(
 	before: '
 		<div class="MiniCartProducts">',
@@ -6,30 +6,30 @@
 		</div>
 		<div class="MiniCartTotals">
 			{CartSubTotal(
-				before: '<div class="MiniCartTotal"><span>{%Subtotal}: </span><span>',
+				before: '<div class="MiniCartTotal"><span>{%Subtotal}: </span><span translate="no">',
 				after: '</span></div>'
 			)}
 			{CartShippingCosts(
-				before: '<div class="MiniCartTotal"><span>{%CheckoutShipping}: {CartShippingMethod} </span><span>',
+				before: '<div class="MiniCartTotal"><span>{%CheckoutShipping}: {CartShippingMethod} </span><span translate="no">',
 				after: '</span></div>'
 			)}
 			{CartPaymentCosts(
-				before: '<div class="MiniCartTotal"><span>{%PaymentMethod}: {CartPaymentMethod} </span><span>',
+				before: '<div class="MiniCartTotal"><span>{%PaymentMethod}: {CartPaymentMethod} </span><span translate="no">',
 				after: '</span></div>'
 			)}
 			{CartDiscount(
-				before: '<div class="MiniCartTotal MiniCartDiscounts"><span>{CartDiscountLabel} </span><span> -',
+				before: '<div class="MiniCartTotal MiniCartDiscounts"><span>{CartDiscountLabel} </span><span translate="no"> -',
 				after: '</span></div>'
 			)}
 			{CartGiftCards(
 				before: '
 					{CartTotal(
-						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span>',
+						before: '<div class="MiniCartTotal"><span>{%Total}: </span><span translate="no">',
 						after: '</span></div>'
 					)}',
 				after: '
 					{CartOpenTotal(
-						before: '<div class="MiniCartTotal HighlightTotal"><span>{%CartOpenTotal}: </span><span>',
+						before: '<div class="MiniCartTotal HighlightTotal"><span>{%CartOpenTotal}: </span><span translate="no">',
 						after: '</span></div>'
 					)}
 					{Helper(
@@ -37,7 +37,7 @@
 						file: '{{
 							{CartOpenTotal(
 								includetax: 'true',
-								before: '<div class="MiniCartTotal"><span>{%CartOpenTotal} ({%VAT} {CartTaxRate}&nbsp;%): </span><span>',
+								before: '<div class="MiniCartTotal"><span>{%CartOpenTotal} ({%VAT} {CartTaxRate}&nbsp;%): </span><span translate="no">',
 								after: '</span></div>'
 							)}
 						}}'
@@ -49,19 +49,19 @@
 				}}',
 				or: '
 					{CartTotal(
-						before: '<div class="MiniCartTotal HighlightTotal"><span>{%Total}: </span><span>',
+						before: '<div class="MiniCartTotal HighlightTotal"><span>{%Total}: </span><span translate="no">',
 						after: '</span></div>'
 					)}
 					{Helper(
 						case: 'VatFreePricing',
 						file: '{{
 							{CartTax(
-								before: '<div class="MiniCartTotal"><span>{%TotalTax}: </span><span>',
+								before: '<div class="MiniCartTotal"><span>{%TotalTax}: </span><span translate="no">',
 								after: '</span></div>'
 							)}
 							{CartTotal(
 								includetax: 'true',
-								before: '<div class="MiniCartTotal"><span>{%Total} ({%VAT} {CartTaxRate}&nbsp;%): </span><span>',
+								before: '<div class="MiniCartTotal"><span>{%Total} ({%VAT} {CartTaxRate}&nbsp;%): </span><span translate="no">',
 								after: '</span></div>'
 							)}
 						}}'
@@ -103,7 +103,7 @@
 							after: '</details>'
 						)}
 					</div>
-					<p class="MiniCartProductPrices" data-product-quantity="{CartProductQuantity(mode: 'preview')}">
+					<p class="MiniCartProductPrices" translate="no" data-product-quantity="{CartProductQuantity(mode: 'preview')}">
 						{CartProductComparePrice(
 							currencysymbol: 'true',
 							before: '

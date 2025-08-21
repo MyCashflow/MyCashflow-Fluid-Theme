@@ -24,6 +24,11 @@
 	margin-left: 1rem;
 	min-height: 0;
 	padding: .2rem 1rem;
+	transition-duration: var(--transition-fast);
+}
+
+.NavigationExpander:hover {
+	background-color: var(--background-color-shade-1);
 }
 
 .NavigationExpander::after {

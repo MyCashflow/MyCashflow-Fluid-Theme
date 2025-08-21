@@ -1,294 +1,285 @@
+/*------------------------------------------------------------------------------*/
+/* Light & Dark Base Variables
+/*------------------------------------------------------------------------------*/
+
 :root {
-	/* Fixed Colors */
+	--hue-light:                            0;
+	--saturation-light:                     0%;
+	--lightness-light:                      100%;
+
+	--hue-dark:                            0;
+	--saturation-dark:                     0%;
+	--lightness-dark:                      12%;
+
+	/* Fixed White & Black */
 
 	--color-white:                  hsl(0, 0%, 100%);
 	--color-white-darker:           hsl(0, 0%, 97%);
 	--color-black:                  hsl(0, 0%, 0%);
 	--color-black-lighter:          hsl(0, 0%, 10%);
 
-	/* Accent Colors */
+	/* Text */
+
+	--color-text-light:               hsl(var(--hue), calc(var(--saturation-light) + 10%), calc(var(--lightness-light) - 5%));
+	--color-text-light-lighter:       hsl(var(--hue), calc(var(--saturation-light) + 10%), var(--lightness-light));
+	--color-text-light-darker:        hsl(var(--hue), calc(var(--saturation-light) + 10%), calc(var(--lightness-light) - 13%));
+
+	--color-text-dark:                hsl(var(--hue), var(--saturation-dark), calc(var(--lightness-dark) - 2%));
+	--color-text-dark-lighter:        hsl(var(--hue), var(--saturation-dark), calc(var(--lightness-dark) + 3%));
+	--color-text-dark-darker:         hsl(var(--hue), var(--saturation-dark), calc(var(--lightness-dark) - 12%));
+
+	/* Background */
+
+	--background-color-light:         hsl(var(--hue-light), var(--saturation-light), var(--lightness-light));
+	--background-color-light-shade-1: hsl(var(--hue-light), var(--saturation-light), calc(var(--lightness-light) - 3%));
+	--background-color-light-shade-2: hsl(var(--hue-light), var(--saturation-light), calc(var(--lightness-light) - 5%));
+
+	--background-color-dark:          hsl(var(--hue-dark), var(--saturation-dark), var(--lightness-dark));
+	--background-color-dark-shade-1:  hsl(var(--hue-dark), var(--saturation-dark), calc(var(--lightness-dark) + 5%));
+	--background-color-dark-shade-2:  hsl(var(--hue-dark), var(--saturation-dark), calc(var(--lightness-dark) + 10%));
+
+	/* Border */
+
+	--border-h-light:                 var(--hue);
+	--border-s-light:                 calc(var(--saturation-light) - 5%);
+	--border-l-light:                 calc(var(--lightness-light) - 10%);
+	--border-l-light-subtle:          calc(var(--lightness-light) - 7%);
+	--border-l-light-strong:          calc(var(--lightness-light) - 15%);
+
+	--border-color-light:             hsl(var(--border-h-light), var(--border-s-light), var(--border-l-light));
+	--border-color-light-subtle:      hsl(var(--border-h-light), var(--border-s-light), var(--border-l-light-subtle));
+	--border-color-light-strong:      hsl(var(--border-h-light), var(--border-s-light), var(--border-l-light-strong));
+
+	--border-h-dark:                  var(--hue);
+	--border-s-dark:                  calc(var(--saturation-dark) - 5%);
+	--border-l-dark:                  calc(var(--lightness-dark) + 20%);
+	--border-l-dark-subtle:           calc(var(--lightness-dark) + 15%);
+	--border-l-dark-strong:           calc(var(--lightness-dark) + 25%);
+
+	--border-color-dark:              hsl(var(--border-h-dark), var(--border-s-dark), var(--border-l-dark));
+	--border-color-dark-subtle:       hsl(var(--border-h-dark), var(--border-s-dark), var(--border-l-dark-subtle));
+	--border-color-dark-strong:       hsl(var(--border-h-dark), var(--border-s-dark), var(--border-l-dark-strong));
+
+	/* Box Shadow */
+
+	--box-shadow-light:               0 1px 1px 0 hsla(var(--hue-light), var(--saturation-light), 0%, .1), 0 1px 2px 0 hsla(var(--hue-light), var(--saturation-light), 0%, .06);
+	--box-shadow-dark:                0 1px 1px 0 hsla(var(--hue-dark), var(--saturation-dark), 0%, .5), 0 1px 2px 0 hsla(var(--hue-dark), var(--saturation-dark), 0%, .36);
+
+	/* Notification Colors */
+
+	--color-notification-light:            hsl(40, 100%, 60%);
+	--color-notification-light-bg:         hsl(40, 100%, 90%);
+	--color-notification-light-success:    hsl(83, 57%, 47%);
+	--color-notification-light-success-bg: hsl(83, 57%, 90%);
+	--color-notification-light-error:      hsl(0, 71%, 53%);
+	--color-notification-light-error-bg:   hsl(0, 71%, 95%);
+
+	--color-notification-dark:             hsl(40, 80%, 90%);
+	--color-notification-dark-bg:          hsl(40, 70%, 70%);
+	--color-notification-dark-success:     hsl(83, 37%, 77%);
+	--color-notification-dark-success-bg:  hsl(83, 27%, 70%);
+	--color-notification-dark-error:       hsl(0, 71%, 73%);
+	--color-notification-dark-error-bg:    hsl(0, 71%, 65%);
+
+	/* Accent Color */
+	/*------------------------------------------------------------------------------*/
 
 	--accent-h:                       145;
 	--accent-s:                       55%;
 	--accent-l:                       32%;
 
 	--color-accent:                   hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	--color-accent-lighter:           hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
-	--color-accent-darker:            hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 5%));
+	--color-accent-lighter:           hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 3%));
+	--color-accent-darker:            hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 3%));
+	--color-text-on-accent:           var(--color-text-light);
 
-	--background-accent-color:               hsl(var(--accent-h), var(--accent-s), 95%);
-	--background-accent-color-shade-1:       hsl(var(--accent-h), var(--accent-s), 90%);
-	--background-accent-color-shade-2:       hsl(var(--accent-h), var(--accent-s), 85%);
+	/* Accent Light Colors */
 
-	--color-text-accent:               hsl(var(--accent-h), var(--accent-s), 30%);
-	--color-text-accent-lighter:       hsl(var(--accent-h), var(--accent-s), 40%);
-	--color-text-accent-darker:        hsl(var(--accent-h), var(--accent-s), 20%);
+	--background-accent-light-color:               hsl(var(--accent-h), var(--accent-s), 95%);
+	--background-accent-light-color-shade-1:       hsl(var(--accent-h), var(--accent-s), 90%);
+	--background-accent-light-color-shade-2:       hsl(var(--accent-h), var(--accent-s), 85%);
 
-	--color-text-on-accent:            hsl(var(--accent-h), 10%, 95%); /* suitable text color on accent surface */
+	--color-text-accent-light:               hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--lightness-light) - 20%));
+	--color-text-accent-light-lighter:       hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--lightness-light) - 10%));
+	--color-text-accent-light-darker:        hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--lightness-light) - 25%));
 
-	/* Notification Colors */
+	/* Accent Dark Colors */
 
-	--color-notification:            hsl(40, 100%, 60%);
-	--color-notification-bg:         hsl(40, 100%, 90%);
-	--color-notification-success:    hsl(83, 57%, 47%);
-	--color-notification-success-bg: hsl(83, 57%, 90%);
-	--color-notification-error:      hsl(0, 71%, 53%);
-	--color-notification-error-bg:   hsl(0, 71%, 95%);
+	--background-accent-dark-color:               hsl(var(--accent-h), calc(var(--accent-s) - 20%), calc(var(--lightness-dark) + 0%));
+	--background-accent-dark-color-shade-1:       hsl(var(--accent-h), calc(var(--accent-s) - 20%), calc(var(--lightness-dark) + 3%));
+	--background-accent-dark-color-shade-2:       hsl(var(--accent-h), calc(var(--accent-s) - 20%), calc(var(--lightness-dark) + 7%));
+
+	--color-text-accent-dark:               hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--lightness-dark) + 20%));
+	--color-text-accent-dark-lighter:       hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--lightness-dark) + 37%));
+	--color-text-accent-dark-darker:        hsl(var(--accent-h), calc(var(--accent-s) - 10%), calc(var(--lightness-dark) + 10%));
 }
 
 /*------------------------------------------------------------------------------*/
-/* Color Variables
+/* Color Abstraction Base Variables (Default is Light Theme)
 /*------------------------------------------------------------------------------*/
 
-:root,
-.Theme-Header,
-.Theme-Footer {
-	--hue:                            0;
-	--saturation:                     0%;
-	--lightness:                      100%;
+:where(:root, .Theme-Light) {
+	--hue:                            var(--hue-light);
+	--saturation:                     var(--saturation-light);
+	--lightness:                      var(--lightness-light);
 
-	--color-text-light:               hsl(var(--hue), 10%, 95%);
-	--color-text-light-lighter:       hsl(var(--hue), 10%, 100%);
-	--color-text-light-darker:        hsl(var(--hue), 10%, 87%);
+	--background-color:               var(--background-color-light);
+	--background-color-shade-1:       var(--background-color-light-shade-1);
+	--background-color-shade-2:       var(--background-color-light-shade-2);
 
-	--color-text-dark:                hsl(var(--hue), 10%, 10%);
-	--color-text-dark-lighter:        hsl(var(--hue), 10%, 15%);
-	--color-text-dark-darker:         hsl(var(--hue), 10%, 0%);
+	--border-h:                       var(--border-h-light);
+	--border-s:                       var(--border-s-light);
+	--border-l:                       var(--border-l-light);
+	--border-l-subtle:                var(--border-l-light-subtle);
+	--border-l-strong:                var(--border-l-light-strong);
 
-	--border-s:                       calc(var(--saturation) - 5%);
-	--border-s-subtle:                calc(var(--saturation) - 5%);
-	--border-s-strong:                calc(var(--saturation) - 5%);
-	--border-l:                       calc(var(--lightness) - 10%);
-	--border-l-subtle:                calc(var(--lightness) - 7%);
-	--border-l-strong:                calc(var(--lightness) - 15%);
+	--border-color:                   hsl(var(--border-h), var(--border-s), var(--border-l));
+	--border-color-subtle:            hsl(var(--border-h), var(--border-s), var(--border-l-subtle));
+	--border-color-strong:            hsl(var(--border-h), var(--border-s), var(--border-l-strong));
 
-	/* Abstraction */
-
-	--background-color:               hsl(var(--hue), var(--saturation), var(--lightness));
-	--background-color-shade-1:       hsl(var(--hue), var(--saturation), calc(var(--lightness) - 3%));
-	--background-color-shade-2:       hsl(var(--hue), var(--saturation), calc(var(--lightness) - 5%));
-
-	--border-color:                   hsl(var(--hue), var(--border-s), var(--border-l));
-	--border-color-subtle:            hsl(var(--hue), var(--border-s-subtle), var(--border-l-subtle));
-	--border-color-strong:            hsl(var(--hue), var(--border-s-strong), var(--border-l-strong));
-
-	--box-shadow:                     0 1px 1px 0 hsla(var(--hue), var(--saturation), 0%, .1), 0 1px 2px 0 hsla(var(--hue), var(--saturation), 0%, .06);
-
-	--color-link:                     var(--color-text-accent);
-	--color-link-hover:               var(--color-text-accent-lighter);
-	--color-link-active:              var(--color-text-accent-lighter);
+	--box-shadow:                     var(--box-shadow-light);
 
 	--color-text:                     var(--color-text-dark);
 	--color-text-strong:              var(--color-text-dark-darker);
 	--color-text-subtle:              var(--color-text-dark-lighter);
 
-	--discount-background-color:      var(--color-accent);
-	--discount-text-on-background:    var(--color-text-on-accent);
-	--discount-text-color:            var(--color-text-accent);
+	/* Accent Color */
 
-	--image-background-color:         var(--color-white);
+	--color-text-accent:               var(--color-text-accent-dark);
+	--color-text-accent-lighter:       var(--color-text-accent-dark-lighter);
+	--color-text-accent-darker:        var(--color-text-accent-dark-darker);
 
-	--input-background-color:         var(--background-color);
+	--background-accent-color:         var(--background-accent-light-color);
+	--background-accent-color-shade-1: var(--background-accent-light-color-shade-1);
+	--background-accent-color-shade-2: var(--background-accent-light-color-shade-2);
+
+	/* Other */
+
+	--color-notification:            var(--color-notification-light);
+	--color-notification-bg:         var(--color-notification-light-bg);
+	--color-notification-success:    var(--color-notification-light-success);
+	--color-notification-success-bg: var(--color-notification-light-success-bg);
+	--color-notification-error:      var(--color-notification-light-error);
+	--color-notification-error-bg:   var(--color-notification-light-error-bg);
+
+	/* Useful Variables */
+
+	--color-link:                     var(--color-text-accent);
+	--color-link-hover:               var(--color-text-accent-darker);
+	--color-link-active:              var(--color-text-accent-darker);
+
+	--backdrop-color:                 hsla(var(--hue), var(--saturation), 0%, .8);
+	--image-background-color:         var(--background-color-light);
+	--input-background-color:         var(--background-color-light);
 	--input-border-color:             var(--border-color-strong);
 	--input-text-color:               var(--color-text);
 
-	--backdrop-color:                 hsla(var(--hue), var(--saturation), 0%, .8);
+	--discount-background-color:      var(--color-accent);
+	--discount-text-on-background:    var(--color-text-on-accent);
+	--discount-text-color:            var(--color-text-accent);
+	color-scheme: light;
 }
 
 /*------------------------------------------------------------------------------*/
-/* Color Adjustments
+/* Color Adjustments for Dark Theme
 /*------------------------------------------------------------------------------*/
 
-/* Color Adjustments for Dark Tones */
+.Theme-Dark {
+	--hue:                            var(--hue-dark);
+	--saturation:                     var(--saturation-dark);
+	--lightness:                      var(--lightness-dark);
 
-[data-header-text="white"] .Theme-Header,
-[data-footer-text="white"] .Theme-Footer {
-	--background-color-shade-1:       hsl(var(--hue), var(--saturation), calc(var(--lightness) + 5%));
-	--background-color-shade-2:       hsl(var(--hue), var(--saturation), calc(var(--lightness) + 10%));
+	--background-color:               var(--background-color-dark);
+	--background-color-shade-1:       var(--background-color-dark-shade-1);
+	--background-color-shade-2:       var(--background-color-dark-shade-2);
+
+	--border-h:                       var(--border-h-dark);
+	--border-s:                       var(--border-s-dark);
+	--border-l:                       var(--border-l-dark);
+	--border-l-subtle:                var(--border-l-dark-subtle);
+	--border-l-strong:                var(--border-l-dark-strong);
+
+	--border-color:                   hsl(var(--border-h), var(--border-s), var(--border-l));
+	--border-color-subtle:            hsl(var(--border-h), var(--border-s), var(--border-l-subtle));
+	--border-color-strong:            hsl(var(--border-h), var(--border-s), var(--border-l-strong));
+	
+	--box-shadow:                     var(--box-shadow-dark);
 
 	--color-text:                     var(--color-text-light);
 	--color-text-strong:              var(--color-text-light-lighter);
 	--color-text-subtle:              var(--color-text-light-darker);
 
-	--border-l:                       calc(var(--lightness) + 10%);
-	--border-l-subtle:                calc(var(--lightness) + 5%);
-	--border-l-strong:                calc(var(--lightness) + 20%);
+	/* Accent Color */
+
+	--color-text-accent:               var(--color-text-accent-light);
+	--color-text-accent-lighter:       var(--color-text-accent-light-lighter);
+	--color-text-accent-darker:        var(--color-text-accent-light-darker);
+
+	--background-accent-color:         var(--background-accent-dark-color);
+	--background-accent-color-shade-1: var(--background-accent-dark-color-shade-1);
+	--background-accent-color-shade-2: var(--background-accent-dark-color-shade-2);
+	
+	/* Other */
+
+	--color-notification:            var(--color-notification-dark);
+	--color-notification-bg:         var(--color-notification-dark-bg);
+	--color-notification-success:    var(--color-notification-dark-success);
+	--color-notification-success-bg: var(--color-notification-dark-success-bg);
+	--color-notification-error:      var(--color-notification-dark-error);
+	--color-notification-error-bg:   var(--color-notification-dark-error-bg);
+
+	/* Useful Variables */
+
+	--color-link:                     var(--color-text-accent);
+	--color-link-hover:               var(--color-text-accent-darker);
+	--color-link-active:              var(--color-text-accent-darker);
+
+	--backdrop-color:                 hsla(var(--hue), var(--saturation), 0%, .8);
+	--image-background-color:         var(--background-color-light);
+	--input-background-color:         var(--background-color);
+	--input-border-color:             var(--border-color-strong);
+	--input-text-color:               var(--color-text);
+
+	--discount-background-color:      var(--color-accent);
+	--discount-text-on-background:    var(--color-text-on-accent);
+	--discount-text-color:            var(--color-text-accent);
 	color-scheme: dark;
 }
 
-[data-header-text="white"][data-header-lightness="very-low"] .Theme-Header,
-[data-header-text="white"][data-footer-lightness="very-low"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) + 20%);
-	--border-l-subtle:                calc(var(--lightness) + 15%);
-	--border-l-strong:                calc(var(--lightness) + 25%);
+/*------------------------------------------------------------------------------*/
+/* Color Theme Section
+/*------------------------------------------------------------------------------*/
+
+.ColorTheme.Theme-Light {
+	--background-color: var(--section-bg-color);
+	--background-color-shade-1:  hsl(var(--section-hue), var(--section-saturation), calc(var(--section-lightness) - 3%));
+	--background-color-shade-2:  hsl(var(--section-hue), var(--section-saturation), calc(var(--section-lightness) - 5%));
+
+	--border-h: var(--section-hue);
+	--border-s: calc(var(--section-saturation) / 1.5);
 }
 
-[data-header-text="white"][data-header-lightness="very-low"][data-header-saturation="very-high"] .Theme-Header,
-[data-header-text="white"][data-header-lightness="very-low"][data-footer-saturation="very-high"] .Theme-Footer {
-	--border-s:                       calc(var(--saturation) - 65%);
-	--border-s-subtle:                calc(var(--saturation) - 65%);
-	--border-s-strong:                calc(var(--saturation) - 65%);
+.ColorTheme.Theme-Light:not([style*="--section-bg-color: #FFFFFF"]) {
+	--border-l: calc(var(--section-lightness) - 10%);
+	--border-l-subtle: calc(var(--section-lightness) - 7%);
+	--border-l-strong: calc(var(--section-lightness) - 15%);
+
+	--box-shadow: 0 1px 1px 0 hsla(var(--section-hue), var(--section-saturation), 0%, .1), 0 1px 2px 0 hsla(var(--section-hue), var(--section-saturation), 0%, .06);
 }
 
-[data-header-text="white"][data-header-lightness="very-low"][data-header-saturation="high"] .Theme-Header,
-[data-header-text="white"][data-header-lightness="very-low"][data-footer-saturation="high"] .Theme-Footer {
-	--border-s:                       calc(var(--saturation) - 45%);
-	--border-s-subtle:                calc(var(--saturation) - 45%);
-	--border-s-strong:                calc(var(--saturation) - 45%);
+.ColorTheme.Theme-Dark {
+	--background-color: var(--section-bg-color);
+	--background-color-shade-1:  hsl(var(--section-hue), var(--section-saturation), calc(var(--section-lightness) + 5%));
+	--background-color-shade-2:  hsl(var(--section-hue), var(--section-saturation), calc(var(--section-lightness) + 10%));
+
+	--border-h: var(--section-hue);
+	--border-s: calc(var(--section-saturation) / 1.5);
+
+	--box-shadow: 0 1px 1px 0 hsla(var(--section-hue), var(--section-saturation), 0%, .3), 0 1px 3px 0 hsla(var(--section-hue), var(--section-saturation), 0%, .2);
 }
 
-[data-header-text="white"][data-header-lightness="low"] .Theme-Header,
-[data-header-text="white"][data-footer-lightness="low"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) + 20%);
-	--border-l-subtle:                calc(var(--lightness) + 13%);
-	--border-l-strong:                calc(var(--lightness) + 25%);
-}
-
-[data-header-text="white"][data-header-lightness="low"][data-header-saturation="very-high"] .Theme-Header,
-[data-header-text="white"][data-header-lightness="low"][data-footer-saturation="very-high"] .Theme-Footer {
-	--border-s:                       calc(var(--saturation) - 35%);
-	--border-s-subtle:                calc(var(--saturation) - 35%);
-	--border-s-strong:                calc(var(--saturation) - 35%);
-}
-
-[data-header-text="white"][data-header-lightness="low"][data-header-saturation="high"] .Theme-Header,
-[data-header-text="white"][data-header-lightness="low"][data-footer-saturation="high"] .Theme-Footer {
-	--border-s:                       calc(var(--saturation) - 35%);
-	--border-s-subtle:                calc(var(--saturation) - 35%);
-	--border-s-strong:                calc(var(--saturation) - 35%);
-}
-
-[data-header-text="white"][data-header-lightness="low"][data-header-saturation="medium"] .Theme-Header,
-[data-header-text="white"][data-header-lightness="low"][data-footer-saturation="medium"] .Theme-Footer {
-	--border-s:                       calc(var(--saturation) - 25%);
-	--border-s-subtle:                calc(var(--saturation) - 25%);
-	--border-s-strong:                calc(var(--saturation) - 25%);
-}
-
-[data-header-text="white"][data-header-lightness="medium"] .Theme-Header,
-[data-header-text="white"][data-footer-lightness="medium"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) + 30%);
-	--border-l-subtle:                calc(var(--lightness) + 15%);
-	--border-l-strong:                calc(var(--lightness) + 35%);
-}
-
-[data-header-text="white"][data-header-lightness="medium"][data-header-saturation="very-high"] .Theme-Header,
-[data-header-text="white"][data-header-lightness="medium"][data-footer-saturation="very-high"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) + 25%);
-	--border-l-subtle:                calc(var(--lightness) + 20%);
-	--border-l-strong:                calc(var(--lightness) + 30%);
-}
-
-[data-header-text="white"][data-header-lightness="medium"][data-header-saturation="high"] .Theme-Header,
-[data-header-text="white"][data-header-lightness="medium"][data-footer-saturation="high"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) + 15%);
-	--border-l-subtle:                calc(var(--lightness) + 10%);
-	--border-l-strong:                calc(var(--lightness) + 20%);
-}
-
-[data-header-text="white"][data-header-lightness="medium"][data-header-saturation="medium"] .Theme-Header,
-[data-header-text="white"][data-header-lightness="medium"][data-footer-saturation="medium"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) + 15%);
-	--border-l-subtle:                calc(var(--lightness) + 10%);
-	--border-l-strong:                calc(var(--lightness) + 20%);
-}
-
-/* Color Adjustments for Light Tones */
-
-[data-header-text="black"][data-header-lightness="very-high"][data-header-saturation="very-high"] .Theme-Header,
-[data-header-text="black"][data-footer-lightness="very-high"][data-header-saturation="very-high"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) - 15%);
-	--border-l-subtle:                calc(var(--lightness) - 10%);
-	--border-l-strong:                calc(var(--lightness) - 20%);
-
-	--border-s:                       calc(var(--saturation) - 45%);
-	--border-s-subtle:                calc(var(--saturation) - 45%);
-	--border-s-strong:                calc(var(--saturation) - 55%);
-}
-
-[data-header-text="black"][data-header-lightness="very-high"][data-header-saturation="high"] .Theme-Header,
-[data-header-text="black"][data-footer-lightness="very-high"][data-header-saturation="high"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) - 12%);
-	--border-l-subtle:                calc(var(--lightness) - 7%);
-	--border-l-strong:                calc(var(--lightness) - 15%);
-
-	--border-s:                       calc(var(--saturation) - 25%);
-	--border-s-subtle:                calc(var(--saturation) - 25%);
-	--border-s-strong:                calc(var(--saturation) - 25%);
-}
-
-[data-header-text="black"][data-header-lightness="high"] .Theme-Header,
-[data-header-text="black"][data-footer-lightness="high"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) - 10%);
-	--border-l-subtle:                calc(var(--lightness) - 7%);
-	--border-l-strong:                calc(var(--lightness) - 15%);
-}
-
-[data-header-text="black"][data-header-lightness="high"][data-header-saturation="very-high"] .Theme-Header,
-[data-header-text="black"][data-header-lightness="high"][data-footer-saturation="very-high"] .Theme-Footer {
-	--border-s:                       calc(var(--saturation) - 25%);
-	--border-s-subtle:                calc(var(--saturation) - 25%);
-	--border-s-strong:                calc(var(--saturation) - 35%);
-}
-
-[data-header-text="black"][data-header-lightness="medium"] .Theme-Header,
-[data-header-text="black"][data-footer-lightness="medium"] .Theme-Footer {
-	--border-l:                       calc(var(--lightness) - 15%);
-	--border-l-subtle:                calc(var(--lightness) - 10%);
-	--border-l-strong:                calc(var(--lightness) - 20%);
-}
-
-[data-header-text="black"][data-header-lightness="medium"][data-header-saturation="very-high"] .Theme-Header,
-[data-header-text="black"][data-header-lightness="medium"][data-footer-saturation="very-high"] .Theme-Footer {
-	--border-s:                       calc(var(--saturation) - 25%);
-	--border-s-subtle:                calc(var(--saturation) - 25%);
-	--border-s-strong:                calc(var(--saturation) - 35%);
-}
-
-[data-header-text="black"][data-header-lightness="medium"][data-header-saturation="high"] .Theme-Header,
-[data-header-text="black"][data-header-lightness="medium"][data-footer-saturation="high"] .Theme-Footer {
-	--border-s:                       calc(var(--saturation) - 25%);
-	--border-s-subtle:                calc(var(--saturation) - 25%);
-	--border-s-strong:                calc(var(--saturation) - 35%);
-}
-
-/* Link Colors on Header and Footer */
-
-[data-header-links="body"][data-header-text="black"] .Theme-Header,
-[data-footer-links="body"][data-footer-text="black"] .Theme-Footer {
-	--color-link:            hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) - 40%));
-	--color-link-hover:      hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) - 50%));
-	--color-link-active:     hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) - 50%));
-	--color-text-accent:     hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) - 40%));
-}
-
-[data-header-links="body"][data-header-text="black"][data-header-lightness="very-high"] .Theme-Header,
-[data-footer-links="body"][data-footer-text="black"][data-header-lightness="very-high"] .Theme-Footer {
-	--color-link:            hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) - 60%));
-	--color-link-hover:      hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) - 70%));
-	--color-link-active:     hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) - 70%));
-	--color-text-accent:     hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) - 60%));
-}
-
-[data-header-links="body"][data-header-text="white"] .Theme-Header,
-[data-footer-links="body"][data-footer-text="white"] .Theme-Footer {
-	--color-link:            hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) + 40%));
-	--color-link-hover:      hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) + 50%));
-	--color-link-active:     hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) + 50%));
-	--color-text-accent:     hsl(var(--hue), calc(var(--saturation) - 30%), calc(var(--lightness) + 40%));
-}
-
-[data-header-links="body"][data-header-text="white"][data-header-lightness="very-low"] .Theme-Header,
-[data-footer-links="body"][data-footer-text="white"][data-footer-lightness="very-low"] .Theme-Footer {
-	--color-link:            hsl(var(--hue), calc(var(--saturation) - 50%), calc(var(--lightness) + 60%));
-	--color-link-hover:      hsl(var(--hue), calc(var(--saturation) - 50%), calc(var(--lightness) + 70%));
-	--color-link-active:     hsl(var(--hue), calc(var(--saturation) - 50%), calc(var(--lightness) + 70%));
-	--color-text-accent:     hsl(var(--hue), calc(var(--saturation) - 50%), calc(var(--lightness) + 70%));
-}
-
-/* Header Search Element */
-
-[data-header-lightness="very-low"] .Theme-Header .SimpleSearchForm input,
-[data-header-lightness="low"] .Theme-Header .SimpleSearchForm input {
-	border: 0;
+.ColorTheme.Theme-Dark:not([style*="--section-bg-color: #000000"]) {
+	--border-l: calc(var(--section-lightness) + 20%);
+	--border-l-subtle: calc(var(--section-lightness) + 15%);
+	--border-l-strong: calc(var(--section-lightness) + 25%);
 }

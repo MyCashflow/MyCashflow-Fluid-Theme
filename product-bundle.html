@@ -1,12 +1,12 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
 	<body class="{BodyClass} BundleID-{BundleId}">
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
-			<main class="SiteMain">
+			<main class="SiteMain" id="main-content">
 				<div class="ContainerMaxWidth">
 					<article class="{BundleClass} Product ProductLayout ProductBundleLayout">
 						<div class="ProductLayoutSection">
@@ -26,9 +26,7 @@
 										</div>',
 									helper: '{{
 										<a href="{BundleImageUrl(imagesize: 'big')}" class="ProductImage" data-caption="{BundleImageCaption(html: 'false')}">
-											<div class="AspectRatio">
-												<img src="{BundleImageUrl(imagesize: 'normal')}" loading="lazy" alt="{BundleImageCaption(html: 'false')}">
-											</div>
+											<img src="{BundleImageUrl(imagesize: 'normal')}" loading="lazy" alt="{BundleImageCaption(html: 'false')}">
 										</a>
 									}}'
 								)}
@@ -38,9 +36,7 @@
 									helper: '{{
 										<li>
 											<a href="{BundleImageUrl(imagesize: 'big')}" class="ProductThumbnail">
-												<div class="AspectRatio">
-													<img src="{BundleImageUrl(imagesize: 'mini')}" loading="lazy" alt="">
-												</div>
+												<img src="{BundleImageUrl(imagesize: 'mini')}" loading="lazy" alt="{BundleImageCaption(html: 'false')}">
 											</a>
 										</li>
 									}}'

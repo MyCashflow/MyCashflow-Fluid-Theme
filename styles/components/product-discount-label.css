@@ -17,11 +17,11 @@
 
 .ListProductDiscount {
 	font-size: var(--font-size-small);
-	right: .5rem;
+	left: .5rem;
+	right: auto;
 	top: .5rem;
 }
 
-.ListProductDiscountLabel,
-.ProductDiscountLabel {
-	display: none;
+.DiscountPercentLabel[data-discount-label-max]::before {
+	content: attr(data-discount-label-max);
 }

@@ -4,19 +4,19 @@
 	timelimit: '-2months',
 	limit: '10',
 	before: '
-		<div class="Section">
-			<section>
-				<header class="SectionHeader">
-					<h2 class="SectionHeaderTitle Subtitle">{%NewProducts}</h2>
-					<a href="/interface/Category?id={CategoryId}&helper=category/newproducts" class="SectionHeaderLink">{%BrowseMore}</a>
-				</header>
-				<div class="Slider" data-slider>
-					{Helper(file: 'helpers/slider-buttons')}
-					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+		<section class="Section" aria-labelledby="newproducts">
+			<header class="SectionHeader">
+				<h2 class="SectionHeaderTitle Subtitle" id="newproducts">{%NewProducts}</h2>
+				<a href="#after-newproducts" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+				<a href="/interface/Category?id={CategoryId}&helper=category/newproducts" class="SectionHeaderLink">{%BrowseMore}</a>
+			</header>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<ul class="ProductScrollList ScrollOverflow" data-slider-viewport>',
 	after: '
-					</div>
-				</div>
-			</section>
-		</div>',
+				</ul>
+			</div>
+			<div id="after-newproducts" tabindex="-1"></div>
+		</section>',
 	helper: 'helpers/list-product'
 )}

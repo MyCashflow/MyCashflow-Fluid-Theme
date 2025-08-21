@@ -12,7 +12,7 @@
 	helper: '{{
 		<article class="CategorySliderItem">
 			<a class="CategorySliderLink" href="{BannerUrl}" {BannerLinkData}>
-				<div class="AspectRatio">
+				<figure class="CategorySliderImage">
 					<img	srcset="{BannerImageUrl(imagesize: 'ListMobile')} 300w,
 												{BannerImageUrl(imagesize: 'ListDesktop')} 600w"
 								sizes="(max-width: 600px) 300px,
@@ -22,7 +22,7 @@
 								width="300"
 								loading="lazy"
 								alt="">
-				</div>
+				</figure>
 				<div class="CategorySliderText">{BannerName}</div>
 			</a>
 		</article>

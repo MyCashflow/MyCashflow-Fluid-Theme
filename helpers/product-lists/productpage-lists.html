@@ -2,101 +2,101 @@
 	type: 'normal',
 	limit: '20',
 	before: '
-		<div class="Section">
-			<section>
-				<h2 class="Subtitle">{%SimilarProducts}</h2>
-				<div class="Slider" data-slider>
-					{Helper(file: 'helpers/slider-buttons')}
-					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+		<aside class="Section" aria-labelledby="similar-products">
+			<h2 class="Subtitle" id="similar-products">{%SimilarProducts}</h2>
+			<a href="#after-similar-products" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<ul class="ProductScrollList ScrollOverflow" data-slider-viewport>',
 	after: '
-					</div>
-				</div>
-			</section>
-		</div>',
+				</ul>
+			</div>
+			<div id="after-similar-products" tabindex="-1"></div>
+		</aside>',
 	helper: 'helpers/list-product'
 )}
 {CompatibleProducts(
 	type: 'normal',
 	limit: '20',
 	before: '
-		<div class="Section">
-			<section>
-				<h2 class="Subtitle">{%CompatibleProducts}</h2>
-				<div class="Slider" data-slider>
-					{Helper(file: 'helpers/slider-buttons')}
-					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+		<aside class="Section" aria-labelledby="compatible-products">
+			<h2 class="Subtitle" id="compatible-products">{%CompatibleProducts}</h2>
+			<a href="#after-compatible-products" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<ul class="ProductScrollList ScrollOverflow" data-slider-viewport>',
 	after: '
-					</div>
-				</div>
-			</section>
-		</div>',
+				</ul>
+			</div>
+			<div id="after-compatible-products" tabindex="-1"></div>
+		</aside>',
 	helper: 'helpers/list-product'
 )}
 {AddOnProducts(
 	type: 'normal',
 	limit: '20',
 	before: '
-		<div class="Section">
-			<section>
-				<h2 class="Subtitle">{%Accessories}</h2>
-				<div class="Slider" data-slider>
-					{Helper(file: 'helpers/slider-buttons')}
-					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+		<aside class="Section" aria-labelledby="accessories">
+			<h2 class="Subtitle" id="accessories">{%Accessories}</h2>
+			<a href="#after-accessories" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<ul class="ProductScrollList ScrollOverflow" data-slider-viewport>',
 	after: '
-					</div>
-				</div>
-			</section>
-		</div>',
+				</ul>
+			</div>
+			<div id="after-accessories" tabindex="-1"></div>
+		</aside>',
 	helper: 'helpers/list-product'
 )}
 {SparePartProducts(
 	type: 'normal',
 	limit: '20',
 	before: '
-		<div class="Section">
-			<section>
-				<h2 class="Subtitle">{%SpareParts}</h2>
-				<div class="Slider" data-slider>
-					{Helper(file: 'helpers/slider-buttons')}
-					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+		<aside class="Section" aria-labelledby="spare-parts">
+			<h2 class="Subtitle" id="spare-parts">{%SpareParts}</h2>
+			<a href="#after-spare-parts" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<ul class="ProductScrollList ScrollOverflow" data-slider-viewport>',
 	after: '
-					</div>
-				</div>
-			</section>
-		</div>',
+				</ul>
+			</div>
+			<div id="after-spare-parts" tabindex="-1"></div>
+		</aside>',
 	helper: 'helpers/list-product'
 )}
 {CrossSaleProducts(
 	limit: '15',
 	type: 'normal',
 	before: '
-		<div class="Section">
-			<section>
-				<h2 class="Subtitle">{%CrossSalesForProduct}</h2>
-				<div class="Slider" data-slider>
-					{Helper(file: 'helpers/slider-buttons')}
-					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+		<aside class="Section" aria-labelledby="cross-sale">
+			<h2 class="Subtitle" id="cross-sale">{%CrossSalesForProduct}</h2>
+			<a href="#after-cross-sale" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<ul class="ProductScrollList ScrollOverflow" data-slider-viewport>',
 	after: '
-					</div>
-				</div>
-			</section>
-		</div>',
+				</ul>
+			</div>
+			<div id="after-cross-sale" tabindex="-1"></div>
+		</aside>',
 	helper: 'helpers/list-product'
 )}
 {LastViewedProducts(
 	limit: '10',
 	type: 'normal',
 	before: '
-		<div class="Section">
-			<section>
-				<h2 class="Subtitle">{%PreviouslyBrowsedProducts}</h2>
-				<div class="Slider" data-slider>
-					{Helper(file: 'helpers/slider-buttons')}
-					<div class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+		<aside class="Section"  aria-labelledby="last-viewed-products">
+			<h2 class="Subtitle" id="last-viewed-products">{%PreviouslyBrowsedProducts}</h2>
+			<a href="#after-last-viewed-products" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<ul class="ProductScrollList ScrollOverflow" data-slider-viewport>',
 	after: '
-					</div>
-				</div>
-			</section>
-		</div>',
+				</ul>
+			</div>
+			<div id="after-last-viewed-products" tabindex="-1"></div>
+		</aside>',
 	helper: 'helpers/list-product'
 )}

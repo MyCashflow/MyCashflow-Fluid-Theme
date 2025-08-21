@@ -1,11 +1,7 @@
 {BannerImageUrl(
-	height: '160',
+	height: '480',
 	width: '480',
-	before: '<a href="{ShopUrl}" class="LogoLink {BannerClass}" title="{ShopName}"><img src="',
-	after: '" alt="{ShopName}"></a>',
-	or: '
-		{Logo(
-			height: '160',
-			width: '480'
-		)}'
+	before: '<a href="{ShopUrl}" class="LogoLink {BannerClass}"><img src="',
+	after: '" alt="{ShopName} {%Homepage}" loading="eager" height="480" width="480"></a>',
+	or: '<a href="/" class="LogoLink">{LogoUrl(height: '480', width: '480', before: '<img src="', after: '" alt="{ShopName} {%Homepage}" loading="eager" height="480" width="480">', or: '{ShopName}')}</a>'
 )}

@@ -11,23 +11,29 @@
 	padding: .5rem 1rem;
 	text-decoration: none;
 	transition-duration: var(--transition-fast);
+	text-align: left;
 }
 
 .HoverNavigation > ul > li > a {
 	align-items: center;
+	border-radius: var(--border-radius);
 	font-weight: bold;
 	padding: 1rem;
 }
 
-.HoverNavigation > ul > li:hover > a {
+.HoverNavigation > ul > li:hover > a,
+.HoverNavigation > ul > li:focus-within > a {
 	background-color: var(--background-color-shade-1);
-	border-radius: var(--border-radius);
 }
 
 .HoverNavigation ul {
 	list-style: none;
 	margin: 0 -1rem;
 	padding: 0;
+}
+
+.NavigationBar .HoverNavigation ul {
+	text-align: center;
 }
 
 .HoverNavigation li {
@@ -37,7 +43,7 @@
 }
 
 .HoverNavigation li ul {
-	background-color: var(--background-color-shade-1);
+	background-color: var(--background-color);
 	border: 1px solid var(--border-color);
 	border-radius: var(--border-radius);
 	min-width: 160px;
@@ -74,7 +80,6 @@
 }
 
 .HoverNavigation li li a {
-	background-color: var(--background-color);
 	align-items: baseline;
 	display: flex;
 	flex: 1;
@@ -113,4 +118,27 @@
 	content: "\f105";
 	display: flex;
 	text-align: right;
+}
+
+@media screen and (max-width: 1280px) {
+	.HoverNavigation > ul > li > a {
+		padding-block: .5rem;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Keyboard Navigation Support
+/*------------------------------------------------------------------------------*/
+
+.CategoryShowAll {
+	text-decoration: underline;
+}
+
+[data-navigation-hover-kb-support] li:not(.Open:focus-within) .CategoryShowAll {
+	display: none;
+}
+
+.HoverNavigation [data-navigation-hover-kb-support] li.Open:focus-within > ul {
+	opacity: 1;
+	visibility: visible;
 }

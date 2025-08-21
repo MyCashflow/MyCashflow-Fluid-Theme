@@ -24,6 +24,7 @@
 	background-color: var(--color-notification-success);
 }
 
+.Product.AvailabilityVariesByTheModel .Availability dd.StorageInfo::before,
 .Product.AvailabilityBackorder .Availability dd.StorageInfo::before {
 	background-color: var(--color-notification);
 }
@@ -79,6 +80,10 @@
 .ListProductAvailability dd.StorageInfo {
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.ListProductAvailability dd.StorageInfo + .DeliveryTime {
+	flex: 1;
 }
 
 /* List Product Variations Availability */

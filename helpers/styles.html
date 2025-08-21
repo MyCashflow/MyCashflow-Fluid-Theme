@@ -108,24 +108,8 @@
 		--accent-h: {Setting(name: 'primary_color.hue')};
 		--accent-s: {Setting(name: 'primary_color.saturation')};
 		--accent-l: {Setting(name: 'primary_color.lightness')};
+		--color-text-on-accent: {ColorContrast(hex: '{Setting(name: 'primary_color')}', light: 'var(--color-text-light)', dark: 'var(--color-text-dark)')};
 		--notification-bg-color: {Setting(name: 'background_color_notification_bar')};
+		--notification-text-color: {ColorContrast(hex: '{Setting(name: 'background_color_notification_bar')}')};
 	}
 </style>
-<script>
-	(function () {
-		const root = document.documentElement;
-		const accent = '{Setting(name: 'primary_color')}';
-		const notificationBg = '{Setting(name: 'background_color_notification_bar')}';
-		root.style.setProperty('--color-text-on-accent', getContrastYIQ(accent));
-		root.style.setProperty('--notification-text-color', getContrastYIQ(notificationBg));
-
-		function getContrastYIQ(hexcolor) {
-			hexcolor = hexcolor.replace("#", "");
-			const r = parseInt(hexcolor.substr(0,2),16);
-			const g = parseInt(hexcolor.substr(2,2),16);
-			const b = parseInt(hexcolor.substr(4,2),16);
-			const yiq = ((r*299)+(g*587)+(b*114))/1000;
-			return (yiq >= 128) ? 'black' : 'white';
-		}
-	})();
-</script>

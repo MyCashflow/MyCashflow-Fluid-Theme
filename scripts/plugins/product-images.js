@@ -59,7 +59,7 @@
 			const slideObserver = new IntersectionObserver((entries, observer) => {
 				entries.forEach(entry => {
 					if (entry.isIntersecting) {
-							$(entry.target).addClass(this.activeClass).removeAttr('aria-hidden').siblings().removeClass(this.activeClass).attr('aria-hidden', 'true');
+							$(entry.target).addClass(this.activeClass).siblings().removeClass(this.activeClass);
 							this.refresh($(entry.target).closest(this.images));
 							this.changeCaption();
 					}

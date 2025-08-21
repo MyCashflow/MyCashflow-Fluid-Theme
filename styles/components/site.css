@@ -65,6 +65,11 @@
 	z-index: 1;
 }
 
+.ColumnLayoutSection .SideLogo {
+	margin-bottom: 2rem;
+	padding-inline: 2.5rem;
+}
+
 .ColumnLayoutSection .StickySide {
 	max-height: calc(100vh - 4rem);
 	padding-inline: 2.5rem;

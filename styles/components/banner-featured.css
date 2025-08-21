@@ -9,7 +9,10 @@
 	gap: var(--gap);
 	grid-auto-columns: minmax(400px, 50%);
 	grid-auto-flow: column;
+	list-style: none;
+	margin-bottom: 0;
 	overflow-x: auto;
+	padding-block: 4px;
 	scroll-snap-type: none;
 	scrollbar-width: none;
 }
@@ -19,11 +22,12 @@
 }
 
 .FeaturedBanner {
+	--aspect-ratio: 100 / 64;
 	align-items: flex-end;
+	aspect-ratio: var(--aspect-ratio);
 	background-color: var(--background-color-shade-1);
 	border-radius: var(--border-radius-images);
 	display: flex;
-	overflow: hidden;
 	padding: 5%;
 	position: relative;
 	scroll-snap-align: center;
@@ -33,14 +37,17 @@
 	background-color: var(--color-bg-dark);
 }
 
-.FeaturedBanner.AspectRatio {
-	--aspect-ratio: 64%;
+.FeaturedBanner img {
+	border-radius: var(--border-radius-images);
+	height: 100%;
+	inset: 0;
+	object-fit: cover;
+	position: absolute;
+	width: 100%;
 }
 
-.FeaturedBanner img {
-	height: 100%;
-	object-fit: cover;
-	width: 100%;
+.FeaturedBanner .BannerCoverLink {
+	border-radius: var(--border-radius-images);
 }
 
 .FeaturedBanner .BannerText .Title,
@@ -69,4 +76,40 @@
 		grid-auto-columns: 85%;
 		scroll-snap-type: inline mandatory;
 	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Featured Banner Gradient
+/*------------------------------------------------------------------------------*/
+
+.FeaturedBanner.ImageGradient-1 {
+	--gradient-direction-to: top;
+	--gradient-start:  0.5;
+}
+
+.FeaturedBanner.ImageGradient-1::before {
+	background-image: linear-gradient(
+		to var(--gradient-direction-to),
+		rgba(0, 0, 0, var(--gradient-start)),
+		rgba(0, 0, 0, 0)
+	);
+	border-radius: var(--border-radius-images);
+	content: '';
+	height: 100%;
+	inset: 0;
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+}
+
+.FeaturedBanner.ImageGradient-1 .BannerText {
+	color: var(--color-text-light) !important;
+	z-index: 3;
+}
+
+.FeaturedBanner.ImageGradient-1 .BannerText a:not(.Button) {
+	--color-link: var(--color-text-accent-light);
+	--color-link-hover: var(--color-text-accent-light-darker);
+	--color-link-active: var(--color-text-accent-light-darker);
 }

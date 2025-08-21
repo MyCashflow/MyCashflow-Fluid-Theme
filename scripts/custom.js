@@ -101,7 +101,9 @@ $(document).ready(function () {
 		updateTotals: function () {
 			const cartItems = $('.MiniCart [data-cart-total-items]').data('cart-total-items');
 			const cartSubTotal = $('.MiniCart [data-cart-sub-total]').data('cart-sub-total');
+			const cartOpenTotal = $('.MiniCart [data-cart-open-total]').data('cart-open-total');
 			$('.CartTotals').attr('data-cart-total-items', cartItems).attr('data-cart-sub-total', cartSubTotal);
+			$('.Checkout .ShowCartTotal').attr('data-cart-open-total', cartOpenTotal);
 			
 			let wishlistItems = $('.Wishlist [data-wishlist-total-items]').data('wishlist-total-items');
 			if (wishlistItems === undefined) {
@@ -244,6 +246,12 @@ $(document).ready(function () {
 				initLayout: (fancybox) => {
 					// Do something with $(fancybox.container)
 				},
+				done: (fancybox, slide) => {
+					const $form = $(fancybox.container).find('.RecaptchaForm');
+					if ($form.length) {
+						onRecaptchaLoadCallback();
+					} 
+				}
 			}
 		}
 	});
@@ -328,62 +336,85 @@ $(document).ready(function () {
 	});
 
 	//------------------------------------------------------------------------------
-	// Image Lightness
+	// Add Keyboard Support to Hover Navigation
 	//------------------------------------------------------------------------------
 
-	// https://stackoverflow.com/questions/13762864/image-brightness-detection-in-client-side-script
+	function addKeyboardSupport($nav) {
+		$nav.find('[class*="HasSub"]').each(function () {
+			const $this = $(this);
+			const $link = $this.children('a');
+			const $openCategory = $('<li />').addClass('CategoryShowAll');
+			const $openCategoryLink = $('<a />')
+				.text(MCF.dictionary.OpenCategory)
+				.attr('href', $link.attr('href'))
+				.prependTo($openCategory);
+			$openCategory.prependTo($(this).find('ul').first());
 
-	function getImageLightness(imageSrc, callback) {
-		var img = document.createElement("img");
-		img.src = imageSrc;
-		img.style.display = "none";
-		document.body.appendChild(img);
+			$link.attr({
+				'role': 'button',
+				'aria-haspopup': 'true',
+				'aria-expanded': 'false',
+			});
+		});
 
-		var colorSum = 0;
+		$nav.on('keydown', 'a', function (evt) {
+			const $ul = $(evt.currentTarget).closest('ul');
+			const $link = $(evt.currentTarget);
+			const $parentLi = $link.parent('li');
+			const $topParent = $link.parents('li').last();
 
-		img.onload = function() {
-			// create canvas
-			var canvas = document.createElement("canvas");
-			canvas.width = this.width;
-			canvas.height = this.height;
-
-			var ctx = canvas.getContext("2d");
-			ctx.drawImage(this,0,0);
-
-			var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-			var data = imageData.data;
-			var r,g,b,avg;
-
-			for(var x = 0, len = data.length; x < len; x+=4) {
-					r = data[x];
-					g = data[x+1];
-					b = data[x+2];
-
-					avg = Math.floor((r+g+b)/3);
-					colorSum += avg;
+			if (evt.key === 'Escape') {
+				evt.preventDefault();
+				closeAllSubMenus();
+				return;
 			}
 
-			var brightness = Math.floor(colorSum / (this.width*this.height));
-			callback(brightness);
-		}
-	}
+			if ($parentLi.is('[class*="HasSub"]')) {
+				if (evt.key === 'Enter' || evt.key === ' ') {
+					evt.preventDefault();
+					subMenuToggle();
+				}
+			}
 
-	$('.MainBanner, .FeaturedBanner, .Newsletter').each(function() {
-		const $banner = $(this);
-		const $img = $banner.find('img');
-		if (!$img.length) {
-			return;
-		}
-		const imgSrc = $img.attr('src');
-		const $text = $banner.find('.BannerText, .NewsletterInfo');
-		getImageLightness(imgSrc, function(brightness) {
-			if (brightness > 112) {
-				$text.closest('article').addClass('Banner-Light');
-			} else {
-				$text.closest('article').addClass('Banner-Dark');
+			function subMenuToggle() {
+				$parentLi.find('.Open').removeClass('Open'); // Close any open submenus
+				$parentLi.toggleClass('Open').siblings().removeClass('Open').find('.Open').removeClass('Open');
+				$link.attr('aria-expanded', $parentLi.hasClass('Open'));
+			}
+
+			function closeAllSubMenus() {
+				$nav.find('.Open').removeClass('Open');
+				$nav.find('a').attr('aria-expanded', 'false');
+				$topParent.children('a').focus();
 			}
 		});
-		$text.addClass('LightnessLoaded');
+	}
+	addKeyboardSupport($('[data-navigation-hover-kb-support]'));
+
+	//------------------------------------------------------------------------------
+	// Banner Text Color
+	//------------------------------------------------------------------------------
+
+	// Set the color of the banner title based on the first color found in the banner text.
+	$('.MainBanner, .FeaturedBanner').each(function() {
+		const $banner = $(this);
+		const $text = $banner.find('.BannerText');
+		const color = $text.find('[style*="color"]').first().css('color');
+		if (color) {
+			$banner.find('.Title').css('color', color);
+		}
+	});
+
+	//------------------------------------------------------------------------------
+	// Banner Text Link to Button
+	//------------------------------------------------------------------------------
+
+	$('.MainBanner, .FeaturedBanner').each(function() {
+		const $banner = $(this);
+		const $link = $banner.find('.TextButtons-1 :last-child > a');
+		if ($link.length) {
+			$link.addClass('Button');
+		}
 	});
 
 	//------------------------------------------------------------------------------
@@ -406,6 +437,8 @@ $(document).ready(function () {
 
 	addInputPlaceholder($('#SubscribeEmail, #UnsubscribeEmail'), 'required');
 
+	$('#NewsletterSubscribeForm [name="b_accept"]').attr('aria-hidden', 'true').attr('tabindex', '-1');
+
 	//------------------------------------------------------------------------------
 	// Misc
 	//------------------------------------------------------------------------------
@@ -419,6 +452,7 @@ $(document).ready(function () {
 		}
 		$('[data-details-global-toggle][open]').removeAttr('open');
 		$('.FilterGroup.Navigable').removeClass('Navigable');
+		$('[data-navigation-hover-kb-support]').find('.Open').removeClass('Open').attr('aria-expanded', 'false');
 	});
 
 	$(document).on('change', '[data-auto-submit]', function (evt) {

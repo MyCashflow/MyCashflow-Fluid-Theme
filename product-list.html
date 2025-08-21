@@ -1,5 +1,5 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
@@ -8,7 +8,7 @@
 		<div class="SiteBody Container">
 			<div class="CategoryLayout">
 				<aside class="CategoryAside">{Helper(case: 'isCategory', file: 'helpers/category/category-nav-sidebar-expandable')}</aside>
-				<main class="CategoryMain">
+				<main class="CategoryMain" id="main-content">
 					<header class="CategoryHeader">
 						{Helper(file: 'helpers/category/category-image-main-contained')}
 						{Path}
@@ -36,9 +36,12 @@
 						limit: '60|120',
 						subcategories: 'true',
 						pagination: 'true',
-						before: '<div class="ProductList">',
+						before: '
+							<section class="CategoryProducts">
+								<h2 class="Subtitle Hide-Visually">{%CategoryProducts}</h2>
+								<ul class="ProductList">',
 						after: '
-							</div>
+								</ul>
 							{Helper(file: 'helpers/pagination')}',
 						helper: 'helpers/list-product' 
 					)}
@@ -46,12 +49,12 @@
 						category: '{CategoryId(or: '01')}',
 						type: 'normal',
 						before: '
-							<aside class="ProductBundles">
+							<section class="ProductBundles">
 								<h2 class="Subtitle">{%ProductBundles}</h2>
-								<div class="ProductList">',
+								<ul class="ProductList">',
 						after: '
-								</div>
-							</aside>',
+								</ul>
+							</section>',
 						helper: 'helpers/list-bundle'
 					)}
 				</main>

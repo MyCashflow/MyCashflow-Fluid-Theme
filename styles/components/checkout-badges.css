@@ -31,6 +31,7 @@
 
 .CheckoutBadge svg,
 .CheckoutBadge img {
+	height: fit-content;
 	max-height: 100%;
 	object-fit: contain;
 }
@@ -44,6 +45,12 @@
 .CheckoutBadge.Badge-ApplePay {
 	--badge-border-radius: 0;
 	background-color: transparent;
+}
+
+.CheckoutBadge.Badge-GooglePay {
+	--badge-border-color: transparent;
+	--badge-fill-6: var(--color-text);
+	box-shadow: 0 0 0 1px var(--border-color);
 }
 
 .CheckoutBadge.Badge-DHL {
@@ -91,6 +98,13 @@
 	background-color: var(--badge-bg);
 }
 
+.CheckoutBadges-SingleColor .CheckoutBadge.Badge-GooglePay {
+	--badge-border-color: transparent;
+	--badge-fill-1: var(--color-text);
+	--badge-fill-4: var(--background-color);
+	--badge-fill-6: var(--color-text);
+}
+
 .CheckoutBadges-SingleColor .CheckoutBadge.Badge-DHL {
 	--badge-bg: var(--color-white);
 	--badge-border-color: inherit;
@@ -116,6 +130,10 @@
 	--badge-bg: #feb4c7;
 }
 
+[data-footer-text="white"] .CheckoutBadge.Badge-GooglePay {
+	--badge-fill-6: var(--color-text-dark);
+}
+
 /* Dark theme single color adjustment
 /*------------------------------------------------------------------------------*/
 
@@ -125,4 +143,8 @@
 
 [data-footer-text="white"] .CheckoutBadges-SingleColor .CheckoutBadge.Badge-Amex {
 	--badge-fill: var(--background-color);
+}
+
+[data-footer-text="white"] .CheckoutBadges-SingleColor .CheckoutBadge.Badge-GooglePay {
+	--badge-fill-6: var(--color-text);
 }

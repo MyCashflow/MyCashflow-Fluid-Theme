@@ -1,6 +1,6 @@
-<article class="ListProduct ListProduct-CardImageBackground {BundleClass}">
-	<a class="ListProductImage" href="{BundleURL}">
-		<div class="AspectRatio">
+<li class="ListProduct ListProduct-CardImageBackground {BundleClass}">
+	<div class="ListProductImage">
+		<a href="{BundleURL}" class="ListProductImageLink" {ProductLinkData}>
 			<img	srcset="{BundleImageUrl(imagesize: 'ListMobile')} 300w,
 										{BundleImageUrl(imagesize: 'ListDesktop')} 600w"
 						sizes="(max-width: 600px) 300px,
@@ -10,17 +10,17 @@
 						width="300"
 						loading="lazy"
 						alt="{BundleName}">
-		</div>
-	</a>
+		</a>
+	</div>
 	<div class="ListProductBuy">
 		<div class="ListProductInfo">
 			{BundleName(
 				before: '
-					<h1 class="ListProductName">
-						<a href="{BundleUrl}">',
+					<h3 class="ListProductName" aria-hidden="true">
+						<a href="{BundleUrl}" tabindex="-1">',
 				after: '
 						</a>
-					</h1>'
+					</h3>'
 			)}
 			{Helper(
 				before: '<div class="ListProductPrices">',
@@ -29,4 +29,4 @@
 			)}
 		</div>
 	</div>
-</article>
+</li>

@@ -25,6 +25,10 @@
 	z-index: 1;
 }
 
+.IconButton:focus-visible {
+	z-index: 1;
+}
+
 .IconButton .fa:before {
 	font-size: var(--icon-button-size);
 }

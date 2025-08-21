@@ -29,6 +29,56 @@
 	}
 }
 
+/*------------------------------------------------------------------------------*/
+/* Screen Readers
+/*------------------------------------------------------------------------------*/
+
+.SR-Only {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.SR-Only-Focusable:focus-visible,
+.SR-Only-Focusable-Static:focus-visible {
+	background: var(--background-color);
+	border-radius: var(--border-radius);
+	clip: auto;
+	height: auto;
+	outline-offset: 2px;
+	position: absolute;
+	white-space: normal;
+	width: auto;
+	z-index: 10000;
+}
+
+.SR-Only-Focusable-Static:focus-visible {
+	position: static !important;
+}
+
+/* Skip to Main Content Link */
+
+.SR-Only.SkipToContent {
+	background-color: var(--color-accent) !important;
+	color: var(--color-text-on-accent) !important;
+	font-weight: bold;
+	margin: 5px;
+	padding: 1rem 1.5rem;
+	position: absolute;
+	text-decoration: none;
+}
+
+.SR-Only-Focusable.SkipToContent:focus-visible {
+	background-color: var(--color-accent);
+	left: 5px;
+	top: 5px;
+}
 
 /*------------------------------------------------------------------------------*/
 /* Visually Hide

@@ -53,24 +53,25 @@
 /* Wishlist Toggle on List Product
 /*------------------------------------------------------------------------------*/
 
-.ListProductImage .ProductWishlist .AddToWishlist {
+.ListProduct .ProductWishlist .AddToWishlist {
 	background-color: transparent;
 	border: 0;
 	font-size: 0;
 	gap: 0;
 }
 
-.ListProductImage .ProductWishlist {
-	bottom: 0;
+.ListProduct .ProductWishlist {
 	position: absolute;
 	right: 0;
+	top: 0;
+	z-index: 2;
 }
 
-.ListProductImage .ProductWishlistToggle {
+.ListProduct .ProductWishlistToggle {
 	margin: 0;
 }
 
-.ListProductImage .AddToWishlist::before {
+.ListProduct .AddToWishlist::before {
 	font-size: var(--font-size-large);
 }
 

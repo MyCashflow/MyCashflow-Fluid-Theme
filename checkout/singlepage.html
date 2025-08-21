@@ -1,5 +1,5 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 		{Helper(file: 'checkout/helpers/styles')}
@@ -13,11 +13,11 @@
 					<div class="CheckoutAside">
 						<div class="StickyAside">
 							<button class="ShowCartButton" data-toggle-cart>
-								<span>{%ShowShoppingCart}</span> <span class="ShowCartTotal" data-cart-total="{CartOpenTotal}"></span>
+								<span>{%ShowShoppingCart}</span> <span class="ShowCartTotal" data-cart-open-total="{CartOpenTotal}"></span>
 							</button>
 							<div class="CheckoutCart">
 								<div class="LinkHeader">
-									<h2 class="Subtitle" data->{%ShoppingCart} ({CartTotalItems})</h3>
+									<h2 class="Subtitle">{%ShoppingCart} ({CartTotalItems})</h2>
 									<a href="/cart">{%ShoppingCartEdit}</a>
 								</div>
 								{Helper(file: 'helpers/discount-codes-notification')}
@@ -34,7 +34,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="CheckoutMain">
+					<div class="CheckoutMain" id="main-content">
 						{Notifications(
 							before: '<div class="Notifications">',
 							after: '</div>'
@@ -49,7 +49,7 @@
 										or: '<a href="/account/logout/">{%Logout}</a>'
 									)}
 								</div>
-								<p>{%CheckoutBillingAddressIntro}</p>
+								<p>{%CheckoutBillingAddressIntro} {Text(code: 'CheckoutMandatoryInformation', before: '<strong>', after: '</strong>')}</p>
 								<fieldset id="CheckoutBillingAddress" data-checkout-part="BillingAddress">
 									{CheckoutBillingAddress(
 										mode: 'form',

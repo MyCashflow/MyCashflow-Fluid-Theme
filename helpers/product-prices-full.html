@@ -1,10 +1,10 @@
 {ProductPrice(
 	currencysymbol: 'true',
-	html: 'true',
+	html: 'false',
 	before: '
 		<dl class="Prices">
 			<dt class="Price CurrentPrice">{%Price}</dt>
-			<dd class="Price CurrentPrice">
+			<dd class="Price CurrentPrice" translate="no">
 				<strong>',
 	after: '
 				</strong>
@@ -13,15 +13,17 @@
 				case: 'IsDiscountProduct',
 				file: '{{
 					<dt class="Price ListPrice">{%OldPrice}</dt>
-					<dd class="Price ListPrice">{ProductComparePrice(mode: 'list', currencysymbol: 'true')}</dd>
+					<dd class="Price ListPrice" translate="no"><s>{ProductComparePrice(mode: 'list', currencysymbol: 'true')}</s></dd>
 					{ProductComparePrice(
 						mode: 'comparison',
 						currencysymbol: 'true',
 						before: '
 							<dt class="Price LowestCampaignPrice">{%LowestCampaignPrice}</dt>
-							<dd class="Price LowestCampaignPrice">',
-						after: '</dd>'
+							<dd class="Price LowestCampaignPrice" translate="no"><s>',
+						after: '</s></dd>'
 					)}
+					<dt class="Price PriceDiscountPercent SR-Only">{%Discount}</dt>
+					<dd class="Price PriceDiscountPercent SR-Only">{ProductDiscountPercent(mode: 'range', percentagesymbol: 'true')}</dd>
 				}}'
 			)}
 			{Helper(

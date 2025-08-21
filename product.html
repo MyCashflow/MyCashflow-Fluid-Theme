@@ -1,14 +1,14 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
 	<body class="{BodyClass}">
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
-			<main class="SiteMain">
+			<main class="SiteMain" id="main-content">
 				<div class="ContainerMaxWidth">
-					<article class="{ProductClass} Product ProductPage ProductLayout">
+					<article class="{ProductClass} Product ProductPage ProductLayout" aria-labelledby="product-title">
 						<div class="ProductLayoutSection">
 							<section class="ProductImages">
 								{ProductThumbnails(
@@ -24,20 +24,15 @@
 									after: '
 											</div>
 											<p class="ProductImageCaption" data-image-caption>{ProductImageCaption(html: 'false')}</p>
-											{ProductDiscountPercent(
-												before: '
-													<div class="ProductPageDiscount">
-														<span class="ProductDiscountLabel">{%Discount}</span> <span class="ProductDiscountPercent">',
-												after: '
-														&#37;</span>
-													</div>'
+											{Helper(
+												before: '<div class="ProductPageDiscount" aria-hidden="true">',
+												after: '</div>',
+												file: 'helpers/product-discount'
 											)}
 										</div>',
 									helper: '{{
 										<a href="{ProductImageUrl(imagesize: 'big')}" class="ProductImage" data-caption="{ProductImageCaption(html: 'false')}">
-											<div class="AspectRatio">
-												<img src="{ProductImageUrl(imagesize: 'normal')}" loading="lazy" alt="{ProductImageCaption(html: 'false')}">
-											</div>
+											<img src="{ProductImageUrl(imagesize: 'normal')}" loading="lazy" alt="{ProductImageCaption(html: 'false')}">
 										</a>
 									}}'
 								)}
@@ -47,9 +42,7 @@
 									helper: '{{
 										<li>
 											<a href="{ProductImageUrl(imagesize: 'big')}" class="ProductThumbnail">
-												<div class="AspectRatio">
-													<img src="{ProductImageUrl(imagesize: 'mini')}" loading="lazy" alt="">
-												</div>
+												<img src="{ProductImageUrl(imagesize: 'mini')}" loading="lazy" alt="{ProductImageCaption(html: 'false')}">
 											</a>
 										</li>
 									}}'
@@ -71,7 +64,7 @@
 										</p>
 									}}'
 								)}
-								<h1 class="Title ProductTitle">{PageTitle}</h1>
+								<h1 class="Title ProductTitle" id="product-title">{PageTitle}</h1>
 								{Helper(file: 'helpers/product-code')}
 								{Helper(file: 'helpers/product-rating')}
 								{Helper(
@@ -149,7 +142,7 @@
 									{ProductShortDesc(
 										before:'
 											<details class="Accordion Headings" open>
-												<summary><h3>{%ProductDescription}</h3></summary>',
+												<summary><h2>{%ProductDescription}</h2></summary>',
 										after: '
 												{ProductFeatures}
 											</details>',
@@ -158,7 +151,7 @@
 									{ProductFullDesc(
 										before:'
 											<details class="Accordion Headings">
-												<summary><h3>{%ProductInformation}</h3></summary>',
+												<summary><h2>{%ProductInformation}</h2></summary>',
 										after: '
 											</details>'
 									)}
@@ -166,7 +159,7 @@
 										before:'
 											<details class="Accordion ProductShippingMethods">
 												<summary>
-													<h3>{%ProductShipping}</h3>
+													<h2>{%ProductShipping}</h2>
 													{Helper(
 														before: '
 															<div class="ProductShippingBadges">
@@ -188,7 +181,7 @@
 									{ProductBundles(
 										before:'
 											<details class="Accordion">
-												<summary><h3>{%ProductBundles}</h3></summary>',
+												<summary><h2>{%ProductBundles}</h2></summary>',
 										after: '
 											</details>'
 									)}
@@ -206,7 +199,7 @@
 						file: 'helpers/product-reviews'
 					)} 
 				</div>
-				<div class="Section" data-viewport-lazyload="helpers/product-lists/productpage-lists&setProduct={ProductId}">
+				<div class="Section" data-viewport-lazyload="helpers/product-lists/productpage-lists&setProduct={ProductId}" aria-hidden="true">
 					{SimilarProducts(
 						category: 'ALL',
 						type: 'ids',

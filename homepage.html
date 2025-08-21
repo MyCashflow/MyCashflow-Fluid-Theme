@@ -1,21 +1,14 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
-	<body class="{BodyClass}">
+	<body class="{BodyClass} HomepageCategory">
 		{Helper(file: 'helpers/header')}
-		{Helper(
-			before: '
-				<aside class="SiteBanner">
-					<div class="Section">',
-			after: '
-					</div>
-				</aside>',
-			file: 'helpers/banners/banner-mainbanner'
-		)}
 		<div class="SiteBody Container">
-			<main class="SiteMain">
+			<main class="SiteMain" id="main-content">
+				<h1 class="HomepageTitle Hide-Visually">{PageTitle}</h1>
+				{Helper(file: 'helpers/banners/banner-mainbanner')}
 				{Helper(
 					before: '
 						<div class="Section">
@@ -27,7 +20,7 @@
 				)}
 				{Helper(file: 'helpers/klarna-osm/homepage-{Setting(name: 'klarna_osm_homepage')}')}
 				{Helper(file: 'helpers/banners/banner-category-slider')}
-				<div class="Section" data-viewport-lazyload="helpers/product-lists/homepage-lists&setCategory={CategoryId}">
+				<div class="Section" data-viewport-lazyload="helpers/product-lists/homepage-lists&setCategory={CategoryId}" aria-hidden="true">
 					{Helper(file: 'helpers/placeholders/category-slider')}
 					{HotPicks(
 						category: 'ALL',
@@ -62,17 +55,17 @@
 				{News(
 					limit: '4',
 					before: '
-						<div class="Section">
-							<section class="NewsSection">
-								<h2 class="Subtitle">{%News}</h2>
-								<div class="Slider" data-slider>
-									{Helper(file: 'helpers/slider-buttons')}
-									<div class="NewsScrollList ScrollOverflow" data-slider-viewport>',
+						<section class="Section NewsSection" aria-labelledby="news-section">
+							<h2 class="Subtitle" id="news-section">{%News}</h2>
+							<a href="#after-news" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+							<div class="Slider" data-slider>
+								{Helper(file: 'helpers/slider-buttons')}
+								<div class="NewsScrollList ScrollOverflow" data-slider-viewport>',
 					after: '
-									</div>
 								</div>
-							</section>
-						</div>',
+							</div>
+							<div id="after-news" tabindex="-1"></div>
+						</section>',
 					helper: 'helpers/news-item'
 				)}
 			</main>

@@ -1,24 +1,24 @@
-<article class="ListProduct ListProductPlaceholder Available AvailabilityInStock ListProduct-CardImageBackground">
-	<a class="ListProductImage" href="#">
-		<div class="AspectRatio"></div>
-	</a>
+<li class="ListProduct ListProductPlaceholder Available AvailabilityInStock ListProduct-CardImageBackground" aria-hidden="true"	tabindex="-1">
+	<div class="ListProductImage">
+		<div class="ListProductImageLink"></div>
+	</div>
 	<div class="ListProductInfo">
-		<span class="ListProductBrandName"><a href="#">&nbsp;</a></span>
-		<h3 class="ListProductName"><a href="#">&nbsp;</a></h3>
+		<span class="ListProductBrandName" data-setting-show="{Setting(name: 'list_product_show_brand')}">&nbsp;</span>
+		<div class="ListProductName">&nbsp;</div>
 		<div class="ListProductPrices">
 			<dl class="Prices">
 				<dt class="Price">&nbsp;</dt>
 				<dd class="Price">&nbsp;</dd>
 			</dl>
 		</div>
-		<div class="ListProductAddToCart" style="visibility: hidden;">
-			<form class="ProductAddToCart">
+		<div class="ListProductAddToCart" data-setting-show="{Setting(name: 'list_product_show_addtocart')}">
+			<div class="ProductAddToCart">
 				<fieldset>
 					<div class="FormItem FormSubmit">
-						<button type="submit" class="SubmitButton AddToCart"><span>{%AddToCart}</span></button>
+						<div type="submit" class="Button SubmitButton AddToCart"><span>&nbsp;</span></div>
 					</div>
 				</fieldset>
-			</form>
+			</div>
 		</div>
 	</div>
-</article>
+</li>

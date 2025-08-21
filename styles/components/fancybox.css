@@ -16,16 +16,12 @@
 }
 
 .f-button {
-	--f-button-border-radius: var(--border-radius);
+	--f-button-border-radius: var(--border-radius-buttons);
 	color: var(--fancybox-color);
 }
 
 .f-button:hover {
 	color: var(--fancybox-hover-color);
-}
-
-.f-thumbs__slide {
-	box-sizing: border-box;
 }
 
 .fancybox__content {
@@ -47,6 +43,14 @@
 	--f-thumb-border-radius: var(--border-radius);
 	--f-thumb-outline: 2px;
 	--f-thumb-outline-color: var(--color-accent);
+}
+
+.f-thumbs__slide {
+	box-sizing: border-box;
+}
+
+.f-thumbs__slide__button {
+	--border-radius-buttons: var(--border-radius);
 }
 
 .is-compact .fancybox__footer {
