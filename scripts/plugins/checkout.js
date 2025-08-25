@@ -11,7 +11,7 @@
 	var Checkout = {
 		formSelector: '#CheckoutForm',
 		selectedClass: 'SelectedMethod',
-		typingDelay: 3000,
+		typingDelay: 1500,
 		changeDelay: 100,
 		autoFillDebounceDelay: 100,
 		blurCheckDelay: 50,
@@ -34,18 +34,16 @@
 			this.$form = $(this.formSelector);
 			this.bindEvents();
 			this.runToggles();
-			this.markMethods();
 			this.afterInit(this.$form);
 		},
 
 		bindEvents: function () {
 			this.$form.on('animationstart', '[data-checkout-part]', $.proxy(this.onAutoFill, this));
 			this.$form.on('change', '[data-checkout-part]', $.proxy(this.onChange, this));
-			this.$form.on('keypress', '[data-checkout-part]', $.proxy(this.onKeyPress, this));
+			this.$form.on('keydown', '[data-checkout-part]', $.proxy(this.onKeyDown, this));
 			this.$form.on('blur', '[data-checkout-part]', $.proxy(this.onBlur, this));
 			this.$form.on('change', '[data-checkout-toggle]', $.proxy(this.onToggle, this));
 			this.$form.on('change', '.DefineShippingMethod, .DefinePaymentMethod', $.proxy(this.onDefineMethod, this));
-			this.$form.on('click', '.PaymentMethod, .ShippingMethod', $.proxy(this.onMethodClick, this));
 		},
 
 		onAutoFill: function(evt) {
@@ -64,7 +62,7 @@
 			}
 		},
 
-		onKeyPress: function (evt) {
+		onKeyDown: function (evt) {
 			var $part = $(evt.currentTarget);
 			var $input = $(evt.target);
 			if (!$input.is(CHECK_INPUTS)) {
@@ -96,21 +94,6 @@
 					$target.find(':input:not([type="hidden"])').val('').trigger('change');
 				}
 			}
-		},
-
-		onMethodClick: function (evt) {
-			var $input = $(evt.currentTarget).find('[type="radio"]');
-			if ($input.is('[disabled]')) {
-				return;
-			}
-			this.markMethods();
-		},
-
-		markMethods: function () {
-			var selectedClass = this.selectedClass;
-			$('[class*="MethodWrapper"] [type="radio"]:checked', this.$form).each(function() {
-				$(this).closest('[class*="MethodWrapper"]').addClass(selectedClass).siblings().removeClass(selectedClass);
-			});
 		},
 
 		onDefineMethod: function (evt) {
@@ -161,7 +144,6 @@
 				return $.get('/interface/' + this.getPartResponseParams($part))
 					.then($.proxy(function (response) {
 						$part.html(response);
-						this.markMethods();
 						this.afterUpdatePart($part);
 					}, this));
 			}

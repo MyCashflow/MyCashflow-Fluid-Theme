@@ -1,0 +1,37 @@
+{ProductPrice(
+	currencysymbol: 'true',
+	html: 'false',
+	before: '
+		<dl class="Prices">
+			<dt class="Price CurrentPrice">{%Price}</dt>
+			<dd class="Price CurrentPrice" translate="no">
+				<strong>',
+	after: '
+				</strong>
+			</dd>
+			{Helper(
+				case: 'IsDiscountProduct',
+				file: '{{
+					<dt class="Price ListPrice">{%OldPrice}</dt>
+					<dd class="Price ListPrice" translate="no"><s>{ProductComparePrice(mode: 'list', currencysymbol: 'true')}</s></dd>
+					{ProductComparePrice(
+						mode: 'comparison',
+						currencysymbol: 'true',
+						before: '
+							<dt class="Price LowestCampaignPrice">{%LowestCampaignPrice}</dt>
+							<dd class="Price LowestCampaignPrice" translate="no"><s>',
+						after: '</s></dd>'
+					)}
+					<dt class="Price PriceDiscountPercent SR-Only">{%Discount}</dt>
+					<dd class="Price PriceDiscountPercent SR-Only">{ProductDiscountPercent(mode: 'range', percentagesymbol: 'true')}</dd>
+				}}'
+			)}
+			{Helper(
+				case: 'VatFreePricing',
+				file: '{{
+					<dt class="Price PriceVat">{%VAT}</dt>
+					<dd class="Price PriceVat">0&nbsp;%</dd>
+				}}'
+			)}
+		</dl>'
+)}

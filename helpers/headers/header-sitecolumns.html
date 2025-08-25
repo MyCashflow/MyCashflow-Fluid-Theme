@@ -1,56 +1,71 @@
+<div class="SiteLayoutBackground Theme-Header"></div>
 <div class="SiteLayout SiteLayoutColumns">
 	<div class="SiteLayoutSection ColumnLayoutSection Theme-Header">
-		<div class="HeaderLogo">
-			{Helper(file: 'helpers/logo')}
+		<div class="SideLogo">
+			<div class="HeaderLogo">
+				{Helper(file: 'helpers/logo')}
+			</div>
 		</div>
-		<nav class="SideNavigation StickySide" data-navigation-expandable data-subnavigation-loader>
+		<nav class="SideNavigation StickySide" aria-label="{%MainNavigation}" data-navigation-expandable data-subnavigation-loader>
 			{Categories(show: 'active')}
 			{Campaigns(
-				before: '<h3 class="Subtitle NoMargin">{%Campaigns}</h3>'
+				before: '<h3 class="NoMargin">{%Campaigns}</h3>'
 			)}
 		</nav>
 	</div>
 	<div class="SiteLayoutSection MainLayoutSection">
 		<header class="SiteHeader SiteColumnsHeader Theme-Header">
 			<div class="HeaderDesktop">
-				<div class="Flex FlexGap FlexValign-Center FlexAlign-SpaceBetween">
-					<div class="FlexItem-Flex">
+				<div class="HeaderGrid SiteColumnHeaderGrid">
+					<div class="HeaderColumn-Center">
 						<div class="SimpleSearchForm">
 							{Search}
 						</div>
-					</div>
-					<div class="Flex FlexGap FlexWrap FlexAlign-End FlexValign-Center">
 						<div class="Flex FlexValign-Center">
-							<a href="/account" class="IconButton" data-drawer-toggle="account">
-								<span class="fa fa-user-circle"></span>
+							<a href="/account" class="IconButton" data-drawer-toggle="account" aria-label="{%MyAccount}">
+								<span class="fa fa-user-circle" aria-hidden="true"></span>
 							</a>
-							<a href="/cart/" class="IconButton" data-drawer-toggle="cart">
-								<span class="fa fa-shopping-cart"></span>
-								<span class="CartTotals" data-cart-total-items="{CartTotalItems}" data-cart-sub-total="{CartSubTotal}"></span>
+							{Helper(file: 'helpers/wishlist/wishlist-icon')}
+							<a href="/cart" class="IconButton" data-drawer-toggle="cart" aria-label="{%ShoppingCart}, {CartTotalItems} {%Products}, {%Subtotal}: {CartSubTotal}">
+								<span class="fa fa-shopping-cart" aria-hidden="true"></span>
+								<span class="CartTotals" data-cart-total-items="{CartTotalItems}" data-cart-sub-total="{CartSubTotal}" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="HeaderMobile">
-				<div class="Flex FlexGap FlexValign-Center FlexAlign-SpaceBetween">
-					<a href="#" class="IconButton" data-drawer-toggle="menu">
-						<span class="fa fa-bars"></span>
-					</a>
-					<div class="HeaderLogo">
-						{Helper(file: 'helpers/logo')}
+				<div class="HeaderGrid HeaderLogoCentered">
+					<div class="HeaderColumn-Left">
+						<a href="#" class="IconButton" data-drawer-toggle="menu" aria-label="{%Navigation}">
+							<span class="fa fa-bars" aria-hidden="true"></span>
+						</a>
 					</div>
-					<a href="/cart/" class="IconButton" data-drawer-toggle="cart">
-						<span class="fa fa-shopping-cart"></span>
-						<span class="CartTotals" data-cart-total-items="{CartTotalItems}" data-cart-sub-total="{CartSubTotal}"></span>
-					</a>
+					<div class="HeaderColumn-Center">
+						<div class="HeaderLogo">
+							{Banners(
+								name: 'logo-header-mobile',
+								limit: '1',
+								classes: 'LogoHeader-Mobile',
+								helper: 'helpers/logo',
+								or: '{Helper(file: 'helpers/logo')}'
+							)}
+						</div>
+					</div>
+					<div class="HeaderColumn-Right">
+						<div class="Flex FlexValign-Center">
+							{Helper(file: 'helpers/wishlist/wishlist-icon')}
+						<a href="/cart" class="IconButton" data-drawer-toggle="cart" aria-label="{%ShoppingCart}, {CartTotalItems} {%Products}, {%Subtotal}: {CartSubTotal}">
+							<span class="fa fa-shopping-cart" aria-hidden="true"></span>
+							<span class="CartTotals" data-cart-total-items="{CartTotalItems}" data-cart-sub-total="{CartSubTotal}" aria-hidden="true"></span>
+						</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</header>
 		<div class="MobileHeaderSearch Theme-Header">
 			<div class="SimpleSearchForm">
-				{Search(
-					id: 'MobileSearch',
-				)}
+				{Search(id: 'MobileSearch')}
 			</div>
 		</div>

@@ -1,0 +1,20 @@
+{Helper(file: 'settings/badge-paytrail-{Setting(name: 'show_badge_paytrail')}')}
+{Helper(file: 'settings/badge-paytrail-banks-{Setting(name: 'show_badge_paytrail_banks')}')}
+{Helper(file: 'settings/badge-mobilepay-{Setting(name: 'show_badge_mobilepay')}')}
+{Helper(file: 'settings/badge-apple-pay-{Setting(name: 'show_badge_apple_pay')}')}
+{Helper(file: 'settings/badge-google-pay-{Setting(name: 'show_badge_google_pay')}')}
+{Helper(file: 'settings/badge-visa-{Setting(name: 'show_badge_visa')}')}
+{Helper(file: 'settings/badge-mastercard-{Setting(name: 'show_badge_mastercard')}')}
+{Helper(file: 'settings/badge-amex-{Setting(name: 'show_badge_amex')}')}
+{Helper(file: 'settings/badge-paypal-{Setting(name: 'show_badge_paypal')}')}
+{Helper(file: 'settings/badge-klarna-{Setting(name: 'show_badge_klarna')}')}
+{Banners(
+	name: 'payment-buttons',
+	helper: '{{
+		<li class="CheckoutPaymentBadge">
+			<figure class=" CheckoutBadge CheckoutBannerBadge-{BannerId}">
+				<img src="{BannerImageUrl(height: '180')}" loading="lazy" height="35" width="55" alt="{BannerName}">
+			</figure>
+		</li>
+	}}'
+)}

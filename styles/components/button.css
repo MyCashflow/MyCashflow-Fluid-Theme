@@ -5,40 +5,40 @@
 button,
 [type="button"],
 .Button {
+	--button-background-color: var(--background-color);
+	--button-border-color: var(--input-border-color);
+	--button-color: var(--color-text);
 	--button-height: var(--input-height);
-	--border-color: var(--input-border-color);
 	align-items: center;
-	background: var(--background-color);
-	border: 1px solid var(--border-color);
+	background: var(--button-background-color);
+	border: 1px solid var(--button-border-color);
 	border-radius: var(--border-radius-buttons);
-	box-shadow: var(--box-shadow);
-	color: var(--color-text);
+	color: var(--button-color);
 	cursor: pointer;
 	display: inline-flex;
+	gap: .5rem;
 	justify-content: center;
 	min-height: var(--button-height);
 	padding: .5rem 1.5rem;
 	text-decoration: none;
 	transition-duration: var(--transition-fast);
+	width: fit-content;
 }
 
 button:hover,
 [type="button"]:hover,
 .Button:hover {
-	--background-color: var(--background-color-shade-1);
-	color: var(--color-text);
+	--button-background-color: var(--background-color-shade-1);
+	--button-color: var(--color-text);
+	color: var(--button-color);
 }
 
 button:active,
 [type="button"]:active,
 .Button:active {
-	--background-color: var(--background-color-shade-2);
+	--button-background-color: var(--background-color-shade-2);
 	box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
-}
-
-[class|="Button"]:focus-visible {
-	outline: 5px auto Highlight;
-	outline: 5px auto -webkit-focus-ring-color;
+	color: var(--button-color);
 }
 
 /*------------------------------------------------------------------------------*/
@@ -54,22 +54,28 @@ button:active,
 /*------------------------------------------------------------------------------*/
 
 .Button-Primary,
-.FormSubmit button,
-button[type="submit"] {
-	--background-color: var(--color-accent);
-	--border-color: var(--color-accent);
+.AddToCart,
+form:where(#ContactForm, #CheckoutForm) .SubmitButton,
+.CampaignCodeForm-InModal form:last-child button[type="submit"],
+#NewsletterSubscribeButton {
+	--button-background-color: var(--color-accent);
+	--button-border-color: var(--color-accent);
+	--button-color: var(--color-text-on-accent);
+	accent-color: var(--background-accent-color-shade-2);
 	border: 0;
-	color: var(--color-text-on-accent);
+	box-shadow: var(--box-shadow);
 	font-weight: var(--font-heading-weight);
 	text-transform: var(--font-heading-transform);
 }
 
 .Button-Primary:hover,
-.FormSubmit button:hover,
-button[type="submit"]:hover {
-	--background-color: var(--color-accent-darker);
-	--border-color: var(--color-accent-darker);
-	color: var(--color-text-on-accent);
+.AddToCart:hover,
+form:where(#ContactForm, #CheckoutForm) .SubmitButton:hover,
+#NewsletterSubscribeButton
+.CampaignCodeForm-InModal form:last-child button[type="submit"]:hover {
+	--button-background-color: var(--color-accent-darker);
+	--button-border-color: var(--color-accent-darker);
+	--button-color: var(--color-text-on-accent);
 }
 
 /*------------------------------------------------------------------------------*/
@@ -104,15 +110,15 @@ button[type="submit"]:hover {
 /*------------------------------------------------------------------------------*/
 
 .Button-Light {
-	--background-color: var(--color-white);
-	--border-color: var(--color-white);
-	--color-text: var(--color-black);
+	--button-background-color: var(--color-white);
+	--button-border-color: var(--color-white);
+	--button-color: var(--color-black);
 }
 
 .Button-Light:hover,
 .Button-Light:active {
-	--background-color: var(--color-white-darker);
-	--color-text: var(--color-black);
+	--button-background-color: var(--color-white-darker);
+	--button-color: var(--color-black);
 }
 
 /*------------------------------------------------------------------------------*/
@@ -120,13 +126,13 @@ button[type="submit"]:hover {
 /*------------------------------------------------------------------------------*/
 
 .Button-Dark {
-	--background-color: var(--color-black);
+	--button-background-color: var(--color-black);
 	--border-color: var(--color-black);
-	--color-text: var(--color-white);
+	--button-color: var(--color-white);
 }
 
 .Button-Dark:hover,
 .Button-Dark:active {
-	--background-color: var(--color-black-lighter);
-	--color-text: var(--color-white);
+	--button-background-color: var(--color-black-lighter);
+	--button-color: var(--color-white);
 }

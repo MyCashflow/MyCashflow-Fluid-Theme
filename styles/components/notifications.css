@@ -4,6 +4,9 @@
 
 .Notification {
 	--notification-bg: var(--color-notification-bg);
+	--color-link: var(--color-text-dark);
+	--color-link-hover: var(--color-text-dark-lighter);
+	--color-link-active: var(--color-text-dark-lighter);
 	background-color: var(--notification-bg);
 	border-radius: var(--border-radius);
 	color: var(--color-text-dark);

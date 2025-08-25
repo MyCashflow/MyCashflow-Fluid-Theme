@@ -1,0 +1,17 @@
+{Helper(file: 'settings/badge-posti-{Setting(name: 'show_badge_posti')}')}
+{Helper(file: 'settings/badge-matkahuolto-{Setting(name: 'show_badge_matkahuolto')}')}
+{Helper(file: 'settings/badge-postnord-{Setting(name: 'show_badge_postnord')}')}
+{Helper(file: 'settings/badge-db-schenker-{Setting(name: 'show_badge_db_schenker')}')}
+{Helper(file: 'settings/badge-budbee-{Setting(name: 'show_badge_budbee')}')}
+{Helper(file: 'settings/badge-dhl-{Setting(name: 'show_badge_dhl')}')}
+{Helper(file: 'settings/badge-gls-{Setting(name: 'show_badge_gls')}')}
+{Banners(
+	name: 'logistics-buttons',
+	helper: '{{
+		<li class="CheckoutLogisticsBadge">
+			<figure class="CheckoutBadge CheckoutBannerBadge-{BannerId}">
+				<img src="{BannerImageUrl(height: '180')}" loading="lazy" height="35" width="55" alt="{BannerName}">
+			</figure>
+		</li>
+	}}'
+)}

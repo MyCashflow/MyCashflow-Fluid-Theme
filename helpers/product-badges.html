@@ -17,11 +17,11 @@
 		)} 
 	}}'
 )}
-{Text(code: 'AvailabilityOutOfStock', before: '<span class="ProductBadge ProductOutOfStockBadge">', after: '</span>')}
-{Text(code: 'AvailabilityAlert', before: '<span class="ProductBadge ProductAvailabilityAlertBadge">', after: '</span>')}
+{Text(code: 'AvailabilityOutOfStock', before: '<span class="ProductBadge ProductOutOfStockBadge" data-badge-text="', after: '"></span>')}
+{Text(code: 'AvailabilityAlert', before: '<span class="ProductBadge ProductAvailabilityAlertBadge" data-badge-text="', after: '"></span>')}
 {ProductQuantityDiscounts(
 	before: '
-		<div class="ProductBadge ProductQuantityDiscountBadge">{%QuantityDiscount}
+		<div class="ProductBadge ProductQuantityDiscountBadge">{%QuantityDiscountProduct}
 			<div style="display: none !important;">',
 	after: '
 			</div>

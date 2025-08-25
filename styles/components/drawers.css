@@ -155,7 +155,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
-	justify-content: space-between;
 	margin: -1.5rem -3rem 1rem -3rem;
 	padding: 1rem 3rem;
 	position: sticky;
@@ -165,6 +164,10 @@
 
 .DrawerHeader > * {
 	margin-block: 0;
+}
+
+.DrawerHeader > :first-child {
+	margin-right: auto;
 }
 
 .DrawerCloseButton {
@@ -188,13 +191,17 @@
 	padding: 1.5rem 0;
 }
 
+.DrawerSection:first-child {
+	padding-top: 0;
+}
+
 /*------------------------------------------------------------------------------*/
 /* Drawer Overlay
 /*------------------------------------------------------------------------------*/
 
 .DrawerOverlay {
-	background-color: var(--color-black);
-  bottom: 0;
+	background-color: var(--backdrop-color);
+	bottom: 0;
 	cursor: pointer;
 	left: 0;
 	opacity: 0;
@@ -207,6 +214,6 @@
 }
 
 .DrawerOverlay.Visible {
-	opacity: .75;
+	opacity: 1;
 	visibility: visible;
 }

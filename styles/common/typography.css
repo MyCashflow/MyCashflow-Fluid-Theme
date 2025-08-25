@@ -23,12 +23,46 @@ h1, h2, h3, h4, h5, h6 {
 	text-transform: var(--font-heading-transform);
 }
 
+.Text-Large {
+	font-size: var(--font-size-large);
+}
+
 .Text-Body {
 	font-size: var(--font-size-regular);
 }
 
 .Text-Small {
 	font-size: var(--font-size-small);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Heading Sizes
+/*------------------------------------------------------------------------------*/
+
+.Headings h1 {
+	font-size: var(--font-size-xxlarge);
+	line-height: var(--line-height-heading);
+	text-transform: var(--font-heading-transform);
+}
+
+.Headings h2 {
+	font-size: var(--font-size-xlarge);
+	line-height: var(--line-height-heading);
+}
+
+.Headings h3 {
+	font-size: var(--font-size-large);
+}
+
+.Headings h4 {
+	font-size: var(--font-size-regular);
+	text-transform: uppercase;
+}
+
+.Headings h5, 
+.Headings h6 {
+	font-size: var(--font-size-small);
+	text-transform: uppercase;
 }
 
 /*------------------------------------------------------------------------------*/
@@ -45,34 +79,4 @@ h1, h2, h3, h4, h5, h6 {
 
 .Text-Right {
 	text-align: right;
-}
-
-/*------------------------------------------------------------------------------*/
-/* Font Styles on Infopages
-/*------------------------------------------------------------------------------*/
-
-#InfoPage h1 {
-	font-size: var(--font-size-xxlarge);
-	line-height: var(--line-height-heading);
-	text-transform: var(--font-heading-transform);
-}
-
-#InfoPage h2 {
-	font-size: var(--font-size-xlarge);
-	line-height: var(--line-height-heading);
-}
-
-#InfoPage h3 {
-	font-size: var(--font-size-large);
-}
-
-#InfoPage h4 {
-	font-size: var(--font-size-regular);
-	text-transform: uppercase;
-}
-
-#InfoPage h5, 
-#InfoPage h6 {
-	font-size: var(--font-size-small);
-	text-transform: uppercase;
 }

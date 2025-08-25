@@ -2,6 +2,46 @@
 /* Restricted Page
 /*------------------------------------------------------------------------------*/
 
+.RestrictedLogin {
+	justify-content: center;
+}
+
+.RestrictedHeader {
+	margin-top: 4rem;
+	padding-inline: var(--container-page-margin);
+}
+
+.RestrictedLayout {
+	margin-inline: auto;
+	max-width: 680px;
+}
+
+.RestrictedLayout:not(:has(#EditContactInfoForm)) {
+	max-width: 500px;
+}
+
+.RestrictedLayout :where(#AccountLoginForm, #ResetPasswordForm) {
+	background-color: var(--background-color-shade-1);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+.RestrictedLayout :where(#AccountLoginForm, #ResetPasswordForm) input {
+	width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+	.RestrictedHeader {
+		margin-bottom: 2rem;
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Restricted Misc
+/*------------------------------------------------------------------------------*/
+
 .RestrictedLogin [data-drawer-toggle] {
 	opacity: .5;
 	pointer-events: none;

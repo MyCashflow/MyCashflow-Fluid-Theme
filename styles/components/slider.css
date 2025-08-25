@@ -10,15 +10,15 @@
 	background-color: var(--color-white);
 	color: var(--color-text-dark);
 	bottom: 0;
-	border: 0;
 	font-size: 0;
+	gap: 0;
 	height: 4rem;
 	isolation: isolate;
 	margin: auto;
 	position: absolute;
 	top: 0;
 	width: 4rem;
-	z-index: 2;
+	z-index: 4;
 }
 
 .SliderButton:hover,
@@ -90,7 +90,6 @@
 	gap: 1rem;
 	justify-content: center;
 	margin-top: 1rem;
-	position: absolute;
 	pointer-events: none;
 	width: 100%;
 }
@@ -100,7 +99,7 @@
 }
 
 .SliderPosition > span {
-	background-color: var(--background-color-shade-2);
+	background-color: var(--border-color);
 	border-radius: var(--border-radius-medium);
 	cursor: pointer;
 	flex-basis: 10px;
@@ -132,10 +131,4 @@
 
 .PositionBar {
 	display: none;
-}
-
-@media screen and (max-width: 500px) {
-	.SliderPosition {
-		position: relative;
-	}
 }

@@ -1,0 +1,51 @@
+{LoyaltyProgramDiscountTiers(
+	before: '
+		<aside class="CustomerLoyaltyTiersList">
+			<ul class="TiersList">',
+	after: '
+				{LoyaltyProgramDiscountTiers(
+					filter: 'next',
+					helper: '{{
+						{CustomerLoyaltyPoints(
+							before: '
+								<li class="LoyaltyTier ZeroTier CurrentTierStatus">
+									<span style="display: none;">',
+							after: '</span>
+									<div class="LoyaltyTierProgress">
+										<span class="ProgressLine"></span>
+									</div>
+									<div class="TierDescription">
+										<span class="TierPoints">{%LoyaltyProgramTierCurrentPoints}</span> 
+										<span class="TierInfo">{%LoyaltyProgramTierNextNeeded}</span>
+									</div>
+								</li>'
+						)}
+					}}'
+				)}
+			</ul>
+		</aside>',
+	helper: '{{
+		<li class="LoyaltyTier {LoyaltyProgramDiscountTierClass}">
+			<div class="LoyaltyTierProgress">
+				<span class="ProgressLine"></span>
+			</div>
+			<div class="TierDescription">
+				<span class="TierPoints">{LoyaltyProgramDiscountTierPoints} {%LoyaltyProgramPoints}</span> 
+				<span class="TierDiscount">{LoyaltyProgramDiscountTierDiscount}</span>
+				<span class="TierInfo">{%LoyaltyProgramTierNextNeeded}</span>
+			</div>
+		</li>
+		{LoyaltyProgramDiscountTierClass(
+			before: '
+				<li class="',
+			after: 'TierStatus LoyaltyTier">
+					<div class="LoyaltyTierProgress">
+						<span class="ProgressLine"></span>
+					</div>
+					<div class="TierDescription">
+						<span class="TierPoints">{%LoyaltyProgramTierCurrentPoints}</span> 
+					</div>
+				</li>'
+		)}
+	}}'
+)}

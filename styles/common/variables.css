@@ -41,7 +41,10 @@
 	/* Shop Settings
 	/*------------------------------------------------------------------------------*/
 
-	--logo-image-ratio:            4 / 1;
+	--logo-image-ratio-y:          .5;
+	--logo-max-height-desktop:     80px;
+	--logo-max-height-mobile:      50px;
+	--scroll-margin-top:           80px;
 	--product-image-ratio:         1;
 
 	/*------------------------------------------------------------------------------*/
@@ -62,7 +65,7 @@
 	/* Border Radius
 	/*------------------------------------------------------------------------------*/
 
-	--border-radius:               3px;
+	--border-radius:               7px;
 	--border-radius-medium:        calc(var(--border-radius) * 2);
 	--border-radius-images:        var(--border-radius-medium);
 	--border-radius-buttons:       var(--border-radius);

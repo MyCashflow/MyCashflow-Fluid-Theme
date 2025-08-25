@@ -1,5 +1,5 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
@@ -8,7 +8,7 @@
 		<div class="SiteBody Container">
 			<div class="ContainerMaxWidth">
 				<div class="BaseLayout">
-					<main class="SiteMain">
+					<main class="SiteMain" id="main-content">
 						{InfoPageImageUrl(
 							imagesize: 'BannerWideMobile',
 							before: '
@@ -20,13 +20,14 @@
 																	2000px"
 													src="',
 							after: '"
-								loading="lazy">
+													alt="{InfoPageName}"
+													loading="lazy">
 									</div>
 								</div>'
 						)}
 						<h1 class="Title">{PageTitle}</h1>
 						{Content(
-							before: '<div class="PageContent">',
+							before: '<div class="PageContent Headings">',
 							after: '</div>'
 						)}
 					</main>

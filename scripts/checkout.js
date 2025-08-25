@@ -6,10 +6,6 @@
 $(document).ready(function () {
 	'use strict';
 
-	$.ajaxSetup({
-		cache: false
-	});
-
 	MCF.Checkout.init({
 		afterUpdate: function () {
 			MCF.Theme.updateMiniCarts();
@@ -21,9 +17,18 @@ $(document).ready(function () {
 		},
 
 		afterUpdatePart: function ($part) {
+			MCF.CheckoutPaymentGroups.refresh();
 			MCF.Loaders.hide($('.ShowCartButton'));
 			MCF.Loaders.hide($part);
 		}
+	});
+
+	MCF.CheckoutPaymentGroups.init({
+		titleBank: MCF.dictionary.PaymentMethodsBank,
+		titleCard: MCF.dictionary.PaymentMethodsCard,
+		titleInvoice: MCF.dictionary.PaymentMethodsInvoice,
+		titleMobile: MCF.dictionary.PaymentMethodsMobile,
+		titleOther: MCF.dictionary.PaymentMethodsOther,
 	});
 
 	// Misc
@@ -31,7 +36,12 @@ $(document).ready(function () {
 	// Add placeholder text
 	function addCampaignPlaceholderText(elem) {
 		$(elem).each(function () {
-			$(this).attr('placeholder', $(this).prev().text());
+			const $this = $(this);
+			let text = $this.prev().text();
+			if ($this.is('#CampaignCode')) {
+				text = MCF.dictionary.CampaignCodeOrGiftCard || text;
+			}
+			$this.attr('placeholder', text);
 		});
 	}
 	addCampaignPlaceholderText('#CampaignCode, #password');
@@ -53,27 +63,5 @@ $(document).ready(function () {
 
 	// Thanks page registration form
 	$('#CheckoutThanksRegistrationForm').insertBefore('#OrderFinished .OrderInfo');
-
-	// Responsive table
-	$.fn.tableOverflow = function() {
-		var tableWidth = $(this).width();
-		var wrapWidth = $(this).closest('.TableWrap').width();
-		if (tableWidth > wrapWidth) {
-			$(this).closest('.TableWrap').addClass('TableOverflow');
-		} else {
-			$(this).closest('.TableWrap').removeClass('TableOverflow');
-		}
-	};
-
-	$('table').each(function() {
-		$(this).wrap("<div class='TableWrap'><div class='TableScroll'></div></div>");
-		$(this).tableOverflow();
-	});
-
-	addEventListener('resize', (event) => {
-		$('table').each(function() {
-			$(this).tableOverflow();
-		});
-	});
 
 });

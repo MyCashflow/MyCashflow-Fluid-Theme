@@ -3,7 +3,7 @@
 /*------------------------------------------------------------------------------*/
 
 .ProductDiscountPrice {
-	color: var(--color-text-accent);
+	color: var(--discount-text-color);
 	font-weight: bold;
 }
 
@@ -19,47 +19,93 @@
 	align-items: baseline;
 	display: flex;
 	flex-wrap: wrap;
-	gap: .5rem;
+	gap: 0 .5rem;
 }
 
-.Prices dt {
+.Prices > :where(dt, dd) {
 	margin: 0;
 }
 
-.Prices dd.Price:nth-child(2) {
+/* Current Price
+/*------------------------------------------------------------------------------*/
+
+.Prices .CurrentPrice strong {
 	font-size: var(--font-size-large);
 	font-weight: bold;
 }
 
-.Prices dd.DiscountPrice {
-	color: var(--color-text-accent);
+.Prices .Currency {
+	margin-left: .3rem;
 }
 
-.Prices .ComparePrice {
+.Prices .PriceFrom {
+	font-size: var(--font-size-regular);
+}
+
+.Prices:has(.PriceFrom) dt.CurrentPrice {
+	/* Hide visually */
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+/* Discount Price
+/*------------------------------------------------------------------------------*/
+
+.Prices:has(.ListPrice, .LowestCampaignPrice) dd.CurrentPrice {
+	color: var(--discount-text-color);
+}
+
+.Prices dt.ListPrice {
+	/* Hide visually */
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.Prices dd.ListPrice {
+	text-decoration: line-through;
+}
+
+/* Lowest Campaign Price
+/*------------------------------------------------------------------------------*/
+
+.Prices .LowestCampaignPrice {
+	font-size: var(--font-size-small);
+	font-weight: normal;
+	order: 2;
+}
+
+.Prices:has(.LowestCampaignPrice)::after {
+	content: '';
+	order: 1;
+	flex-basis: 100%;
+}
+
+/* Price Vat
+/*------------------------------------------------------------------------------*/
+
+.PriceVat {
 	font-size: var(--font-size-small);
 	font-weight: normal;
 }
 
-.Prices dt.ComparePrice:not(.ListPrice)::before {
+dt.PriceVat::before {
 	content: '(';
 }
 
-.Prices dd.ComparePrice:not(.ListPrice)::after {
+dd.PriceVat::after {
 	content: ')';
-}
-
-.Prices dt.ListPrice:not(.ComparePrice) {
-	display: none;
-}
-
-.Prices dd.ListPrice:not(.ComparePrice) {
-	text-decoration: line-through;
-}
-
-/*------------------------------------------------------------------------------*/
-/* Product Card Prices
-/*------------------------------------------------------------------------------*/
-
-.ProductCardPrices dd.Price:nth-child(2) {
-	font-size: var(--font-size-xlarge);
 }

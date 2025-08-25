@@ -1,9 +1,7 @@
-{Banners(
-	name: 'logo-dark',
-	limit: '1',
-	helper: '{{ <a href="/" class="LogoLink LogoDarkBg" title="{ShopName}"><img src="{BannerImageUrl(height: '160', width: '480')}" alt="{ShopName}"></a> }}'
-)}
-{Logo(
-	height: '160',
-	width: '480'
+{BannerImageUrl(
+	height: '480',
+	width: '480',
+	before: '<a href="{ShopUrl}" class="LogoLink {BannerClass}"><img src="',
+	after: '" alt="{ShopName} {%Homepage}" loading="eager" height="480" width="480"></a>',
+	or: '<a href="/" class="LogoLink">{LogoUrl(height: '480', width: '480', before: '<img src="', after: '" alt="{ShopName} {%Homepage}" loading="eager" height="480" width="480">', or: '{ShopName}')}</a>'
 )}

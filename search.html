@@ -1,18 +1,18 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
 	<body class="{BodyClass} SearchPage">
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
-			<main class="SiteMain">
+			<main class="SiteMain" id="main-content">
 				{Search(
 					id: 'SearchPage',
 					before: '
 						<div class="SearchPageBar">
 							{SearchKeyword(
-								before: '<h1 class="Title Text-Center">{%SearchPageTitle}:&nbsp;',
+								before: '<h1 class="Title Text-Center">{%SearchPageTitle}:&#32;',
 								after: '</h1>',
 								or: '<h1 class="Title Text-Center">{%SearchNoTerms}</h1>'
 							)}
@@ -33,9 +33,9 @@
 					type: 'normal',
 					subcategories: 'true',
 					pagination: 'true',
-					before: '<div class="ProductList">',
+					before: '<ul class="ProductList">',
 					after: '
-						</div>
+						</ul>
 						{Helper(file: 'helpers/pagination')}',
 					helper: 'helpers/list-product'
 				)}

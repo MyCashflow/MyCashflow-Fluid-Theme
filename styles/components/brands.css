@@ -1,0 +1,35 @@
+/*------------------------------------------------------------------------------*/
+/* Brands Navigation
+/*------------------------------------------------------------------------------*/
+
+.CategoryDescription .BrandsNavigation,
+.CategoryBrands .BrandsNavigation {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+	gap: 1rem;
+	list-style: none;
+}
+
+.CategoryDescription .BrandsNavigation a,
+.CategoryBrands .BrandsNavigation a {
+	align-items: center;
+	aspect-ratio: 4/3;
+	border: 1px solid var(--border-color-subtle);
+	border-radius: var(--border-radius);
+	color: var(--color-text-subtle);
+	display: flex;
+	font-size: var(--font-size-xlarge);
+	font-weight: bold;
+	justify-content: center;
+	line-height: 1;
+	overflow: hidden;
+	padding: 1rem;
+	text-align: center;
+	text-decoration: none;
+	transition-duration: var(--transition-fast);
+}
+
+.CategoryDescription .BrandsNavigation a:hover,
+.CategoryBrands .BrandsNavigation a:hover {
+	border-color: var(--border-color-strong);
+}

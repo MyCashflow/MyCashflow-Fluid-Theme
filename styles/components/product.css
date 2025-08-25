@@ -1,9 +1,39 @@
 /*------------------------------------------------------------------------------*/
+/* Product Title
+/*------------------------------------------------------------------------------*/
+
+.ProductTitle:has( + .ProductCode) {
+	margin-bottom: .5rem;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Card Price
+/*------------------------------------------------------------------------------*/
+
+.ProductCardPrices .Prices dd.CurrentPrice strong {
+	font-size: var(--font-size-xlarge);
+}
+
+/*------------------------------------------------------------------------------*/
 /* Product Buy Form
 /*------------------------------------------------------------------------------*/
 
 .ProductBuy {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin: var(--default-margin);
 	max-width: 500px;
+	position: relative;
+}
+
+.ProductForms {
+	position: relative;
+}
+
+.ProductBuy > *,
+.ProductBuy form {
+	margin: 0;
 }
 
 .BuyForm input:not([type="radio"]):not([type="checkbox"]):not([type="file"]),
@@ -78,4 +108,56 @@
 }
 .ProductFeatures dd + dd::before {
 	content: ",\0020";
+}
+
+.ProductFeatures dt.Attribute-product-highlight,
+.ProductFeatures .Attribute-product-highlight ~ dd {
+	display: none;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Product Payment & Shipping Badges
+/*------------------------------------------------------------------------------*/
+
+.ProductPaymentBadges .CheckoutBadges {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+	margin: 0;
+}
+
+.ProductPaymentBadges .CheckoutBadge {
+	height: auto;
+}
+
+/* Shipping badges
+/*------------------------------------------------------------------------------*/
+
+.Accordion summary:has(.ProductShippingBadges) {
+	column-gap: 1rem;
+}
+
+.Accordion summary:has(.ProductShippingBadges)::after {
+	margin-left: 0;
+}
+
+.Accordion summary .ProductShippingBadges {
+	--badge-height: 24px;
+	margin-left: auto;
+	overflow: hidden;
+	pointer-events: none;
+	position: relative;
+}
+
+.Accordion summary .ProductShippingBadges::after {
+	background: linear-gradient(90deg, hsla(var(--hue), var(--saturation), var(--lightness), 0) 0%, hsla(var(--hue), var(--saturation), var(--lightness), 1) 100%);
+	content: '';
+	inset: 0 0 0 auto;
+	position: absolute;
+	width: 15px;
+}
+
+.Accordion summary .ProductShippingBadges .CheckoutBadges {
+	flex-wrap: nowrap;
+	margin: 0 10px 0 0;
+	padding: 1px;
 }

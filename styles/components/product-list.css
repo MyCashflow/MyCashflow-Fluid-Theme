@@ -7,12 +7,14 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(var(--grid-list-image-width), 1fr));
 	gap: calc(var(--gap) * 2) var(--gap);
+	list-style: none;
 	margin-bottom: 4rem;
 }
 
 @media screen and (max-width: 800px) {
 	.ProductList {
-		grid-template-columns: repeat(2, 1fr);
+		--gap: 1rem;
+		grid-template-columns: repeat(2, calc(50% - (var(--gap) / 2)));
 	}
 }
 
@@ -33,7 +35,9 @@
 	gap: var(--gap);
 	grid-auto-columns: var(--grid-list-image-width);
 	grid-auto-flow: column;
+	list-style: none;
 	overflow-x: auto;
+	padding-block: 4px;
 	scroll-padding-left: var(--container-page-margin);
 	scroll-padding-right: var(--container-page-margin);
 	scroll-snap-type: none;
@@ -66,11 +70,19 @@
 /*------------------------------------------------------------------------------*/
 
 .ListProduct {
+	--aspect-ratio: 1 / var(--product-image-ratio, 1);
 	--default-margin: 0 0 var(--margin-xsmall);
 	--color-link: var(--color-text-strong);
+	border-radius: var(--border-radius);
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	position: relative;
+}
+
+.ListProduct:focus-within {
+	outline: 2px solid var(--background-accent-color-shade-2);
+	outline-offset: 2px;
 }
 
 .ListProduct a {
@@ -81,20 +93,26 @@
 	background-color: var(--image-background-color);
 	border: 0 solid var(--border-color);
 	border-radius: var(--border-radius);
-	display: block;
 	position: relative;
 	z-index: 1;
-	overflow: hidden;
 }
 
-.ListProductImage img {
-	height: auto;
-	object-fit: contain;
+.ListProductImageLink {
+	align-items: center;
+	aspect-ratio: var(--aspect-ratio);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	position: relative;
 	width: 100%;
 }
 
-.ListProductImage .AspectRatio {
-	--aspect-ratio: calc(var(--product-image-ratio) * 100%);
+.ListProductImageLink img {
+	border-radius: var(--border-radius);
+	height: 100%;
+	object-fit: contain;
+	width: 100%;
 }
 
 .ListProductInfo {
@@ -116,28 +134,54 @@
 	--color-link: var(--color-text-subtle);
 }
 
+/* List Product Price
+/*------------------------------------------------------------------------------*/
+
 .ListProductPrices {
 	margin-bottom: var(--margin);
-}
-
-.ListProductPrices > .Prices {
-	margin-bottom: 0;
-}
-
-.ListProductPrices .Prices dt:not(.LowestPrice) {
-	display: none;
-}
-
-.ListProductBuy {
 	margin-top: auto;
 }
 
-.ListProductBuy form {
+.ListProductPrices > dl {
+	margin-bottom: 0;
+}
+
+.ListProductPrices dt.CurrentPrice {
+	/* Hide visually */
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
 	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
 }
 
 .ListProductBuy[data-setting-show-listbuy=""] .ListProductPrices {
 	margin-bottom: 0;
+}
+
+/* List Product Buy Form
+/*------------------------------------------------------------------------------*/
+
+.ListProductBuy {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+}
+
+.ListProductBuy form,
+.ListProductBuy fieldset {
+	margin: 0;
+	padding: 0;
+	gap: 0;
+}
+
+.ListProductBuy > :only-child:last-child {
+	margin: auto 0 0;
 }
 
 @media screen and (max-width: 600px) {
@@ -153,9 +197,7 @@
 
 .ListProduct-Card {
 	border: 1px solid var(--border-color);
-	border-radius: var(--border-radius-images);
-	overflow: hidden;
-	z-index: 1;
+	border-radius: var(--border-radius);
 }
 
 .ListProduct-Card .ListProductImage {
@@ -192,9 +234,7 @@
 .ListProduct-CardImageBackground {
 	--image-background-color: var(--background-color-shade-1);
 	border: 1px solid var(--border-color);
-	border-radius: var(--border-radius-images);
-	overflow: hidden;
-	z-index: 1;
+	border-radius: var(--border-radius);
 }
 
 .ListProduct-CardImageBackground .ListProductImage {
@@ -222,9 +262,7 @@
 .ListProduct-CardBackground {
 	--image-background-color: var(--background-color-shade-1);
 	background-color: var(--background-color-shade-1);
-	border-radius: var(--border-radius-images);
-	overflow: hidden;
-	z-index: 1;
+	border-radius: var(--border-radius);
 }
 
 .ListProduct-CardBackground .ListProductImage {
@@ -267,16 +305,17 @@
 }
 
 .ListProduct-Minimal .ListProductBadges .ProductBadge {
-	margin-inline: auto;
-}
-
-.ListProduct-Minimal .ListProductDiscount {
 	border-radius: var(--border-radius);
+	margin-inline: auto;
 }
 
 .ListProduct-Minimal .ListProductInfo {
 	align-items: center;
 	text-align: center;
+}
+
+.ListProduct-Minimal .ListProductPrices {
+	justify-content: center;
 }
 
 .ListProduct-Minimal .ListProductPrices .Prices {

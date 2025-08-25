@@ -1,0 +1,21 @@
+{HotPicks(
+	category: 'ALL',
+	type: 'normal',
+	limit: '10',
+	before: '
+		<section class="Section" aria-labelledby="hotpicks">
+			<header class="SectionHeader">
+				<h2 class="SectionHeaderTitle Subtitle" id="hotpicks">{%RecommendedProducts}</h2>
+				<a href="#after-hotpicks" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+				<a href="/interface/Category?id={CategoryId}&helper=category/hotpicks" class="SectionHeaderLink">{%BrowseMore}</a>
+			</header>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<ul class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+	after: '
+				</ul>
+			</div>
+			<div id="after-hotpicks" tabindex="-1"></div>
+		</section>',
+	helper: 'helpers/list-product'
+)}

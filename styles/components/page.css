@@ -4,7 +4,11 @@
 
 .InfoPageImage {
 	background-color: var(--background-color-shade-1);
+	border-radius: var(--border-radius-images);
 	margin: var(--default-margin);
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
 }
 
 .InfoPageImage .AspectRatio {
@@ -12,12 +16,11 @@
 }
 
 .InfoPageImage img {
-	border-radius: var(--border-radius-images);
 	height: 100%;
 	object-fit: cover;
 	width: 100%;
 }
 
-.PageContent p {
+.PageContent :where(p, ul, ol) {
 	max-width: 90ch;
 }

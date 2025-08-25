@@ -1,14 +1,14 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
 	<body class="{BodyClass}">
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
-			<main class="SiteMain">
+			<main class="SiteMain" id="main-content">
 				<div class="ContainerMaxWidth">
-					<article class="{ProductClass} Product ProductPage ProductLayout">
+					<article class="{ProductClass} Product ProductPage ProductLayout" aria-labelledby="product-title">
 						<div class="ProductLayoutSection">
 							<section class="ProductImages">
 								{ProductThumbnails(
@@ -24,20 +24,15 @@
 									after: '
 											</div>
 											<p class="ProductImageCaption" data-image-caption>{ProductImageCaption(html: 'false')}</p>
-											{ProductDiscountPercent(
-												before: '
-													<div class="ProductPageDiscount">
-														<span class="ProductDiscountLabel">{%Discount}</span> <span class="ProductDiscountPercent">-',
-												after: '
-														&#37;</span>
-													</div>'
+											{Helper(
+												before: '<div class="ProductPageDiscount" aria-hidden="true">',
+												after: '</div>',
+												file: 'helpers/product-discount'
 											)}
 										</div>',
 									helper: '{{
 										<a href="{ProductImageUrl(imagesize: 'big')}" class="ProductImage" data-caption="{ProductImageCaption(html: 'false')}">
-											<div class="AspectRatio">
-												<img src="{ProductImageUrl(imagesize: 'normal')}" loading="lazy" alt="{ProductImageCaption(html: 'false')}">
-											</div>
+											<img src="{ProductImageUrl(imagesize: 'normal')}" loading="lazy" alt="{ProductImageCaption(html: 'false')}">
 										</a>
 									}}'
 								)}
@@ -47,9 +42,7 @@
 									helper: '{{
 										<li>
 											<a href="{ProductImageUrl(imagesize: 'big')}" class="ProductThumbnail">
-												<div class="AspectRatio">
-													<img src="{ProductImageUrl(imagesize: 'mini')}" loading="lazy" alt="">
-												</div>
+												<img src="{ProductImageUrl(imagesize: 'mini')}" loading="lazy" alt="{ProductImageCaption(html: 'false')}">
 											</a>
 										</li>
 									}}'
@@ -69,14 +62,15 @@
 										<p class="ProductBrand">
 											<a href="{BrandUrl}" class="BrandLink"><span class="BrandName NoBrandImage">{BrandName}</span></a>
 										</p>
-								 }}'
+									}}'
 								)}
-								<h1 class="Title">{PageTitle}</h1>
+								<h1 class="Title ProductTitle" id="product-title">{PageTitle}</h1>
+								{Helper(file: 'helpers/product-code')}
 								{Helper(file: 'helpers/product-rating')}
-								{ProductPrices(
-									listprice_comparison: 'true',
+								{Helper(
 									before: '<div class="ProductCardPrices">',
-									after: '</div>'
+									after: '</div>',
+									file: 'helpers/product-prices-full'
 								)}
 								{ProductQuantityDiscounts(
 									before: '
@@ -88,26 +82,76 @@
 									before: '<div class="ProductAvailability">',
 									after: '</div>'
 								)}
+								{Helper(
+									before: '
+										<p>
+											<button class="Button" data-fancybox data-src="#ProductAvailabilityFormModal" data-slug="product-availability">
+												<span class="fa fa-paper-plane"></span> {%SubscribeAvailabilityNotification}
+											</button>
+										</p>
+										<div id="ProductAvailabilityFormModal">',
+									after: '</div>',
+									file: 'helpers/availability-form'
+								)}
 								{ProductBuy(
-									before: '<div class="ProductBuy">',
+									before: '
+										<div class="ProductBuy">
+											<div class="ProductForms">
+											{Helper(file: 'helpers/wishlist/product-wishlist')}',
 									after: '
+											</div>
+											{ProductLoyaltyPoints(
+												before: '
+													<p class="HighlightPoints ProductLoyaltyPoints Text-Center" data-loyalty-product-points="',
+												after: '">
+													{%LoyaltyProgramProductPointsInfo} 
+													{CustomerLoyaltyPoints(
+														before: '<span data-loyalty-customer-points="', 
+														after: '"></span><br> <a href="{LoyaltyProgramInfoURL}" data-drawer-toggle="loyalty">{%LoyaltyProgramReadMoreLinkText}</a>', 
+														or: '<br> <a href="{LoyaltyProgramInfoURL}" data-drawer-toggle="loyalty">{%LoyaltyProgramJoin}</a>'
+													)}
+												</p>',
+											)}
+											{Helper(
+												before: '
+													<div class="ProductPaymentBadges">
+														<ul class="CheckoutBadges CheckoutBadges-{Setting(name: 'checkout_badge_mode')}">',
+												after: '
+														</ul>
+													</div>',
+												file: 'helpers/checkout-badges-payment'
+											)}
 											{Helper(file: 'helpers/klarna-osm/product-{Setting(name: 'klarna_osm_product')}')}
 										</div>',
-									variations: '{Setting(name: 'product_variations_style')}'
+									variations: '{Setting(name: 'product_variations_style')}',
+									or: '{Helper(file: 'helpers/wishlist/product-wishlist')}'
+								)}
+								{Banner(
+									name: 'product-{ProductId}',
+									before: '<div class="PlacementBanners ProductPlacementBanner">',
+									after: '</div>',
+									helper: 'helpers/banners/banner-placement'
+								)}
+								{Banners(
+									name: 'product|product-category-{ProductCategoryId}|product-maincategory-{MainCategoryId}',
+									before: '<div class="PlacementBanners ProductPlacementBanner">',
+									after: '</div>',
+									helper: 'helpers/banners/banner-placement'
 								)}
 								<div class="ProductDesc">
 									{ProductShortDesc(
 										before:'
-											<details class="Accordion" open>
-												<summary><h3>{%ProductShortDesc}</h3></summary>',
+											<details class="Accordion Headings" open>
+												<summary><h2>{%ProductDescription}</h2></summary>',
 										after: '
 												{ProductFeatures}
-											</details>'
+											</details>',
+										or: '{ProductFeatures}'
 									)}
 									{ProductFullDesc(
 										before:'
-											<details class="Accordion">
-												<summary><h3>{%ProductFullDesc}</h3></summary>',
+											<details class="Accordion Headings">
+												<summary><h2>{%ProductInformation}</h2></summary>',
 										after: '
 											</details>'
 									)}
@@ -115,10 +159,19 @@
 										before:'
 											<details class="Accordion ProductShippingMethods">
 												<summary>
-													<h3>{Text(code: 'ProductShippingCosts', or: '{%ShippingCosts}')}</h3>
+													<h2>{%ProductShipping}</h2>
+													{Helper(
+														before: '
+															<div class="ProductShippingBadges">
+																<ul class="CheckoutBadges CheckoutBadges-{Setting(name: 'checkout_badge_mode')}">',
+														after: '
+																</ul>
+															</div>',
+														file: 'helpers/checkout-badges-shipping'
+													)}
 												</summary>
 												{Text(
-													code: 'ProductShippingCostsInfo',
+													code: 'ProductShippingIntro',
 													before: '<p class="ProductShippingInformation">',
 													after: '</p>'
 												)}',
@@ -128,20 +181,16 @@
 									{ProductBundles(
 										before:'
 											<details class="Accordion">
-												<summary><h3>{%ProductBundles}</h3></summary>',
-										after: '
-											</details>'
-									)}
-									{AvailabilityNotificationForm(
-										before:'
-											<details class="Accordion">
-												<summary><h3>{%SubscribeAvailabilityNotification}</h3></summary>
-												<p>{%AvailabilityNotificationIntroText}</p>',
+												<summary><h2>{%ProductBundles}</h2></summary>',
 										after: '
 											</details>'
 									)}
 								</div>
 							</div>
+							{ShareButtons(
+								before: '<div class="Section ProductShare">',
+								after: '</div>'
+							)}
 						</div>
 					</article> 
 					{Helper(
@@ -150,14 +199,14 @@
 						file: 'helpers/product-reviews'
 					)} 
 				</div>
-				<div class="Section" data-viewport-lazyload="helpers/product-lists/productpage-lists&setProduct={ProductId}">
+				<div class="Section" data-viewport-lazyload="helpers/product-lists/productpage-lists&setProduct={ProductId}" aria-hidden="true">
 					{SimilarProducts(
 						category: 'ALL',
 						type: 'ids',
 						limit: '1',
 						before: '<div class="Section" data-products="',
 						after: '">
-							{Helper(file: 'helpers/placeholders/product-list-1')}
+							{Helper(file: 'helpers/placeholders/product-list')}
 						</div>'
 					)}
 					{CompatibleProducts(
@@ -166,7 +215,7 @@
 						limit: '1',
 						before: '<div class="Section" data-products="',
 						after: '">
-							{Helper(file: 'helpers/placeholders/product-list-1')}
+							{Helper(file: 'helpers/placeholders/product-list')}
 						</div>'
 					)}
 					{AddOnProducts(
@@ -175,7 +224,7 @@
 						limit: '1',
 						before: '<div class="Section" data-products="',
 						after: '">
-							{Helper(file: 'helpers/placeholders/product-list-1')}
+							{Helper(file: 'helpers/placeholders/product-list')}
 						</div>'
 					)}
 					{SparePartProducts(
@@ -184,7 +233,7 @@
 						limit: '1',
 						before: '<div class="Section" data-products="',
 						after: '">
-							{Helper(file: 'helpers/placeholders/product-list-1')}
+							{Helper(file: 'helpers/placeholders/product-list')}
 						</div>'
 					)}
 					{CrossSaleProducts(
@@ -193,7 +242,7 @@
 						limit: '1',
 						before: '<div class="Section" data-products="',
 						after: '">
-							{Helper(file: 'helpers/placeholders/product-list-1')}
+							{Helper(file: 'helpers/placeholders/product-list')}
 						</div>'
 					)}
 					{LastViewedProducts(
@@ -202,7 +251,7 @@
 						limit: '1',
 						before: '<div class="Section" data-products="',
 						after: '">
-							{Helper(file: 'helpers/placeholders/product-list-1')}
+							{Helper(file: 'helpers/placeholders/product-list')}
 						</div>'
 					)}
 				</div>

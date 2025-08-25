@@ -5,9 +5,12 @@
 		<div class="StickySide">
 			{Category(
 				id: '{MainCategoryId}',
-				helper: '{{ <h1>{CategoryName}</h1> }}'
-			)}
-			<nav class="SideNavigation" data-navigation-expandable>',
+				helper: '{{ 
+					<p class="Text-Large" aria-hidden="true"><strong>{CategoryName}</strong></p>
+					<nav class="SideNavigation" aria-label="{CategoryName}" data-navigation-expandable>
+				}}',
+				or: '<nav class="SideNavigation" aria-label="{%Categories}" data-navigation-expandable>'
+			)}',
 	after: '
 			</nav>
 		</div>'

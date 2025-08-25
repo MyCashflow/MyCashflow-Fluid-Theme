@@ -55,17 +55,18 @@
 }
 
 .NewsItemImage {
+	aspect-ratio: 2 / 1;
+	background-color: var(--background-color-shade-1);
 	border-radius: var(--border-radius-images);
 	display: block;
 	overflow: hidden;
 }
 
-.NewsItemImage .AspectRatio {
-	--aspect-ratio: 50%;
-}
-
 .NewsItemImage img {
+	aspect-ratio: 2 / 1;
+	height: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 
 .NewsItemOverview {
@@ -78,19 +79,28 @@
 /*------------------------------------------------------------------------------*/
 
 .NewsImage {
-	background-color: var(--background-color-shade-1);
 	margin: var(--default-margin);
-}
-
-.NewsImage .AspectRatio {
-	--aspect-ratio: 50%;
+	position: relative;
 }
 
 .NewsImage img {
+	aspect-ratio: 2/1;
+	background-color: var(--background-color-shade-1);
 	border-radius: var(--border-radius-images);
 	height: 100%;
 	object-fit: cover;
 	width: 100%;
+}
+
+.NewsImageLink {
+	inset: 0;
+	position: absolute;
+}
+
+.NewsImageCaption {
+	color: var(--color-text-subtle);
+	font-size: var(--font-size-small);
+	margin-top: .5rem;
 }
 
 .NewsOverview {

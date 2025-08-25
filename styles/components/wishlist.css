@@ -1,0 +1,249 @@
+/*------------------------------------------------------------------------------*/
+/* Wishlist Toggle Base
+/*------------------------------------------------------------------------------*/
+
+.ProductWishlist .AddToWishlist::before {
+	color: var(--border-color-strong);
+	content: "\f004";
+	font-family: var(--fa-style-family);
+	font-size: var(--font-size-xlarge);
+	transition-duration: var(--transition-fast);
+}
+
+.ProductWishlist .AddToWishlist:hover::before {
+	color: var(--color-text-accent);
+}
+
+.ProductWishlist .ProductWishlistRemove .AddToWishlist::before {
+	color: var(--color-text-accent);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Wishlist Toggle on Product Page
+/*------------------------------------------------------------------------------*/
+
+.ProductBuy .ProductWishlist .AddToWishlist {
+	background-color: var(--background-color-shade-1);
+	border: 0;
+	font-size: 0;
+	gap: 0;
+}
+
+.ProductBuy .ProductWishlist .AddToWishlist:hover {
+	background-color: var(--background-color-shade-2);
+}
+
+.ProductForms .ProductWishlist {
+	bottom: 0;
+	position: absolute;
+	right: 0;
+}
+
+.ProductForms .AddToWishlist {
+	--button-height: 4.5rem;
+	padding: 1rem 0;
+	width: 60px !important;
+}
+
+.ProductForms .ProductWishlist + .BuyForm .FormSubmit {
+	margin-right: calc(60px + 1rem);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Wishlist Toggle on List Product
+/*------------------------------------------------------------------------------*/
+
+.ListProduct .ProductWishlist .AddToWishlist {
+	background-color: transparent;
+	border: 0;
+	font-size: 0;
+	gap: 0;
+}
+
+.ListProduct .ProductWishlist {
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 2;
+}
+
+.ListProduct .ProductWishlistToggle {
+	margin: 0;
+}
+
+.ListProduct .AddToWishlist::before {
+	font-size: var(--font-size-large);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Wishlist Product
+/*------------------------------------------------------------------------------*/
+
+.WishlistProducts {
+	display: flex;
+	flex-direction: column;
+}
+
+.WishlistProduct {
+	--color-link: var(--color-text);
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	padding: .5rem 0;
+}
+
+.WishlistProduct:not(:last-child) {
+	border-bottom: 1px solid var(--border-color);
+}
+
+.WishlistProduct.IsInCart .AddToCart {
+	--button-background-color: var(--background-color-shade-2);
+	--button-color: var(--color-text);
+	box-shadow: none;
+}
+
+.WishlistProduct.IsInCart .AddToCart:hover {
+	--button-background-color: var(--background-color-shade-1);
+}
+
+.WishlistProduct.RemovedProduct .WishlistProductImage {
+	background-color: var(--background-color-shade-1);
+}
+
+.WishlistProduct.RemovedProduct .WishlistProductInfo,
+.WishlistProduct.RemovedProduct .WishlistProductImage {
+	opacity: .5;
+	pointer-events: none;
+}
+
+.WishlistProductImage {
+	align-self: flex-start;
+	aspect-ratio: 1 / var(--product-image-ratio);
+	background-color: var(--image-background-color);
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	padding: 0;
+	width: 60px;
+	width: min(14%, 60px);
+	z-index: 1;
+}
+
+.WishlistProductImage img {
+	border-radius: var(--border-radius);
+	object-fit: contain;
+}
+
+.WishlistProductContent {
+	align-items: center;
+	display: flex;
+	flex: 1;
+	gap: .5rem 1rem;
+}
+
+.WishlistProductName {
+	display: block;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.WishlistProductPrices {
+	margin: 0;
+	white-space: nowrap;
+}
+
+/* Wishlist Product Actions
+/*------------------------------------------------------------------------------*/
+
+.WishlistProductActions {
+	align-items: center;
+	display: flex;
+	gap: .5rem;
+	margin-left: auto;
+}
+
+.WishlistProductActions form {
+	margin: 0;
+}
+
+.WishlistProductActions button {
+	aspect-ratio: 1 / 1;
+	gap: 0;
+	font-size: 0;
+	width: 40px;
+	padding: 0;
+}
+
+.WishlistProductActions button::before {
+	font-size: var(--font-size-regular);
+	font-family: var(--fa-style-family);
+}
+
+.WishlistProductActions .AddToCart::before {
+	content: "\f07a";
+}
+
+.WishlistProductActions .AddToWishlist::before {
+	content: "\f1f8";
+}
+
+.WishlistProduct button.AddToWishlist {
+	--button-background-color: var(--background-color-shade-1);
+	border: 0;
+	box-shadow: none;
+}
+
+.WishlistProduct button.AddToWishlist:hover {
+	--button-background-color: var(--background-color-shade-2);
+}
+
+.WishlistProduct.ProductVariations .WishlistProductInfo::after {
+	content: attr(data-has-variations);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Wishlist Total Items Badge
+/*------------------------------------------------------------------------------*/
+
+.IconButton .WishlistTotals {
+	align-items: center;
+	background-color: var(--background-accent-color-shade-2);
+	border-radius: 20px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+	color: var(--color-text-dark);
+	display: flex;
+	font-size: 10px;
+	justify-content: center;
+	min-width: 19px;
+	padding: 2px 7px;
+	position: absolute;
+	right: -5px;
+	top: 0px;
+	text-align: center;
+	transition-duration: var(--transition-fast);
+	z-index: 2;
+}
+
+.IconButton .WishlistTotals[data-wishlist-total-items]::after {
+	content: attr(data-wishlist-total-items);
+}
+
+.IconButton .WishlistTotals[data-wishlist-total-items="0"],
+.IconButton .WishlistTotals[data-wishlist-total-items=""] {
+	opacity: 0;
+	transform: scale(0);
+	transform-origin: center;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Wishlist Misc
+/*------------------------------------------------------------------------------*/
+
+.WishlistNotLogged {
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	padding: 2rem;
+}

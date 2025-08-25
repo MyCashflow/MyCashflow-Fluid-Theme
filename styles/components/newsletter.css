@@ -10,9 +10,13 @@
 	border-radius: var(--border-radius-medium);
 	color: var(--color-text);
 	display: grid;
-	margin-bottom: 4rem;
+	margin-bottom: var(--margin-large);
 	min-height: 300px;
 	position: relative;
+}
+
+.SiteLayoutColumns + .SiteNewsletter .Newsletter {
+	margin-block: var(--margin-large);
 }
 
 .NewsletterContent {
@@ -63,7 +67,11 @@
 @media screen and (max-width: 1400px) {
 	.Newsletter {
 		border-radius: 0;
-		margin-bottom: 0;
+		margin: 0;
+	}
+
+	.SiteLayoutColumns + .SiteNewsletter .Newsletter {
+		margin: 0;
 	}
 
 	.NewsletterImage {
@@ -103,7 +111,15 @@
 }
 
 .NewsletterForm .FormItem label {
-	display: none;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
 }
 
 .NewsletterForm .FormItem input {

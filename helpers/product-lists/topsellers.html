@@ -1,0 +1,21 @@
+{TopSellers(
+	category: 'ALL',
+	type: 'normal',
+	limit: '10',
+	before: '
+		<section class="Section" aria-labelledby="popular">
+			<header class="SectionHeader">
+				<h2 class="SectionHeaderTitle Subtitle" id="popular">{%MostPopularProducts}</h2>
+				<a href="#after-popular" class="SR-Only SR-Only-Focusable">{%SkipSection}</a>
+				<a href="/interface/Category?id={CategoryId}&helper=category/topsellers" class="SectionHeaderLink">{%BrowseMore}</a>
+			</header>
+			<div class="Slider" data-slider>
+				{Helper(file: 'helpers/slider-buttons')}
+				<ul class="ProductScrollList ScrollOverflow" data-slider-viewport>',
+	after: '
+				</ul>
+			</div>
+			<div id="after-popular" tabindex="-1"></div>
+		</section>',
+	helper: 'helpers/list-product'
+)}

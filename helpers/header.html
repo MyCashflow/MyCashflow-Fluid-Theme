@@ -1,10 +1,11 @@
 {Extensions(for: 'body')}
 {AdminTools}
+<a href="#main-content" class="SR-Only SR-Only-Focusable SkipToContent">{%SkipToContent}</a>
 {Banners(
 	name: 'notification-bar',
 	limit: '1',
 	helper: '{{
-		<div class="NotificationBar {Setting(name: 'notification_color')}">
+		<div class="NotificationBar" role="status" aria-live="polite">
 			{BannerText}
 		</div>
 	}}'
@@ -12,4 +13,3 @@
 <div class="SiteTop"></div>
 {Helper(file: 'helpers/utility-bar')}
 {Helper(file: 'helpers/headers/header-logo-center-fullnav')}
-

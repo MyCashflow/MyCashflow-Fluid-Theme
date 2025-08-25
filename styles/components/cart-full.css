@@ -23,8 +23,13 @@
 }
 
 .FullCartActions {
+	background-color: var(--background-color);
+	border-top: 1px solid var(--border-color);
 	border-bottom: 0;
-	padding-bottom: 0;
+	bottom: 0;
+	margin-top: -1px;
+	padding-bottom: 2rem;
+	position: sticky;
 	text-align: right;
 }
 
@@ -176,4 +181,13 @@
 	.FullCartActions .Button {
 		width: 100%;
 	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Cart Share
+/*------------------------------------------------------------------------------*/
+
+[data-cart-share-link=""] {
+	opacity: .5;
+	pointer-events: none;
 }

@@ -13,7 +13,15 @@
 	padding-block: .2rem;
 }
 
-.MiniCartTotal:last-child {
+.MiniCartDiscounts:not(:has(strong)) {
+	font-weight: bold;
+}
+
+.MiniCartDiscounts :last-child {
+	font-weight: bold;
+}
+
+.MiniCartTotal.HighlightTotal {
 	font-size: var(--font-size-large);
 	font-weight: bold;
 	margin-top: 1rem;
@@ -149,8 +157,24 @@
 /*------------------------------------------------------------------------------*/
 
 .DrawerCampaignCode .CampaignCodeForm {
+	background-color: var(--background-color-shade-1);
+	border-radius: var(--border-radius);
 	margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
 	width: 100%;
+	padding: 1rem;
+	gap: 1rem;
+}
+
+.DrawerCampaignCode form {
+	background-color: var(--background-color-shade-1);
+	margin: 0;
+	padding: 0;
+}
+
+.DrawerCampaignCode form:last-child:not(:only-child) {
+	margin-top: 1rem;
 }
 
 .DrawerCampaignCode .FormItem {
@@ -161,7 +185,12 @@
 
 .DrawerCampaignCode .FormItem label,
 .DrawerCampaignCode .FormItem .label {
-	flex: 0 0 100%;
+	flex: 1;
+	margin: 0;
+}
+
+.DrawerCampaignCode .FormItem .label {
+	font-weight: normal;
 }
 
 .DrawerCampaignCode .FormItem label strong,

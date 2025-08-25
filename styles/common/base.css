@@ -6,7 +6,7 @@ html {
 	font-size: var(--document-font-size);
 	height: -webkit-fill-available;
 	scroll-behavior: smooth;
-	scroll-padding-top: 40px;
+	scroll-padding-top: var(--scroll-margin-top);
 }
 
 body {
@@ -20,12 +20,6 @@ body {
 	line-height: var(--line-height);
 	min-height: 100vh;
 	min-height: -webkit-fill-available;
-}
-
-@media screen and (min-width: 601px) and (max-width: 1140px) {
-	html {
-		scroll-padding-top: 80px;
-	}
 }
 
 /*------------------------------------------------------------------------------ */
@@ -76,6 +70,10 @@ a, button {
 
 [disabled] {
 	opacity: 0.5;
+}
+
+s {
+	text-decoration: line-through;
 }
 
 /*------------------------------------------------------------------------------ */

@@ -1,12 +1,26 @@
 <script type="text/javascript">
 	window.MCF = window.MCF || {};
-	window.MCF.locale = '{CurrentLanguageCode}';
+	window.MCF.locale = '{CurrentLanguageCode(format: "ISO")}';
 	window.MCF.dictionary = window.MCF.dictionary || {};
+	window.MCF.dictionary.CampaignCodeOrGiftCard = '{%CampaignCodeOrGiftCard}';
+	window.MCF.dictionary.Choose = '{%Choose}';
 	window.MCF.dictionary.Close = '{%Close}';
+	window.MCF.dictionary.NavigationCollapse = '{%NavigationCollapse}';
+	window.MCF.dictionary.NavigationExpand = '{%NavigationExpand}';
 	window.MCF.dictionary.Next = '{%Next}';
+	window.MCF.dictionary.OpenCategory = '{%OpenCategory}';
+	window.MCF.dictionary.PaymentMethodsInvoice = '{%CheckoutChoosePaymentMethodInvoice}';
+	window.MCF.dictionary.PaymentMethodsCard = '{%CheckoutChoosePaymentMethodCard}';
+	window.MCF.dictionary.PaymentMethodsMobile = '{%CheckoutChoosePaymentMethodMobile}';
+	window.MCF.dictionary.PaymentMethodsBank = '{%CheckoutChoosePaymentMethodBank}';
+	window.MCF.dictionary.PaymentMethodsOther = '{%CheckoutChoosePaymentMethodOther}';
 	window.MCF.dictionary.Prev = '{%Prev}';
 	window.MCF.dictionary.ShowAll = '{%ShowAll}';
-	window.MCF.dictionary.Choose = '{%Choose}';
+	window.MCF.dictionary.SpinnerButtonDec = '{%SpinnerButtonDec}';
+	window.MCF.dictionary.SpinnerButtonInc = '{%SpinnerButtonInc}';
+	window.MCF.dictionary.SpinnerInputQuantity = '{%SpinnerInputQuantity}';
+	window.MCF.dictionary.WishlistProductAdded = '{%WishlistProductAdded}';
+	window.MCF.dictionary.WishlistUpdated = '{%WishlistUpdated}';
 </script>
 {MinifyJS(
 	mode: 'production',
@@ -15,6 +29,7 @@
 		vendor/jquery/jquery.js|
 		vendor/fancyapps/fancybox.umd.js|
 		scripts/theme.js|
+		scripts/plugins/campaign-code.js|
 		scripts/plugins/cart.js|
 		scripts/plugins/drawers.js|
 		scripts/plugins/filters.js|
@@ -26,5 +41,6 @@
 		scripts/plugins/spinners.js|
 		scripts/plugins/versions.js|
 		scripts/plugins/viewport.js|
+		scripts/plugins/wishlist.js|
 		scripts/custom.js'
 )}

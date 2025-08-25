@@ -1,18 +1,218 @@
 /*------------------------------------------------------------------------------*/
+/* Account Page
+/*------------------------------------------------------------------------------*/
+
+.CustomerLoggedIn.AccountPage,
+.CustomerLoggedIn.AccountPage .SiteLayout,
+.CustomerLoggedIn.AccountPage .SiteBody {
+	background-color: var(--background-color-shade-1);
+}
+
+/*------------------------------------------------------------------------------*/
+/* Account Page Layout
+/*------------------------------------------------------------------------------*/
+
+.AccountPageLayout {
+	display: grid;
+	gap: 2vw;
+	grid-template-areas: 	
+	'column loyalty codes' 
+	'column loyalty codes' 
+	'column info info';
+	grid-template-columns: minmax(200px, 240px) minmax(300px, 1fr) 1.5fr;
+}
+
+.AccountSection {
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color-strong);
+	border-radius: var(--border-radius);
+	padding: 3rem;
+}
+
+.AccountSection h2 .fa {
+	color: var(--color-text-accent);
+}
+
+.AccountSection p {
+	max-width: 70ch;
+}
+
+.AccountHeading {
+	grid-area: column;
+}
+
+.AccountLoyalty {
+	grid-area: loyalty;
+	text-align: center;
+}
+
+.AccountDiscountCodes {
+	grid-area: codes;
+}
+
+.AccountInformation {
+	grid-area: info;
+}
+
+@media screen and (max-width: 1120px) {
+	.AccountPageLayout {
+		display: grid;
+		gap: 2vw;
+		grid-template-areas: 	
+		'column loyalty loyalty' 
+		'column codes codes' 
+		'column info info';
+		grid-template-columns: minmax(180px, 200px) 1fr 1fr;
+	}
+
+	.AccountSection {
+		padding-inline: var(--container-page-margin);
+	}
+}
+
+@media screen and (max-width: 680px) {
+	.AccountPageLayout {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.AccountPageLayout > * {
+		order: 2;
+	}
+
+	.AccountSection {
+		background-color: var(--background-color);
+		border: 1px solid var(--border-color-strong);
+		border-radius: var(--border-radius);
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Account Page Layout Exceptions
+/*------------------------------------------------------------------------------*/
+
+.AccountPageLayout:not(:has(#OrderHistory)) li:has([href="#OrderHistory"]) {
+	display: none;
+}
+
+.AccountPageLayout:not(:has(#OrderHistory)) li:has(+ li > a[href="#OrderHistory"]) {
+	border-width: 0;
+}
+
+.AccountHeading  + .AccountInformation {
+	grid-row-start: loyalty-start;
+}
+
+/* Hide notifications from information section */
+.AccountInformation .Notification {
+	display: none;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Account Actions
+/*------------------------------------------------------------------------------*/
+
+.AccountActions {
+	align-items: flex-start;
+	border-top: 1px solid var(--border-color);
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-top: 2rem;
+	padding-top: 2rem;
+}
+
+/*------------------------------------------------------------------------------*/
 /* Account Information
 /*------------------------------------------------------------------------------*/
+
+#AccountInformation {
+	max-width: 300px;
+}
+
+.AccountPage #AccountInformation :where(.AccountCustomerName, .AccountLogout, .AccountCustomerEmail, .ChangePassword, .AccountEdit) {
+	display: none;
+}
 
 #AccountInformation dd > :last-child {
 	margin-bottom: 0;
 }
 
-#AccountInformation dt,
-#OrderHistory caption {
+#AccountInformation dt {
 	font-size: var(--font-size-large);
 	font-weight: bold;
 	margin-bottom: 1rem;
 }
 
-#AccountInformation dt:not(:first-child) {
+#AccountInformation dt {
+	margin-top: 2rem;
+}
+
+#AccountInformation dd.ChangePassword + dt {
+	margin-top: 0;
+}
+
+#AccountInformation .DeleteShippingAddress + .AccountShippingAddress {
+	border-top: 1px solid var(--border-color);
+	margin-top: 2rem;
+	padding-top: 2rem;
+}
+
+#AccountInformation .AccountShippingAddress + .AccountEdit {
+	margin-bottom: 2rem;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Order History
+/*------------------------------------------------------------------------------*/
+
+.AccountPage #OrderHistory {
 	margin-top: 3rem;
+	width: 100%;
+}
+
+.AccountPage #OrderHistory caption {
+	font-family: var(--font-family-headings);
+	font-size: var(--font-size-xlarge);
+	font-weight: var(--font-heading-weight);
+	text-transform: var(--font-heading-transform);
+	margin: var(--default-margin);
+}
+
+.AccountPage #OrderHistory:last-child {
+	margin-bottom: 0;
+}
+
+.AccountPage .OrderDownload {
+	white-space: nowrap;
+}
+
+.AccountPage .OrderDownload a {
+	display: block;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Order Information
+/*------------------------------------------------------------------------------*/
+
+.AccountPage #OrderStatus {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
+
+.AccountPage .OrderInfo + h3,
+.AccountPage #OrderProductsTable caption {
+	font-family: var(--font-family-headings);
+	font-size: var(--font-size-xlarge);
+	font-weight: var(--font-heading-weight);
+	text-transform: var(--font-heading-transform);
+	margin: var(--default-margin);
+}
+
+.AccountPage #OrderProductsTable,
+.AccountPage .OrderInfo {
+	width: 100%;
+  max-width: 600px;
 }

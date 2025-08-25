@@ -2,10 +2,6 @@
 /* Site Header
 /*------------------------------------------------------------------------------*/
 
-:root {
-	--logo-max-width: 240px;
-}
-
 .SiteHeader {
 	box-shadow: var(--box-shadow);
 }
@@ -17,68 +13,67 @@
 }
 
 /*------------------------------------------------------------------------------*/
-/* Header Row
+/* Header Containers & Visibility
 /*------------------------------------------------------------------------------*/
 
 .HeaderDesktop {
-	padding-block: 2rem;
+	padding-block: 1rem;
 }
 
 .HeaderMobile {
-	display: none;
-	padding-block: 2rem;
+	padding-block: .5rem;
+}
+
+@media screen and (min-width: 1025px) {
+	.HeaderMobile {
+		display: none !important;
+	}
 }
 
 @media screen and (max-width: 1024px) {
 	.HeaderDesktop {
-		display: none;
-	}
-
-	.HeaderMobile {
-		display: block;
+		display: none !important;
 	}
 }
 
-@media screen and (max-width: 600px) {
-	.HeaderMobile {
-		--logo-max-width: 140px;
-		padding-block: 1rem;
-	}
+/*------------------------------------------------------------------------------*/
+/* Header Columns
+/*------------------------------------------------------------------------------*/
+
+.HeaderGrid {
+	display: grid;
+	gap: 0 1.5rem;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas: 'left center right';
 }
 
+[class*="HeaderColumn-"] {
+	align-items: center;
+	display: flex;
+	gap: 0 1.5rem;
+}
 
+.HeaderColumn-Left {
+	grid-area: left;
+}
+
+.HeaderColumn-Center {
+	grid-area: center;
+	justify-content: center;
+}
+
+.HeaderColumn-Right {
+	grid-area: right;
+	justify-content: flex-end;
+}
 
 /*------------------------------------------------------------------------------*/
 /* Header With Logo Centered
 /*------------------------------------------------------------------------------*/
 
 .HeaderLogoCentered {
-	position: relative;
-}
-
-.HeaderLogoCentered .HeaderLogo {
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	left: 0;
-	margin: auto;
-	position: absolute;
-	right: 0;
-}
-
-.HeaderLogoCentered .HeaderLogo ~ * {
-	max-width: calc(50% - calc(var(--logo-max-width) / 1.5));
-}
-
-@media screen and (max-width: 320px) {
-	.HeaderLogoCentered .HeaderLogo {
-		position: relative;
-		margin-left: 0;
-	}
-
-	.HeaderLogoCentered .HeaderLogo ~ .FlexItem {
-		max-width: none;
-	}
+	--logo-pos: center;
+	grid-template-columns: 1fr minmax(0, auto) 1fr;
 }
 
 /*------------------------------------------------------------------------------*/
@@ -86,41 +81,11 @@
 /*------------------------------------------------------------------------------*/
 
 .HeaderNavCentered {
-	align-items: center;
-	display: flex;
-	gap: var(--margin-small) var(--grid-list-gutter);
-	justify-content: space-between;
+	grid-template-columns: auto 1fr auto;
 }
 
-.HeaderNavCentered .HeaderLogo {
-	justify-content: flex-start;
-}
-
-.HeaderNavCentered > *:first-child {
-	flex: 0 0 var(--logo-max-width);
-}
-
-.HeaderNavCentered > *:last-child {
-	flex: 0 1 var(--logo-max-width);
-}
-
-/*------------------------------------------------------------------------------*/
-/* Navigation Bar
-/*------------------------------------------------------------------------------*/
-
-.NavigationBar {
-	align-items: center;
-	background-color: var(--background-color);
-	box-shadow: var(--box-shadow);
-	display: flex;
-	justify-content: center;
-	padding-block: 1rem;
-}
-
-.StickyNavbar {
-	position: sticky;
-	top: 0;
-	z-index: 100;
+.HeaderNavCenteredMobile {
+	grid-template-columns: minmax(0, auto) 1fr;
 }
 
 /*------------------------------------------------------------------------------*/
@@ -135,19 +100,41 @@
 .HeaderWithNavbar ~ .MobileHeaderSearch {
 	background-color: var(--background-color);
 	border-bottom: 1px solid var(--border-color);
-	display: none;
-	padding: 1.5rem var(--container-page-margin);
-}
-
-.HeaderWithNavbar ~ .MobileHeaderSearch input[type="search"] {
-	box-shadow: none;
+	padding: 1rem var(--container-page-margin);
 }
 
 .SearchPage .HeaderWithNavbar ~ .MobileHeaderSearch {
 	display: none !important;
 }
 
-@media screen and (max-width: 1140px) {
+/* Navigation Bar */
+
+.NavigationBar {
+	align-items: center;
+	background-color: var(--background-color);
+	box-shadow: var(--box-shadow);
+	display: flex;
+	justify-content: center;
+	padding: 1rem 1.5rem;
+}
+
+.StickyNavbar {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+@media screen and (min-width: 1025px) {
+	.HeaderWithNavbar .HeaderMobile {
+		display: none !important;
+	}
+
+	.HeaderWithNavbar ~ .MobileHeaderSearch {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 1024px) {
 	.HeaderWithNavbar {
 		position: sticky;
 		top: 0;
@@ -155,27 +142,18 @@
 		z-index: 100;
 	}
 
-	.OffsetTop .HeaderWithNavbar:not(.Section-Dark),
-	.SearchPage .HeaderWithNavbar:not(.Section-Dark) {
+	.OffsetTop .HeaderWithNavbar,
+	.SearchPage .HeaderWithNavbar {
 		box-shadow: var(--box-shadow);
 	}
 
-	.HeaderWithNavbar .HeaderDesktop,
 	.HeaderWithNavbar ~ .NavigationBar {
-		display: none;
-	}
-
-	.HeaderWithNavbar .HeaderMobile {
-		display: block;
-	}
-
-	.HeaderWithNavbar ~ .MobileHeaderSearch {
-		display: block;
+		display: none !important;
 	}
 }
 
 /*------------------------------------------------------------------------------*/
-/* Header With Side Bar Column
+/* Header With Side Column
 /*------------------------------------------------------------------------------*/
 
 .SiteColumnsHeader {
@@ -187,44 +165,45 @@
 }
 
 .SiteColumnsHeader .HeaderDesktop {
-	margin-inline: auto;
-	max-width: 600px;
+	padding-block: 2rem;
+}
+
+.SiteColumnHeaderGrid {
+	grid-template-columns: auto;
 }
 
 .SiteColumnsHeader ~ .MobileHeaderSearch {
 	background-color: var(--background-color);
 	border-bottom: 1px solid var(--border-color);
-	display: none;
-	padding: 1.5rem var(--container-page-margin);
+	padding: 1rem var(--container-page-margin);
 }
 
-.SiteColumnsHeader ~ .MobileHeaderSearch input[type="search"] {
-	box-shadow: none;
+@media screen and (min-width: 1241px) {
+	.SiteColumnsHeader .HeaderMobile {
+		display: none !important;
+	}
+
+	.SiteColumnsHeader ~ .MobileHeaderSearch {
+		display: none !important;
+	}
 }
 
 @media screen and (max-width: 1240px) {
 	.SiteColumnsHeader {
 		border: 0;
-		box-shadow: none;
-		position: sticky;
-		top: 0;
 		transition-duration: var(--transition-fast);
 		z-index: 100;
 	}
 
-	.OffsetTop .SiteColumnsHeader:not(.Section-Dark) {
+	.OffsetTop .SiteColumnsHeader {
 		box-shadow: var(--box-shadow);
 	}
 
 	.SiteColumnsHeader .HeaderDesktop {
-		display: none;
+		display: none !important;
 	}
 
 	.SiteColumnsHeader .HeaderMobile {
-		display: block;
-	}
-
-	.SiteColumnsHeader ~ .MobileHeaderSearch {
-		display: block;
+		display: block !important;
 	}
 }

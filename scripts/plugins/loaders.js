@@ -29,6 +29,9 @@
 		// Fade in only if target's visible.
 		if (this.$target.is(':visible')) {
 			this.$elem.css('display', 'flex').attr('data-target', $target.attr('class'));
+			if (this.$target.parents('.Drawer').length) {
+				this.$elem.addClass('IsInsideDrawer');
+			}
 		}
 
 		// Create a loading notification.
@@ -74,6 +77,9 @@
 
 		hide: function ($target) {
 			var loader = $target && $target.data('loader');
+			if (!$target.data('loader')) {
+				$('body > .Loader').remove();
+			}
 			if (loader) loader.hide();
 			return this;
 		}

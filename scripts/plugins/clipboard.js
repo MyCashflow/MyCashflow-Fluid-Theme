@@ -3,7 +3,7 @@
  * Copyright (c) 2021 Pulse247 Oy
  * MIT License <http://opensource.org/licenses/MIT>
  */
- ;(function ($) {
+;(function ($) {
 	'use strict';
 
 	var Clipboard = {
@@ -28,8 +28,10 @@
 		copy: function (evt) {
 			var $target = $($(evt.currentTarget).data('clipboard'));
 			if ($target) {
-				this.selectAll(undefined, $target)
-				navigator.clipboard.writeText($target.val());
+				this.selectAll(undefined, $target);
+				if (navigator.clipboard) {
+					navigator.clipboard.writeText($target.val());
+				}
 			}
 		}
 	};

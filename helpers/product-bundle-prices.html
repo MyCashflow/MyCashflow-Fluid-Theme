@@ -1,0 +1,27 @@
+{BundlePrice(
+	currencysymbol: 'true',
+	html: 'true',
+	before: '
+		<dl class="Prices">
+			<dt class="Price CurrentPrice">{%Price}</dt>
+			<dd class="Price CurrentPrice" translate="no">
+				<strong>',
+	after: '
+				</strong>
+			</dd>
+			{BundleComparePrice(
+				currencysymbol: 'true',
+				before: '
+					<dt class="Price ListPrice">{%OldPrice}</dt>
+					<dd class="Price ListPrice" translate="no">',
+				after: '</dd>'
+			)}
+			{Helper(
+				case: 'VatFreePricing',
+				file: '{{
+					<dt class="Price PriceVat">{%VAT}</dt>
+					<dd class="Price PriceVat">0&nbsp;%</dd>
+				}}'
+			)}
+		</dl>'
+)}

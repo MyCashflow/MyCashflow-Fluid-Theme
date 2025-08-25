@@ -26,24 +26,16 @@
 /* Responsive Table
 /*------------------------------------------------------------------------------*/
 
-.TableWrap {
-	margin-bottom: 2rem;
-	position: relative;
-	max-width: calc(100vw - (var(--container-page-margin) * 2));
-	width: 100%;
-}
-
 .TableScroll {
-	display: flex;
-	width: 100%;
+	overflow-x: auto;
+	scrollbar-width: thin;
+	margin-inline: calc(var(--container-page-margin) * -1);
+	padding-inline: var(--container-page-margin);
 }
 
-.TableWrap table {
-	width: 100%;
-}
-
-.TableOverflow .TableScroll {
-	-ms-overflow-style: -ms-autohiding-scrollbar;
-	-webkit-overflow-scrolling: touch;
-	overflow: auto;
+@media screen and (max-width: 800px) {
+	.TableScroll {
+		margin-inline: calc(var(--container-page-margin) * -1);
+		padding-inline: var(--container-page-margin);
+	}
 }

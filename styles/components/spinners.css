@@ -52,6 +52,7 @@
 .SpinnerButton {
 	box-shadow: none;
 	display: flex;
+	gap: 0;
 	margin: 0;
 	padding-left: 0;
 	padding-right: 0;

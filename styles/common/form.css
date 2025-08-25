@@ -10,7 +10,6 @@ textarea {
 	background-color: var(--background-color);
 	border: 1px solid var(--input-border-color);
 	border-radius: var(--border-radius);
-	box-shadow: var(--box-shadow);
 	color: var(--color-text);
 	min-height: var(--input-height);
 	padding: .5rem 1rem;
@@ -49,17 +48,6 @@ textarea {
 	resize: vertical;
 }
 
-select {
-	appearance: none;
-	background-image: url('../../images/Theme-Light/angle-down-solid.svg');
-	background-position: top 50% right 1rem;
-	background-repeat: no-repeat;
-	background-size: auto var(--font-size-regular);
-	cursor: pointer;
-	height: var(--input-height);
-	padding-right: 3rem;
-}
-
 input:-webkit-autofill {
 	animation-name: onAutoFill;
 }
@@ -72,6 +60,28 @@ input:-webkit-autofill {
 }
 
 /*------------------------------------------------------------------------------*/
+/* Select
+/*------------------------------------------------------------------------------*/
+
+/* Font Awesome Select Arrow */
+
+select {
+	--fa-select-svg-solid: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc. --><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>');
+}
+
+select {
+	--arrow-svg: var(--fa-select-svg-solid);
+	appearance: none;
+	background-image: var(--arrow-svg);
+	background-position: top 50% right 1rem;
+	background-repeat: no-repeat;
+	background-size: auto var(--font-size-regular);
+	cursor: pointer;
+	height: var(--input-height);
+	padding-right: 3rem;
+}
+
+/*------------------------------------------------------------------------------*/
 /* Label
 /*------------------------------------------------------------------------------*/
 
@@ -81,6 +91,7 @@ label,
 	cursor: pointer;
 	display: inline-flex;
 	font-weight: bold;
+	gap: 0 .5rem;
 	margin-bottom: .5rem;
 }
 
@@ -214,7 +225,22 @@ fieldset {
 }
 
 /*------------------------------------------------------------------------------*/
-/* Form Errors
+/* Form Notification
+/*------------------------------------------------------------------------------*/
+
+.FormNotification {
+	background-color: var(--color-notification-error-bg);
+	border-radius: var(--border-radius);
+	display: inline-flex;
+	font-size: var(--font-size-small);
+	margin: .5rem 0;
+	order: 2;
+	padding: .2rem 1rem;
+	width: fit-content;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Form Error
 /*------------------------------------------------------------------------------*/
 
 .FormError {
@@ -281,6 +307,11 @@ fieldset {
 /* Edit Contact Form
 /*------------------------------------------------------------------------------*/
 
+#EditContactInfoForm textarea,
+#EditContactInfoForm select {
+	width: 100%;
+}
+
 @media screen and (min-width: 551px) {
 	#EditContactInfoForm .FormItem input:not([type="checkbox"]),
 	#EditContactInfoForm .FormItem select {
@@ -309,6 +340,18 @@ fieldset {
 		max-width: 680px;
 		padding: 2rem;
 	}
+
+	.CustomerLoggedIn.AccountPage #EditContactInfoForm {
+		background-color: var(--background-color);
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Change Password Form
+/*------------------------------------------------------------------------------*/
+
+#ChangePasswordForm .FormItem > br:last-child {
+	display: none;
 }
 
 /*------------------------------------------------------------------------------*/
@@ -339,6 +382,18 @@ fieldset {
 	width: 100%;
 }
 
+textarea#ShareCartLink {
+	width: 100%;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Campaign Code Form In Mini Cart
+/*------------------------------------------------------------------------------*/
+
+.DrawerCampaignCode form:last-child label {
+	display: none;
+}
+
 /*------------------------------------------------------------------------------*/
 /* Campaign Code Form In Modal
 /*------------------------------------------------------------------------------*/
@@ -350,6 +405,18 @@ fieldset {
 .CampaignCodeForm-InModal form > .FormItem {
 	display: flex;
 	flex-direction: column;
+}
+
+.CampaignCodeForm-InModal .label {
+	font-weight: normal;
+}
+
+.CampaignCodeForm-InModal form:last-child label {
+	display: none;
+}
+
+.CampaignCodeForm-InModal form:not(:last-child) button {
+	width: fit-content;
 }
 
 .CampaignCodeForm-InModal form:last-child button {
@@ -381,10 +448,7 @@ fieldset {
 
 .CampaignCode-Checkout form > .FormItem > .label {
 	flex: 1;
-}
-
-.CampaignCode-Checkout .label strong {
-	margin-inline: 1rem;
+	font-weight: normal;
 }
 
 .CampaignCode-Checkout input[type="text"] {
@@ -435,10 +499,6 @@ fieldset {
 #CheckoutForm .FormItem label:not(.InlineCheck),
 #CheckoutForm .FormItem .label:not(.InlineCheck) {
 	color: var(--color-text-subtle);
-}
-
-#CheckoutForm .FormItem:not(.CheckWrap) label:not(.InlineCheck) {
-	font-size: var(--font-size-small);
 }
 
 #CheckoutForm .FormItem label.GroupLabel {
@@ -536,7 +596,7 @@ fieldset {
 	#CheckoutForm .ContentSection {
 		background-color: var(--background-color);
 		border: 1px solid var(--border-color);
-		border-radius: var(--border-radius);
+		border-radius: var(--border-radius-medium);
 		padding: 2rem;
 	}
 }
@@ -561,5 +621,5 @@ fieldset {
 }
 
 #CheckoutForm .FormError > label:not(.InlineCheck)::after {
-	content: '(' var(--error-message-required) ')';
+	content: '(' var(--error-message-mandatory) ')';
 }

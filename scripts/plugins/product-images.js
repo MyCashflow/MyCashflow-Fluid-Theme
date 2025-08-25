@@ -6,17 +6,17 @@
  ;(function ($) {
 	'use strict';
 
-	var prevArrow = `
+	let prevArrow = `
 		<button class="ActionButton ActionButtonPrev" data-images-action="prev">
 			<span>{PREV}</span>
 		</button>`;
 
-	var nextArrow = `
+	let nextArrow = `
 		<button class="ActionButton ActionButtonNext" data-images-action="next">
 			<span>{NEXT}</span>
 		</button>`;
 	
-	var ProductImages = {
+	const ProductImages = {
 		images: '[data-images]',
 		thumbnails: '[data-images-thumbnails]',
 		caption: '[data-image-caption]',
@@ -27,23 +27,11 @@
 
 		fancybox: true,
 		fancyboxSettings: {
-			groupAll : true,
-			l10n: MCF.Modals.fancyboxDefaults.l10n,
-			Toolbar: {
-				display: [
-					// { id: "prev", position: "center" },
-					// { id: "counter", position: "center" },
-					// { id: "next", position: "center" },
-					// "zoom",
-					// "slideshow",
-					// "fullscreen",
-					// "download",
-					// "thumbs",
-					"close",
-				],
-			},
+			groupAll: true,
+			groupAttr: '.ProductImage',
 			on: {
-				"Carousel.selectSlide": (fancybox, carousel, slide) => {
+				"Carousel.ready Carousel.change": (fancybox) => {
+					const slide = fancybox.getSlide();
 					MCF.ProductImages.jumpToIndex(slide.index);
 				}
 			}
@@ -64,14 +52,14 @@
 			$(document).on('click', '.ProductThumbnail', $.proxy(this.onThumbnailClick, this));
 
 			window.addEventListener('resize', () => {
-				var $activeImage = $(this.images).find('.' + this.activeClass);
+				const $activeImage = $(this.images).find('.' + this.activeClass);
 				this.change($activeImage);
 			});
 
-			var slideObserver = new IntersectionObserver((entries, observer) => {
+			const slideObserver = new IntersectionObserver((entries, observer) => {
 				entries.forEach(entry => {
 					if (entry.isIntersecting) {
-							$(entry.target).addClass(this.activeClass).removeAttr('aria-hidden').siblings().removeClass(this.activeClass).attr('aria-hidden', 'true');
+							$(entry.target).addClass(this.activeClass).siblings().removeClass(this.activeClass);
 							this.refresh($(entry.target).closest(this.images));
 							this.changeCaption();
 					}
@@ -86,25 +74,25 @@
 		},
 
 		initFancybox: function () {
-			$(this.images).each(function(i) {
-				$(this).addClass('ProductImages-' + i);
-				Fancybox.bind('.ProductImages-' + i + ' .ProductImage', MCF.ProductImages.fancyboxSettings);
-			});
+			$(this.images).each($.proxy(function(i, elem) {
+				$(elem).addClass('ProductImages-' + i);
+				Fancybox.bind('.ProductImages-' + i + ' .ProductImage', this.fancyboxSettings);
+			}, this));
 		},
 
 		createButtons: function () {
 			$(this.images).each(function() {
-				var $mainImage = $(this);
-				var $imagesContainer = $mainImage.find('.ProductImage').parent();
-				var $images = $imagesContainer.children();
+				const $mainImage = $(this);
+				const $imagesContainer = $mainImage.find('.ProductImage').parent();
+				const $images = $imagesContainer.children();
 				if ($images.length < 2) {
 					return false;
 				}
-				var prev = $mainImage.data('images-text-prev') || this.txtButtonPrev;
-				var next = $mainImage.data('images-text-next') || this.txtButtonNext;
+				const prev = $mainImage.data('images-text-prev') || this.txtButtonPrev;
+				const next = $mainImage.data('images-text-next') || this.txtButtonNext;
 				prevArrow = prevArrow.replace('{PREV}', prev);
 				nextArrow = nextArrow.replace('{NEXT}', next);
-				var $arrows = $('<div class="ProductMainActions"></div>')
+				const $arrows = $('<div class="ProductMainActions"></div>')
 					.appendTo($mainImage)
 					.append(prevArrow)
 					.append(nextArrow);
@@ -113,8 +101,8 @@
 
 		createCaptions: function () {
 			$(this.images).find('[data-caption]').each(function() {
-				var title = $(this).closest('[data-images-product-name]').data('images-product-name');
-				var caption = $(this).data('caption');
+				const title = $(this).closest('[data-images-product-name]').data('images-product-name');
+				const caption = $(this).data('caption');
 				if (caption == title) {
 					$(this).removeAttr('data-caption');
 				}
@@ -122,10 +110,10 @@
 		},
 
 		onAction: function (evt) {
-			var $target = $(evt.currentTarget);
-			var $images = $target.closest(this.images).find('.ProductImage').parent();
-			var $activeImage = $images.find('.' + this.activeClass);
-			var action = $target.data('images-action') || undefined;
+			const $target = $(evt.currentTarget);
+			const $images = $target.closest(this.images).find('.ProductImage').parent();
+			const $activeImage = $images.find('.' + this.activeClass);
+			const action = $target.data('images-action') || undefined;
 			if (action == 'next') {
 				if ($activeImage.next().length) {
 					this.change($activeImage.next(), 'smooth');
@@ -144,18 +132,18 @@
 
 		onThumbnailClick: function (evt) {
 			evt.preventDefault();
-			var $target = $(evt.currentTarget);
-			var $images = $target.closest(this.thumbnails).prev();
+			const $target = $(evt.currentTarget);
+			const $images = $target.closest(this.thumbnails).prev();
 			this.change($images.find('.ProductImage[href="' + $target.attr('href') + '"]'), 'auto');
 		},
 
 		changeCaption: function (text) {
-			var captionSelector = this.caption;
+			const captionSelector = this.caption;
 			$(this.images).each(function(i) {
-				var $images = $(this);
-				var $caption = $images.find(captionSelector);
+				const $images = $(this);
+				const $caption = $images.find(captionSelector);
 				if ($caption.length) {
-					var currentCaption = $images.find('.ActiveImage').data('caption');
+					const currentCaption = $images.find('.ActiveImage').data('caption');
 					if (text) {
 						$caption.text(text);
 						return false;
@@ -166,22 +154,22 @@
 		},
 
 		change: function ($changeTo, behavior) {
-			var behavior = behavior || 'auto';
-			var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+			behavior = behavior || 'auto';
+			const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 			if (isSafari) {
 				behavior = 'auto';
 			}
-			var $images = $changeTo.parent();
+			const $images = $changeTo.parent();
 			if (!$changeTo.length) {
 				return false;
 			}
-			var position = $changeTo[0].offsetLeft;
+			const position = $changeTo[0].offsetLeft;
 			$images[0].scrollTo({left: position, behavior: behavior});
 		},
 
 		jumpToIndex: function (index, $instance) {
-			var $images = $instance || $(this.images);
-			var $targetImg = $images.find('.ProductImage').eq(index);
+			const $images = $instance || $(this.images);
+			const $targetImg = $images.find('.ProductImage').eq(index);
 			this.change($targetImg);
 		},
 
@@ -194,9 +182,9 @@
 		},
 
 		refreshButtons: function ($mainImage) {
-			var $activeImage = $mainImage.find('.' + this.activeClass);
-			var $prevArrow = $('[data-images-action="prev"]', $mainImage).prop('disabled', true);
-			var $nextArrow = $('[data-images-action="next"]', $mainImage).prop('disabled', true);
+			const $activeImage = $mainImage.find('.' + this.activeClass);
+			const $prevArrow = $('[data-images-action="prev"]', $mainImage).prop('disabled', true);
+			const $nextArrow = $('[data-images-action="next"]', $mainImage).prop('disabled', true);
 			if ($activeImage.next().length) {
 				$nextArrow.prop('disabled', false);
 			}
@@ -206,9 +194,9 @@
 		},
 
 		refreshThumbs: function ($mainImage) {
-			var $activeImage = $mainImage.find('.' + this.activeClass);
-			var $thumbs = $mainImage.next(this.thumbnails);
-			var $activeThumb = $thumbs.find('.ProductThumbnail[href="' + $activeImage.attr('href') + '"]');
+			const $activeImage = $mainImage.find('.' + this.activeClass);
+			const $thumbs = $mainImage.next(this.thumbnails);
+			const $activeThumb = $thumbs.find('.ProductThumbnail[href="' + $activeImage.attr('href') + '"]');
 			if ($activeThumb.length) {
 				$activeThumb.parent().addClass('ActiveThumb').siblings().removeClass('ActiveThumb');
 			}

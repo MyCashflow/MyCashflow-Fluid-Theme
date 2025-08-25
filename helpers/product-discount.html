@@ -1,0 +1,10 @@
+{ProductDiscountPercent(
+	before: '<span class="DiscountPercentLabel" data-discount-label="{%Discount}"></span> <span class="DiscountPercentMinus">-</span><span class="DiscountPercentValue">',
+	after: '&nbsp;&#37;</span>',
+	or: '
+		{ProductDiscountPercent(
+			mode: 'max',
+			before: '<span class="DiscountPercentLabel" data-discount-label="{%Discount}" data-discount-label-max="{%DiscountUpTo}"></span> <span class="DiscountPercentMinus">-</span><span class="DiscountPercentValue">',
+			after: '&nbsp;&#37;</span>'
+		)}'
+)}

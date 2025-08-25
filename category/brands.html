@@ -1,0 +1,33 @@
+{Doctype}
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container">
+			<div class="CategoryLayout">
+				<main class="CategoryMain" id="main-content">
+					<header class="CategoryHeader">
+						{Helper(file: 'helpers/category/category-image-main-contained')}
+						<h1 class="Title">{PageTitle}</h1>
+						{CategoryDescription(
+							before: '<div class="CategoryDescription">',
+							after: '</div>'
+						)}
+					</header>
+					{Helper(file: 'helpers/klarna-osm/product-list-{Setting(name: 'klarna_osm_productlist')}')}
+					{Brands(
+						showlogo: 'true',
+						width: '300',
+						before: '<div class="CategoryBrands">',
+						after: '</div>'
+					)}
+				</main>
+			</div>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body>
+</html>

@@ -1,12 +1,12 @@
-<article class="NewsItem">
-	<a class="NewsItemImage" href="{NewsUrl}">
-		<div class="AspectRatio">
-			{NewsImage(link: 'false')}
-		</div>
-	</a>
+<article class="NewsItem" aria-labelledby="news-title-{NewsId}">
+	{NewsImage(
+		link: 'false',
+		before: '<a class="NewsItemImage" href="{NewsUrl}">',
+		after: '</a>'
+	)}
 	<div class="NewsItemOverview">
 		<div class="NewsItemDate">{NewsDate}</div>
-		<h3>{NewsSubject}</h3>
+		<h3 id="news-title-{NewsId}">{NewsSubject}</h3>
 		{NewsOverview(
 			before: '<p>',
 			after: '</p>'

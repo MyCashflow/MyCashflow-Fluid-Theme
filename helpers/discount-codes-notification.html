@@ -1,0 +1,12 @@
+{CustomerDiscountCodesCount(
+	before: '<div class="DiscountCodesNotification" data-available-codes="',
+	after: '">
+			<span>{%CustomerDiscountCodesAvailable} <br>{%CustomerDiscountCodesTotal}</span> 
+			{CustomerDiscountCodes(
+				before: '<div style="display: none;">',
+				after: '</div>',
+				helper: '{{ {DiscountCodeToggle} }}'
+			)}
+			<a class="Button Button-Small Button-Activate" href="/account" data-drawer-toggle="discounts">{%AddDiscountCodesToCart}</a>
+		</div>'
+)}

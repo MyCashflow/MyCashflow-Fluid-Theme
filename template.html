@@ -1,14 +1,16 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
 	<body class="{BodyClass}">
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
-			<main>
-				{Content}
-			</main>
+			<div class="ContainerMaxWidth">
+				<main class="SiteMain" id="main-content">
+					{Content}
+				</main>
+			</div>
 		</div>
 		{Helper(file: 'helpers/footer')}
 		{Helper(file: 'helpers/scripts')}

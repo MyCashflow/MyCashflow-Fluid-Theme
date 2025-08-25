@@ -18,8 +18,14 @@
 	color: var(--color-text);
 	font-size: var(--font-size-large);
 	max-width: 60ch;
+	pointer-events: none;
 	position: relative;
 	transition-duration: var(--transition-slow);
+}
+
+.BannerText a,
+.BannerText button {
+	pointer-events: auto;
 }
 
 .BannerText p {
@@ -46,20 +52,6 @@
 .Banner-Light .BannerText > * {
 	color: var(--color-text-dark-darker);
 	text-shadow: none;
-}
-
-/*------------------------------------------------------------------------------*/
-/* Banner Text FOUC
-/*------------------------------------------------------------------------------*/
-
-.JS .FeaturedBanner .BannerText:not(.LightnessLoaded) > *,
-.JS .MainBanner .BannerText:not(.LightnessLoaded) > * {
-	color: transparent;
-}
-
-.JS .MainBanner .BannerText:not(.LightnessLoaded),
-.JS .FeaturedBanner .BannerText:not(.LightnessLoaded) {
-	opacity: 0;
 }
 
 /*------------------------------------------------------------------------------*/

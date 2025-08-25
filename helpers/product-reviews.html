@@ -88,6 +88,15 @@
 						</cite>'
 				)}
 			</footer>
+			{ReviewResponseComments(
+				before: '<div class="ProductReviewResponses">',
+				after: '</div>',
+				helper: '{{ 
+					<article class="ProductReviewResponse">
+						<p><strong>{ResponseCommentAuthorName}:</strong> {ResponseComment}</p>
+					</article>
+				}}'
+			)}
 		</article>
 	}}'
 )}

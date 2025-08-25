@@ -25,11 +25,15 @@
 /* Footer Items
 /*------------------------------------------------------------------------------*/
 
+.FooterTitle {
+	text-transform: var(--font-heading-transform);
+}
+
 .FooterItems {
 	--gap: 4rem;
 	gap: var(--gap);
 	display: flex;
-	margin-bottom: 4rem;
+	margin-bottom: 2rem;
 }
 
 .FooterItem {
@@ -37,22 +41,30 @@
 }
 
 .FooterItem-Logo {
-	flex: 2.2;
+	flex: 2.15;
 }
 
-.FooterItem ul {
+/*------------------------------------------------------------------------------*/
+/* Footer Navigation
+/*------------------------------------------------------------------------------*/
+
+.FooterNavigation  ul {
 	list-style: none;
 }
 
-.FooterItem ul a {
+.FooterNavigation  ul a {
+	display: inline-block;
+	margin-bottom: .5rem;
 	text-decoration: none;
 }
 
-.FooterTitle {
-	font-family: var(--font-family-headings);
-	font-size: var(--font-size-regular);
-	font-weight: var(--font-heading-weight);
-	text-transform: var(--font-heading-transform);
+.FooterNavigation .Current > a {
+	font-weight: bold;
+}
+
+#ContactInformation a {
+	display: inline-block;
+	margin-bottom: .5rem;
 }
 
 /*------------------------------------------------------------------------------*/
@@ -64,30 +76,82 @@
 	margin: 0;
 }
 
-.FooterMobileNavigation ul a {
-	border-top: 1px solid var(--border-color);
+.Accordion summary + .FooterMobileNavigation {
+	margin-top: -2rem;
+}
+
+.FooterMobileNavigation li a {
 	display: flex;
-	text-decoration: none;
 	padding-block: 1rem;
+	text-decoration: none;
+}
+
+.FooterMobileNavigation :where(ul, li):not(:last-child) a {
+	border-bottom: 1px solid var(--border-color);
+}
+
+.FooterMobileNavigation .Current > a {
+	font-weight: bold;
+}
+
+/*------------------------------------------------------------------------------*/
+/* Footer Badges
+/*------------------------------------------------------------------------------*/
+
+.FooterBadges .CheckoutBadges {
+	max-width: 500px;
+}
+
+.FooterBadges:not(:has(li)):not(:has(.KlarnaPlacementBadges)) {
+	display: none;
+}
+
+.KlarnaPlacementBadges {
+	display: flex;
+	margin: -8px;
+	margin-bottom: var(--margin);
+}
+
+@media screen and (min-width: 1025px) {
+	.FooterBadges ul:has(+ ul) {
+		margin-bottom: 1rem;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.FooterBadges {
+		margin-top: 4rem;
+	}
+
+	.FooterBadges .CheckoutBadges {
+		justify-content: center;
+		margin-inline: auto;
+	}
+
+	.KlarnaPlacementBadges {
+		justify-content: center;
+	}
 }
 
 /*------------------------------------------------------------------------------*/
 /* Footer Copyright
 /*------------------------------------------------------------------------------*/
 
-.FooterCopyright {
-	align-items: flex-start;
-	border-top: 1px solid var(--border-color);
+.FooterBottom {
+	align-items: flex-end;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 2rem;
+	gap: 4rem;
 	justify-content: space-between;
-	margin-top: 4rem;
-	padding-top: 4rem;
+	margin-top: 2rem;
+}
+
+.FooterBottom > * {
+	flex: 1;
 }
 
 @media screen and (max-width: 1024px) {
-	.FooterCopyright {
+	.FooterBottom {
 		align-items: center;
 		border-top: 0;
 		flex-direction: column-reverse;

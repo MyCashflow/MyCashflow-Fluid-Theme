@@ -14,6 +14,7 @@
 /*------------------------------------------------------------------------------*/
 
 .ProductMainImage {
+	--aspect-ratio: 1 / var(--product-image-ratio, 1);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -37,26 +38,25 @@
 	display: none;
 }
 
+.ProductMainImageContainer:focus-within {
+	outline: 5px auto Highlight;
+	outline: 5px auto -webkit-focus-ring-color;
+}
+
 .ProductMainImageContainer .ProductImage {
-	background-color: var(--color-bg-light);
+	align-items: center;
+	aspect-ratio: var(--aspect-ratio);
+	background-color: var(--image-background-color);
+	display: flex;
+	justify-content: center;
 	min-width: 100%;
 	scroll-snap-align: center;
 }
 
-.ProductMainImageContainer .ProductImage .AspectRatio {
-	--aspect-ratio: calc(var(--product-image-ratio) * 100%);
-}
-
-/* Dark Mode */
-
-.Theme-Dark .ProductMainImageContainer {
-	border-width: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-	.Theme-Auto .ProductMainImageContainer {
-		border-width: 0;
-	}
+.ProductMainImageContainer .ProductImage img {
+	height: 100%;
+	object-fit: contain;
+	width: 100%;
 }
 
 /*------------------------------------------------------------------------------*/
@@ -76,6 +76,7 @@
 
 .ActionButton {
 	font-size: 0;
+	gap: 0;
 	height: 40px;
 	pointer-events: auto;
 	width: 40px;
@@ -100,6 +101,7 @@
 /*------------------------------------------------------------------------------*/
 
 .ProductThumbnails {
+	--aspect-ratio: 1 / var(--product-image-ratio, 1);
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
 	gap: 1rem;
@@ -107,20 +109,19 @@
 }
 
 .ProductThumbnail {
-	background-color: var(--color-bg-light);
-	display: block;
+	align-items: center;
+	aspect-ratio: var(--aspect-ratio);
+	background-color: var(--image-background-color);
+	display: flex;
 	border: 1px solid var(--border-color);
 	border-radius: var(--border-radius);
+	justify-content: center;
 	overflow: hidden;
 	z-index: 1;
 }
 
-.ProductThumbnail .AspectRatio {
-	--aspect-ratio: calc(var(--product-image-ratio) * 100%);
-}
-
 .ProductThumbnail img {
-	height: auto;
+	height: 100%;
 	object-fit: contain;
 	width: 100%;
 }
@@ -128,18 +129,6 @@
 .ActiveThumb .ProductThumbnail {
 	border-color: transparent;
 	box-shadow: 0 0 0 2px var(--color-accent);
-}
-
-/* Dark Mode */
-
-.Theme-Dark .ProductThumbnail {
-	border-width: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-	.Theme-Auto .ProductThumbnail {
-		border-width: 0;
-	}
 }
 
 @media screen and (max-width: 500px) {

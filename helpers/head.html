@@ -4,12 +4,7 @@
 <meta name="description" content="{MetaDescription}">
 {Feed}
 <link rel="canonical" href="{ShopUrl}{CanonicalUrl}" />
-{Favicon}
-<link rel="preconnect" href="https://www.google.com">
-<link rel="preconnect" href="https://www.gstatic.com">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{Favicon(or: '<link rel="icon" href="{ThemeUrl}/images/favicon.png">')}
 <script>document.documentElement.className += ' JS JS-Loading';</script>
 {Helper(file: 'helpers/styles')}
-{Helper(file: 'settings/main')}
 {Extensions(for: 'head')}

@@ -1,0 +1,86 @@
+{Doctype}
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
+	<head>
+		{Helper(file: 'helpers/head')}
+	</head>
+	<body class="{BodyClass}">
+		{Helper(file: 'helpers/header')}
+		<div class="SiteBody Container">
+			<div class="ContainerMaxWidth">
+				{Notifications(group: 'account')}
+				<main class="AccountPageLayout" id="main-content">
+					<heading class="AccountHeading">
+						<h1 class="Title">{PageTitle}</h1>
+						<div class="CustomerLogin">
+							<dl class="AccountInformation">
+								<dt class="AccountCustomerName">{%LoggedInAs}</dt>
+								<dd class="AccountCustomerName">{CustomerName(link: 'false')} (<a href="/account/logout/">{%Logout}</a>)</dd>
+								<dt class="AccountCustomerEmail">{%Email}</dt>
+								<dd class="AccountCustomerEmail">{CustomerEmail} <br><a href="/account/password/">{%ChangePassword}</a></dd>
+							</dl>
+							<p class="AccountActions">
+								<a href="/account/edit/" class="Button">{%EditContactInfo}</a>
+							</p>
+						</div>
+						<nav class="SideNavigation StickySide">
+							{Helper(
+								case: 'LoyaltyProgramIsActive',
+								file: '{{
+								<ul class="AccountNavigation">
+									<li><a href="#LoyaltyProgram">{%LoyaltyProgram}</a></li>
+									<li><a href="#DiscountCodes">{%CustomerDiscountCodes}</a></li>
+									<li><a href="#CustomerInformation">{%CheckoutCustomerInformation}</a></li>
+									<li><a href="#OrderHistory">{%OrderHistory}</a></li>
+								</ul>
+								}}'
+							)}
+						</nav>
+					</heading>
+					{Helper(
+						case: 'LoyaltyProgramIsActive',
+						file: '{{
+							<section class="AccountSection AccountLoyalty">
+								<h2 id="LoyaltyProgram" class="Subtitle"><span class="fa fa-badge-check"></span>&nbsp; {%LoyaltyProgram}</h2>
+								{LoyaltyProgramSignUpForm(
+									onlyform: 'true',
+									before: '<p>{%LoyaltyProgramJoinInfo}</p>',
+									or: '
+										<aside class="CustomerLoyaltyProgram">
+											<p>{%LoyaltyProgramCustomerPointsIntro}</p>
+											<dl class="CustomerLoyaltyPointTier">
+												<dt>{CustomerLoyaltyPoints(or: '0')} {%LoyaltyProgramPoints}</dt>
+												{LoyaltyProgramDiscountTiers(
+													filter: 'current',
+													helper: '{{
+														<dd>{LoyaltyProgramDiscountTierDiscount}</dd>
+													}}'
+												)}
+											</dl>
+											{LoyaltyProgramDiscountTiers(
+												filter: 'next',
+												helper: '{{
+													<p class="CustomerLoyaltyNextTier">{%LoyaltyProgramTierNextNeeded}</p>
+												}}'
+											)}
+										</aside>'
+								)}
+								<a href="{LoyaltyProgramInfoURL}" data-drawer-toggle="loyalty">{%LoyaltyProgramReadMoreLinkText}</a>
+							</section>
+							<section class="AccountSection AccountDiscountCodes">
+								<h2 id="DiscountCodes" class="Subtitle"><span class="fa fa-tag"></span>&nbsp; {%CustomerDiscountCodes}</h2>
+								{Helper(file: 'helpers/discount-codes')}
+							</section>
+						}}'
+					)}
+					<section class="AccountSection AccountInformation">
+						<h2 id="CustomerInformation" class="Subtitle"><span class="fa fa-user"></span>&nbsp; {%CheckoutCustomerInformation}</h2>
+						{Content}
+					</section>
+				</main>
+			</div>
+		</div>
+		{Helper(file: 'helpers/footer')}
+		{Helper(file: 'helpers/scripts')}
+		{Helper(file: 'helpers/scripts-ready')}
+	</body> 
+</html>

@@ -1,13 +1,21 @@
 {Doctype}
-<html lang="{CurrentLanguageCode}">
+<html lang="{CurrentLanguageCode(format: 'ISO')}">
 	<head>
 		{Helper(file: 'helpers/head')}
 	</head>
 	<body class="{BodyClass}">
 		{Helper(file: 'helpers/header')}
 		<div class="SiteBody Container">
-			<main class="SiteMain">
+			<main class="SiteMain" id="main-content">
+				{Helper(
+					before: '<div class="FullCartDiscountCodesNotification ContainerMaxWidth">',
+					after: '</div>',
+					file: 'helpers/discount-codes-notification'
+				)}
 				{Helper(file: 'helpers/full-cart')}
+				<div hidden>
+					{CartShareForm}
+				</div>
 			</main>
 		</div>
 		{Helper(file: 'helpers/footer')}

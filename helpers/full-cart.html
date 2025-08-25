@@ -9,12 +9,10 @@
 				<div class="InlineNavigation">
 					<ul>
 						<li>
-							<span class="fa fa-link"></span>
-							<a href="/interface/Helper?file=helpers/modals/cart-share-link" data-fancybox data-type="ajax">{%CartShareLink}</a>
+							<a class="Button Button-Small" href="/interface/Helper?file=helpers/modals/cart-share-link" data-fancybox data-type="ajax" data-cart-share-link="{CartShareLink}"><span class="fa fa-link"></span> {%CartShareLink}</a>
 						</li>
 						<li>
-							<span class="fa fa-envelope"></span>
-							<a href="/interface/Helper?file=helpers/modals/cart-share-form" data-fancybox data-type="ajax">{%CartShareSendToEmail}</a>
+							<a class="Button Button-Small" href="/interface/Helper?file=helpers/modals/cart-share-form" data-fancybox data-type="ajax" data-cart-share-link="{CartShareLink}"><span class="fa fa-envelope"></span> {%CartShareSendToEmail}</a>
 						</li>
 					</ul>
 				</div>
@@ -23,40 +21,58 @@
 	after: '
 			</div>
 			{CartSubTotal(
-				before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%Subtotal}:&nbsp;',
-				after: '</span></div>'
+				before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%Subtotal}: <span translate="no">',
+				after: '</span></span></div>'
 			)}
 			{CartShippingCosts(
-				before: '<div class="FullCartSection FullCartTotal">{%CheckoutShipping}: {CartShippingMethod}&nbsp;',
-				after: '</div>'
+				before: '<div class="FullCartSection FullCartTotal">{%CheckoutShipping}: {CartShippingMethod} <span translate="no">',
+				after: '</span></div>'
 			)}
 			{CartPaymentCosts(
-				before: '<div class="FullCartSection FullCartTotal">{%PaymentMethod}: {CartPaymentMethod}&nbsp;',
-				after: '</div>'
+				before: '<div class="FullCartSection FullCartTotal">{%PaymentMethod}: {CartPaymentMethod} <span translate="no">',
+				after: '</span></div>'
 			)}
 			{CartDiscount(
-				before: '<div class="FullCartSection FullCartTotal">{CartDiscountLabel}:&nbsp; -',
-				after: '</div>'
+				before: '<div class="FullCartSection FullCartTotal">{CartDiscountLabel}: <span translate="no"> -',
+				after: '</span></div>'
 			)}
 			{CartGiftCards(
+				after: '{CartOpenTotal(
+					before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%CartOpenTotal}: <span translate="no">',
+					after: '</span></span></div>'
+				)}',
 				helper: '{{
 					<div class="FullCartSection FullCartTotal">
-						{%CartPaidByGiftCard}: {GiftCardBalanceReserved}
+						{%CartPaidByGiftCard} <a href="#" data-drawer-toggle="gift-cards" class="GiftCardDetails">{%CartGiftCardDetaild}</a>: {GiftCardBalanceReserved}
 					</div>
 				}}',
-				after: '{CartOpenTotal(
-					before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%CartOpenTotal}:&nbsp;',
-					after: '</span></div>'
-				)}',
-				or: '{CartTotal(
-					before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%Total}:&nbsp;',
-					after: '</span></div>'
-				)}'
+				or: '
+					{CartTotal(
+						before: '<div class="FullCartSection FullCartTotal"><span class="H4">{%Total}: <span translate="no">',
+						after: '</span></span></div>'
+					)}'
+			)}
+			{CartLoyaltyPoints(
+				before: '
+					<div class="FullCartSection FullCartTotal">
+						<div class="HighlightPoints FullCartLoyaltyPoints" data-loyalty-cart-points="',
+				after: '">
+							<p>
+								{CustomerLoyaltyPoints(
+									before: '<span style="display: none;">',
+									after: '</span>
+										{%LoyaltyProgramCartPointsInfo} <br><a href="{LoyaltyProgramInfoURL}" data-drawer-toggle="loyalty">{%LoyaltyProgramReadMoreLinkText}</a>',
+									or: '
+										{%LoyaltyProgramJoinInfo} <br><a href="{LoyaltyProgramInfoURL}" data-drawer-toggle="loyalty">{%LoyaltyProgramJoin}</a>'
+								)}
+							</p>
+						</div>
+					</div>'
 			)}
 			<div class="FullCartSection FullCartActions">
 				<div class="Flex FlexGap FlexValign-Center FlexAlign-End">
 					<button class="Button JS-Hide">{%ShoppingCartUpdateSubtotal}</button>
-					<a class="Button" href="/interface/Helper?file=helpers/modals/campaign-code-cart" data-fancybox data-type="ajax">{%CampaignCodeInquiry}</a>
+					<a class="Button" href="/interface/Helper?file=helpers/modals/campaign-code-cart" data-fancybox data-type="ajax">{Text(code: 'CampaignCodeOrGiftCard', or: '{%CampaignCodeInquiry}')}</a>
 					<a class="Button Button-Primary" href="/checkout/">{%ContinueToCheckout}</a>
 				</div>
 			</div>
@@ -87,7 +103,7 @@
 					after: '</div>'
 				)}
 			</div>
-			<div class="FullCartCol FullCartColPrice">
+			<div class="FullCartCol FullCartColPrice" translate="no">
 				{CartProductComparePrice(
 					before: '
 						<span class="ProductDiscountPrice">{CartProductPrice}</span><br>
@@ -101,7 +117,7 @@
 			<div class="FullCartCol FullCartColQuantity">
 				{CartProductQuantity}
 			</div>
-			<div class="FullCartCol FullCartColPrice">
+			<div class="FullCartCol FullCartColPrice" translate="no">
 				<span class="H4 ProductTotal">{CartProductTotal}</span>
 			</div>
 			<div class="FullCartCol FullCartColRemove">

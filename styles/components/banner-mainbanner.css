@@ -7,6 +7,8 @@
 	display: grid;
 	grid-auto-columns: 100%;
 	grid-auto-flow: column;
+	list-style: none;
+	margin-block: 0 2rem;
 	margin-inline: auto;
 	max-width: var(--full-width-limit);
 	overflow-x: auto;
@@ -15,12 +17,23 @@
 	width: 100%;
 }
 
+.MainBanners:has(+ .SliderPosition) {
+	margin-bottom: 4rem;
+}
+
+.MainBanners + .SliderPosition {
+	position: absolute;
+	top: 100%;
+}
+
 .MainBanners::-webkit-scrollbar {
 	display: none;
 }
 
 .MainBanner {
+	--aspect-ratio: 10 / 3.5;
 	align-items: center;
+	aspect-ratio: var(--aspect-ratio);
 	background-color: var(--background-color-shade-1);
 	display: flex;
 	justify-content: center;
@@ -35,13 +48,11 @@
 	background-color: var(--color-black-lighter);
 }
 
-.MainBanner.AspectRatio {
-	--aspect-ratio: 35%;
-}
-
 .MainBanner img {
 	height: 100%;
+	inset: 0;
 	object-fit: cover;
+	position: absolute;
 	width: 100%;
 }
 
@@ -70,22 +81,76 @@
 }
 
 @media screen and (max-width: 800px) {
-	.MainBanner.AspectRatio {
-		--aspect-ratio: 50%;
+	.MainBanner {
+		--aspect-ratio: 2 / 1;
 		--default-margin: 1rem;
 	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Main Banner as First Element on Home Page
+/*------------------------------------------------------------------------------*/
+
+.HomepageCategory .SiteBody .HomepageTitle + section:has(.MainBanners) {
+	margin-top: calc(var(--margin-large) * -1);
+	margin-inline: calc(var(--container-page-margin) * -1);
+}
+
+.HomepageCategory .SiteBody .HomepageTitle + section .MainBanner {
+	border-radius: 0;
+}
+
+@media screen and (max-width: 480px) {
+	.HomepageCategory .SiteBody .HomepageTitle + section:has(.MainBanner) {
+		margin-top: calc(var(--margin) * -1);
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+/* Main Banner Gradient
+/*------------------------------------------------------------------------------*/
+
+.MainBanner.ImageGradient-1 {
+	--gradient-direction-to: top;
+	--gradient-start:  0.5;
+}
+
+.MainBanner.ImageGradient-1::before {
+	background-image: linear-gradient(
+		to var(--gradient-direction-to),
+		rgba(0, 0, 0, var(--gradient-start)),
+		rgba(0, 0, 0, 0)
+	);
+	content: '';
+	height: 100%;
+	inset: 0;
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+}
+
+.MainBanner.ImageGradient-1 .BannerText {
+	color: var(--color-text-light) !important;
+	z-index: 3;
+}
+
+.MainBanner.ImageGradient-1 .BannerText a:not(.Button) {
+	--color-link: var(--color-text-accent-light);
+	--color-link-hover: var(--color-text-accent-light-darker);
+	--color-link-active: var(--color-text-accent-light-darker);
 }
 
 /*------------------------------------------------------------------------------*/
 /* Main Banner Animations
 /*------------------------------------------------------------------------------*/
 
-.MainBanner:not(:first-child) .MainBannerImage {
+.MainBanners li:not(:first-child) .MainBannerImage {
 	opacity: 0.5;
 	transition-duration: 1s;
 }
 
-.MainBanner.IsVisible .MainBannerImage {
+.MainBanners li.IsVisible .MainBannerImage {
 	opacity: 1;
 }
 
@@ -94,6 +159,6 @@
 	transition-duration: 1s;
 }
 
-.MainBanner.IsVisible .BannerText {
+.MainBanners li.IsVisible .BannerText {
 	opacity: 1;
 }
